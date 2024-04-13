@@ -1,7 +1,3 @@
-# Default config for sway
-#
-# Copy this to ~/.config/sway/config and edit it to your liking.
-#
 # Read `man 5 sway` for a complete reference.
 
 set $locktime 360
@@ -103,20 +99,27 @@ exec swayidle -w \
 #
 # Basics:
 #
-    # Start a terminal
-    bindsym $mod+Return exec $term
+    
+    # App launching
 
-    # Kill focused window
-    bindsym $mod+q kill
-
-    # Start your launcher
+    ## Start your launcher
     bindsym $mod+space exec $menu -show drun
 
     # search windows
     bindsym $mod+tab exec $menu -show window
 
     # run calc
-    bindsym $mod+Mod1+tab exec rofi -show calc -modi calc -no-show-match -no-sort
+    bindsym $mod+Mod1+space exec rofi -show calc -modi calc -no-show-match -no-sort
+
+    # run term
+    bindsym $mod+Return exec $term
+
+    # browser (firefox)
+    bindsym $mod+Shift+b exec firefox
+
+    #kill window
+    bindsym $mod+q kill
+
 
     # Drag floating windows by holding down $mod and left mouse button.
     # Resize them with right mouse button + $mod.
