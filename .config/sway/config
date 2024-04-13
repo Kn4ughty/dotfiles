@@ -4,8 +4,8 @@
 #
 # Read `man 5 sway` for a complete reference.
 
-set $locktime 60
-set $offtime 120
+set $locktime 360
+set $offtime 500
 
 set $lockcmd 'swaylock -f -e -k -c 181926'
 
@@ -50,6 +50,8 @@ gaps inner 6
 gaps outer 0
 smart_gaps off
 
+
+exec gsettings set org.gnome.desktop.interface gtk-theme 'Adwaita-Dark'
 
 ### Output configuration
 #
