@@ -30,7 +30,7 @@ set $resize-step 30px
 # Apps
 
 # Your preferred terminal emulator
-set $term konsole
+set $term alacritty
 # Your preferred application launcher
 # Note: pass the final command to swaymsg so that the resulting window can be opened
 # on the original workspace that the command was run on.
