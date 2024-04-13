@@ -48,7 +48,7 @@ client.focused          $acCol  $acCol  $textC  #000000   $textC
 # Gaps
 gaps inner 6
 gaps outer 0
-smart_gaps off
+smart_gaps on
 
 
 exec gsettings set org.gnome.desktop.interface gtk-theme 'Adwaita-Dark'
