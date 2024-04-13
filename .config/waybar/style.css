@@ -87,6 +87,11 @@ window#waybar.solo {
     color: #f8f8f2;
 }
 
+#window {
+    color: #FFFFFF;
+}
+
+
 #window,
 #workspaces {
     margin: 0 4px;

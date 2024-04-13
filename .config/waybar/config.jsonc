@@ -6,9 +6,9 @@
     // "width": 2560, // Waybar width
     // "spacing": 4, // Gaps between modules (4px)
     // Choose the order of the modules
-    "modules-left": ["sway/workspaces", "sway/mode"],
-    "modules-center": ["sway/window"],
-    "modules-right": ["tray", "sway/scratchpad", "idle_inhibitor", "disk#ssd", "temperature", "temperature2", "cpu", "memory", "network", "pulseaudio", "clock", "custom/weather"],
+    "modules-left": ["sway/workspaces", "sway/mode", "sway/window"],
+    "modules-center": [],
+    "modules-right": ["tray", "sway/scratchpad", "idle_inhibitor", "disk#ssd", "temperature", "temperature2", "cpu", "memory", "network", "pulseaudio", "battery", "clock", "custom/weather"],
     // Modules configuration
      "sway/workspaces": {
          "disable-scroll": true,
