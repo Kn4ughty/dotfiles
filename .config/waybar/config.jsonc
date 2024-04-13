@@ -130,13 +130,14 @@
             "critical": 15
         },
         // "adapter": "/sys/class/power_supply/hid-dc:2c:26:26:48:e8-battery",
-        "format": "{capacity}% {icon}",
+        "format": "{capacity}% {time} {icon}",
         "format-charging": "{capacity}% ",
         "format-plugged": "{capacity}% ",
         "format-alt": "{time} {icon}",
         // "format-good": "", // An empty format will hide the module
         // "format-full": "",
-        "format-icons": ["", "", "", "", ""]
+        "format-icons": ["", "", "", "", ""],
+	"format-time": "{H}:{M}"
     },
     "battery#bat2": {
         "bat": "BAT2"
