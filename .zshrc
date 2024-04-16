@@ -8,7 +8,7 @@ export ZSH="$HOME/.oh-my-zsh"
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
-ZSH_THEME="robbyrussell"
+ZSH_THEME="kphoen"
 
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
@@ -73,6 +73,8 @@ ZSH_THEME="robbyrussell"
 plugins=(
 	git
 	zsh-autosuggestions
+	dircycle
+	extract
 )
 
 source $ZSH/oh-my-zsh.sh
@@ -106,5 +108,9 @@ source $ZSH/oh-my-zsh.sh
 alias py="python"
 alias n="nvim"
 alias neovim="echo \"Wrong\""
+
+alias :q="echo \"okay if you are sure\" && sleep 1 && exit"
+
+
 export PATH=$PATH:/home/d/.spicetify
 source ~/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
