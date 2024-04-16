@@ -1,7 +1,7 @@
 # Read `man 5 sway` for a complete reference.
 
-set $locktime 360
-set $offtime 500
+set $locktime 3600
+set $offtime 5000
 
 set $lockcmd 'swaylock -f -e -k -c 181926'
 
@@ -99,7 +99,6 @@ exec swayidle -w \
 #
 # Basics:
 #
-    
     # App launching
 
     ## Start your launcher
@@ -115,7 +114,13 @@ exec swayidle -w \
     bindsym $mod+Return exec $term
 
     # browser (firefox)
-    bindsym $mod+Shift+b exec firefox
+    bindsym $mod+Shift+b exec MOZ_ENABLE_WAYLAND=1 floorp 
+
+    # Steam
+    bindsym $mod+Shift+s exec steam
+
+    # factorio
+    bindsym $mod+Shift+f exec /home/d/.local/share/Steam/steamapps/common/Factorio/bin/x64/factorio
 
     #kill window
     bindsym $mod+q kill

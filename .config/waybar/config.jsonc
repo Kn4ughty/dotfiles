@@ -93,6 +93,7 @@
         "timezone": "Australia/ACT",
         "format": "{:%b-%d, %a %T}",
         "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
+	"interval": 1
     },
     "cpu": {
         "format": "{usage}% ",
