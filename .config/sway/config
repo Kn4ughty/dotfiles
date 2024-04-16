@@ -303,4 +303,6 @@ bar {
 #    }
 }
 
+exec sworkstyle &> /tmp/sworkstyle.log
+
 include /etc/sway/config.d/*
