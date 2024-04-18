@@ -113,4 +113,4 @@ alias :q="echo \"okay if you are sure\" && sleep 1 && exit"
 
 
 export PATH=$PATH:/home/d/.spicetify
-source ~/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
