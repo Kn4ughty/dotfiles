@@ -1,0 +1,2 @@
+require("mine")
+print("hello")
