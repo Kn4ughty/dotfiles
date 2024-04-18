@@ -95,10 +95,31 @@ exec swayidle -w \
 # You can get the names of your inputs by running: swaymsg -t get_inputs
 # Read `man 5 sway-input` for more information about this section.
 
+# DWT = disable while typing
+
+input "1739:30382:DLL0704:01_06CB:76AE_Touchpad" {
+    tap enabled
+    dwt enabled
+}
+
+# Notification Daemon
+exec swaync
+
+# Toggle control center
+bindsym $mod+Shift+n exec swaync-client -t -sw
+
 ### Key bindings
 #
 # Basics:
 #
+bindgesture swipe:right workspace next
+bindgesture swipe:left workspace prev
+bindgesture swipe:up exec $menu -show window
+
+
+# space bar fix
+bindsym Alt_R exec wtype -k "space"
+
     # App launching
 
     ## Start your launcher
