@@ -132,7 +132,7 @@
         },
         // "adapter": "/sys/class/power_supply/hid-dc:2c:26:26:48:e8-battery",
         "format": "{capacity}% {time} {icon}",
-        "format-charging": "{capacity}% ",
+        "format-charging": "{capacity}% 󰂄",
         "format-plugged": "{capacity}% ",
         "format-alt": "{time} {icon}",
         // "format-good": "", // An empty format will hide the module
@@ -152,7 +152,6 @@
         "critical": 90
     },
     "network": {
-        "interface": "enp1s0", // (Optional) To force the use of this interface
         "format-wifi": "{essid} ({signalStrength}%) ",
         // "format-ethernet": "{ifname}: {ipaddr}/{cidr} ",
         "format-ethernet": "DIGI 1000 ",
