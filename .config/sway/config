@@ -42,11 +42,11 @@ set $textC #181926
 client.focused          $acCol  $acCol  $textC  #000000   $textC
 
 # Gaps
-gaps inner 6
+gaps inner 3
 gaps outer 0
 smart_gaps on
 
-
+exec --no-startup-id /usr/lib/xdg-desktop-portal -r
 exec gsettings set org.gnome.desktop.interface gtk-theme 'Adwaita-Dark'
 
 ### Output configuration
