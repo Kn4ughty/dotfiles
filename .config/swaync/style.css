@@ -3,12 +3,12 @@
  */
 
 
-@define-color foreground #F8F8F2;
-@define-color background #120024;
-@define-color background-alpha #120024;
-@define-color accent #753AB0;
-@define-color current-line #250C3E;
-@define-color comment #6272A4;
+@define-color foreground #313244;
+@define-color background #1E1E2E;
+@define-color background-alpha #1E1E2E;
+@define-color accent #CBA6F7;
+@define-color current-line #181825;
+@define-color comment #FFFFFF;
 
 * {
   color: white;
@@ -185,7 +185,7 @@
   padding: 5px 160px;
   border: 1 solid @accent;
   font-size: 20px;
-  background: #3d2358;
+  background: @accent;
   border-radius: 10px;
 }
 
