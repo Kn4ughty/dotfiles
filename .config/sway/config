@@ -100,7 +100,7 @@ exec swayidle -w \
 input "1739:30382:DLL0704:01_06CB:76AE_Touchpad" {
     tap enabled
     dwt enabled
-    scroll_factor 0.07
+    scroll_factor 0.04
 }
 
 
