@@ -1510,11 +1510,11 @@ exit 0
 📛 name badge
 🔰 Japanese symbol for beginner
 ⭕ hollow red circle
-✅ check mark button
-☑️ check box with check
-✔️ check mark
-❌ cross mark
-❎ cross mark button
+✅ check mark button tick yes
+☑️ check box with check tick yes
+✔️ check mark tick yes
+❌ cross mark no
+❎ cross mark button no green
 ➰ curly loop
 ➿ double curly loop
 〽️ part alternation mark

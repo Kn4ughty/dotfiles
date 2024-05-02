@@ -110,6 +110,8 @@ exec swaync
 # Toggle control center
 bindsym $mod+Shift+n exec swaync-client -t -sw
 
+bindsym $mod+semicolon exec ~/.scripts/rofi-emoji-paster
+
 # reload swaync
 bindsym $mod+Shift+Ctrl+n exec swaync-client -R
 
