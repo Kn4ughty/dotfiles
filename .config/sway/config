@@ -60,8 +60,9 @@ output * bg /home/d/Pictures/wallpapers/waves.png fill
 #
 # You can get the names of your outputs by running: swaymsg -t get_outputs
 
+output eDP-1 scale 1.75
 
-output $out-prim resolution 3840x2160 position 0 0 scale 1.75
+output $out-prim resolution 3840x2160 position 0 0 scale 1.5
 
 # 2880 is 3840*1.75
 output $out-sec resolution 1920x1080 position 2199 -400 transform 90
