@@ -60,7 +60,7 @@ output * bg /home/d/Pictures/wallpapers/waves.png fill
 #
 # You can get the names of your outputs by running: swaymsg -t get_outputs
 
-output eDP-1 scale 1.75
+output eDP-1 scale 1.5
 
 output $out-prim resolution 3840x2160 position 0 0 scale 1.5
 
@@ -77,10 +77,7 @@ exec swayidle -w \
          before-sleep $lockcmd
 
 
-#
-# This will lock your screen after 300 seconds of inactivity, then turn off
-# your displays after another 300 seconds, and turn your screens back on when
-# resumed. It will also lock your screen before your computer goes to sleep.
+
 
 ### Input configuration
 #
@@ -98,10 +95,17 @@ exec swayidle -w \
 
 # DWT = disable while typing
 
+# Dell
 input "1739:30382:DLL0704:01_06CB:76AE_Touchpad" {
     tap enabled
     dwt enabled
     scroll_factor 0.2
+}
+
+# Macbook
+input "1452:833:Apple_Internal_Keyboard_/_Trackpad" {
+   natural_scroll disabled
+   scroll_factor 0.15
 }
 
 
@@ -128,7 +132,10 @@ bindgesture swipe:up exec $menu -show window
 
 
 # space bar fix
-bindsym Alt_R exec wtype -k "space"
+# bindsym Alt_R exec wtype -k "space"
+
+# Delete key alt
+bindsym Mod1+backspace exec wtype -P delete -p delete
 
     # App launching
 
@@ -139,13 +146,15 @@ bindsym Alt_R exec wtype -k "space"
     bindsym $mod+tab exec $menu -show window
 
     # run calc
-    bindsym $mod+Mod1+space exec rofi -show calc -modi calc -no-show-match -no-sort
+    #bindsym $mod+Mod1+space exec rofi -show calc -modi calc -no-show-match -no-sort
+
+    bindsym $mod+Mod1+space exec kcalc
 
     # run term
     bindsym $mod+Return exec $term
 
     # browser (firefox)
-    bindsym $mod+Shift+b exec MOZ_ENABLE_WAYLAND=1 floorp 
+    bindsym $mod+Shift+b exec MOZ_ENABLE_WAYLAND=1 firefox 
 
     # Steam
     bindsym $mod+Shift+s exec steam
@@ -307,11 +316,14 @@ bindsym XF86AudioMicMute exec pactl set-source-mute @DEFAULT_SOURCE@ toggle
 bindsym XF86AudioPlay exec playerctl play-pause
 bindsym XF86AudioNext exec playerctl next
 bindsym XF86AudioPrev exec playerctl previous
-bindsym XF86Search exec bemenu-run
 
 set $brightStep 5%
 bindsym XF86MonBrightnessUp exec --no-startup-id brightnessctl set +$brightStep
 bindsym XF86MonBrightnessDown exec --no-startup-id brightnessctl set $brightStep-
+
+
+# cat!
+bindsym XF86Search exec kate $HOME/.scripts/cat.txt
 
 #
 # Status Bar:
@@ -335,5 +347,10 @@ bar {
 }
 
 exec sworkstyle &> /tmp/sworkstyle.log
+
+
+# Night shift 
+## This doesnt work :(
+exec wlsunset -l 33.9 -L 151.2 
 
 include /etc/sway/config.d/*

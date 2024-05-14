@@ -113,7 +113,10 @@ alias -- "+x"="chmod +x"
 
 
 export PATH=$PATH:/home/d/.spicetify
-source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source $HOME/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 # Created by `pipx` on 2024-05-01 02:36:09
 export PATH="$PATH:/home/d/.local/bin"
+
+# Cargo
+export PATH=$PATH:/home/d/.cargo/bin
