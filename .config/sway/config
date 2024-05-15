@@ -318,8 +318,10 @@ bindsym XF86AudioNext exec playerctl next
 bindsym XF86AudioPrev exec playerctl previous
 
 set $brightStep 5%
-bindsym XF86MonBrightnessUp exec --no-startup-id brightnessctl set +$brightStep
-bindsym XF86MonBrightnessDown exec --no-startup-id brightnessctl set $brightStep-
+set $brightNotif dunstify "Brightness: " -h int:value:"`brightnessctl | egrep -o "[0-9]+%" | sed "s/%//g"`" 
+
+bindsym XF86MonBrightnessUp exec --no-startup-id brightnessctl set +$brightStep && $brightNotif
+bindsym XF86MonBrightnessDown exec --no-startup-id brightnessctl set $brightStep- && $brightNotif
 
 
 # cat!
