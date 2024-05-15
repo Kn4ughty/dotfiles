@@ -93,6 +93,9 @@ export EDITOR=/usr/bin/nvim
 
 export GTK_THEME=Adwaita:dark
 
+# fix vscodium
+export ELECTRON_OZONE_PLATFORM_HINT=wayland
+
 
 # Set personal aliases, overriding those provided by oh-my-zsh libs,
 # plugins, and themes. Aliases can be placed here, though oh-my-zsh
