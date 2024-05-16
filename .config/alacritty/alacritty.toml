@@ -1,5 +1,8 @@
 import = ["~/.config/alacritty/catppuccin-mocha.toml"]
 
 [window]
-opacity = 0.95
+opacity = 0.90
 blur = true
+
+[cursor]
+style = { shape = "Beam" }
