@@ -65,7 +65,7 @@ output eDP-1 scale 1.5
 output $out-prim resolution 3840x2160 position 0 0 scale 1.5
 
 # 2880 is 3840*1.75
-output $out-sec resolution 1920x1080 position 2199 -400 transform 90
+output $out-sec resolution 1920x1080 position 2560 -400 transform 90
 
 ### Idle configuration
 #
@@ -111,6 +111,9 @@ input "1452:833:Apple_Internal_Keyboard_/_Trackpad" {
 
 # Notification Daemon
 exec dunst
+
+# KDE auth thing passwd
+exec /usr/lib/polkit-kde-authentication-agent-1
 
 # Toggle control center
 bindsym $mod+Shift+n exec swaync-client -t -sw
