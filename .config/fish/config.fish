@@ -1,5 +1,6 @@
 if status is-interactive
     # Commands to run in interactive sessions can go here
+    alias lsa="ls -la"
     alias py="python3"
     alias n="nvim"
     alias neovim="echo \"Wrong\""
