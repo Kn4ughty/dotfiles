@@ -1,0 +1,4 @@
+To fix time and date: `timedatectl set-time "2024-05-31 09:02:00"`
+Probably should check for bug reports with time not working
+
+
