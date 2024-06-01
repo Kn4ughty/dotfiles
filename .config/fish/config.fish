@@ -6,6 +6,8 @@ if status is-interactive
     alias neovim="echo \"Wrong\""
 
     alias :q="echo \"okay if you are sure\" && sleep 1 && exit"
+    alias abcdefghijklmnopqrstuvwxyz="calcurse"
+
     alias -- "+x"="chmod +x"
 
     export EDITOR=/usr/bin/nvim
