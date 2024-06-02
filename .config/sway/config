@@ -52,7 +52,7 @@ exec gsettings set org.gnome.desktop.interface gtk-theme 'Adwaita-Dark'
 ### Output configuration
 #
 # Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
-output * bg /home/d/Pictures/wallpapers/waves.png fill
+output * bg $HOME/.pic/FTL.jpg fill
 #
 # Example configuration:
 #
