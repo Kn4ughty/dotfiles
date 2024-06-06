@@ -18,4 +18,10 @@ if status is-interactive
     # fix vscodium
     export ELECTRON_OZONE_PLATFORM_HINT=wayland
 
+
+    # export PATH=$PATH:/home/d/.cargo/bin
+    #
+    fish_add_path /home/d/.cargo/bin
+
+
 end
