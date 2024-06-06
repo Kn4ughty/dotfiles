@@ -351,16 +351,17 @@ mode "resize" {
 }
 bindsym $mod+r mode "resize"
 
+# Screen shot/screenshot
 # Screen capture stuff
 
 # select part of screen
-bindsym $mod+Print exec slurp | grim -g - - | wl-copy
+bindsym $mod+Print exec slurp | grim -g - - | wl-copy && dunstify "Selection screenshot taken"
 
 # Active window
-bindsym $mod+Shift+Print exec swaymsg -t get_tree | jq -r '.. | select(.focused?) | .rect | "\(.x),\(.y) \(.width)x\(.height)"' | grim -g - - | wl-copy
+bindsym $mod+Shift+Print exec swaymsg -t get_tree | jq -r '.. | select(.focused?) | .rect | "\(.x),\(.y) \(.width)x\(.height)"' | grim -g - - | wl-copy && dunstify "Selected window screenshot taken"
 
 # Whole screen
-bindsym $mod+Control+Print exec grim - | wl-copy
+bindsym $mod+Control+Print exec grim - | wl-copy && dunstify "Whole workspace sheenshot taken"
 
 # System shortcuts
 set $displayVolume dunstify "Progress: " -h int:value:"`pactl get-sink-volume @DEFAULT_SINK@ | egrep -m 1 -o "[0-9]*%" | head -n 1`"
@@ -389,7 +390,7 @@ bindsym XF86Search exec kate $HOME/.scripts/cat.txt
 #
 # Read `man 5 sway-bar` for more information about this section.
 bar {
-    
+
     swaybar_command $bar
 
 #    position top
@@ -410,6 +411,8 @@ exec sworkstyle &> /tmp/sworkstyle.log
 
 # Night shift 
 ## This doesnt work :(
-exec wlsunset -l 33.9 -L 151.2 
+exec gammastep -l geoclue2 >> gammalog
+
+exec echo "a" >>  a.txt
 
 include /etc/sway/config.d/*
