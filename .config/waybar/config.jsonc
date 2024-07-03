@@ -6,9 +6,9 @@
     // "width": 2560, // Waybar width
     // "spacing": 4, // Gaps between modules (4px)
     // Choose the order of the modules
-    "modules-left": ["sway/workspaces", "sway/mode", "sway/window"],
+    "modules-left": ["sway/workspaces", "hyprland/workspaces", "sway/mode", "sway/window", "hyprland/window"],
     "modules-center": [],
-    "modules-right": ["tray", "sway/scratchpad", "idle_inhibitor", "disk#ssd", "temperature", "temperature2", "cpu", "memory", "network", "pulseaudio", "battery", "clock", "keyboard-state"],
+    "modules-right": ["tray", "sway/scratchpad", "idle_inhibitor", "temperature", "temperature2", "cpu", "memory", "network", "pulseaudio", "battery", "clock"],
     // Modules configuration
      "sway/workspaces": {
          "disable-scroll": true,
@@ -24,6 +24,10 @@
     //         "focused": "",
     //         "default": ""
     //     }
+    },
+    "hyprland/workspaces": {
+      "disable-scroll": true,
+      "all-outputs": false
     },
     
     "keyboard-state": {
@@ -152,12 +156,12 @@
         "critical": 90
     },
     "network": {
-        "format-wifi": "{essid} ({signalStrength}%) ",
+        "format-wifi": "({signalStrength}%) ",
         // "format-ethernet": "{ifname}: {ipaddr}/{cidr} ",
         "format-ethernet": "DIGI 1000 ",
         "format-linked": "DIGI (No IP) ",
         "format-disconnected": "Disconnected ⚠",
-        "format-alt": "{ifname}: {ipaddr}/{cidr}"
+        "format-alt": "{essid}: {ipaddr}/{cidr}"
     },
     "pulseaudio": {
         "scroll-step": 5, // %, can be a float

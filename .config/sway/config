@@ -192,6 +192,7 @@ bindsym XF86Fn+Shift+v exec wtype Ψ
 bindsym XF86Fn+w exec wtype ω
 bindsym XF86Fn+Shift+w exec wtype Ω
 
+bindsym XF86Fn+Mod1+l exec cat $HOME/email.txt | wl-copy
 
     # App launching
 
@@ -204,7 +205,7 @@ bindsym XF86Fn+Shift+w exec wtype Ω
     # run calc
     #bindsym $mod+Mod1+space exec rofi -show calc -modi calc -no-show-match -no-sort
     #bindsym $mod+Mod1+space exec kcalc
-    bindsym $mod+Mod1+space exec alacritty -e qalc
+    bindsym $mod+Mod1+space exec alacritty -T Calculator -e qalc
 
     # run term
     bindsym $mod+Return exec $term
