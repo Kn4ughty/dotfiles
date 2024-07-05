@@ -1,0 +1,17 @@
+import = ["~/.config/alacritty/catppuccin-mocha.toml"]
+
+[colors.primary]
+background = "#3A3A5E" # Lighter colour to make it stand out
+
+[window]
+opacity = 1
+blur = true
+position = { x = 0, y = 0}
+
+[cursor]
+style = { shape = "Beam" }
+
+[font]
+normal = { family = "JetBrainsMono Nerd Font Mono", style = "Regular" }
+#normal = { family = "ComicMono Nerd Font", style = "Regular" }
+size = 12
