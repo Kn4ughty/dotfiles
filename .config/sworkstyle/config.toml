@@ -3,6 +3,7 @@ separator = '  '
 
 [matching]
 'discord' = ' '
+'vesktop' = ' '
 'balena-etcher' = ''
 'Chia Blockchain' = ''
 'Steam' = ''

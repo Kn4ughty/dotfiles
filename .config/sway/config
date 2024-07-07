@@ -39,14 +39,16 @@ set $file thunar
 set $acCol #f5bde6
 set $textC #181926
 
+set $borderCol $acCol
+
 # Colours
 # class                 border  backgr. text    indicator child_border
-client.focused          $acCol  $acCol  $textC  #000000   $textC
+client.focused          $acCol  $acCol  $textC  $borderCol   $borderCol
 
 # Gaps
 gaps inner 3
 gaps outer 0
-smart_gaps on
+smart_gaps off
 
 # swayfx things
 blur enable
@@ -56,10 +58,14 @@ blur_radius 4
 shadows enable
 shadow_blur_radius 20
 
-corner_radius 10
+corner_radius 15
 
 # app spefcific swayfx
 layer_effects "waybar" blur enable; shadows disable;
+
+for_window [all] title_window_icon yes
+
+default_border pixel
 
 exec --no-startup-id /usr/lib/xdg-desktop-portal -r
 exec gsettings set org.gnome.desktop.interface gtk-theme 'Adwaita-Dark'
@@ -138,56 +144,6 @@ bindgesture swipe:up exec $menu -show window
 bindsym Mod1+backspace exec wtype -P delete -p delete
 
 
-
-# greek alphabet function keys
-bindsym XF86Fn+a exec wtype α
-bindsym XF86Fn+Shift+a exec wtype Α
-bindsym XF86Fn+b exec wtype β
-bindsym XF86Fn+Shift+b exec wtype Β
-bindsym XF86Fn+g exec wtype γ
-bindsym XF86Fn+Shift+g exec wtype Γ
-bindsym XF86Fn+d exec wtype δ
-bindsym XF86Fn+Shift+d exec wtype Δ
-bindsym XF86Fn+e exec wtype ε
-bindsym XF86Fn+Shift+e exec wtype Ε
-bindsym XF86Fn+z exec wtype ζ
-bindsym XF86Fn+Shift+z exec wtype Ζ
-bindsym XF86Fn+h exec wtype η
-bindsym XF86Fn+Shift+h exec wtype Η
-bindsym XF86Fn+q exec wtype θ
-bindsym XF86Fn+Shift+q exec wtype Θ
-bindsym XF86Fn+i exec wtype ι
-bindsym XF86Fn+Shift+i exec wtype Ι
-bindsym XF86Fn+k exec wtype κ
-bindsym XF86Fn+Shift+k exec wtype Κ
-bindsym XF86Fn+l exec wtype λ
-bindsym XF86Fn+Shift+l exec wtype Λ
-bindsym XF86Fn+m exec wtype μ
-bindsym XF86Fn+Shift+m exec wtype Μ
-bindsym XF86Fn+n exec wtype ν
-bindsym XF86Fn+Shift+n exec wtype Ν
-bindsym XF86Fn+x exec wtype ξ
-bindsym XF86Fn+Shift+x exec wtype Ξ
-bindsym XF86Fn+o exec wtype ο
-bindsym XF86Fn+Shift+o exec wtype Ο
-bindsym XF86Fn+p exec wtype π
-bindsym XF86Fn+Shift+p exec wtype Π
-bindsym XF86Fn+r exec wtype ρ
-bindsym XF86Fn+Shift+r exec wtype Ρ
-bindsym XF86Fn+s exec wtype σ
-bindsym XF86Fn+Shift+s exec wtype Σ
-bindsym XF86Fn+t exec wtype τ
-bindsym XF86Fn+Shift+t exec wtype Τ
-bindsym XF86Fn+y exec wtype υ
-bindsym XF86Fn+Shift+y exec wtype Υ
-bindsym XF86Fn+f exec wtype φ
-bindsym XF86Fn+Shift+f exec wtype Φ
-bindsym XF86Fn+j exec wtype χ
-bindsym XF86Fn+Shift+j exec wtype Χ
-bindsym XF86Fn+v exec wtype ψ
-bindsym XF86Fn+Shift+v exec wtype Ψ
-bindsym XF86Fn+w exec wtype ω
-bindsym XF86Fn+Shift+w exec wtype Ω
 
 bindsym XF86Fn+Mod1+l exec cat $HOME/email.txt | wl-copy
 
@@ -402,13 +358,13 @@ bar {
 #    }
 }
 
-exec sworkstyle &> /tmp/sworkstyle.log
+exec sworkstyle >> /tmp/sworkstyle.log
 
 
 # Night shift 
 ## This doesnt work :(
 exec gammastep -l geoclue2 >> gammalog
 
-exec echo "a" >>  a.txt
 
+include $HOME/.config/sway/sway.d/*.conf
 include /etc/sway/config.d/*
