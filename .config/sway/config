@@ -68,6 +68,7 @@ for_window [all] title_window_icon yes
 default_border pixel
 
 exec --no-startup-id /usr/lib/xdg-desktop-portal -r
+seat seat0 xcursor_theme Bibata-Modern-Classic
 exec gsettings set org.gnome.desktop.interface gtk-theme 'Adwaita-Dark'
 
 ### Output configuration

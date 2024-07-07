@@ -14,7 +14,7 @@ if status is-interactive
 
 
     export GTK_THEME=Adwaita:dark
-
+    export XCURSOR_THEME=Bibata-Modern-Classic
     # fix vscodium
     export ELECTRON_OZONE_PLATFORM_HINT=wayland
 
@@ -25,3 +25,4 @@ if status is-interactive
 
 
 end
+pyenv init - | source
