@@ -34,6 +34,8 @@ set $menu rofi
 
 set $bar waybar
 
+set $file thunar
+
 set $acCol #f5bde6
 set $textC #181926
 
@@ -46,13 +48,26 @@ gaps inner 3
 gaps outer 0
 smart_gaps on
 
+# swayfx things
+blur enable
+blur_passes 3
+blur_radius 4
+
+shadows enable
+shadow_blur_radius 20
+
+corner_radius 10
+
+# app spefcific swayfx
+layer_effects "waybar" blur enable; shadows disable;
+
 exec --no-startup-id /usr/lib/xdg-desktop-portal -r
 exec gsettings set org.gnome.desktop.interface gtk-theme 'Adwaita-Dark'
 
 ### Output configuration
 #
 # Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
-output * bg $HOME/.pic/FTL.jpg fill
+output * bg $HOME/.pic/space1.jpg fill
 #
 # Example configuration:
 #
@@ -62,10 +77,10 @@ output * bg $HOME/.pic/FTL.jpg fill
 
 output eDP-1 scale 1.5
 
-output $out-prim resolution 3840x2160 position 0 0 scale 1.5
+output $out-prim resolution 1920x1080 position 0 0 scale 1
 
 # 2880 is 3840*1.75
-output $out-sec resolution 1920x1080 position 2560 -400 transform 90
+output $out-sec resolution 3840x2160 position 1920 -400 transform 270 scale 2
 
 ### Idle configuration
 #
@@ -76,24 +91,6 @@ exec swayidle -w \
          timeout $offtime 'swaymsg "output * power off"' resume 'swaymsg "output * power on"' \
          before-sleep $lockcmd
 
-
-
-
-### Input configuration
-#
-# Example configuration:
-#
-#   input "2:14:SynPS/2_Synaptics_TouchPad" {
-#       dwt enabled
-#       tap enabled
-#       natural_scroll enabled
-#       middle_emulation enabled
-#   }
-#
-# You can get the names of your inputs by running: swaymsg -t get_inputs
-# Read `man 5 sway-input` for more information about this section.
-
-# DWT = disable while typing
 
 # Dell
 input "1739:30382:DLL0704:01_06CB:76AE_Touchpad" {
@@ -194,50 +191,48 @@ bindsym XF86Fn+Shift+w exec wtype Ω
 
 bindsym XF86Fn+Mod1+l exec cat $HOME/email.txt | wl-copy
 
-    # App launching
+# App launching
 
-    ## Start your launcher
-    bindsym $mod+space exec $menu -show drun
+## Start your launcher
+bindsym $mod+space exec $menu -show drun
 
-    # search windows
-    bindsym $mod+tab exec $menu -show window
+# search windows
+bindsym $mod+tab exec $menu -show window
 
-    # run calc
-    #bindsym $mod+Mod1+space exec rofi -show calc -modi calc -no-show-match -no-sort
-    #bindsym $mod+Mod1+space exec kcalc
-    bindsym $mod+Mod1+space exec alacritty -T Calculator -e qalc
+# run calc
+#bindsym $mod+Mod1+space exec rofi -show calc -modi calc -no-show-match -no-sort
+#bindsym $mod+Mod1+space exec kcalc
+bindsym $mod+Mod1+space exec alacritty -T Calculator -e qalc
 
-    # run term
-    bindsym $mod+Return exec $term
+# run term
+bindsym $mod+Return exec $term
 
-    # browser (firefox)
-    bindsym $mod+Shift+b exec MOZ_ENABLE_WAYLAND=1 firefox 
+# browser (firefox)
+bindsym $mod+Shift+b exec MOZ_ENABLE_WAYLAND=1 firefox 
 
-    # Steam
-    bindsym $mod+Shift+s exec steam
+# file explorer
+bindsym $mod+Shift+e exec $file
 
-    # factorio
-    bindsym $mod+Shift+f exec /home/d/.local/share/Steam/steamapps/common/Factorio/bin/x64/factorio
+# Steam
+bindsym $mod+Shift+s exec steam
 
-    #kill window
-    bindsym $mod+q kill
+# factorio
+bindsym $mod+Shift+f exec /home/d/.local/share/Steam/steamapps/common/Factorio/bin/x64/factorio
+
+#kill window
+bindsym $mod+q kill
 
 
-    # Drag floating windows by holding down $mod and left mouse button.
-    # Resize them with right mouse button + $mod.
-    # Despite the name, also works for non-floating windows.
-    # Change normal to inverse to use left mouse button for resizing and right
-    # mouse button for dragging.
-    floating_modifier $mod normal
+floating_modifier $mod normal
 
-    # Reload the configuration file
-    bindsym $mod+Shift+c reload
+# Reload the configuration file
+bindsym $mod+Shift+c reload
 
-    # Exit sway (logs you out of your Wayland session)
-    bindsym $mod+Shift+m exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -B 'Yes, exit sway' 'swaymsg exit'
+# Exit sway (logs you out of your Wayland session)
+bindsym $mod+Shift+m exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -B 'Yes, exit sway' 'swaymsg exit'
 
-    # lock screen
-    bindsym $mod+delete exec $lockcmd
+# lock screen
+bindsym $mod+delete exec $lockcmd
 #
 # Moving around:
 #
