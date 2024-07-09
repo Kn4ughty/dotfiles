@@ -4,7 +4,7 @@ set $locktime 3600
 set $offtime 5000
 
 set $lockcmd 'swaylock -f -e -k -c 181926'
-
+set $calc 'alacritty --config-file $HOME/.config/alacritty/alacritty_calc.toml -T Calculator -e qalc'
 ### Variables
 #
 # Logo key. Use Mod1 for Alt.
@@ -19,6 +19,18 @@ set $right l
 # Display
 set $out-prim DP-1
 set $out-sec DP-2
+
+output eDP-1 scale 1.5
+
+output $out-prim resolution 1920x1080 position 0 0 scale 1
+
+# 2880 is 3840*1.75
+output $out-sec resolution 3840x2160 position 1920 -400 transform 270 scale 2
+
+output HEADLESS-1 resolution 2048x1536 position 0 1080 scale 2
+# create_output a, resolution 1920x1080 position 0 1080 scale 1
+workspace 10 output HEADLESS-1
+
 
 set $resize-step 30px
 
@@ -54,9 +66,11 @@ smart_gaps off
 blur enable
 blur_passes 3
 blur_radius 4
+blur_noise 0.1
 
 shadows enable
 shadow_blur_radius 20
+shadow_color $acCol7f
 
 corner_radius 15
 
@@ -66,6 +80,10 @@ layer_effects "waybar" blur enable; shadows disable;
 for_window [all] title_window_icon yes
 
 default_border pixel
+
+# app floating settings
+for_window [title="Calculator"] floating enable
+for_window [title="Calculator"] resize set width 300
 
 exec --no-startup-id /usr/lib/xdg-desktop-portal -r
 seat seat0 xcursor_theme Bibata-Modern-Classic
@@ -82,12 +100,6 @@ output * bg $HOME/.pic/space1.jpg fill
 #
 # You can get the names of your outputs by running: swaymsg -t get_outputs
 
-output eDP-1 scale 1.5
-
-output $out-prim resolution 1920x1080 position 0 0 scale 1
-
-# 2880 is 3840*1.75
-output $out-sec resolution 3840x2160 position 1920 -400 transform 270 scale 2
 
 ### Idle configuration
 #
@@ -157,9 +169,7 @@ bindsym $mod+space exec $menu -show drun
 bindsym $mod+tab exec $menu -show window
 
 # run calc
-#bindsym $mod+Mod1+space exec rofi -show calc -modi calc -no-show-match -no-sort
-#bindsym $mod+Mod1+space exec kcalc
-bindsym $mod+Mod1+space exec alacritty -T Calculator -e qalc
+bindsym $mod+Mod1+space exec $calc
 
 # run term
 bindsym $mod+Return exec $term
@@ -369,3 +379,5 @@ exec gammastep -l geoclue2 >> gammalog
 
 include $HOME/.config/sway/sway.d/*.conf
 include /etc/sway/config.d/*
+
+exec $HOME/.scripts/post_sway_start.sh

@@ -1,7 +1,7 @@
 import = ["~/.config/alacritty/catppuccin-mocha.toml"]
 
 [window]
-opacity = 0.50
+opacity = 0.10
 blur = true
 padding = {x = 2, y = 2}
 dynamic_padding = true

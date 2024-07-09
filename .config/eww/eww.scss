@@ -1,0 +1,15 @@
+/* Text */
+$font: "JetBrainsMono Nerd Font Mono";
+
+/* Colours */
+$pink: #f5c2e7;
+
+$text: $pink;
+
+.time {
+	font-size: 9rem;
+	font-weight: bold;
+	font-family: $font;
+	background: rgba(100, 100, 100, 0);
+	color: $text;
+}
