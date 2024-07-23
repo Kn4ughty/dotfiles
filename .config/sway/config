@@ -86,7 +86,7 @@ for_window [title="Calculator"] floating enable
 for_window [title="Calculator"] resize set width 300
 
 exec --no-startup-id /usr/lib/xdg-desktop-portal -r
-seat seat0 xcursor_theme Bibata-Modern-Classic
+seat seat0 xcursor_theme Bibata-Modern-Classic 25
 exec gsettings set org.gnome.desktop.interface gtk-theme 'Adwaita-Dark'
 
 ### Output configuration
@@ -124,6 +124,11 @@ input "1452:833:Apple_Internal_Keyboard_/_Trackpad" {
    scroll_factor 0.15
 }
 
+# keyboard layout
+
+input * {
+    ##xkb_variant "colemak"
+}
 
 # Notification Daemon
 exec dunst
