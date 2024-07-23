@@ -8,7 +8,7 @@ name=$(uname -n)
 
 if [[ "$name" == "unicorn" ]]
 then
-	swaynag -m "a"
+	true
 else
-	swaynag -m "not unicorn"
+	true
 fi
