@@ -3,7 +3,8 @@
 set $locktime 3600
 set $offtime 5000
 
-set $lockcmd 'swaylock -f -e -k -c 181926'
+#set $lockcmd 'swaylock -f -e -k -c 181926'
+set $lockcmd 'hyprlock'
 set $calc 'alacritty --config-file $HOME/.config/alacritty/alacritty_calc.toml -T Calculator -e qalc'
 ### Variables
 #
@@ -64,18 +65,18 @@ smart_gaps off
 
 # swayfx things
 blur enable
-blur_passes 3
+blur_passes 2
 blur_radius 4
 blur_noise 0.1
 
-shadows enable
+shadows disable
 shadow_blur_radius 20
 shadow_color $acCol7f
 
 corner_radius 15
 
 # app spefcific swayfx
-layer_effects "waybar" blur enable; shadows disable;
+layer_effects "waybar" blur enable; shadows enable
 
 for_window [all] title_window_icon yes
 
@@ -84,6 +85,7 @@ default_border pixel
 # app floating settings
 for_window [title="Calculator"] floating enable
 for_window [title="Calculator"] resize set width 300
+for_window [title="Calculator"] resize set height 500
 
 exec --no-startup-id /usr/lib/xdg-desktop-portal -r
 seat seat0 xcursor_theme Bibata-Modern-Classic 25
@@ -127,7 +129,11 @@ input "1452:833:Apple_Internal_Keyboard_/_Trackpad" {
 # keyboard layout
 
 input * {
-    ##xkb_variant "colemak"
+    xkb_layout "us"
+    # NOTE TO FUTURE ME
+    # Only enable this if you KNOW the layout fully. 
+    # Also work out how to make vim work with new binds. (hjkl)
+    #xkb_variant "colemak"
 }
 
 # Notification Daemon
