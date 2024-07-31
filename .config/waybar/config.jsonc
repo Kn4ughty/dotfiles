@@ -147,7 +147,7 @@
     "battery#bat2": {
         "bat": "BAT2"
     },
-    "disk#ssd": {
+    "disk": {
         "interval": 30,
         "format": "{path} {free}",
         "path": "/",

@@ -1,7 +1,7 @@
 * { 
     all: unset;
     border: none;
-    border-radius: 4;
+    border-radius: 7;
     font-family: JetBrainsMonoNerdFont;
     font-weight: bold;
     font-size: 13px;
@@ -11,11 +11,11 @@
 window#waybar {
     background: @theme_base_color;
     background-color: rgba(36, 39, 58, 0.5);
-    border-bottom: 3px solid rgba(100, 114, 125, 1);
+    border-bottom: 3px solid rgba(110, 124, 150, 1);
     color: @theme_text_color;
     transition-property: background-color;
     transition-duration: .5s;
-    border-radius: 0;
+    border-radius: 7;
 }
 
 window#waybar.hidden {
