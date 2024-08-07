@@ -108,13 +108,15 @@ window#waybar.solo {
 }
 
 #clock {
-    background-color: #ff5555;
-    color: #282a36;
+    background-color: #f38ba8;
+    color: #11111b;
 }
 
 #battery {
-    background-color: #44475a;
-    color: #f8f8f2;
+    background: rgb(250,179,135);
+    background: linear-gradient(98deg, rgba(250,179,135,1) 0%, rgba(243,139,168,1) 100%);
+    /* background-color: #fab387; */
+    color: #11111b;
 }
 
 #battery.charging, #battery.plugged {
@@ -144,12 +146,20 @@ label:focus {
 }
 
 #cpu {
-    background-color: #f1fa8c;
+    /* background-color: #f1fa8c; */
+    background: rgb(137,180,250);
+    background: linear-gradient(270deg, rgba(137,180,250,1) 0%, rgba(180,190,254,1) 100%); 
     color: #282a36;
 }
 
 #memory {
-    background-color: #f1fa8c;
+    /*
+    background: rgb(166,227,161);
+    background: linear-gradient(90deg, rgba(166,227,161,1) 0%, rgba(116,199,236,1) 100%);
+    */
+    background: rgb(137,180,250);
+    background: linear-gradient(90deg, rgba(137,180,250,1) 0%, rgba(116,199,236,1) 100%);
+/* background-color: #f1fa8c; */
     color: #282a36;
 }
 
@@ -158,7 +168,9 @@ label:focus {
 }
 
 #network {
-    background-color: #50fa7b;
+    background: rgb(166,227,161);
+    background: linear-gradient(270deg, rgba(166,227,161,1) 0%, rgba(137,220,235,1) 100%);
+    /* background-color: #50fa7b; */
     color: #282a36;
 }
 
@@ -168,13 +180,15 @@ label:focus {
 }
 
 #pulseaudio {
-    background-color: #bd93f9;
+    background: rgb(249,226,175);
+    background: linear-gradient(281deg, rgba(249,226,175,1) 0%, rgba(171,227,162,1) 100%);
+    /* background-color: #a6e3a1; */
     color: #282a36;
 }
 
 #pulseaudio.muted {
-    background-color: #44475a;
-    color: #f8f8f2;
+    background-color: #f9e2af;
+    color: #11111b;
 }
 
 #custom-media.custom-spotify {
@@ -266,7 +280,9 @@ label:focus {
 }
 
 #disk {
-    background-color: #ffb86c;
+    background: rgb(203,166,247);
+    background: linear-gradient(90deg, rgba(203,166,247,1) 0%, rgba(180,190,254,1) 100%); 
+    /* background-color: #ffb86c; */
     color: #282a36;
 }
 
