@@ -227,7 +227,15 @@ label:focus {
 }
 
 #tray {
-    background-color: #bd93f9
+    /* background-color: #bd93f9 */
+    background: rgb(203,166,247);
+    background: linear-gradient(270deg, rgba(203,166,247,1) 0%, rgba(245,194,231,1) 35%);
+}
+
+#tray menu {
+    background: rgba(30, 30, 46, 0.8);
+    padding: 4px;
+
 }
 
 #tray > .passive {

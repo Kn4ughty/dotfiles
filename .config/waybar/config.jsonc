@@ -7,7 +7,7 @@
     // "spacing": 4, // Gaps between modules (4px)
     // Choose the order of the modules
     "modules-left": ["sway/workspaces", "hyprland/workspaces", "sway/mode", "sway/window", "hyprland/window"],
-    "modules-center": [],
+    "modules-center": ["custom/weather"],
     "modules-right": ["tray", "sway/scratchpad", /*"idle_inhibitor",*/ "disk", "temperature", "temperature2", "cpu", "memory", "network", "pulseaudio", "battery", "clock"],
     // Modules configuration
      "sway/workspaces": {
@@ -102,7 +102,8 @@
     "cpu": {
         "format": "{usage}% ",
         "interval": 2,
-        "tooltip": true
+        "tooltip": true,
+        "on-click-release": "kitty btop",
     },
     "memory": {
         "format": "{}% ",
@@ -118,10 +119,11 @@
         "interval": 2
     },
     "custom/weather": {
-        // "format": "{}",
-        "interval": 600,
-        "exec": "/home/alucard/.config/waybar/modules/weather.py",
-        "tooltip": false
+        "exec": "${HOME}/.config/waybar/scripts/get_weather.sh Sydney",
+    "return-type": "json",
+    "format": "{}",
+    "tooltip": true,
+    "interval": 3600
     },
     "backlight": {
         // "device": "acpi_video1",
@@ -153,7 +155,8 @@
         "path": "/",
         "tooltip": true,
         "warning": 80,
-        "critical": 90
+        "critical": 90,
+        "on-click-release": "kitty --hold fish -c dua"
     },
     "network": {
         "format-wifi": "({signalStrength}%) ",
