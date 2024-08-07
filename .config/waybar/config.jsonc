@@ -8,7 +8,7 @@
     // Choose the order of the modules
     "modules-left": ["sway/workspaces", "hyprland/workspaces", "sway/mode", "sway/window", "hyprland/window"],
     "modules-center": [],
-    "modules-right": ["tray", "sway/scratchpad", "idle_inhibitor", "disk", "temperature", "temperature2", "cpu", "memory", "network", "pulseaudio", "battery", "clock"],
+    "modules-right": ["tray", "sway/scratchpad", /*"idle_inhibitor",*/ "disk", "temperature", "temperature2", "cpu", "memory", "network", "pulseaudio", "battery", "clock"],
     // Modules configuration
      "sway/workspaces": {
          "disable-scroll": true,
