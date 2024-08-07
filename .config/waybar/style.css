@@ -19,6 +19,23 @@ window#waybar {
     transition-property: background-color;
     transition-duration: .5s;
     border-radius: 0px;
+
+         
+    animation-name: fade-in;
+    animation-duration: 3s;
+    animation-timing-function: cubic-bezier(0.33, 1, 0.68, 1);
+    animation-iteration-count: 1;
+
+}
+
+@keyframes fade-in {
+    from { 
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+
 }
 
 window#waybar.hidden {
@@ -229,14 +246,15 @@ label:focus {
 #tray {
     /* background-color: #bd93f9 */
     background: rgb(203,166,247);
-    background: linear-gradient(270deg, rgba(203,166,247,1) 0%, rgba(245,194,231,1) 35%);
+    /* background: linear-gradient(270deg, rgba(203,166,247,1) 0%, rgba(245,194,231,1) 35%); */
 }
 
 #tray menu {
     background: rgba(30, 30, 46, 0.8);
     padding: 4px;
-
+    
 }
+
 
 #tray > .passive {
     -gtk-icon-effect: dim;
@@ -299,7 +317,7 @@ label:focus {
 }
 
 #custom-weather {
-    background-color: #8be9fd;
+    background-color: #89dceb;
     color: #282a36;
     margin-right: 5;
 }
