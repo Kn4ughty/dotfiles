@@ -9,6 +9,7 @@
     font-family: JetBrainsMonoNerdFont;
     font-weight: bold;
     font-size: 13px;
+    text-shadow: 2px 2px 2.5px #313244;
     min-height: 0;
 }
 
@@ -45,13 +46,18 @@ window#waybar.hidden {
 }
 
 tooltip {
-  background: rgba(43, 48, 59, 0.5);
-  border: 1px solid rgba(100, 114, 125, 0.5);
+    background: rgba(36, 39, 58, 0.8);
+    border: 3px @accent;
+    /* border: 1px linear-gradient(45deg, #ed8796 0%, #c6a0f6 100%); */
+
+    /* background: linear-gradient(45deg, rgba(203,166,247,1) 0%, rgba(228,149,198,1) 50%, rgba(245,194,231,1) 100%); */
+
 }
 
 tooltip label {
   /* color: @theme_text_color; */
     color: @text;
+    border: 3px @accent;
 }
 
 /*
