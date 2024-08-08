@@ -1,5 +1,7 @@
 @define-color accent #cba6f7;
 @define-color accent-alt #eba0ac;
+@define-color text #cad3f5;
+
 * { 
     all: unset;
     border: none;
@@ -48,7 +50,8 @@ tooltip {
 }
 
 tooltip label {
-  color: @theme_text_color;
+  /* color: @theme_text_color; */
+    color: @text;
 }
 
 /*
@@ -142,13 +145,17 @@ window#waybar.solo {
 }
 
 #clock {
-    background-color: #f38ba8;
+    /* background-color: #ed8796; */
+    background: rgb(237,135,150);
+    background: linear-gradient(90deg, rgba(237,135,150,1) 0%, rgba(198,160,246,1) 100%);
     color: #11111b;
 }
 
 #battery {
-    background: rgb(250,179,135);
-    background: linear-gradient(98deg, rgba(250,179,135,1) 0%, rgba(243,139,168,1) 100%);
+     background: rgb(245,169,127);
+background: linear-gradient(270deg, rgba(245,169,127,1) 0%, rgba(238,212,159,1) 100%);
+    /* background: rgb(250,179,135); */
+    /* background: linear-gradient(98deg, rgba(250,179,135,1) 0%, rgba(243,139,168,1) 100%); */
     /* background-color: #fab387; */
     color: #11111b;
 }
@@ -317,7 +324,9 @@ label:focus {
 }
 
 #custom-weather {
-    background-color: #89dceb;
+    /* background-color: #89dceb; */
+    background: rgb(238,153,160);
+    background: linear-gradient(270deg, rgba(238,153,160,1) 0%, rgba(245,169,127,1) 100%);
     color: #282a36;
     margin-right: 5;
 }

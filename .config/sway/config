@@ -384,7 +384,7 @@ bar {
 #    }
 }
 
-exec sworkstyle >> /tmp/sworkstyle.log
+# exec pkill -9 sworkstyle && sworkstyle >> /tmp/sworkstyle.log
 
 
 # Night shift 

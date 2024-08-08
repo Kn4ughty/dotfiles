@@ -8,7 +8,8 @@ name=$(uname -n)
 
 if [[ "$name" == "unicorn" ]]
 then
-	true
+	exec eww deamon
+	exec eww open time
 else
 	true
 fi
