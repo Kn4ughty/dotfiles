@@ -6,13 +6,11 @@
     // "width": 2560, // Waybar width
     // "spacing": 4, // Gaps between modules (4px)
     
-    "reload_style_on_change": "true", // Why is this not the default?!
-    // oh its because it doesnt work :(
 
     // Choose the order of the modules
     "modules-left": ["sway/workspaces", "hyprland/workspaces", "sway/mode", "sway/window", "hyprland/window"],
     "modules-center": [],
-    "modules-right": ["tray", "sway/scratchpad", /*"idle_inhibitor",*/ "disk", "temperature", "temperature2", "cpu", "memory", "network", "pulseaudio", "battery", "custom/weather", "clock"],
+    "modules-right": ["sway/scratchpad", "tray", /*"idle_inhibitor",*/ "disk", "temperature", "temperature2", "cpu", "memory", "network", "pulseaudio", "battery", "custom/weather", "clock"],
     // Modules configuration
      "sway/workspaces": {
          "disable-scroll": true,
