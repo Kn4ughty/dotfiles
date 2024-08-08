@@ -127,7 +127,7 @@
     "return-type": "json",
     "format": "{}",
     "tooltip": true,
-    "interval": 3600
+    "interval": 36000
     },
     "backlight": {
         // "device": "acpi_video1",
