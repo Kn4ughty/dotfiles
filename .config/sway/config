@@ -70,7 +70,7 @@ blur_radius 10
 blur_noise 0.2
 
 shadows disable
-shadow_blur_radius 40
+shadow_blur_radius 20
 shadow_color $acColff
 
 corner_radius 15
