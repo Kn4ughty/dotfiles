@@ -2,6 +2,7 @@
 Note:
 where i say an arrow key, i also mean the corresponding hjkl key.
 
+`super+q` - Kill selected window
 
 ## Window focus
 `super+h / left arrow` - Change focus left
