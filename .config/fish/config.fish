@@ -22,6 +22,7 @@ if status is-interactive
     # export PATH=$PATH:/home/d/.cargo/bin
     #
     fish_add_path /home/d/.cargo/bin
+    fish_add_path /home/d/bin/
 
 
 end
