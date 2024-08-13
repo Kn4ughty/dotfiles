@@ -5,7 +5,7 @@ set $offtime 5000
 
 set $lockcmd 'swaylock -f -e -k -l -c 181926 -i $HOME/.pic/space1.png'
 #set $lockcmd 'hyprlock'
-set $calc 'alacritty --config-file $HOME/.config/alacritty/alacritty_calc.toml -T Calculator -e qalc'
+set $calc 'alacritty --config-file $HOME/.config/alacritty/alacritty_calc.toml -T Term-Calculator -e qalc'
 ### Variables
 #
 # Logo key. Use Mod1 for Alt.
@@ -83,9 +83,9 @@ for_window [all] title_window_icon yes
 default_border pixel
 
 # app floating settings
-for_window [title="Calculator"] floating enable
-for_window [title="Calculator"] resize set width 300
-for_window [title="Calculator"] resize set height 500
+for_window [title="Term-Calculator"] floating enable
+for_window [title="Term-Calculator"] resize set width 300
+for_window [title="Term-Calculator"] resize set height 500
 
 exec --no-startup-id /usr/lib/xdg-desktop-portal -r
 seat seat0 xcursor_theme Bibata-Modern-Classic 25
