@@ -88,7 +88,7 @@ for_window [title="Term-Calculator"] resize set width 300
 for_window [title="Term-Calculator"] resize set height 500
 
 exec --no-startup-id /usr/lib/xdg-desktop-portal -r
-seat seat0 xcursor_theme Bibata-Modern-Classic 25
+seat seat0 xcursor_theme Bibata-Modern-Classic 24
 exec gsettings set org.gnome.desktop.interface gtk-theme 'Adwaita-Dark'
 
 ### Output configuration

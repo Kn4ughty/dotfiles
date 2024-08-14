@@ -15,10 +15,11 @@ if status is-interactive
 
     export GTK_THEME=Adwaita:dark
     export XCURSOR_THEME=Bibata-Modern-Classic
+    export XCURSOR_SIZE=24
     # fix vscodium
     export ELECTRON_OZONE_PLATFORM_HINT=wayland
-
-
+    export QT_QPA_PLATFORMTHEME=qt5ct
+    export QT_QPA_PLATFORM=wayland
     # export PATH=$PATH:/home/d/.cargo/bin
     #
     fish_add_path /home/d/.cargo/bin
