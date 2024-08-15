@@ -150,6 +150,6 @@ configuration {
   }
 }
 
-//@theme "~/.config/rofi/catppuccin-macchiato.rasi"
+@theme "~/.config/rofi/catppuccin-macchiato.rasi"
 
-@theme "/usr/share/rofi/themes/DarkBlue.rasi"
+//@theme "/usr/share/rofi/themes/DarkBlue.rasi"
