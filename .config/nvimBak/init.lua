@@ -1,2 +1,0 @@
-require("mine")
-print("hello")
