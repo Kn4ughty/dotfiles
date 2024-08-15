@@ -2,6 +2,7 @@
 @define-color accent-alt #eba0ac;
 @define-color text #cad3f5;
 
+
 * { 
     all: unset;
     border: none;
@@ -23,13 +24,12 @@ window#waybar {
     transition-duration: .5s;
     border-radius: 0px;
 
-         
     animation-name: fade-in;
     animation-duration: 3s;
     animation-timing-function: cubic-bezier(0.33, 1, 0.68, 1);
     animation-iteration-count: 1;
-
 }
+
 
 @keyframes fade-in {
     from { 
@@ -41,55 +41,41 @@ window#waybar {
 
 }
 
+
 window#waybar.hidden {
     opacity: 0.2;
 }
 
+
 tooltip {
     background: rgba(36, 39, 58, 0.8);
     border: 3px @accent;
-    /* border: 1px linear-gradient(45deg, #ed8796 0%, #c6a0f6 100%); */
-
-    /* background: linear-gradient(45deg, rgba(203,166,247,1) 0%, rgba(228,149,198,1) 50%, rgba(245,194,231,1) 100%); */
-
 }
 
+
 tooltip label {
-  /* color: @theme_text_color; */
     color: @text;
     border: 3px @accent;
 }
 
-/*
-window#waybar.empty {
-    background-color: transparent;
-}
-window#waybar.solo {
-    background-color: #FFFFFF;
-}
-*/
 
 #workspaces button {
     padding: 0 0.5em;
-    /*margin: 0px 2px 0px 2px;
-    background-color: transparent; */
     background-color: rgba(88, 91, 112, 0);
     transition: background-color 0.2s cubic-bezier(0.33, 1, 0.68, 1) 0s, border-bottom-left-radius 0.1s cubic-bezier(0.33, 1, 0.68, 1) 0.1s, border-bottom-right-radius 0.1s cubic-bezier(0.33, 1, 0.68, 1) 0.2s, padding 0.2s cubic-bezier(0.33, 1, 0.68, 1) 0s;
     color: #f8f8f2;
     box-shadow: inset 0 -3px transparent;
-    
+
     border-radius: 0px;
     border-bottom-right-radius: 10px;
     border-bottom-left-radius: 10px;
     border-color: @text;
     border-width: 0px;
     border-style: none dashed none none;
-
 }
 
 
 #workspaces button:hover {
-    /*background: rgba(0, 0, 0, 0.2); */
     background-color: rgba(88, 91, 112, 0.67);
     box-shadow: inset 0 -3px @accent-alt;
     border-radius: 0px;
@@ -101,40 +87,29 @@ window#waybar.solo {
     background: linear-gradient(45deg, rgba(203,166,247,1) 0%, rgba(245,194,231,1) 100%);
     color: #11111b;
     padding: 0 0.9em;
-
-    /* animation: color-change-2x 2s linear infinite normal both; */
-    /*background-color: #64727D;
-    box-shadow: inset 0 -3px #f8f8f2; */
 }
+
 
 #workspaces button.urgent {
     background-color: #eb4d4b;
 }
 
 
+/* I found that this used like 1% cpu by it self so im not using it :/ */
 @keyframes color-change-2x {
-    /* background: linear-gradient(45deg, rgba(203,166,247,1) 0%, rgba(245,194,231,1) 100%); */
   0% {
-    /* background: #f5c2e7; */
     background: linear-gradient(0deg, rgba(203,166,247,1) 0%, rgba(245,194,231,1) 100%);
   }
   50% {
-  /*   background: #cba6f7; */
     background: linear-gradient(180deg, rgba(203,166,247,1) 0%, rgba(245,194,231,1) 100%);
-
   }
   100% {
-    /* background: #f38ba8; */
     background: linear-gradient(360deg, rgba(203,166,247,1) 0%, rgba(245,194,231,1) 100%);
   }
 }
 
 
-#mode {
-    background-color: #64727D;
-    border-bottom: 3px solid #ffffff;
-}
-
+#mode,
 #clock,
 #battery,
 #cpu,
@@ -156,6 +131,7 @@ window#waybar.solo {
     color: #f8f8f2;
 }
 
+
 #window {
     color: #FFFFFF;
 }
@@ -166,48 +142,50 @@ window#waybar.solo {
     margin: 0 4px;
 }
 
+
 /* If workspaces is the leftmost module, omit left margin */
 .modules-left > widget:first-child > #workspaces {
     margin-left: 0;
 }
+
 
 /* If workspaces is the rightmost module, omit right margin */
 .modules-right > widget:last-child > #workspaces {
     margin-right: 0;
 }
 
+
 #clock {
-    /* background-color: #ed8796; */
     background: rgb(237,135,150);
     background: linear-gradient(90deg, rgba(237,135,150,1) 0%, rgba(198,160,246,1) 100%);
     color: #11111b;
 }
 
+
 #battery {
-     background: rgb(245,169,127);
-background: linear-gradient(270deg, rgba(245,169,127,1) 0%, rgba(238,212,159,1) 100%);
-    /* background: rgb(250,179,135); */
-    /* background: linear-gradient(98deg, rgba(250,179,135,1) 0%, rgba(243,139,168,1) 100%); */
-    /* background-color: #fab387; */
+    background: rgb(245,169,127);
+    background: linear-gradient(270deg, rgba(245,169,127,1) 0%, rgba(238,212,159,1) 100%);
     color: #11111b;
 }
 
+
 #battery.charging, #battery.plugged {
     color: #11111b;
-    /* color: #00ff00; */
     background-color: #26A65B;
 }
+
 
 @keyframes blink {
     to {
         background-color: #ffffff;
-        color: #FF0000;
+        color: #11111b;
     }
 }
 
+
 #battery.critical:not(.charging) {
     background-color: #f53c3c;
-    color: #ffffff;
+    color: #11111b;
     animation-name: blink;
     animation-duration: 0.5s;
     animation-timing-function: linear;
@@ -215,84 +193,87 @@ background: linear-gradient(270deg, rgba(245,169,127,1) 0%, rgba(238,212,159,1) 
     animation-direction: alternate;
 }
 
+
 label:focus {
     background-color: #000000;
 }
 
+
 #cpu {
-    /* background-color: #f1fa8c; */
     background: rgb(137,180,250);
     background: linear-gradient(270deg, rgba(137,180,250,1) 0%, rgba(180,190,254,1) 100%); 
     color: #282a36;
 }
 
+
 #memory {
-    /*
-    background: rgb(166,227,161);
-    background: linear-gradient(90deg, rgba(166,227,161,1) 0%, rgba(116,199,236,1) 100%);
-    */
     background: rgb(137,180,250);
     background: linear-gradient(90deg, rgba(137,180,250,1) 0%, rgba(116,199,236,1) 100%);
-/* background-color: #f1fa8c; */
     color: #282a36;
 }
+
 
 #backlight {
     background-color: #90b1b1;
 }
 
+
 #network {
     background: rgb(166,227,161);
     background: linear-gradient(270deg, rgba(166,227,161,1) 0%, rgba(137,220,235,1) 100%);
-    /* background-color: #50fa7b; */
     color: #282a36;
 }
+
 
 #network.disconnected {
     background-color: #50fa7b;
     color: #282a36;
 }
 
+
 #pulseaudio {
     background: rgb(249,226,175);
     background: linear-gradient(281deg, rgba(249,226,175,1) 0%, rgba(171,227,162,1) 100%);
-    /* background-color: #a6e3a1; */
     color: #282a36;
 }
+
 
 #pulseaudio.muted {
     background-color: #f9e2af;
     color: #11111b;
 }
 
+
 #custom-media.custom-spotify {
     background-color: #66cc99;
 }
 
+
 #custom-media.custom-vlc {
     background-color: #ffa000;
 }
+
 
 #temperature {
     background-color: #ff79c6;
     color: #282a36;
 }
 
+
 #temperature.critical {
     background-color: #ff5555;
     color: #282a36;
 }
 
+
 #tray {
-    /* background-color: #bd93f9 */
     background: rgb(203,166,247);
-    /* background: linear-gradient(270deg, rgba(203,166,247,1) 0%, rgba(245,194,231,1) 35%); */
 }
+
 
 #tray menu {
     background: rgba(30, 30, 46, 0.8);
     padding: 4px;
-    
 }
 
 
@@ -300,37 +281,45 @@ label:focus {
     -gtk-icon-effect: dim;
 }
 
+
 #tray > .needs-attention {
     -gtk-icon-effect: highlight;
     background-color: #eb4d4b;
 }
+
 
 #idle_inhibitor {
     background-color: #44475a;
     color: #f8f8f2;
 }
 
+
 #idle_inhibitor.activated {
     background-color: #f8f8f2;
     color: #44475a;
 }
+
 
 #mpd {
     background-color: #66cc99;
     color: #2a5c45;
 }
 
+
 #mpd.disconnected {
     background-color: #f53c3c;
 }
+
 
 #mpd.stopped {
     background-color: #90b1b1;
 }
 
+
 #mpd.paused {
     background-color: #51a37a;
 }
+
 
 #language {
     background-color: #f8f8f2;
@@ -340,6 +329,7 @@ label:focus {
     min-width: 16px;
 }
 
+
 #keyboard-state {
     background-color: #97e1ad;
     color: #000000;
@@ -348,28 +338,31 @@ label:focus {
     min-width: 16px;
 }
 
+
 #keyboard-state > label {
     padding: 0 5px;
 }
+
 
 #keyboard-state > label.locked {
     background: rgba(0, 0, 0, 0.2);
 }
 
+
 #custom-weather {
-    /* background-color: #89dceb; */
     background: rgb(238,153,160);
     background: linear-gradient(270deg, rgba(238,153,160,1) 0%, rgba(245,169,127,1) 100%);
     color: #282a36;
     margin-right: 5;
 }
 
+
 #disk {
     background: rgb(203,166,247);
     background: linear-gradient(90deg, rgba(203,166,247,1) 0%, rgba(180,190,254,1) 100%); 
-    /* background-color: #ffb86c; */
     color: #282a36;
 }
+
 
 #sway-scratchpad {
     background-color: #50fa7b;
