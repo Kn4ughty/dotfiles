@@ -43,8 +43,8 @@
     },
     
     "sway/language": {
-            "format": "{short}",
-            "tooltip-format": "{long}"
+        "format": "{variant}",
+        "tooltip-format": "{long}"
     },
     "sway/mode": {
         "format": "<span style=\"italic\">{}</span>"
@@ -161,7 +161,8 @@
         "on-click-release": "kitty --hold fish -c dua"
     },
     "network": {
-        "format-wifi": "{signalStrength}% ",
+        // "format-wifi": "{signalStrength}% ",
+        "format-wifi": " ",
         // "format-ethernet": "{ifname}: {ipaddr}/{cidr} ",
         "format-ethernet": "ETH ",
         "format-linked": "ETH (No IP) ",

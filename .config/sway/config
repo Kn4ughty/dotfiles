@@ -138,11 +138,11 @@ input "1452:833:Apple_Internal_Keyboard_/_Trackpad" {
 # keyboard layout
 
 input * {
-    xkb_layout "us"
+    xkb_layout us,us
     # NOTE TO FUTURE ME
     # Only enable this if you KNOW the layout fully. 
     # Also work out how to make vim work with new binds. (hjkl)
-    #xkb_variant "colemak"
+    # xkb_variant colemak
 }
 
 # Notification Daemon
