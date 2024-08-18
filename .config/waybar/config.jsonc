@@ -8,7 +8,7 @@
     
 
     // Choose the order of the modules
-    "modules-left": ["sway/workspaces", "hyprland/workspaces", "sway/mode", "sway/window", "hyprland/window"],
+    "modules-left": ["sway/workspaces", "sway/mode", "sway/window"],
     "modules-center": [],
     "modules-right": ["sway/scratchpad", "tray", /*"idle_inhibitor",*/ "disk", "temperature", "temperature2", "cpu", "memory", "network", "pulseaudio", "battery", "custom/weather", "clock"],
     // Modules configuration
@@ -168,6 +168,18 @@
         "format-disconnected": "Disconnected ⚠",
         "format-alt": "{essid}: {ipaddr}/{cidr}"
     },
+    "group/group-audio": {
+        "orientation": "inherit",
+        "drawer": {
+            "transition-duration": 500,
+            "children-class": "",
+            "transition-left-to-right": false,
+        },
+        "modules": [
+            "pulseaudio",
+            "pulseaudio/slider",
+        ]
+    },
     "pulseaudio": {
         "scroll-step": 0.2, // %, can be a float
         "format": "{volume}% {icon}{format_source}",
@@ -188,5 +200,8 @@
         "escape": true,
         "exec": "$HOME/.config/waybar/mediaplayer.py 2> /dev/null" // Script in resources folder
         // "exec": "$HOME/.config/waybar/mediaplayer.py --player spotify 2> /dev/null" // Filter player based on name
+    },
+    "pulseaudio/slider": { // This crashes when scrolling too much so not using it.
+    "orientation": "inherit"
     }
 }

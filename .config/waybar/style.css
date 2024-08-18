@@ -243,6 +243,40 @@ label:focus {
     color: #11111b;
 }
 
+#pulseaudio-slider, #pulseaudio-slider *, #group-audio,
+#backlight-slider, #backlight-slider *, #group-backlight {
+    margin: 0;
+    padding: 0;
+}
+
+slider {
+    min-height: 0px;
+    min-width: 0px;
+    opacity: 0;
+    background-image: none;
+    border: none;
+    box-shadow: none;
+}
+
+trough {
+    min-height: 8px;
+    min-width: 80px;
+    border-radius: 5px;
+    background-color: @text;
+}
+
+highlight {
+    min-width: 0px;
+    border-radius: 5px;
+}
+
+#pulseaudio-slider highlight {
+    background-color: @accent;
+}
+
+#backlight-slider highlight {
+    background-color: #FF0000;
+}
 
 #custom-media.custom-spotify {
     background-color: #66cc99;

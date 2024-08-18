@@ -23,7 +23,7 @@ set $out-sec DP-2
 
 output eDP-1 scale 1.5
 
-output $out-prim resolution 1920x1080 position 0 0 scale 1
+output $out-prim resolution 1920x1080 position 0 0 scale 1 adaptive_sync off
 
 # 2880 is 3840*1.75
 output $out-sec resolution 3840x2160 position 1920 -400 transform 270 scale 2
@@ -66,8 +66,8 @@ smart_gaps false
 # swayfx things
 blur enable
 blur_passes 2
-blur_radius 10
-blur_noise 0.2
+blur_radius 5
+blur_noise 0
 
 shadows disable
 shadow_blur_radius 20
@@ -77,6 +77,11 @@ corner_radius 15
 
 # app spefcific swayfx
 layer_effects "waybar" blur enable; shadows enable
+for_window [app_id="one.alynx.showmethekey" title="Floating Window - Show Me The Key"] {
+  floating enable
+  sticky enable
+}
+
 
 for_window [all] title_window_icon yes
 
@@ -91,10 +96,10 @@ exec --no-startup-id /usr/lib/xdg-desktop-portal -r
 seat seat0 xcursor_theme Bibata-Modern-Classic 24
 exec gsettings set org.gnome.desktop.interface gtk-theme 'Adwaita-Dark'
 
-### Output configuration
-#
-# Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
-output * bg $HOME/.pic/space1.jpg fill
+### Wallpaper
+#output * bg $HOME/.pic/space1.jpg fill
+#output * bg $HOME/.pic/ayuru_camp___rin___nadeshiko_by_muddymelly_dcmp6rk.jpg fill
+output * bg $HOME/.pic/sea.jpg fill
 #
 # Example configuration:
 #
@@ -275,11 +280,11 @@ bindsym $mod+delete exec $lockcmd
     # respectively.
     bindsym $mod+b splith
     bindsym $mod+v splitv
+    bindsym $mod+e layout toggle split
 
     # Switch the current container between different layout styles
     bindsym $mod+s layout stacking
     bindsym $mod+w layout tabbed
-    bindsym $mod+e layout toggle split
 
     # Make the current focus fullscreen
     bindsym $mod+f fullscreen
