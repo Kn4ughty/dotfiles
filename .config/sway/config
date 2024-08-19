@@ -66,8 +66,11 @@ smart_gaps false
 # swayfx things
 blur enable
 blur_passes 2
-blur_radius 5
+blur_radius 8
 blur_noise 0
+blur_brightness 0.8
+blur_contrast 1
+blur_saturation 1.1
 
 shadows disable
 shadow_blur_radius 20
@@ -82,6 +85,8 @@ for_window [app_id="one.alynx.showmethekey" title="Floating Window - Show Me The
   sticky enable
 }
 
+
+focus_on_window_activation smart
 
 for_window [all] title_window_icon yes
 
@@ -100,6 +105,7 @@ exec gsettings set org.gnome.desktop.interface gtk-theme 'Adwaita-Dark'
 #output * bg $HOME/.pic/space1.jpg fill
 #output * bg $HOME/.pic/ayuru_camp___rin___nadeshiko_by_muddymelly_dcmp6rk.jpg fill
 output * bg $HOME/.pic/sea.jpg fill
+# output * bg #000000 solid_color
 #
 # Example configuration:
 #
@@ -205,6 +211,9 @@ bindsym $mod+Shift+s exec steam
 
 # factorio
 bindsym $mod+Shift+f exec /home/d/.local/share/Steam/steamapps/common/Factorio/bin/x64/factorio
+
+# Obsidian (notes)
+bindsym $mod+Shift+o exec flatpak run md.obsidian.Obsidian
 
 #kill window
 bindsym $mod+q kill
@@ -404,4 +413,5 @@ exec gammastep -l geoclue2 >> gammalog
 include $HOME/.config/sway/sway.d/*.conf
 include /etc/sway/config.d/*
 
-exec $HOME/.scripts/post_sway_start.sh
+# Include device specfic configs
+include $HOME/.config/sway/hosts/$(hostname)/*.conf
