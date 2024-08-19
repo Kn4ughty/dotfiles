@@ -3,6 +3,7 @@ if status is-interactive
     alias lsa="ls -la"
     alias py="python3"
     alias n="nvim"
+    alias zed="flatpak run dev.zed.Zed"
     alias neovim="echo \"Wrong\""
 
     alias :q="echo \"okay if you are sure\" && sleep 1 && exit"
