@@ -3,8 +3,8 @@
 set $locktime 3600
 set $offtime 5000
 
-set $lockcmd 'swaylock -f -e -k -l -c 181926 -i $HOME/.pic/space1.png'
-#set $lockcmd 'hyprlock'
+#set $lockcmd 'swaylock -f -e -k -l -c 181926 -i $HOME/.pic/space1.png'
+set $lockcmd 'hyprlock'
 set $calc 'alacritty --config-file $HOME/.config/alacritty/alacritty_calc.toml -T Term-Calculator -e qalc'
 ### Variables
 #
@@ -28,10 +28,21 @@ output $out-prim resolution 1920x1080 position 0 0 scale 1 adaptive_sync off
 # 2880 is 3840*1.75
 output $out-sec resolution 3840x2160 position 1920 -400 transform 270 scale 2
 
-output HEADLESS-1 resolution 2048x1536 position 0 1080 scale 2
+output HEADLESS-1 {
+    resolution 2048x1536 
+    position 0 1080 
+    scale 2
+}
 # create_output a, resolution 1920x1080 position 0 1080 scale 1
 workspace 10 output HEADLESS-1
 
+### Wallpaper
+#output * bg $HOME/.pic/space1.jpg fill
+#output * bg $HOME/.pic/ayuru_camp___rin___nadeshiko_by_muddymelly_dcmp6rk.jpg fill
+output * bg $HOME/.pic/sea.jpg fill
+# output * bg #000000 solid_color
+
+output HEADLESS-1 bg $HOME/.pic/magicpattern_mocha_stars.png fill
 
 set $resize-step 30px
 
@@ -59,14 +70,14 @@ set $borderCol $acCol
 client.focused          $acCol  $acCol  $textC  $acCol   $borderCol
 
 # Gaps
-gaps inner 6
+gaps inner 10
 gaps outer 0
 smart_gaps false
 
 # swayfx things
 blur enable
 blur_passes 2
-blur_radius 8
+blur_radius 3
 blur_noise 0
 blur_brightness 0.8
 blur_contrast 1
@@ -104,18 +115,6 @@ exec dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DE
 exec --no-startup-id /usr/lib/xdg-desktop-portal -r
 seat seat0 xcursor_theme Bibata-Modern-Classic 24
 exec gsettings set org.gnome.desktop.interface gtk-theme 'Adwaita-Dark'
-
-### Wallpaper
-#output * bg $HOME/.pic/space1.jpg fill
-#output * bg $HOME/.pic/ayuru_camp___rin___nadeshiko_by_muddymelly_dcmp6rk.jpg fill
-output * bg $HOME/.pic/sea.jpg fill
-# output * bg #000000 solid_color
-#
-# Example configuration:
-#
-#   output HDMI-A-1 resolution 1920x1080 position 1920,0
-#
-# You can get the names of your outputs by running: swaymsg -t get_outputs
 
 
 ### Idle configuration
@@ -408,10 +407,6 @@ bar {
 
 # exec pkill -9 sworkstyle && sworkstyle >> /tmp/sworkstyle.log
 
-
-# Night shift 
-## This doesnt work :(
-exec gammastep -l geoclue2 >> gammalog
 
 
 include $HOME/.config/sway/sway.d/*.conf
