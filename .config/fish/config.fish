@@ -21,6 +21,7 @@ if status is-interactive
     export ELECTRON_OZONE_PLATFORM_HINT=wayland
     export QT_QPA_PLATFORMTHEME=qt5ct
     export QT_QPA_PLATFORM=wayland
+    export XDG_CURRENT_DESKTOP=sway
     # export PATH=$PATH:/home/d/.cargo/bin
     #
     fish_add_path /home/d/.cargo/bin

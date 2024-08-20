@@ -97,6 +97,10 @@ for_window [title="Term-Calculator"] floating enable
 for_window [title="Term-Calculator"] resize set width 300
 for_window [title="Term-Calculator"] resize set height 500
 
+# arch wiki said this will make xdg-desktop-portal-wlr start automatically
+exec systemctl --user import-environment WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
+exec dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP=sway
+
 exec --no-startup-id /usr/lib/xdg-desktop-portal -r
 seat seat0 xcursor_theme Bibata-Modern-Classic 24
 exec gsettings set org.gnome.desktop.interface gtk-theme 'Adwaita-Dark'

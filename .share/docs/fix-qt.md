@@ -6,7 +6,8 @@ I followed this guide here mostly:
 
 
 
-aa
+# Catppuccin?
+https://github.com/catppuccin/qt5ct
 
 
 

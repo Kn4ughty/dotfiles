@@ -1,0 +1,3 @@
+grim
+slurp
+waybar
