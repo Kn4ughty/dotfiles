@@ -83,7 +83,7 @@ blur_brightness 0.8
 blur_contrast 1
 blur_saturation 1.1
 
-shadows disable
+shadows enable
 shadow_blur_radius 20
 shadow_color $acColff
 
@@ -392,6 +392,7 @@ bar {
 
     swaybar_command $bar
 
+    mode hide
 #    position top
 #
 #    # When the status_command prints a new line to stdout, swaybar updates.
@@ -405,8 +406,7 @@ bar {
 #    }
 }
 
-# exec pkill -9 sworkstyle && sworkstyle >> /tmp/sworkstyle.log
-
+exec pkill -9 sworkstyle && sworkstyle
 
 
 include $HOME/.config/sway/sway.d/*.conf

@@ -51,3 +51,28 @@
            :windowtype "dock"
            :wm-ignore false
 (music))
+
+(defvar tree-visible false)   ; for :run-while property of below variable
+                              ; when this turns true, the polling starts and
+                              ; var gets updated with given interval
+
+(defpoll tree :interval "1s"
+              :initial "initial-value"  ; optional, defaults to poll at startup
+              :run-while tree-visible   ; optional, defaults to 'true'
+  `cbonsai -p`)
+
+
+(defwindow tree
+           :monitor 0
+           :geometry (geometry :x "2%"
+                               :y "0%"
+                               :width "30%"
+                               :height "20%"
+                               :anchor "bottom right")
+           :stacking "bottom"
+           :reserve (struts :distance "40px" :side "top")
+           :windowtype "dock"
+           :wm-ignore false
+           tree)
+
+
