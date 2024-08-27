@@ -70,9 +70,9 @@ set $borderCol $acCol
 client.focused          $acCol  $acCol  $textC  $acCol   $borderCol
 
 # Gaps
-gaps inner 10
+gaps inner 6
 gaps outer 0
-smart_gaps false
+smart_gaps true
 
 # swayfx things
 blur enable
@@ -378,8 +378,10 @@ bindsym XF86MonBrightnessDown exec --no-startup-id brightnessctl set $brightStep
 
 # Keyboard brightness
 set $kbd_light_step 50
-bindsym XF86KbdBrightnessUp exec --no-startup-id $HOME/.scripts/kb-light.py + $kb_light_step
-bindsym XF86KbdBrightnessDown exec --no-startup-id $HOME/.scripts/kb-light.py - $kb_light_step
+#bindsym XF86KbdBrightnessUp exec --no-startup-id $HOME/.scripts/kb-light.py + $kb_light_step
+#bindsym XF86KbdBrightnessDown exec --no-startup-id $HOME/.scripts/kb-light.py - $kb_light_step
+
+bindsym XF86KbdBrightnessUp exec wtype -P end
 
 # cat!
 bindsym XF86Search exec kate $HOME/.scripts/cat.txt
