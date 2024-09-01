@@ -24,7 +24,7 @@ sets the brightness to that. Also logs a bunch of stuff.
 import dbus
 
 
-states = [0, 50, 100]
+states = [0, 25, 50, 75, 100]
 
 # set to -1 to move down the array and vice versa
 # Must be -1 or 1

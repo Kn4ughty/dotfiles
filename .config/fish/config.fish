@@ -27,7 +27,5 @@ if status is-interactive
     fish_add_path /home/d/.cargo/bin
     fish_add_path /home/d/bin/
     fish_add_path /home/d/.local/share/gem/ruby/3.2.0/bin
-
-
 end
 pyenv init - | source
