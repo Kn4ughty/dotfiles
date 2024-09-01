@@ -7,3 +7,8 @@
 2024/08/22 (09:44:11) | ===> btop++ v.1.3.2
 2024/08/22 (09:44:11) | ERROR: Couldn't determine terminal size of "STDOUT_FILENO"!
 2024/08/22 (09:44:11) | ERROR: Couldn't determine terminal size of "/dev/tty"!
+
+2024/08/31 (00:02:20) | ===> btop++ v.1.3.2
+2024/08/31 (00:02:20) | WARNING: ROCm SMI: Failed to get device name
+2024/08/31 (00:02:20) | WARNING: ROCm SMI: Failed to get maximum GPU temperature, defaulting to 110°C
+2024/08/31 (00:02:20) | WARNING: ROCm SMI: Failed to get PCIe throughput
