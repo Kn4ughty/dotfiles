@@ -27,5 +27,9 @@ if status is-interactive
     fish_add_path /home/d/.cargo/bin
     fish_add_path /home/d/bin/
     fish_add_path /home/d/.local/share/gem/ruby/3.2.0/bin
+
+    set --universal pure_show_subsecond_command_duration true
+    set --universal pure_threshold_command_duration 1
+    set --universal ure_reverse_prompt_symbol_in_vimode false
 end
 pyenv init - | source
