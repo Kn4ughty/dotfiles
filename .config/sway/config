@@ -72,12 +72,12 @@ client.focused          $acCol  $acCol  $textC  $acCol   $borderCol
 # Gaps
 gaps inner 6
 gaps outer 0
-smart_gaps true
+smart_gaps false
 
 # swayfx things
 blur enable
 blur_passes 2
-blur_radius 3
+blur_radius 7
 blur_noise 0
 blur_brightness 0.8
 blur_contrast 1

@@ -30,6 +30,6 @@ if status is-interactive
 
     set --universal pure_show_subsecond_command_duration true
     set --universal pure_threshold_command_duration 1
-    set --universal ure_reverse_prompt_symbol_in_vimode false
+    set --universal pure_reverse_prompt_symbol_in_vimode true
 end
 pyenv init - | source
