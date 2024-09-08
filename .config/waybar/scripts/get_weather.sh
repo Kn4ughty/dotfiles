@@ -15,4 +15,4 @@ do
     fi
     sleep 2
 done
-echo "{\"text\":\"error\", \"tooltip\":\"error\"}"
+echo "{\"text\":\"🥵 🌡️+68°C\", \"tooltip\":\"error\"}"
