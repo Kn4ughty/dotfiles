@@ -70,7 +70,7 @@ set $borderCol $acCol
 client.focused          $acCol  $acCol  $textC  $acCol   $borderCol
 
 # Gaps
-gaps inner 6
+gaps inner 3
 gaps outer 0
 smart_gaps false
 
@@ -235,7 +235,7 @@ bindsym $mod+delete exec $lockcmd
 
 
 # Mouse follows focus
-mouse_warping container
+# mouse_warping container
 
 # Move your focus around
     bindsym $mod+$left focus left
