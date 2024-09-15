@@ -39,7 +39,7 @@ workspace 10 output HEADLESS-1
 ### Wallpaper
 #output * bg $HOME/.pic/space1.jpg fill
 #output * bg $HOME/.pic/ayuru_camp___rin___nadeshiko_by_muddymelly_dcmp6rk.jpg fill
-output * bg $HOME/.pic/sea.jpg fill
+output * bg $HOME/.pic/space1.jpg fill
 # output * bg #000000 solid_color
 
 output HEADLESS-1 bg $HOME/.pic/magicpattern_mocha_stars.png fill
