@@ -68,9 +68,9 @@ lvim.transparent_window = true
 -- https://www.jackfranklin.co.uk/blog/code-folding-in-vim-neovim/
 vim.opt.foldmethod = "expr"
 vim.opt.foldexpr = "v:lua.vim.treesitter.foldexpr()"
-vim.opt.foldtext = ""
+vim.opt.foldtext = "hello"
 vim.opt.foldlevel = 99
-vim.opt.foldlevelstart = 2
+vim.opt.foldlevelstart = 99
 
 -- neo-tree
 lvim.builtin.nvimtree.active = false -- NOTE: using neo-tree
