@@ -58,7 +58,8 @@ lvim.plugins = {
       { "<c-l>", "<cmd><C-U>TmuxNavigateRight<cr>" },
       { "<c-\\>", "<cmd><C-U>TmuxNavigatePrevious<cr>" },
     },
-  }
+  },
+  {"AckslD/swenv.nvim"};
 }
 -- vim.cmd.colorscheme "catppuccin"
 lvim.colorscheme = "catppuccin-mocha"
@@ -93,8 +94,23 @@ lvim.builtin.treesitter.ensure_installed = {
 }
 
 -- setup debug adapter
--- lvim.builtin.dap.active = true
--- local mason_path = vim.fn.glob(vim.fn.stdpath "data" .. "/mason/")
--- pcall(function()
---   require("dap-python").setup(mason_path .. "packages/debugpy/venv/bin/python")
--- end)
+lvim.builtin.dap.active = true
+local mason_path = vim.fn.glob(vim.fn.stdpath "data" .. "/mason/")
+pcall(function()
+  require("dap-python").setup(mason_path .. "packages/debugpy/venv/bin/python")
+end)
+
+-- binding for switching
+lvim.builtin.which_key.mappings["C"] = {
+  name = "Python",
+  c = { "<cmd>lua require('swenv.api').pick_venv()<cr>", "Choose Env" },
+}
+
+-- Per project run comamnd
+lvim.builtin.which_key.mappings["rr"] = {
+      ":!./run.sh<CR>", "run project"
+    }
+lvim.builtin.which_key.mappings["rc"] = {
+      ":!./compile.sh<CR>", "compile project"
+    }
+
