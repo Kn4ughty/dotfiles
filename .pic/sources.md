@@ -49,3 +49,14 @@ source: https://www.magicpattern.design/tools/starry-sky-generator
 author: i put in the numbers and paramaters but code made by magicpattern
 
 license: [terms](https://www.magicpattern.design/terms) i dont really know, i would assume its fine so 🤷
+
+---
+
+nasa_*
+
+source: Nasa website somwhere. If you want a different res try reverse image source
+
+author: NASA
+
+liscense: most very likely public domain
+
