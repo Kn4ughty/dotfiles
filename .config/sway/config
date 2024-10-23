@@ -152,6 +152,8 @@ input * {
     # Only enable this if you KNOW the layout fully. 
     # Also work out how to make vim work with new binds. (hjkl)
     # xkb_variant colemak
+
+    pointer_accel -0.7
 }
 
 # Notification Daemon
