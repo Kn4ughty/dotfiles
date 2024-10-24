@@ -8,7 +8,7 @@ export ZSH="$HOME/.oh-my-zsh"
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
-ZSH_THEME="kphoen"
+ZSH_THEME="jonathan"
 
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
@@ -116,10 +116,20 @@ alias -- "+x"="chmod +x"
 
 
 export PATH=$PATH:/home/d/.spicetify
-source $HOME/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+# This == seems like it should be != to me but whatever
+if [[ "${uname}" == "Darwin" ]]; then
+	source $HOME/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+	echo "AAA"
+fi
 
 # Created by `pipx` on 2024-05-01 02:36:09
 export PATH="$PATH:/home/d/.local/bin"
 
 # Cargo
 export PATH=$PATH:/home/d/.cargo/bin
+# source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
+if [[ "${uname}" != "Darwin" ]]; then
+	source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+fi
+
