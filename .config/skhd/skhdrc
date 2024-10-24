@@ -110,3 +110,10 @@ cmd + shift + ctrl + alt - return : kitty --single-instance -d ~
 
 # open browser
 cmd + shift + ctrl + alt - b : open -n /Applications/Zen\ Browser.app
+
+
+# Type email
+# sendkeys --delay 0 --initial-delay 0 --characters "helo" 
+# cat email.txt | sendkeys --delay 0.05 --initial-delay 0
+cmd + shift + ctrl + alt - r : cat $HOME/email.txt | sendkeys --delay 0.05 --initial-delay 0
+
