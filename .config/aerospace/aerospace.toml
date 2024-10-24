@@ -12,7 +12,8 @@ on-focused-monitor-changed = ['move-mouse monitor-lazy-center']
 
 [mode.main.binding]
 # See: https://nikitabobko.github.io/AeroSpace/goodness#open-a-new-window-with-applescript
-alt-enter = '''exec-and-forget kitty --single-instance -d $HOME '''
+# alt-enter = '''exec-and-forget kitty --single-instance -d $HOME '''
+# Shortcuts handled with skhd
 
 # i3 wraps focus by default
 alt-h =         'focus --boundaries-action wrap-around-the-workspace left'
@@ -66,7 +67,6 @@ alt-shift-7 = 'move-node-to-workspace 7'
 alt-shift-8 = 'move-node-to-workspace 8'
 alt-shift-9 = 'move-node-to-workspace 9'
 alt-shift-0 = 'move-node-to-workspace 10'
-
 alt-shift-c = 'reload-config'
 
 alt-r = 'mode resize'
@@ -78,5 +78,9 @@ k = 'resize height -50'
 l = 'resize width +50'
 enter = 'mode main'
 esc = 'mode main'
+
+[workspace-to-monitor-force-assignment]
+1 = 'main'
+2 = 'secondary'
 
 
