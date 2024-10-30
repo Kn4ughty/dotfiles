@@ -114,3 +114,44 @@ lvim.builtin.which_key.mappings["rc"] = {
       ":!./compile.sh<CR>", "compile project"
     }
 
+-- Pipe current class into manim run script
+
+local function get_current_class_name()
+    -- Get the current cursor position
+    local cursor_pos = vim.api.nvim_win_get_cursor(0)
+    local line_number = cursor_pos[1] - 1 -- Convert to zero-based index
+
+    -- Get the lines above the cursor
+    local lines = vim.api.nvim_buf_get_lines(0, 0, line_number + 1, false)
+    local class_name = ""
+
+    -- Search for the class definition in the lines above the cursor
+    for i = #lines, 1, -1 do
+        local class_match = lines[i]:match("class%s+(%w+)")
+        if class_match then
+            class_name = class_match
+            break
+        end
+    end
+
+    return class_name
+end
+
+function Class_name_to_script(script_path)
+    local class_name = get_current_class_name()
+    if class_name ~= "" then
+        -- Replace 'your_script.sh' with your actual script path
+        local command = string.format("bash %s %s",script_path, class_name)
+        os.execute(command)
+    else
+        print("No class found.")
+    end
+end
+-- Pipe_to_bash_script("a")
+
+
+-- :echo getline(search('\v^[[:alpha:]$_]', "bn", 1, 100))
+lvim.builtin.which_key.mappings["rl"] = {
+
+  "<cmd>lua Class_name_to_script('run.sh')<CR>", "run current scene"
+}
