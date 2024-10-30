@@ -124,7 +124,7 @@ fi
 
 # Created by `pipx` on 2024-05-01 02:36:09
 export PATH="$PATH:/home/d/.local/bin"
-
+export PATH=/Users/d/.local/bin:$PATH
 # Cargo
 export PATH=$PATH:/home/d/.cargo/bin
 # source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
