@@ -175,8 +175,11 @@ end
 -- Pipe_to_bash_script("a")
 
 
--- :echo getline(search('\v^[[:alpha:]$_]', "bn", 1, 100))
-lvim.builtin.which_key.mappings["rl"] = {
+lvim.builtin.which_key.mappings["rp"] = {
 
-  "<cmd>lua Class_name_to_script('run.sh')<CR>", "run current scene"
+  "<cmd>lua Class_name_to_script('run.sh')<CR>", "Run current scene"
+}
+lvim.builtin.which_key.mappings["rf"] = {
+
+  "<cmd>lua Class_name_to_script('compile.sh')<CR>", "Compile current scene"
 }
