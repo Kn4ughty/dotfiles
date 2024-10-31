@@ -60,27 +60,32 @@ lvim.plugins = {
     },
   },
   {"AckslD/swenv.nvim"};
-  { -- Useful plugin to show you pending keybinds.
-    "folke/which-key.nvim",
-    event = "VimEnter", -- Sets the loading event to 'VimEnter'
-    config = function() -- This is the function that runs, AFTER loading
-      require("which-key").setup()
+  -- { -- Useful plugin to show you pending keybinds.
+  --   "folke/which-key.nvim",
+  --   event = "VimEnter", -- Sets the loading event to 'VimEnter'
+  --   config = function() -- This is the function that runs, AFTER loading
+  --     require("which-key").setup()
 
-      -- Document existing key chains
-      require("which-key").register {
-        ["<leader>c"] = { name = "[C]ode", _ = "which_key_ignore" },
-        ["<leader>d"] = { name = "[D]ocument", _ = "which_key_ignore" },
-        ["<leader>r"] = { name = "[R]ename", _ = "which_key_ignore" },
-        ["<leader>s"] = { name = "[S]earch", _ = "which_key_ignore" },
-        ["<leader>w"] = { name = "[W]orkspace", _ = "which_key_ignore" },
-        ["<leader>t"] = { name = "[T]oggle", _ = "which_key_ignore" },
-        ["<leader>h"] = { name = "Git [H]unk", _ = "which_key_ignore" },
-      }
-      -- visual mode
-      require("which-key").register({
-        ["<leader>h"] = { "Git [H]unk" },
-      }, { mode = "v" })
-    end,
+  --     -- Document existing key chains
+  --     require("which-key").register {
+  --       ["<leader>c"] = { name = "[C]ode", _ = "which_key_ignore" },
+  --       ["<leader>d"] = { name = "[D]ocument", _ = "which_key_ignore" },
+  --       ["<leader>r"] = { name = "[R]ename", _ = "which_key_ignore" },
+  --       ["<leader>s"] = { name = "[S]earch", _ = "which_key_ignore" },
+  --       ["<leader>w"] = { name = "[W]orkspace", _ = "which_key_ignore" },
+  --       ["<leader>t"] = { name = "[T]oggle", _ = "which_key_ignore" },
+  --       ["<leader>h"] = { name = "Git [H]unk", _ = "which_key_ignore" },
+  --     }
+  --     -- visual mode
+  --     require("which-key").register({
+  --       ["<leader>h"] = { "Git [H]unk" },
+  --     }, { mode = "v" })
+  --   end,
+  -- },
+  {'NFrid/due.nvim',
+    config = function()
+      require('due_nvim').setup {}
+    end
   },
 }
 -- lua require("which-key").show("'", {mode = "n", auto = true})
@@ -96,7 +101,17 @@ vim.opt.foldtext = "hello"
 vim.opt.foldlevel = 99
 vim.opt.foldlevelstart = 99
 
+-- Text movement with arrow keys
+vim.keymap.set("n", "<Left>", "<<")
+vim.keymap.set("n", "<Right>", ">>")
+vim.keymap.set("n", "<Up>", "<cmd>m -2<CR>")
+vim.keymap.set("n", "<Down>", "<cmd>m +1<CR>")
 
+vim.keymap.set("v", "<Left>", "<gv")
+vim.keymap.set("v", "<Right>", ">gv")
+-- Could not get text shifting with visual mode working :(
+-- vim.keymap.set("v", "<Up>",   "<cmd>m '<-2<CR>gv=gv")
+-- vim.keymap.set("v", "<Down>", "<cmd>m '>+1<CR>gv=gv")
 
 -- neo-tree
 lvim.builtin.nvimtree.active = false -- NOTE: using neo-tree
@@ -141,7 +156,7 @@ lvim.builtin.which_key.mappings["rc"] = {
 
 -- Pipe current class into manim run script
 
-local function get_current_class_name()
+function Get_current_class_name()
     -- Get the current cursor position
     local cursor_pos = vim.api.nvim_win_get_cursor(0)
     local line_number = cursor_pos[1] - 1 -- Convert to zero-based index
@@ -163,10 +178,10 @@ local function get_current_class_name()
 end
 
 function Class_name_to_script(script_path)
-    local class_name = get_current_class_name()
+    local class_name = Get_current_class_name()
     if class_name ~= "" then
         -- Replace 'your_script.sh' with your actual script path
-        local command = string.format("bash %s %s",script_path, class_name)
+        local command = string.format("bash %s %s > /dev/null",script_path, class_name)
         os.execute(command)
     else
         print("No class found.")
