@@ -113,6 +113,10 @@ vim.keymap.set("v", "<Right>", ">gv")
 -- vim.keymap.set("v", "<Up>",   "<cmd>m '<-2<CR>gv=gv")
 -- vim.keymap.set("v", "<Down>", "<cmd>m '>+1<CR>gv=gv")
 
+-- Add newlines with o binds
+vim.keymap.set("n", "<M-o>", "o<Esc>")
+vim.keymap.set("n", "<M-S-o>", "O<Esc>")
+
 -- neo-tree
 lvim.builtin.nvimtree.active = false -- NOTE: using neo-tree
 lvim.builtin.which_key.mappings["e"] = {
