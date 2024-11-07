@@ -137,13 +137,6 @@ input "1739:30382:DLL0704:01_06CB:76AE_Touchpad" {
     dwt enabled
     scroll_factor 0.2
 }
-
-# Macbook
-input "1452:833:Apple_Internal_Keyboard_/_Trackpad" {
-   natural_scroll disabled
-   scroll_factor 0.15
-}
-
 # keyboard layout
 
 input * {
@@ -155,6 +148,14 @@ input * {
 
     pointer_accel -0.7
 }
+# Macbook
+input "1452:833:Apple_Internal_Keyboard_/_Trackpad" {
+   natural_scroll disabled
+   scroll_factor 0.15
+   pointer_accel 0
+}
+
+
 
 # Notification Daemon
 exec dunst
