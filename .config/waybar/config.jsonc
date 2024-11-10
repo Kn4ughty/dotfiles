@@ -5,7 +5,7 @@
     // Choose the order of the modules
     "modules-left": ["hyprland/workspaces", "hyprland/mode", "hyprland/window", "sway/workspaces", "sway/mode", "sway/window"],
     "modules-center": [],
-    "modules-right": ["sway/scratchpad", "tray", /*"idle_inhibitor",*/ "disk", /*"temperature",*/ "temperature2", "cpu", "memory", "network", "pulseaudio", "battery", /*"custom/weather",*/ "clock"],
+    "modules-right": ["sway/scratchpad", "tray", /*"idle_inhibitor",*/ "disk", /*"temperature",*/ "temperature2", "cpu", "memory", "network", "pulseaudio", "battery", /*"custom/weather",*/ "clock", "custom/notification"],
     // Modules configuration
      "sway/workspaces": {
          "disable-scroll": true,
@@ -94,6 +94,7 @@
         "timezone": "Australia/ACT",
         "format": "{:%b-%d, %a %T}",
         "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
+        // "on-click-release": "swaync-client -t -sw",
 	"interval": 1
     },
     "cpu": {
@@ -199,5 +200,25 @@
     },
     "pulseaudio/slider": { // This crashes when scrolling too much so not using it.
     "orientation": "inherit"
-    }
+    },
+    "custom/notification": {
+      "tooltip": false,
+      "format": "{icon}",
+      "format-icons": {
+        "notification": "<span foreground='red'><sup></sup></span>",
+        "none": "",
+        "dnd-notification": "<span foreground='red'><sup></sup></span>",
+        "dnd-none": "",
+        "inhibited-notification": "<span foreground='red'><sup></sup></span>",
+        "inhibited-none": "",
+        "dnd-inhibited-notification": "<span foreground='red'><sup></sup></span>",
+        "dnd-inhibited-none": ""
+      },
+      "return-type": "json",
+      "exec-if": "which swaync-client",
+      "exec": "swaync-client -swb",
+      "on-click": "swaync-client -t -sw",
+      "on-click-right": "swaync-client -d -sw",
+      "escape": true
+  },
 }

@@ -3,6 +3,7 @@ if status is-interactive
     alias lsa="ls -la"
     alias py="python3"
     alias n="nvim"
+    alias l="lvim"
     alias zed="flatpak run dev.zed.Zed"
     alias neovim="echo \"Wrong\""
 
@@ -31,5 +32,5 @@ if status is-interactive
     set --universal pure_show_subsecond_command_duration true
     set --universal pure_threshold_command_duration 1
     set --universal pure_reverse_prompt_symbol_in_vimode true
+    pyenv init - | source
 end
-pyenv init - | source
