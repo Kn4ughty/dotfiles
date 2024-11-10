@@ -152,10 +152,10 @@ lvim.builtin.which_key.mappings["C"] = {
 
 -- Per project run comamnd
 lvim.builtin.which_key.mappings["rr"] = {
-      ":!./run.sh<CR>", "run project"
+      ":!make run<CR>", "run project"
     }
 lvim.builtin.which_key.mappings["rc"] = {
-      ":!./compile.sh<CR>", "compile project"
+      ":!make build<CR>", "compile project"
     }
 
 -- Pipe current class into manim run script
