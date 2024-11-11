@@ -10,11 +10,11 @@
   "notification-body-image-height": 100,
   "notification-body-image-width": 200,
   "timeout": 10,
-  "timeout-low": 5,
+  "timeout-low": 1,
   "timeout-critical": 0,
   "fit-to-screen": false,
   "control-center-width": 500,
-  "control-center-height": 1028,
+  "control-center-height": 800,
   "notification-window-width": 500,
   "keyboard-shortcuts": true,
   "image-visibility": "when-available",
@@ -36,7 +36,6 @@
     }
   },
   "widgets": [
-    "menubar",
     "buttons-grid",
     "volume",
     "backlight",
