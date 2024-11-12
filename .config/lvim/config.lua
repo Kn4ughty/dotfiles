@@ -202,3 +202,5 @@ lvim.builtin.which_key.mappings["rf"] = {
 
   "<cmd>lua Class_name_to_script('compile.sh')<CR>", "Compile current scene"
 }
+
+vim.opt.mouse= ""

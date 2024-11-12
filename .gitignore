@@ -1,4 +1,6 @@
 btop.log
 .config/tmux/plugins/
 
+IGNORE*
+
 \.DS_Store
