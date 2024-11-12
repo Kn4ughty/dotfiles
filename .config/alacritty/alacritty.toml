@@ -1,4 +1,3 @@
-import = ["~/.config/alacritty/catppuccin-mocha.toml"]
 
 [window]
 opacity = 0.70
@@ -13,3 +12,6 @@ style = { shape = "Beam" }
 normal = { family = "JetBrainsMono Nerd Font Mono", style = "Regular" }
 #normal = { family = "ComicMono Nerd Font", style = "Regular" }
 size = 12
+
+[general]
+import = ["~/.config/alacritty/catppuccin-mocha.toml"]
