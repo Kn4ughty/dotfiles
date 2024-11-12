@@ -177,7 +177,7 @@ tooltip {
 /* == CPU == */
 
 #custom-left4 {
-  color: @cpu;
+  color: @time;
   background: @cpu;
   padding-left: 3px;
 }
@@ -185,7 +185,7 @@ tooltip {
   background: @cpu;
 }
 #custom-leftin1 {
-  color: @cpu;
+  color: @time;
   font-size: 16pt;
   margin-bottom: -2px;
 }
@@ -366,7 +366,7 @@ tooltip {
 /* weather */
 
 #custom-weather {
-  background: @cpu;
+  background: @time;
   padding-left: 5px;
   padding-right: 5px;
 }
