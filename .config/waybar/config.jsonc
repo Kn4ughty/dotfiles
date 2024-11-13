@@ -229,6 +229,7 @@
     "tooltip-format-activated": "Presentation Mode",
     "tooltip-format-deactivated": "Idle Mode",
     "start-activated": false,
+    "on-click-middle-release": " kitty sl && exec kitty --hold cat ~/.scripts/cat.txt",
     "timeout": 5
   },
 
