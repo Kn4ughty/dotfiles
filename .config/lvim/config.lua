@@ -126,6 +126,9 @@ lvim.builtin.which_key.mappings["<s-e>"] = {
   ":Neotree position=float toggle<CR>", "full file tree"
 }
 
+-- toggle term
+lvim.keys.normal_mode["<C-<Bslash>>"] = ":ToggleTerm"
+
 --NOTES FOR FUTURE ME
 -- https://github.com/nvim-neo-tree/neo-tree.nvim
 -- https://github.com/3rd/image.nvim?tab=readme-ov-file#installing-imagemagick
