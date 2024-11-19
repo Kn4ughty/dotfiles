@@ -234,15 +234,16 @@
   },
 
   "clock#time": {
-    "format": "󱑂 {:%H:%M}",
+    "format": "󱑂 {:%H:%M:%S}",
+    "interval": 1,
     "tooltip": true,
     "tooltip-format": "12-hour Format: {:%I:%M %p}",
     "min-length": 8,
-    "max-length": 8
+    "max-length": 10
   },
 
   "clock#date": {
-    "format": "󰨳 {:%m-%d}",
+    "format": "󰨳 {:%d-%m}",
     "tooltip-format": "<tt>{calendar}</tt>",
 
     "calendar": {
@@ -466,8 +467,8 @@
     "tooltip": false,
     "format": "{icon}",
     "format-icons": {
-      "notification": "<span foreground='red'><sup></sup></span>",
-      "none": "",
+      "notification": "<span foreground='red'><sup> </sup></span>",
+      "none": " ",
       "dnd-notification": "<span foreground='red'><sup></sup></span>",
       "dnd-none": "",
       "inhibited-notification": "<span foreground='red'><sup></sup></span>",
