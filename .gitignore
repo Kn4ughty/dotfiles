@@ -4,3 +4,4 @@ btop.log
 IGNORE*
 
 \.DS_Store
+.config/btop/btop.conf
