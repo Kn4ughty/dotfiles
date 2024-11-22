@@ -4,6 +4,7 @@ if status is-interactive
     alias py="python3"
     alias n="nvim"
     alias l="lvim"
+    alias lg="lazygit"
     alias zed="flatpak run dev.zed.Zed"
     alias neovim="echo \"Wrong\""
 
