@@ -101,6 +101,10 @@ vim.opt.foldtext = ""
 vim.opt.foldlevel = 99
 vim.opt.foldlevelstart = 99
 
+-- Text wrapping
+vim.opt.wrap = true
+vim.opt.linebreak = true
+
 -- Text movement with arrow keys
 vim.keymap.set("n", "<Left>", "<<")
 vim.keymap.set("n", "<Right>", ">>")
