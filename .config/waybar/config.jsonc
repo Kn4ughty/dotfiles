@@ -245,8 +245,10 @@
 
   "clock#date": {
     "format": "󰨳 {:%d-%m}",
-    "tooltip-format": "<tt>{calendar}</tt>",
-
+    "tooltip": true,
+    // "tooltip-format": "<tt>{calendar}</tt>",
+    // Why doesnt this work?
+    "tooltip-format": "<tt>{calcurse -Q --days 1}<tt>",
     "calendar": {
       "mode": "month",
       "mode-mon-col": 6,
