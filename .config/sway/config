@@ -146,7 +146,7 @@ input * {
     # Also work out how to make vim work with new binds. (hjkl)
     # xkb_variant colemak
 
-    pointer_accel -0.7
+    pointer_accel -0.2
 }
 # Macbook
 input "1452:833:Apple_Internal_Keyboard_/_Trackpad" {
