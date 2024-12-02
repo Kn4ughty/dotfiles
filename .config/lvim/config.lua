@@ -105,6 +105,9 @@ vim.opt.foldlevelstart = 99
 vim.opt.wrap = true
 vim.opt.linebreak = true
 
+-- column indicator
+vim.opt.colorcolumn="80"
+
 -- Text movement with arrow keys
 vim.keymap.set("n", "<Left>", "<<")
 vim.keymap.set("n", "<Right>", ">>")
