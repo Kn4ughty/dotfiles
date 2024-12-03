@@ -9,9 +9,9 @@ dynamic_padding = true
 style = { shape = "Beam" }
 
 [font]
-normal = { family = "JetBrainsMono Nerd Font Mono", style = "Regular" }
-#normal = { family = "ComicMono Nerd Font", style = "Regular" }
-size = 12
+# normal = { family = "JetBrainsMono Nerd Font Mono", style = "Regular" }
+normal = { family = "ComicMono Nerd Font", style = "Regular" }
+size = 14
 
 [general]
 import = ["~/.config/alacritty/catppuccin-mocha.toml"]
