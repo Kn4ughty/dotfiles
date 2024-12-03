@@ -87,6 +87,19 @@ lvim.plugins = {
       require('due_nvim').setup {}
     end
   },
+
+  {'ahmedkhalf/project.nvim',
+    config = function()
+          require("project_nvim").setup {
+      -- your configuration comes here
+      -- or leave it empty to use the default settings
+      -- refer to the configuration section below
+         }
+    end
+  },
+  -- Harpoon
+  {'ThePrimeagen/harpoon'},
+  {'ThePrimeagen/vim-be-good'},
 }
 -- lua require("which-key").show("'", {mode = "n", auto = true})
 -- vim.cmd.colorscheme "catppuccin"
@@ -101,12 +114,18 @@ vim.opt.foldtext = ""
 vim.opt.foldlevel = 99
 vim.opt.foldlevelstart = 99
 
+-- Disable mouse
+vim.opt.mouse= ""
+
 -- Text wrapping
 vim.opt.wrap = true
 vim.opt.linebreak = true
 
 -- column indicator
 vim.opt.colorcolumn="80"
+
+-- Relative line numbers
+vim.opt.relativenumber = true
 
 -- Text movement with arrow keys
 vim.keymap.set("n", "<Left>", "<<")
@@ -213,4 +232,3 @@ lvim.builtin.which_key.mappings["rf"] = {
   "<cmd>lua Class_name_to_script('compile.sh')<CR>", "Compile current scene"
 }
 
-vim.opt.mouse= ""
