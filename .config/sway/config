@@ -190,7 +190,8 @@ bindsym Mod1+backspace exec wtype -P delete -p delete
 
 
 
-bindsym XF86Fn+Mod1+l exec cat $HOME/email.txt | wl-copy
+bindsym XF86Fn+Mod1+l exec cat $HOME/email.txt | wtype - && dunstify "email wtyped"
+
 
 # App launching
 
