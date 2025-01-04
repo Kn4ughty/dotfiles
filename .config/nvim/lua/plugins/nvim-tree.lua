@@ -1,4 +1,8 @@
-vim.keymap.set("n", "<leader>e", ":Neotree toggle<CR>")
+vim.keymap.set("n", "<leader><s-e>", ":Neotree toggle<CR>")
+
+-- set current root dir to working file
+vim.keymap.set("n", "<leader>e.", ":Neotree dir=%:p:h reveal=false<CR>")
+
 
 return {
     "nvim-neo-tree/neo-tree.nvim",
@@ -14,7 +18,17 @@ return {
         require("neo-tree").setup({
             window = {
                 width = 30,
-            }
+            },
+            filesystem = {
+                filtered_items = {
+                    hide_dotfiles = false,
+                },
+                always_show = {
+                    ".",
+                    "..",
+                },
+            },
+
         })
     end
 }
