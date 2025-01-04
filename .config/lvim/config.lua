@@ -100,6 +100,7 @@ lvim.plugins = {
   -- Harpoon
   {'ThePrimeagen/harpoon'},
   {'ThePrimeagen/vim-be-good'},
+  {'github/copilot.vim'},
 }
 -- lua require("which-key").show("'", {mode = "n", auto = true})
 -- vim.cmd.colorscheme "catppuccin"
@@ -161,10 +162,14 @@ lvim.keys.normal_mode["<C-<Bslash>>"] = ":ToggleTerm"
 -- https://github.com/leafo/magick
 
 -- Python stuff
+
+
+
 -- automatically install python syntax highlighting
 lvim.builtin.treesitter.ensure_installed = {
   "python",
 }
+
 
 -- setup debug adapter
 lvim.builtin.dap.active = true
@@ -232,3 +237,9 @@ lvim.builtin.which_key.mappings["rf"] = {
   "<cmd>lua Class_name_to_script('compile.sh')<CR>", "Compile current scene"
 }
 
+
+vim.keymap.set('i', '<C-f>', 'copilot#Accept("\\<CR>")', {
+            expr = true,
+            replace_keycodes = false
+          })
+vim.g.copilot_no_tab_map = true

@@ -207,6 +207,9 @@ bindsym $mod+Mod1+space exec $calc
 # run term
 bindsym $mod+Return exec $term
 
+# run neovide (nvim gui)
+bindsym $mod+n exec ~/.cargo/bin/neovide
+
 # browser (firefox)
 bindsym $mod+Shift+b exec MOZ_ENABLE_WAYLAND=1 firefox 
 
