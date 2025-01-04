@@ -158,7 +158,8 @@ input "1452:833:Apple_Internal_Keyboard_/_Trackpad" {
 
 
 # Notification Daemon
-exec dunst
+# exec dunst
+exec swaync
 
 # KDE auth thing passwd
 exec /usr/lib/polkit-kde-authentication-agent-1
@@ -187,11 +188,6 @@ bindgesture swipe:up exec $menu -show window
 
 # Delete key alt
 bindsym Mod1+backspace exec wtype -P delete -p delete
-
-
-
-bindsym XF86Fn+Mod1+l exec cat $HOME/email.txt | wtype - && dunstify "email wtyped"
-
 
 # App launching
 
