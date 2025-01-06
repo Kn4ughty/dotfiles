@@ -26,14 +26,16 @@ vim.opt.expandtab = true
 vim.opt.tabstop = 4
 vim.opt.shiftwidth = 4
 
-vim.opt.colorcolumn="80" -- column indicator
+vim.opt.colorcolumn = "80"    -- column indicator
 vim.opt.relativenumber = true -- Relative line numbers
 vim.opt.number = true
+-- left side padding to fix lsp resizing things
+vim.opt.signcolumn = "yes:1"
 
 -- TODO. Create a map to reload config
 vim.keymap.set("n", "<leader>r", ":so $MYVIMRC<CR>")
 
-vim.keymap.set("v", "<M-y>", "\"+y")    -- copy to system clipboard
+vim.keymap.set("v", "<M-y>", "\"+y") -- copy to system clipboard
 vim.keymap.set("n", "<M-y>y", "\"+yy")
 vim.keymap.set("n", "<M-p>", "\"+p")
 
@@ -55,24 +57,24 @@ vim.keymap.set("n", "<M-S-o>", "O<Esc>")
 
 
 vim.keymap.set('i', '<C-f>', 'copilot#Accept("\\<CR>")', {
-            expr = true,
-            replace_keycodes = false
-          })
+    expr = true,
+    replace_keycodes = false
+})
 vim.g.copilot_no_tab_map = true
 
 if vim.g.neovide then
-	-- Do neovide things
-	vim.o.guifont = "JetBrainsMono Nerd Font:h13"
+    -- Do neovide things
+    vim.o.guifont = "JetBrainsMono Nerd Font:h13"
     vim.g.neovide_scale_factor = 1.0
-	vim.g.neovide_transparency = 0.4
-	vim.g.transparency = 0.5
+    vim.g.neovide_transparency = 0.4
+    vim.g.transparency = 0.5
 
-	vim.g.neovide_cursor_animation_length = 0.09
-	vim.g.neovide_cursor_trail_size = 0.5
-	vim.g.neovide_cursor_animate_command_line = false
+    vim.g.neovide_cursor_animation_length = 0.09
+    vim.g.neovide_cursor_trail_size = 0.5
+    vim.g.neovide_cursor_animate_command_line = false
 
-	vim.g.neovide_cursor_vfx_mode = "ripple"
-	vim.g.neovide_cursor_vfx_particle_density = 200
+    vim.g.neovide_cursor_vfx_mode = "ripple"
+    vim.g.neovide_cursor_vfx_particle_density = 200
     vim.g.neovide_cursor_vfx_opacity = 200.0
 
     local pad = 10
