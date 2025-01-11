@@ -91,7 +91,6 @@
         "spacing": 10
     },
     "clock": {
-        "timezone": "Australia/ACT",
         "format": "{:%b-%d, %a %T}",
         "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
         // "on-click-release": "swaync-client -t -sw",
