@@ -141,6 +141,7 @@ input "1739:30382:DLL0704:01_06CB:76AE_Touchpad" {
 
 input * {
     xkb_layout us,us
+    accel_profile "flat"
     # NOTE TO FUTURE ME
     # Only enable this if you KNOW the layout fully. 
     # Also work out how to make vim work with new binds. (hjkl)
