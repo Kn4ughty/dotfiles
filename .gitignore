@@ -6,3 +6,4 @@ IGNORE*
 \.DS_Store
 .config/btop/btop.conf
 .config/btop/btop.conf
+.config/nvim/lazy-lock.json
