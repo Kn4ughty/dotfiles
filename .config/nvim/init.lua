@@ -20,6 +20,9 @@ vim.opt.clipboard = "unnamedplus"
 vim.opt.wrap = true
 vim.opt.linebreak = true
 
+-- Allow incrementing characters. ex. ia<Esc><C-a> a -> b
+vim.opt.nrformats = "alpha"
+
 -- Set up indenting with 4 spaces
 vim.opt.smartindent = true
 vim.opt.expandtab = true
