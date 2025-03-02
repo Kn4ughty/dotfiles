@@ -26,7 +26,9 @@ output eDP-1 scale 1.5
 output $out-prim resolution 1920x1080 position 0 0 scale 1 adaptive_sync off
 
 # 2880 is 3840*1.75
-output $out-sec resolution 3840x2160 position 1920 -400 transform 270 scale 2
+output $out-sec resolution 3840x2160 position 1920 0 scale 2
+
+output HDMI-A-1 resolution 1920x1080 position 960 -1080
 
 output HEADLESS-1 {
     resolution 2048x1536 
@@ -73,6 +75,9 @@ client.focused          $acCol  $acCol  $textC  $acCol   $borderCol
 gaps inner 3
 gaps outer 0
 smart_gaps false
+
+workspace 10 gaps inner 15
+workspace 10 gaps outer 10
 
 # swayfx things
 blur enable
@@ -147,7 +152,7 @@ input * {
     # Also work out how to make vim work with new binds. (hjkl)
     # xkb_variant colemak
 
-    pointer_accel -0.2
+    pointer_accel 0.3
 }
 # Macbook
 input "1452:833:Apple_Internal_Keyboard_/_Trackpad" {
