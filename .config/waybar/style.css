@@ -4,7 +4,7 @@
 @define-color text #cad3f5;
 
 
-* { 
+* {
     all: unset;
     border: none;
     border-radius: 7;
@@ -33,9 +33,10 @@ window#waybar {
 
 
 @keyframes fade-in {
-    from { 
+    from {
         opacity: 0;
     }
+
     to {
         opacity: 1;
     }
@@ -88,8 +89,8 @@ tooltip label {
 
 
 #workspaces button.focused {
-    background: rgb(203,166,247);
-    background: linear-gradient(45deg, rgba(203,166,247,1) 0%, rgba(245,194,231,1) 100%);
+    background: rgb(203, 166, 247);
+    background: linear-gradient(45deg, rgba(203, 166, 247, 1) 0%, rgba(245, 194, 231, 1) 100%);
     color: #11111b;
     padding: 0 0.9em;
 }
@@ -102,15 +103,17 @@ tooltip label {
 
 /* I found that this used like 1% cpu by it self so im not using it :/ */
 @keyframes color-change-2x {
-  0% {
-    background: linear-gradient(0deg, rgba(203,166,247,1) 0%, rgba(245,194,231,1) 100%);
-  }
-  50% {
-    background: linear-gradient(180deg, rgba(203,166,247,1) 0%, rgba(245,194,231,1) 100%);
-  }
-  100% {
-    background: linear-gradient(360deg, rgba(203,166,247,1) 0%, rgba(245,194,231,1) 100%);
-  }
+    0% {
+        background: linear-gradient(0deg, rgba(203, 166, 247, 1) 0%, rgba(245, 194, 231, 1) 100%);
+    }
+
+    50% {
+        background: linear-gradient(180deg, rgba(203, 166, 247, 1) 0%, rgba(245, 194, 231, 1) 100%);
+    }
+
+    100% {
+        background: linear-gradient(360deg, rgba(203, 166, 247, 1) 0%, rgba(245, 194, 231, 1) 100%);
+    }
 }
 
 
@@ -149,32 +152,38 @@ tooltip label {
 
 
 /* If workspaces is the leftmost module, omit left margin */
-.modules-left > widget:first-child > #workspaces {
+.modules-left>widget:first-child>#workspaces {
     margin-left: 0;
 }
 
 
 /* If workspaces is the rightmost module, omit right margin */
-.modules-right > widget:last-child > #workspaces {
+.modules-right>widget:last-child>#workspaces {
     margin-right: 0;
 }
 
 
 #clock {
-    background: rgb(237,135,150);
-    background: linear-gradient(90deg, rgba(237,135,150,1) 0%, rgba(198,160,246,1) 100%);
+    background: rgb(237, 135, 150);
+    background: linear-gradient(90deg, rgba(237, 135, 150, 1) 0%, rgba(198, 160, 246, 1) 100%);
     color: #11111b;
 }
 
 
 #battery {
-    background: rgb(245,169,127);
-    background: linear-gradient(270deg, rgba(245,169,127,1) 0%, rgba(238,212,159,1) 100%);
+    background: rgb(245, 169, 127);
+
+    /* Battery gradient for use with weather widget */
+    /*background: linear-gradient(270deg, rgba(245,169,127,1) 0%, rgba(238,212,159,1) 100%);*/
+
+    /*Color for use without weather widget*/
+    background: linear-gradient(270deg, rgba(237, 135, 150, 1) 0%, rgba(238, 212, 159, 1) 100%);
     color: #11111b;
 }
 
 
-#battery.charging, #battery.plugged {
+#battery.charging,
+#battery.plugged {
     color: #11111b;
     background-color: #26A65B;
 }
@@ -205,15 +214,15 @@ label:focus {
 
 
 #cpu {
-    background: rgb(137,180,250);
-    background: linear-gradient(270deg, rgba(137,180,250,1) 0%, rgba(180,190,254,1) 100%); 
+    background: rgb(137, 180, 250);
+    background: linear-gradient(270deg, rgba(137, 180, 250, 1) 0%, rgba(180, 190, 254, 1) 100%);
     color: #282a36;
 }
 
 
 #memory {
-    background: rgb(137,180,250);
-    background: linear-gradient(90deg, rgba(137,180,250,1) 0%, rgba(116,199,236,1) 100%);
+    background: rgb(137, 180, 250);
+    background: linear-gradient(90deg, rgba(137, 180, 250, 1) 0%, rgba(116, 199, 236, 1) 100%);
     color: #282a36;
 }
 
@@ -224,8 +233,8 @@ label:focus {
 
 
 #network {
-    background: rgb(166,227,161);
-    background: linear-gradient(270deg, rgba(166,227,161,1) 0%, rgba(137,220,235,1) 100%);
+    background: rgb(166, 227, 161);
+    background: linear-gradient(270deg, rgba(166, 227, 161, 1) 0%, rgba(137, 220, 235, 1) 100%);
     color: #282a36;
 }
 
@@ -237,8 +246,8 @@ label:focus {
 
 
 #pulseaudio {
-    background: rgb(249,226,175);
-    background: linear-gradient(281deg, rgba(249,226,175,1) 0%, rgba(171,227,162,1) 100%);
+    background: rgb(249, 226, 175);
+    background: linear-gradient(281deg, rgba(249, 226, 175, 1) 0%, rgba(171, 227, 162, 1) 100%);
     color: #282a36;
 }
 
@@ -248,8 +257,12 @@ label:focus {
     color: #11111b;
 }
 
-#pulseaudio-slider, #pulseaudio-slider *, #group-audio,
-#backlight-slider, #backlight-slider *, #group-backlight {
+#pulseaudio-slider,
+#pulseaudio-slider *,
+#group-audio,
+#backlight-slider,
+#backlight-slider *,
+#group-backlight {
     margin: 0;
     padding: 0;
 }
@@ -306,7 +319,7 @@ highlight {
 
 
 #tray {
-    background: rgb(203,166,247);
+    background: rgb(203, 166, 247);
 }
 
 
@@ -316,12 +329,12 @@ highlight {
 }
 
 
-#tray > .passive {
+#tray>.passive {
     -gtk-icon-effect: dim;
 }
 
 
-#tray > .needs-attention {
+#tray>.needs-attention {
     -gtk-icon-effect: highlight;
     background-color: #eb4d4b;
 }
@@ -378,27 +391,27 @@ highlight {
 }
 
 
-#keyboard-state > label {
+#keyboard-state>label {
     padding: 0 5px;
 }
 
 
-#keyboard-state > label.locked {
+#keyboard-state>label.locked {
     background: rgba(0, 0, 0, 0.2);
 }
 
 
 #custom-weather {
-    background: rgb(238,153,160);
-    background: linear-gradient(270deg, rgba(238,153,160,1) 0%, rgba(245,169,127,1) 100%);
+    background: rgb(238, 153, 160);
+    background: linear-gradient(270deg, rgba(238, 153, 160, 1) 0%, rgba(245, 169, 127, 1) 100%);
     color: #282a36;
     margin-right: 5;
 }
 
 
 #disk {
-    background: rgb(203,166,247);
-    background: linear-gradient(90deg, rgba(203,166,247,1) 0%, rgba(180,190,254,1) 100%); 
+    background: rgb(203, 166, 247);
+    background: linear-gradient(90deg, rgba(203, 166, 247, 1) 0%, rgba(180, 190, 254, 1) 100%);
     color: #282a36;
 }
 
@@ -409,5 +422,5 @@ highlight {
 }
 
 #custom-notification {
-    background: linear-gradient(90deg, rgba(203,166,247,1) 0%, rgba(180,190,254,1) 100%); 
+    background: linear-gradient(90deg, rgba(203, 166, 247, 1) 0%, rgba(180, 190, 254, 1) 100%);
 }
