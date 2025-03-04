@@ -20,6 +20,9 @@ vim.opt.clipboard = "unnamedplus"
 vim.opt.wrap = true
 vim.opt.linebreak = true
 
+-- scroll buffer above and below cursor
+vim.opt.scrolloff = 5
+
 -- Allow incrementing characters. ex. ia<Esc><C-a> a -> b
 vim.opt.nrformats = "alpha"
 
