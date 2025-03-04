@@ -1,5 +1,8 @@
 vim.keymap.set("n", "<leader>lg", ":lua Snacks.lazygit.open() <CR>")
 
+vim.keymap.set("n", "<C-n>", ":lua Snacks.words.jump(1, true)<CR>")
+vim.keymap.set("n", "<C-b>", ":lua Snacks.words.jump(-2, true)<CR>")
+
 return {
     "folke/snacks.nvim",
     priority = 1000,
@@ -8,6 +11,10 @@ return {
     opts = {
 
         lazygit = { enabled = true },
+        words = {
+            enabled = true,
+            debounce = 10, -- time in ms to wait before updating
+        },
         -- your configuration comes here
         -- or leave it empty to use the default settings
         -- refer to the configuration section below
