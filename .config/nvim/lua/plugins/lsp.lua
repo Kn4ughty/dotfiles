@@ -71,7 +71,8 @@ return {
             ensure_installed = {
                 -- "tsserver",
                 "lua_ls",
-                "ruff"
+                "ruff",
+                -- "typescript-language-server"
             },
             handlers = {
                 function(server_name)
