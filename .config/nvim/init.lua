@@ -14,7 +14,7 @@ vim.opt.foldtext = ""
 vim.opt.foldlevel = 99
 vim.opt.foldlevelstart = 99
 
-vim.opt.clipboard = "unnamedplus"
+-- vim.opt.clipboard = "unnamedplus"
 
 -- Text wrapping
 vim.opt.wrap = true
@@ -38,8 +38,23 @@ vim.opt.number = true
 -- left side padding to fix lsp resizing things
 vim.opt.signcolumn = "yes:1"
 
+-- Mapping to exit terminal with control + escape
+-- tnoremap <Esc> <C-\><C-n>
+-- This mess stolen from https://github.com/niyabits/nvy/blob/main/lua/utils.lua
+local M = {}
+
+function M.noremap(mode, lhs, rhs)
+    vim.api.nvim_set_keymap(mode, lhs, rhs, { noremap = true, silent = true })
+end
+
+function M.nnoremap(lhs, rhs) M.noremap('n', lhs, rhs) end
+
+function M.tnoremap(lhs, rhs) M.noremap('t', lhs, rhs) end
+
+M.tnoremap("<C-Esc>", "<C-\\><C-n>")
+
 -- TODO. Create a map to reload config
-vim.keymap.set("n", "<leader>r", ":so $MYVIMRC<CR>")
+vim.keymap.set("n", "<leader>r", ":so $MYVIMRC<CR>", { desc = "Reload vimrc" })
 
 vim.keymap.set("v", "<M-y>", "\"+y") -- copy to system clipboard
 vim.keymap.set("n", "<M-y>y", "\"+yy")
@@ -72,10 +87,10 @@ if vim.g.neovide then
     -- Do neovide things
     vim.o.guifont = "JetBrainsMono Nerd Font:h13"
     vim.g.neovide_scale_factor = 1.0
-    vim.g.neovide_transparency = 0.4
+    -- vim.g.neovide_transparency = 0.4
     vim.g.transparency = 0.5
 
-    vim.g.neovide_cursor_animation_length = 0.09
+    vim.g.neovide_cursor_animation_length = 0.05
     vim.g.neovide_cursor_trail_size = 0.5
     vim.g.neovide_cursor_animate_command_line = false
 
@@ -93,3 +108,5 @@ if vim.g.neovide then
     vim.g.neovide_floating_blur_amount_x = blur
     vim.g.neovide_floating_blur_amount_y = blur
 end
+
+require('overseer').setup()
