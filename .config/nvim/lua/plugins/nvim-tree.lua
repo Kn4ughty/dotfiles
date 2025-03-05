@@ -1,3 +1,5 @@
+vim.keymap.set("n", "<leader>e", "", { desc = "NeoTree" })
+
 vim.keymap.set("n", "<leader>ee", ":Neotree toggle<CR>")
 vim.keymap.set("n", "<leader>ef", "<cmd>Neotree focus<CR>")
 
