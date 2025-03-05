@@ -88,6 +88,10 @@ if vim.g.neovide then
     vim.o.guifont = "JetBrainsMono Nerd Font:h13"
     vim.g.neovide_scale_factor = 1.0
     -- vim.g.neovide_transparency = 0.4
+
+    vim.keymap.set("n", "<C-+>", ":lua vim.g.neovide_scale_factor = (vim.g.neovide_scale_factor + 0.1)<CR>")
+    vim.keymap.set("n", "<C-_>", ":lua vim.g.neovide_scale_factor = (vim.g.neovide_scale_factor - 0.1)<CR>")
+
     vim.g.transparency = 0.5
 
     vim.g.neovide_cursor_animation_length = 0.05
