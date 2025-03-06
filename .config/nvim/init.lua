@@ -99,10 +99,10 @@ if vim.g.neovide then
     vim.g.neovide_cursor_animate_command_line = false
 
     vim.g.neovide_cursor_vfx_mode = "ripple"
-    vim.g.neovide_cursor_vfx_particle_density = 200
+    vim.g.neovide_cursor_vfx_particle_density = 200.0
     vim.g.neovide_cursor_vfx_opacity = 200.0
 
-    local pad = 10
+    local pad = 0
     vim.g.neovide_padding_top = pad
     vim.g.neovide_padding_bottom = pad
     vim.g.neovide_padding_right = pad
