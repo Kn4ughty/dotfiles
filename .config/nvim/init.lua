@@ -76,6 +76,11 @@ vim.keymap.set("v", "<Right>", ">gv")
 vim.keymap.set("n", "<M-o>", "o<Esc>")
 vim.keymap.set("n", "<M-S-o>", "O<Esc>")
 
+-- Toggle spellcheck
+
+
+vim.keymap.set("n", "<leader>s", ":setlocal spell spelllang=en_au<CR>", { desc = "Turn on spellchecl" })
+
 
 vim.keymap.set('i', '<C-f>', 'copilot#Accept("\\<CR>")', {
     expr = true,
