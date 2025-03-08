@@ -1,3 +1,5 @@
+-- https://github.com/folke/snacks.nvim
+
 vim.keymap.set("n", "<leader>g", ":lua Snacks.lazygit.open() <CR>")
 
 vim.keymap.set("n", "<C-n>", ":lua Snacks.words.jump(1, true)<CR>")

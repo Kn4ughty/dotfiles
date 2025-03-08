@@ -60,6 +60,8 @@ vim.keymap.set("v", "<M-y>", "\"+y") -- copy to system clipboard
 vim.keymap.set("n", "<M-y>y", "\"+yy")
 vim.keymap.set("n", "<M-p>", "\"+p")
 
+vim.keymap.set("i", "<C-V>", "\"+p")
+
 -- Text movement with arrow keys
 vim.keymap.set("n", "<Left>", "<<")
 vim.keymap.set("n", "<Right>", ">>")
