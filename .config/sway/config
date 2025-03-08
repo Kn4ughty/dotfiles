@@ -37,6 +37,9 @@ output HEADLESS-1 {
 }
 # create_output a, resolution 1920x1080 position 0 1080 scale 1
 workspace 10 output HEADLESS-1
+workspace 1 output $out-prim
+workspace 2 output $out-sec
+workspace 3 output HDMI-A-1
 
 ### Wallpaper
 #output * bg $HOME/.pic/space1.jpg fill
@@ -88,14 +91,14 @@ blur_brightness 0.8
 blur_contrast 1
 blur_saturation 1.1
 
-shadows enable
+shadows disabled
 shadow_blur_radius 20
 shadow_color $acColff
 
 corner_radius 15
 
 # app spefcific swayfx
-layer_effects "waybar" blur enable; shadows enable
+# layer_effects "waybar" blur enable; shadows enable
 for_window [app_id="one.alynx.showmethekey" title="Floating Window - Show Me The Key"] {
   floating enable
   sticky enable
@@ -171,7 +174,7 @@ exec swaync
 exec /usr/lib/polkit-kde-authentication-agent-1
 
 # Toggle control center
-bindsym $mod+Shift+n exec swaync-client -t -sw
+bindsym $mod+Shift+Mod1+n exec swaync-client -t -sw
 
 # reload swaync
 bindsym $mod+Shift+Ctrl+n exec swaync-client -R
@@ -210,10 +213,13 @@ bindsym $mod+Mod1+space exec $calc
 bindsym $mod+Return exec $term
 
 # run neovide (nvim gui)
-bindsym $mod+n exec ~/.cargo/bin/neovide
+# bindsym $mod+n exec ~/.cargo/bin/neovide
 
 # browser (firefox)
 bindsym $mod+Shift+b exec MOZ_ENABLE_WAYLAND=1 firefox 
+
+# Neovide
+bindsym $mod+Shift+n exec neovide
 
 # file explorer
 bindsym $mod+Shift+e exec $file
