@@ -70,9 +70,7 @@ vim.keymap.set("n", "<Down>", "<cmd>m +1<CR>")
 
 vim.keymap.set("v", "<Left>", "<gv")
 vim.keymap.set("v", "<Right>", ">gv")
--- Could not get text shifting with visual mode working :(
--- vim.keymap.set("v", "<Up>",   "<cmd>m '<-2<CR>gv=gv")
--- vim.keymap.set("v", "<Down>", "<cmd>m '>+1<CR>gv=gv")
+
 
 -- Add newlines with o binds
 vim.keymap.set("n", "<M-o>", "o<Esc>")
@@ -90,11 +88,10 @@ vim.keymap.set('i', '<C-f>', 'copilot#Accept("\\<CR>")', {
 })
 vim.g.copilot_no_tab_map = true
 
+-- Do neovide things
 if vim.g.neovide then
-    -- Do neovide things
     vim.o.guifont = "JetBrainsMono Nerd Font:h13"
     vim.g.neovide_scale_factor = 1.0
-    -- vim.g.neovide_transparency = 0.4
 
     vim.keymap.set("n", "<C-+>", ":lua vim.g.neovide_scale_factor = (vim.g.neovide_scale_factor + 0.1)<CR>")
     vim.keymap.set("n", "<C-_>", ":lua vim.g.neovide_scale_factor = (vim.g.neovide_scale_factor - 0.1)<CR>")
