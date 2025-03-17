@@ -174,10 +174,10 @@ tooltip label {
     background: rgb(245, 169, 127);
 
     /* Battery gradient for use with weather widget */
-    /*background: linear-gradient(270deg, rgba(245,169,127,1) 0%, rgba(238,212,159,1) 100%);*/
+    background: linear-gradient(270deg, rgba(245, 169, 127, 1) 0%, rgba(238, 212, 159, 1) 100%);
 
     /*Color for use without weather widget*/
-    background: linear-gradient(270deg, rgba(237, 135, 150, 1) 0%, rgba(238, 212, 159, 1) 100%);
+    /*background: linear-gradient(270deg, rgba(237, 135, 150, 1) 0%, rgba(238, 212, 159, 1) 100%);*/
     color: #11111b;
 }
 
