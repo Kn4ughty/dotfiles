@@ -117,10 +117,10 @@
     },
     "custom/weather": {
         "exec": "~/.scripts/weather.sh",
-    //"return-type": "json",
-    "format": "{}",
-    "tooltip": true,
-    "interval": 36000
+        "format": "{}",
+        "tooltip": true,
+        "interval": 36000,
+        "on-click-release": "xdg-open 'https://beta.bom.gov.au'"
     },
     "backlight": {
         // "device": "acpi_video1",

@@ -3,13 +3,12 @@
 
 
 
-echo -n "⛅ "
 
 
 # BOM seems to be doing dates weird. It seems to be off by one day? 
 # This might need revisions
 
-curl -s 'https://api.beta.bom.gov.au/apikey/v1/forecasts/1hourly/658/223?timezone=Australia%2FSydney' \
+DATA=$(curl -s 'https://api.beta.bom.gov.au/apikey/v1/forecasts/1hourly/658/223?timezone=Australia%2FSydney' \
         -H 'accept: application/json' \
         -H 'accept-language: en-GB,en-US;q=0.9,en;q=0.8' \
         -H 'cache-control: no-cache' \
@@ -23,7 +22,17 @@ curl -s 'https://api.beta.bom.gov.au/apikey/v1/forecasts/1hourly/658/223?timezon
         -H 'sec-fetch-dest: empty' \
         -H 'sec-fetch-mode: cors' \
         -H 'sec-fetch-site: same-site' \
-        -H 'user-agent: Mozilla/5.0 (X11; Linux aarch64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/133.0.0.0 Safari/537.36' | jq '.fcst[1]."1hourly"[] | select(."time_utc"=="'$(date -u -d '+1 day' +"%Y-%m-%dT%H:00:00Z")'")."atm"."surf_air"."temp_apparent_cel"'
+        -H 'user-agent: Mozilla/5.0 (X11; Linux aarch64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/133.0.0.0 Safari/537.36')
+
+
+if [[ -n $(echo $DATA | jq '.errors') ]]
+then
+    echo "ERROR"
+else
+    echo -n "⛅ "
+    echo $DATA | jq '.fcst[1]."1hourly"[] | select(."time_utc"=="'$(date -u -d '+1 day' +"%Y-%m-%dT%H:00:00Z")'")."atm"."surf_air"."temp_apparent_cel"'
+fi
+
 
 
 # echo "⛅" $TEMP
