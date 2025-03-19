@@ -116,7 +116,8 @@
         "interval": 2
     },
     "custom/weather": {
-        "exec": "~/.scripts/weather.sh",
+        "exec": "~/.scripts/weather.py | jq --unbuffered --compact-output",
+        "return-type": "json",
         "format": "{}",
         "tooltip": true,
         "interval": 36000,
