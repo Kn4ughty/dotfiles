@@ -120,7 +120,7 @@
         "return-type": "json",
         "format": "{}",
         "tooltip": true,
-        "interval": 36000,
+        "interval": 1800, // 30 mins
         "on-click-release": "xdg-open 'https://beta.bom.gov.au'"
     },
     "backlight": {

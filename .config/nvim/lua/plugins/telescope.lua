@@ -3,6 +3,7 @@ local builtin = require('telescope.builtin')
 require('telescope').load_extension('projects')
 
 vim.keymap.set('n', '<leader>fp', ":lua require 'telescope'.extensions.projects.projects {}<CR>")
+vim.keymap.set('n', '<leader>fg', builtin.live_grep, { desc = 'Telescope live grep' })
 
 return {
     'nvim-telescope/telescope.nvim',

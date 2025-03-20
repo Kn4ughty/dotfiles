@@ -14,6 +14,8 @@ vim.keymap.set("n", "<leader>fr", ":lua Snacks.picker.recent()<CR>")
 -- vim.keymap.set('n', '<leader>fb', builtin.buffers, { desc = 'Telescope buffers' })
 -- vim.keymap.set('n', '<leader>fh', builtin.help_tags, { desc = 'Telescope help tags' })
 
+
+
 vim.keymap.set("n", "<leader><space>", ":lua Snacks.picker.smart()<CR>")
 vim.keymap.set("n", "<leader>fl", ":lua Snacks.picker.lines()<CR>")
 vim.keymap.set("n", "<leader>fb", ":lua Snacks.picker.buffers()<CR>")
