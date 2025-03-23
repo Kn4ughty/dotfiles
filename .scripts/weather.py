@@ -29,7 +29,7 @@ def main():
         "include_qc_results": "false",
     }
     response = requests.get(
-        "https://api.beta.bom.gov.au/apikey/v1/observations/latest/66214/atm/surf_air",
+        "https://api.beta.bom.gov.au/apikey/v1/observations/latest/66214/atm/surf_air",  # noqa
         params=params,
         headers=headers,
     )
@@ -50,17 +50,19 @@ def main():
     wind_speed_mps = float(obs["wind"]["speed_10m_mps"])
     wind_speed_kmh = wind_speed_mps * 3.6
 
-    precip = "unknown"
-
-    # {"text": "$text", "alt": "$alt", "tooltip": "$tooltip", "class": "$class", "percentage": $percentage }
+    precip = obs["precip"]
+    rain_past_hr = float(precip["1h_total_mm"])
 
     text = f"⛅ {temp_real:.1f}°"
-    tooltip = f"feels like: {temp_apparent: .1f}°, 💨: {int(wind_speed_kmh)}km/h"
+    tooltip = f"""feels like: {temp_apparent: .1f}°, 💨: {int(wind_speed_kmh)}km/h
+Rain past hour {rain_past_hr:.1f}mm"""
     return {"text": text, "alt": "blah", "tooltip": tooltip}
 
 
 if __name__ == "__main__":
     try:
         print(json.dumps(main()))
-    except KeyError:
-        print("INVALID DATA. key error")
+    except KeyError as error:
+        print(json.dumps({"text": "KEYERROR", "tooltip": error}))
+    except requests.ConnectionError as error:
+        print(json.dumps({"text": "CONERROR", "tooltip": error}))
