@@ -47,6 +47,8 @@ return {
         "L3MON4D3/LuaSnip",
         "saadparwaiz1/cmp_luasnip",
         "j-hui/fidget.nvim",
+        "mfussenegger/nvim-dap",
+        "mfussenegger/nvim-dap-python",
     },
     config = function()
         local cmp_lsp = require("cmp_nvim_lsp")
@@ -71,7 +73,6 @@ return {
             ensure_installed = {
                 -- "tsserver",
                 "lua_ls",
-                "ruff",
                 -- "typescript-language-server"
             },
             handlers = {
