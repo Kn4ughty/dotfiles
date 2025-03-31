@@ -24,6 +24,12 @@ if status is-interactive
     export QT_QPA_PLATFORMTHEME=qt5ct
     export QT_QPA_PLATFORM=wayland
     export XDG_CURRENT_DESKTOP=sway
+    
+    export GTK_IM_MODULE=fcitx
+    export QT_IM_MODULE=fcitx
+    export XMODIFIERS=@im=fcitx
+    export MOZC_IBUS_CANDIDATE_WINDOW=ibus
+
     # export PATH=$PATH:/home/d/.cargo/bin
     #
     fish_add_path /home/d/.cargo/bin
