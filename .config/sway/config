@@ -148,7 +148,8 @@ input "1739:30382:DLL0704:01_06CB:76AE_Touchpad" {
 # keyboard layout
 
 input * {
-    xkb_layout us,us
+    xkb_layout us,jp
+    xkb_options grp:rctrl_toggle
     accel_profile "flat"
     # NOTE TO FUTURE ME
     # Only enable this if you KNOW the layout fully. 
@@ -201,7 +202,7 @@ bindsym Mod1+backspace exec wtype -P delete -p delete
 # App launching
 
 ## Start your launcher
-bindsym $mod+space exec $menu -show drun
+bindsym $mod+space exec cd ~/code/Lumin && source .venv/bin/activate && make run
 
 # search windows
 #bindsym $mod+tab exec $menu -show window
