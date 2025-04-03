@@ -1,15 +1,15 @@
 -- Format on save
-vim.api.nvim_create_autocmd("BufWritePre", {
-    callback = function()
-        local mode = vim.api.nvim_get_mode().mode
-        local filetype = vim.bo.filetype
-        if vim.bo.modified == true and mode == 'n' and filetype ~= "oil" then
-            vim.cmd('lua vim.lsp.buf.format()')
-        else
-        end
-    end
-})
-
+-- vim.api.nvim_create_autocmd("BufWritePre", {
+--     callback = function()
+--         local mode = vim.api.nvim_get_mode().mode
+--         local filetype = vim.bo.filetype
+--         if vim.bo.modified == true and mode == 'n' and filetype ~= "oil" then
+--             vim.cmd('lua vim.lsp.buf.format()')
+--         else
+--         end
+--     end
+-- })
+--
 
 -- This is where you enable features that only work
 -- if there is a language server active in the file
