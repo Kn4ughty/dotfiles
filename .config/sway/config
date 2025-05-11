@@ -75,9 +75,10 @@ set $borderCol $acCol
 client.focused          $acCol  $acCol  $textC  $acCol   $borderCol
 
 # Gaps
-gaps inner 3
+# was inner 3
+gaps inner 0
 gaps outer 0
-smart_gaps false
+smart_gaps true
 
 workspace 10 gaps inner 15
 workspace 10 gaps outer 10
@@ -95,7 +96,8 @@ shadows disabled
 shadow_blur_radius 20
 shadow_color $acColff
 
-corner_radius 15
+# was 15
+corner_radius 0
 
 # app spefcific swayfx
 # layer_effects "waybar" blur enable; shadows enable
@@ -377,7 +379,8 @@ bindsym $mod+Shift+Print exec swaymsg -t get_tree | jq -r '.. | select(.focused?
 bindsym $mod+Control+Print exec grim - | wl-copy && dunstify "Whole workspace sheenshot taken"
 
 # System shortcuts
-set $displayVolume dunstify "Progress: " -h int:value:"`pactl get-sink-volume @DEFAULT_SINK@ | egrep -m 1 -o "[0-9]*%" | head -n 1`"
+# set $displayVolume dunstify "Progress: " -h int:value:"`pactl get-sink-volume @DEFAULT_SINK@ | egrep -m 1 -o "[0-9]*%" | head -n 1`"
+set $displayVolume echo 1
 
 bindsym XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +5% && $displayVolume
 bindsym XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -5% && $displayVolume
@@ -404,7 +407,7 @@ bindsym XF86KbdBrightnessDown exec $HOME/.scripts/1but-kb-light.py
 bindsym XF86KbdBrightnessUp exec wtype -P end
 
 # cat!
-bindsym XF86Search exec kate $HOME/.scripts/cat.txt
+# bindsym XF86Search exec kate $HOME/.scripts/cat.txt
 # cat videos!
 bindsym $mod+Control+Shift+a exec xdg-open 'https://www.youtube.com/watch?v=9J62hGda9BQ' && xdg-open 'https://www.youtube.com/watch?v=YRvOePz2OqQ'&& xdg-open 'https://www.youtube.com/watch?v=2GgiZZhO-PA' && xdg-open 'https://www.youtube.com/watch?v=0sTGxJ7rp9w' && xdg-open 'https://www.youtube.com/watch?v=WhpNmxKIt78' && xdg-open 'https://www.youtube.com/watch?v=zWLAbNHn5Ho'
 
