@@ -237,6 +237,9 @@ bindsym $mod+Shift+f exec /home/d/.local/share/Steam/steamapps/common/Factorio/b
 # Obsidian (notes)
 bindsym $mod+Shift+o exec flatpak run md.obsidian.Obsidian
 
+# Stopwatch
+bindsym $mod+Shift+t exec cd ~/code/stopwatch/ && ./.venv/bin/python main.py
+
 #kill window
 bindsym $mod+q kill
 
@@ -378,6 +381,10 @@ bindsym $mod+Shift+Print exec swaymsg -t get_tree | jq -r '.. | select(.focused?
 
 # Whole screen
 bindsym $mod+Control+Print exec grim - | wl-copy && dunstify "Whole workspace sheenshot taken"
+
+# Drawing program
+bindsym $mod+Control+D exec cd ~/code/screenshot_painter/ && make run
+
 
 # System shortcuts
 # set $displayVolume dunstify "Progress: " -h int:value:"`pactl get-sink-volume @DEFAULT_SINK@ | egrep -m 1 -o "[0-9]*%" | head -n 1`"
