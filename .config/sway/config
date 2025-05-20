@@ -67,13 +67,14 @@ set $bar waybar
 set $file thunar
 
 set $acCol #f5bde6
+set $secCol #89b4fa
 set $textC #181926
 
 set $borderCol $acCol
 
 # Colours
 # class                 border  backgr. text    indicator child_border
-client.focused          $acCol  $acCol  $textC  $acCol   $borderCol
+client.focused          $acCol  $acCol  $textC  $secCol   $borderCol
 
 # Gaps
 # was inner 3
@@ -327,9 +328,10 @@ bindsym $mod+delete exec $lockcmd
 
     # Toggle the current focus between tiling and floating mode
     bindsym $mod+backslash floating toggle
+    bindsym $mod+apostrophe sticky toggle
 
     # Swap focus between the tiling area and the floating area
-    # bindsym $mod+space focus mode_toggle
+    bindsym $mod+g focus mode_toggle
 
     # Move focus to the parent container
     bindsym $mod+a focus parent
@@ -383,7 +385,7 @@ bindsym $mod+Shift+Print exec swaymsg -t get_tree | jq -r '.. | select(.focused?
 bindsym $mod+Control+Print exec grim - | wl-copy && dunstify "Whole workspace sheenshot taken"
 
 # Drawing program
-bindsym $mod+Control+D exec cd ~/code/screenshot_painter/ && make run
+bindsym $mod+Shift+D exec cd ~/code/screenshot_painter/ && make run
 
 
 # System shortcuts
@@ -415,7 +417,7 @@ bindsym XF86KbdBrightnessDown exec $HOME/.scripts/1but-kb-light.py
 bindsym XF86KbdBrightnessUp exec wtype -P end
 
 # cat!
-# bindsym XF86Search exec kate $HOME/.scripts/cat.txt
+bindsym XF86Search exec kate $HOME/.scripts/cat.txt
 # cat videos!
 bindsym $mod+Control+Shift+a exec xdg-open 'https://www.youtube.com/watch?v=9J62hGda9BQ' && xdg-open 'https://www.youtube.com/watch?v=YRvOePz2OqQ'&& xdg-open 'https://www.youtube.com/watch?v=2GgiZZhO-PA' && xdg-open 'https://www.youtube.com/watch?v=0sTGxJ7rp9w' && xdg-open 'https://www.youtube.com/watch?v=WhpNmxKIt78' && xdg-open 'https://www.youtube.com/watch?v=zWLAbNHn5Ho'
 
