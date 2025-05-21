@@ -2,18 +2,50 @@
 $font: "JetBrainsMono Nerd Font Mono";
 
 /* Colours */
+$background_col: rgba(88, 91, 112, 0.35);
+// $border_col: rgba(49, 50, 68, 0.8);
+// $border_col: rgb(147, 153, 178, 0.5);
+$border_col: rgb(205, 214, 244, 0.5);
 $pink: #f5c2e7;
-
 $text: $pink;
+$text-shadow: rgba(24, 24, 37, 0.8);
+
 
 $shadow: #cba6f7;
 
-.time {
-	font-size: 9rem;
-	font-weight: bold;
-	font-family: $font;
-	background: rgba(100, 100, 100, 0);
-	color: $text;
-	padding: 10px;
-	// text-shadow: 5px 5px 7px $shadow;
+$corner_rad: 1rem;
+$border_width: 0.3rem;
+$padding: 1rem;
+
+.main_box {
+  background: rgba(100, 100, 100, 0.0);
+}
+
+.background {
+  font-size: 9rem;
+  font-weight: bold;
+  font-family: $font;
+  background: rgba(100, 100, 100, 0.0);
+  color: $text;
+  padding: 10px;
+  // text-shadow: 5px 5px 7px $shadow;
+}
+
+.widget {
+  background: $background_col;
+
+  border-radius: $corner_rad;
+  padding: $padding;
+
+  border-style: solid;
+  border-width: $border_width;
+  border-color: $border_col;
+
+  box-shadow: 0.4rem 0.4rem 0.2rem $text-shadow;
+}
+
+.heading {
+  font-size: 5rem;
+  color: $text;
+  text-shadow: $text-shadow 0.4rem 0.4rem 0.2rem;
 }
