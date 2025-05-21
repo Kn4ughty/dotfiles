@@ -27,10 +27,11 @@
     (box
         :class "widget"
         (graph
+            :class "cpu_graph"
             :value cpu_percent
             :time-range "30s"
             :max 100
-            :line-style "miter"
+            :line-style "round"
             :thickness 5.0
 
         )
