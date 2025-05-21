@@ -2,7 +2,7 @@
                               ; when this turns true, the polling starts and
                               ; var gets updated with given interval
 
-(defpoll time_str :interval "1s"
+(defpoll time_str :interval "0.5s"
               :initial "initial-value"  ; optional, defaults to poll at startup
               :run-while time-visible   ; optional, defaults to 'true'
   `date +%H:%M:%S`)
@@ -17,6 +17,25 @@
     )
 )
 
+(defpoll cpu_percent 
+    :interval "1s"
+    `awk '{u=$2+$4; t=$2+$4+$5; if (NR==1){u1=u; t1=t;} else print ($2+$4-u1) * 100 / (t-t1) ""; }' <(grep 'cpu ' /proc/stat) <(sleep 1;grep 'cpu ' /proc/stat)`
+)
+
+
+(defwidget cpu []
+    (box
+        :class "widget"
+        (graph
+            :value cpu_percent
+            :time-range "30s"
+            :max 100
+            :line-style "miter"
+            :thickness 5.0
+
+        )
+    )
+)
 
 (defwindow background
     :monitor 0
@@ -34,6 +53,7 @@
         :valign "start"
         :class "main_box"
         (time)
+        (cpu)
     )
 )
 

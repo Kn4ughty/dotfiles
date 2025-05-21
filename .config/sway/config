@@ -42,15 +42,14 @@ workspace 2 output $out-sec
 workspace 3 output HDMI-A-1
 
 ### Wallpaper
-#output * bg $HOME/.pic/space1.jpg fill
-#output * bg $HOME/.pic/ayuru_camp___rin___nadeshiko_by_muddymelly_dcmp6rk.jpg fill
+output * bg $HOME/.pic/space1.jpg fill
+# output * bg $HOME/.pic/ayuru_camp___rin___nadeshiko_by_muddymelly_dcmp6rk.jpg fill
 # output * bg $HOME/.pic/cloud_real.jpg fill
-output * bg $HOME/.pic/teapot.png fill
+# output * bg $HOME/.pic/teapot.png fill
 # output * bg #000000 solid_color
 
 output HEADLESS-1 bg $HOME/.pic/magicpattern_mocha_stars.png fill
 
-set $resize-step 30px
 
 
 # Apps
@@ -347,9 +346,17 @@ bindsym $mod+delete exec $lockcmd
     # Show the next scratchpad window or hide the focused scratchpad window.
     # If there are multiple scratchpad windows, this command cycles through them.
     bindsym $mod+minus scratchpad show
+
+    # THis is AWESOME.
+    # I can summon a window to appear by a shortcut
+    bindsym $mod+Mod1+t [title="^Todo"] scratchpad show
+    bindsym $mod+Mod1+c [title=" Calendar"] scratchpad show
+
 #
 # Resizing containers:
 #
+
+set $resize-step 50px
 mode "resize" {
     # left will shrink the containers width
     # right will grow the containers width

@@ -36,12 +36,14 @@ $padding: 1rem;
 
   border-radius: $corner_rad;
   padding: $padding;
+  margin: 0.5rem;
 
   border-style: solid;
   border-width: $border_width;
   border-color: $border_col;
 
   box-shadow: 0.4rem 0.4rem 0.2rem $text-shadow;
+
 }
 
 .heading {
