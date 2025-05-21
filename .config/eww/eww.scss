@@ -2,41 +2,52 @@
 $font: "JetBrainsMono Nerd Font Mono";
 
 /* Colours */
-$background_col: rgba(88, 91, 112, 0.35);
-// $border_col: rgba(49, 50, 68, 0.8);
-// $border_col: rgb(147, 153, 178, 0.5);
+
+$background: rgba(88, 91, 112, 0.35);
+$background_dark: rgba(49, 50, 68, 0.9);
 $border_col: rgb(205, 214, 244, 0.5);
+
 $pink: #f5c2e7;
-$text: $pink;
+$blue: rgb(137, 180, 250);
+$text: rgb(205, 214, 244);
+$accent: $pink;
+
 $text-shadow: rgba(24, 24, 37, 0.8);
 
+$blank: rgba(0,0,0,0);
 
 $shadow: #cba6f7;
 
-$corner_rad: 1rem;
+$border-radius: 1rem;
 $border_width: 0.3rem;
-$padding: 1rem;
+$padding: 0.7rem;
 
-.main_box {
-  background: rgba(100, 100, 100, 0.0);
+label {
+  text-shadow: $text-shadow 0.4rem 0.4rem 0.2rem;
+}
+
+
+.left_box {
+  margin: 1rem;
+  margin-top: 2rem;
+  background: $blank;
 }
 
 .background {
-  font-size: 9rem;
   font-weight: bold;
   font-family: $font;
-  background: rgba(100, 100, 100, 0.0);
+  background: $blank;
   color: $text;
   padding: 10px;
   // text-shadow: 5px 5px 7px $shadow;
 }
 
 .widget {
-  background: $background_col;
+  background: $background;
 
-  border-radius: $corner_rad;
+  border-radius: $border-radius;
   padding: $padding;
-  margin: 0.5rem;
+  margin: 0.4rem;
 
   border-style: solid;
   border-width: $border_width;
@@ -48,14 +59,34 @@ $padding: 1rem;
 
 .heading {
   font-size: 5rem;
-  color: $text;
+  color: $accent;
   text-shadow: $text-shadow 0.4rem 0.4rem 0.2rem;
 }
 
 graph {
-  padding: 1rem;
+  padding: 0rem;
+  color: $accent
+  // background: $background_dark;
 }
 
+.graph_box {
+  background: $background;
+  border-radius: $border-radius;
+}
+
+.graph_widget label {
+  margin: 0px;
+  padding: 0px;
+  padding-right: $padding;
+  background: $blank;
+  font-weight: bold;
+  // background: red;
+}
+
+// .cpu_graph_box {
+//   background: $background_dark;
+// }
+
 .cpu_graph {
-  padding: 0rem;
+  color: $blue;
 }

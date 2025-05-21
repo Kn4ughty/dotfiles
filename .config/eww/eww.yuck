@@ -1,73 +1,133 @@
-; (defvar time-visible false)   ; for :run-while property of below variable
-                              ; when this turns true, the polling starts and
-                              ; var gets updated with given interval
 
-(defpoll time_str :interval "0.5s"
+(defwidget info-box []
+    (box 
+        :class "widget"
+        :hexpand true
+        :width 400
+        :height 140
+        (children)
+    )
+)
+
+
+
+(defpoll time_str :interval "1s"
               :initial "initial-value"  ; optional, defaults to poll at startup
               :run-while time-visible   ; optional, defaults to 'true'
   `date +%H:%M:%S`)
 
 
+
 (defwidget time []
-    (box 
-        :class "widget"
+    (info-box
         (label 
             :class "heading"
             :text time_str)
     )
-)
 
-(defpoll cpu_percent 
-    :interval "1s"
-    `awk '{u=$2+$4; t=$2+$4+$5; if (NR==1){u1=u; t1=t;} else print ($2+$4-u1) * 100 / (t-t1) ""; }' <(grep 'cpu ' /proc/stat) <(sleep 1;grep 'cpu ' /proc/stat)`
 )
 
 
-(defwidget cpu []
+(defwidget graph_gen [label name value ?duration]
+    (info-box
     (box
-        :class "widget"
-        (graph
-            :class "cpu_graph"
-            :value cpu_percent
-            :time-range "30s"
-            :max 100
-            :line-style "round"
-            :thickness 5.0
+        :space-evenly false
+        :class 'graph_widget'
+            (label
+                :text "${label}"
+                :halign "start"
+                :justify "left"
+                :width 10
+                :angle 0
+            )
+    
+        (box
+            :class '${label}_graph_box graph_box'
+            :orientation 'horizontal'
+            :halign 'fill'
+            :hexpand true
 
+            (graph
+                :halign 'fill'
+                :hexpand true
+                :class "${name}_graph"
+                :value value
+                :time-range {duration == "" ? "20s" : duration}
+                :max 100
+                :line-style "round"
+                :thickness 5.0
+            )
+        )
+    )
+    )
+)
+
+
+(defpoll CPU_PERCENT 
+    :interval "1s"
+    :initial-value 0.1
+    `scripts/sys_info.sh --cpu`
+)
+
+(defpoll MEM_PERCENT 
+    :interval "1s"
+    :initial-value 0.1
+    `scripts/sys_info.sh --mem`
+)
+
+(defwidget sys_info []
+    (box 
+        :orientation "vertical"
+        (graph_gen 
+            :label "C
+P
+U"
+            :name "cpu"
+            :value CPU_PERCENT
+        )
+        (graph_gen
+            :label "M
+E
+M"
+            :name "mem"
+            :value MEM_PERCENT
+            :duration "60s"
         )
     )
 )
 
 (defwindow background
-    :monitor 0
+    :monitor '["<primary>", "Y25-30"]'
     :geometry (geometry :x "0%"
                         :y "0%"
-                        :width "130%"
-                        :height "120%"
+                        :width "100%"
+                        :height "100%"
                         :anchor "center")
     :stacking "bottom"
     :windowtype "dock"
     :wm-ignore false
     (box
         :orientation "horizontal"
+        (box
+        ;:height 10
         :halign "start"
         :valign "start"
-        :class "main_box"
-        (time)
-        (cpu)
+        :hexpand true
+        :vexpand true
+        :class "left_box"
+
+            (time)
+        )
+        (box
+        :halign "end"
+        :valign "start"
+        :hexpand true
+        :vexpand true
+        :class "left_box"
+
+            (sys_info)
+        )
     )
+
 )
 
-; (defwindow wttr
-;        :monitor 0
-;        :geometry (geometry :x "65%"
-;                            :y "0%"
-;                            :width "35%"
-;                            :height "20%"
-;                            :anchor "top left")
-;        :stacking "bottom"
-;        :reserve (struts :distance "40px" :side "top")
-;        :windowtype "dock"
-;        :wm-ignore false
-;        "hi"
-; )
