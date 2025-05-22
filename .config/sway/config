@@ -42,10 +42,11 @@ workspace 2 output $out-sec
 workspace 3 output HDMI-A-1
 
 ### Wallpaper
-output * bg $HOME/.pic/space1.jpg fill
+# output * bg $HOME/.pic/space1.jpg fill
 # output * bg $HOME/.pic/ayuru_camp___rin___nadeshiko_by_muddymelly_dcmp6rk.jpg fill
 # output * bg $HOME/.pic/cloud_real.jpg fill
-# output * bg $HOME/.pic/teapot.png fill
+output * bg $HOME/.pic/teapot.png fill
+# output * bg $HOME/.pic/teapot-alt.png fill
 # output * bg #000000 solid_color
 
 output HEADLESS-1 bg $HOME/.pic/magicpattern_mocha_stars.png fill

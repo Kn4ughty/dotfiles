@@ -14,7 +14,7 @@
 (defpoll time_str :interval "1s"
               :initial "initial-value"  ; optional, defaults to poll at startup
               :run-while time-visible   ; optional, defaults to 'true'
-  `date +%H:%M:%S`)
+  `date +%H:%M:%S | sed 's/0/O/g'`)
 
 
 
@@ -31,32 +31,53 @@
 (defwidget graph_gen [label name value ?duration]
     (info-box
     (box
+        :orientation "vertical"
         :space-evenly false
         :class 'graph_widget'
-            (label
-                :text "${label}"
-                :halign "start"
-                :justify "left"
-                :width 10
-                :angle 0
-            )
-    
-        (box
-            :class '${label}_graph_box graph_box'
-            :orientation 'horizontal'
-            :halign 'fill'
-            :hexpand true
-
-            (graph
+        ; Where the graph goes
+        (box 
+            :vexpand true
+            :space-evenly false
+                (label
+                    :text "${label}"
+                    :halign "start"
+                    :justify "left"
+                    :width 10
+                    :angle 0
+                )
+            (box
+                :class '${label}_graph_box graph_box'
+                :orientation 'horizontal'
                 :halign 'fill'
                 :hexpand true
-                :class "${name}_graph"
-                :value value
-                :time-range {duration == "" ? "20s" : duration}
-                :max 100
-                :line-style "round"
-                :thickness 5.0
+
+                (graph
+                    :halign 'fill'
+                    :hexpand true
+                    :class "${name}_graph"
+                    :value value
+                    :time-range {duration == "" ? "20s" : duration}
+                    :max 100
+                    :line-style "round"
+                    :thickness 5.0
+                )
             )
+        )
+        ; Graph labels
+        (box 
+            :class 'graph_label'
+            :orientation 'horizontal'
+            ;:height 10
+            :vexpand false
+            :valign 'center'
+            :space-evenly true
+            (label
+                :text {duration == "" ? "20s" : duration})
+            (label
+                :text "${value}%")
+            (label
+                :text "0s")
+
         )
     )
     )
@@ -96,12 +117,12 @@ M"
     )
 )
 
-(defwindow background
-    :monitor '["<primary>", "Y25-30"]'
+(defwindow background [big]
+    :monitor '["<primary>", "Y25-30", "0"]'
     :geometry (geometry :x "0%"
                         :y "0%"
-                        :width "100%"
-                        :height "100%"
+                        :width {big == "" ? "100%" : "130%"}
+                        :height {big == "" ? "100%" : "130%"}
                         :anchor "center")
     :stacking "bottom"
     :windowtype "dock"

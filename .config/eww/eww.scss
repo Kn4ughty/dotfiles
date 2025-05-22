@@ -39,14 +39,13 @@ label {
   background: $blank;
   color: $text;
   padding: 10px;
-  // text-shadow: 5px 5px 7px $shadow;
 }
 
 .widget {
   background: $background;
 
   border-radius: $border-radius;
-  padding: $padding;
+  padding: 0px;
   margin: 0.4rem;
 
   border-style: solid;
@@ -63,11 +62,16 @@ label {
   text-shadow: $text-shadow 0.4rem 0.4rem 0.2rem;
 }
 
+.graph_widget {
+  padding: $padding;
+  padding-bottom: 0px;
+}
+
 graph {
   padding: 0rem;
   color: $accent
-  // background: $background_dark;
 }
+
 
 .graph_box {
   background: $background;
@@ -80,13 +84,12 @@ graph {
   padding-right: $padding;
   background: $blank;
   font-weight: bold;
-  // background: red;
 }
-
-// .cpu_graph_box {
-//   background: $background_dark;
-// }
 
 .cpu_graph {
   color: $blue;
+}
+
+.graph_label label {
+
 }
