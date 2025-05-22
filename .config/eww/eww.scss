@@ -90,6 +90,16 @@ graph {
   color: $blue;
 }
 
-.graph_label label {
+// Music slider
+trough {
+	background: $blue;
+    border-color: $blank
+}
+trough slider {
+  background: $pink;
+  border-color: $blank
+}
 
+trough highlight {
+	background: $pink
 }

@@ -1,0 +1,10 @@
+(defwidget info-box []
+    (box 
+        :class "widget"
+        :hexpand false
+        :width 400
+        :height 140
+        (children)
+    )
+)
+

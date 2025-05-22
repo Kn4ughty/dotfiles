@@ -1,0 +1,58 @@
+(include "./templates.yuck")
+
+(deflisten SONG :inital "Unknown"
+    `scripts/music_info.sh --song`)
+
+(deflisten TOTAL_TIME_F :inital "0:00"
+    `scripts/music_info.sh --totaltime`)
+(deflisten TOTAL_TIME_S :inital 0.0
+    `scripts/music_info.sh --totaltime_s`)
+
+(deflisten ELAPSED_TIME_F :inital "0:00"
+    `scripts/music_info.sh --time`)
+(deflisten ELAPSED_TIME_S :inital 0.0
+    `playerctl --follow metadata --format '{{position}}'`)
+    ;`scripts/music_info.sh --time_s`)
+;(defpoll ARTIST :interval "1s" `scripts/music_info --artist`)
+;(defpoll COVER :interval "1s" `scripts/music_info --cover`)
+;(defpoll STATUS :interval "1s" `scripts/music_info --status`)
+
+(defwidget music_info []
+(info-box
+    
+    (box 
+        :orientation "vertical"
+        :halign "center"
+        :valign "center"
+        :vexpand true
+        :hexpand true
+        :space-evenly false
+
+        (label
+            :halign "center"
+            :valign "center"
+            :text SONG
+        )
+
+        (scale
+            :width 300
+            :min 0.0
+            :max TOTAL_TIME_S
+            :value ELAPSED_TIME_S
+            :onchange `playerctl position $(awk "BEGIN {print({} / 1000000 )}")`
+
+        )
+        (box 
+            :orientation "horizontal"
+            :valign "end"
+            (label
+                :text ELAPSED_TIME_F
+            )
+            (label
+                :text TOTAL_TIME_F
+            )
+        )
+    )
+
+)
+)
