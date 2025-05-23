@@ -1,21 +1,31 @@
 (include "./templates.yuck")
 
-(deflisten SONG :inital "Unknown"
-    `scripts/music_info.sh --song`)
+
+
 
 (deflisten TOTAL_TIME_F :inital "0:00"
-    `scripts/music_info.sh --totaltime`)
-(deflisten TOTAL_TIME_S :inital 0.0
-    `scripts/music_info.sh --totaltime_s`)
+    `playerctl --follow metadata --format '{{duration(position)}}'`)
+(deflisten TOTAL_TIME_S :inital 0.0 
+    `playerctl --follow metadata --format '{{mpris:length}}'`)
 
-(deflisten ELAPSED_TIME_F :inital "0:00"
-    `scripts/music_info.sh --time`)
-(deflisten ELAPSED_TIME_S :inital 0.0
-    `playerctl --follow metadata --format '{{position}}'`)
-    ;`scripts/music_info.sh --time_s`)
-;(defpoll ARTIST :interval "1s" `scripts/music_info --artist`)
-;(defpoll COVER :interval "1s" `scripts/music_info --cover`)
-;(defpoll STATUS :interval "1s" `scripts/music_info --status`)
+; This being defpoll seems to make the music reset when eww reloads
+(defpoll ELAPSED_TIME_F :inital "0:00" :interval "1s"
+    `playerctl metadata --format '{{duration(position)}}'`)
+; Using deflisten didnt seem to work. :(
+(defpoll ELAPSED_TIME_S :inital 0.0 :interval "1s"
+    `playerctl metadata --format '{{position}}'`)
+
+(deflisten SONG :inital "Unknown"
+    `playerctl --follow metadata --format '{{title}}'`)
+(deflisten ARTIST :inital "Unknown"
+    `playerctl --follow metadata --format '{{artist}}'`)
+(deflisten ALBUM :inital "Unknown"
+    `playerctl --follow metadata --format '{{album}}'`)
+
+(deflisten STATUS_IMAGE :inital "images/music/pause-button.png"
+    `scripts/music_info.sh --status`)
+(deflisten STATUS_GLYPH :inital ""
+    `scripts/music_info.sh --statusg`)
 
 (defwidget music_info []
 (info-box
@@ -31,7 +41,27 @@
         (label
             :halign "center"
             :valign "center"
-            :text SONG
+            :text "${SONG} : ${ALBUM} - ${ARTIST}"
+        )
+
+        (box 
+            :class "music_buttons"
+            :space-evenly true
+            :halign "center"
+            :valign "center"
+            :vexpand false
+            (button
+                :onclick `playerctl play-pause`
+;                (image
+;                    :path STATUS_IMAGE
+;                    :width 10
+;                    :height 10
+;                )
+                (label
+                    :text STATUS_GLYPH
+
+                )
+            )
         )
 
         (scale
@@ -40,7 +70,6 @@
             :max TOTAL_TIME_S
             :value ELAPSED_TIME_S
             :onchange `playerctl position $(awk "BEGIN {print({} / 1000000 )}")`
-
         )
         (box 
             :orientation "horizontal"

@@ -90,16 +90,29 @@ graph {
   color: $blue;
 }
 
+/* Music things */
+
 // Music slider
 trough {
-	background: $blue;
-    border-color: $blank
+  background: $blue;
+  border-color: $blank;
 }
 trough slider {
   background: $pink;
-  border-color: $blank
+  border-color: $blank;
 }
 
 trough highlight {
-	background: $pink
+  background: $pink;
+  outline-width: 0px;
+  border: 0.1rem;
+}
+
+.music_buttons button {
+  background: $blank;
+  border-width: 0px;
+}
+
+.music_buttons button label {
+  font-size: 2rem;
 }
