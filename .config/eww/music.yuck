@@ -35,12 +35,18 @@
         :halign "center"
         :valign "center"
         :vexpand true
-        :hexpand true
+        :hexpand false
         :space-evenly false
 
         (label
+            ; For some reason no matter what i do I CANNOT get it to wrap
+            :width 10
             :halign "center"
             :valign "center"
+            :hexpand false
+            :wrap true
+            :wrap-mode "char"
+            :limit-width 40
             :text "${SONG} : ${ALBUM} - ${ARTIST}"
         )
 

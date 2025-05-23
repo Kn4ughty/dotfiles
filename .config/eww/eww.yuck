@@ -137,7 +137,7 @@ M"
         :space-evenly false
         :halign "end"
         :valign "start"
-        :hexpand true
+        :hexpand false
         :vexpand true
         :class "left_box"
             ; i cant seem to make music go to bottom but this will do
