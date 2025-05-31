@@ -111,12 +111,12 @@ M"
     )
 )
 
-(defwindow background [big]
+(defwindow background
     :monitor '["<primary>", "Y25-30", "0"]'
     :geometry (geometry :x "0%"
                         :y "0%"
-                        :width {big == "" ? "100%" : "130%"}
-                        :height {big == "" ? "100%" : "130%"}
+                        :width "100%"
+                        :height "100%"
                         :anchor "center")
     :stacking "bottom"
     :windowtype "dock"
