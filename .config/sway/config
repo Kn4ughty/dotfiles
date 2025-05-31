@@ -107,6 +107,7 @@ for_window [app_id="one.alynx.showmethekey" title="Floating Window - Show Me The
   floating enable
   sticky enable
 }
+for_window [shell="xwayland"] title_format "[XWayland] %title"
 
 
 focus_on_window_activation smart
@@ -350,8 +351,8 @@ bindsym $mod+delete exec $lockcmd
 
     # THis is AWESOME.
     # I can summon a window to appear by a shortcut
-    bindsym $mod+Mod1+t [title="^Todo"] scratchpad show
-    bindsym $mod+Mod1+c [title=" Calendar"] scratchpad show
+    bindsym $mod+Mod1+t [title="^To[d|D]o"] scratchpad show
+    bindsym $mod+Mod1+c [title="Calendar"] scratchpad show
 
 #
 # Resizing containers:
@@ -425,7 +426,8 @@ bindsym XF86KbdBrightnessDown exec $HOME/.scripts/1but-kb-light.py
 bindsym XF86KbdBrightnessUp exec wtype -P end
 
 # cat!
-bindsym XF86Search exec kate $HOME/.scripts/cat.txt
+bindsym XF86Search exec alacritty -e less $HOME/.scripts/cat.txt
+
 # cat videos!
 bindsym $mod+Control+Shift+a exec xdg-open 'https://www.youtube.com/watch?v=9J62hGda9BQ' && xdg-open 'https://www.youtube.com/watch?v=YRvOePz2OqQ'&& xdg-open 'https://www.youtube.com/watch?v=2GgiZZhO-PA' && xdg-open 'https://www.youtube.com/watch?v=0sTGxJ7rp9w' && xdg-open 'https://www.youtube.com/watch?v=WhpNmxKIt78' && xdg-open 'https://www.youtube.com/watch?v=zWLAbNHn5Ho'
 
