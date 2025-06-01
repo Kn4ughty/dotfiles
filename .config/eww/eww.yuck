@@ -76,20 +76,6 @@
     )
 )
 
-
-; Replace this with https://elkowar.github.io/eww/magic-vars.html
-(defpoll CPU_PERCENT 
-    :interval "1s"
-    :initial-value 0.1
-    `scripts/sys_info.sh --cpu`
-)
-
-(defpoll MEM_PERCENT 
-    :interval "1s"
-    :initial-value 0.1
-    `scripts/sys_info.sh --mem`
-)
-
 (defwidget sys_info []
     (box 
         :orientation "vertical"
@@ -98,14 +84,14 @@
 P
 U"
             :name "cpu"
-            :value CPU_PERCENT
+            :value "${round(jq(EWW_CPU, '.avg'), 1)}"
         )
         (graph_gen
             :label "M
 E
 M"
             :name "mem"
-            :value MEM_PERCENT
+            :value "${round(jq(EWW_RAM, '.used_mem_perc'), 1)}"
             :duration "60s"
         )
     )
