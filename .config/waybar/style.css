@@ -18,15 +18,16 @@
 
 window#waybar {
     background: @theme_base_color;
-    background-color: rgba(36, 39, 58, 0);
-    border-bottom: 3px solid @accent;
+    background-color: rgba(36, 39, 58, 0.0);
+    /* border-bottom: 3px solid @accent; */
+    border-bottom: 0px solid @text;
     color: @theme_text_color;
     transition-property: background-color;
     transition-duration: .5s;
     border-radius: 0px;
 
     animation-name: fade-in;
-    animation-duration: 3s;
+    animation-duration: 1s;
     animation-timing-function: cubic-bezier(0.33, 1, 0.68, 1);
     animation-iteration-count: 1;
 }
