@@ -32,7 +32,7 @@ vim.opt.expandtab = true
 vim.opt.tabstop = 4
 vim.opt.shiftwidth = 4
 
-vim.opt.colorcolumn = "80"    -- column indicator
+vim.opt.colorcolumn = "120"    -- column indicator
 vim.opt.relativenumber = true -- Relative line numbers
 vim.opt.number = true
 -- left side padding to fix lsp resizing things
