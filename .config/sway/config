@@ -111,6 +111,7 @@ for_window [shell="xwayland"] title_format "[XWayland] %title"
 
 
 focus_on_window_activation smart
+focus_wrapping no
 
 for_window [all] title_window_icon yes
 
@@ -139,10 +140,7 @@ exec swayidle -w \
          timeout $offtime 'swaymsg "output * power off"' resume 'swaymsg "output * power on"' \
          before-sleep $lockcmd
 
-# input area here so i thought it made sense
-# Disable middle mouse paste
-#primary_selection disabled
-# For some reason its not a command although it is in the manual :(((
+primary_selection disabled
 
 # Dell
 input "1739:30382:DLL0704:01_06CB:76AE_Touchpad" {
@@ -178,6 +176,9 @@ exec swaync
 
 # KDE auth thing passwd
 exec /usr/lib/polkit-kde-authentication-agent-1
+
+# Exec binary space partitioning script
+exec ~/.config/sway/bsp.sh
 
 # Toggle control center
 bindsym $mod+Shift+Mod1+n exec swaync-client -t -sw
@@ -260,6 +261,10 @@ bindsym $mod+delete exec $lockcmd
 
 # Mouse follows focus
 # mouse_warping container
+
+
+focus_follows_mouse yes
+
 
 # Move your focus around
     bindsym $mod+$left focus left
