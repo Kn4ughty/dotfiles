@@ -1,20 +1,3 @@
-# #!/bin/bash
-#
-# # Define source and sink
-# SOURCE="alsa_input.pci-0000_0b_00.4.analog-stereo"
-# SINK="alsa_output.pci-0000_0b_00.4.analog-stereo"
-#
-# # Grep for existing loopback module using our source+sink
-# MODULE_ID=$(pactl list short modules | grep "module-loopback" | grep "$SOURCE" | grep "$SINK" | awk '{print $1}')
-#
-# if [ -n "$MODULE_ID" ]; then
-#     echo "Disabling loopback (module $MODULE_ID)..."
-#     pactl unload-module "$MODULE_ID"
-# else
-#     echo "Enabling loopback..."
-#     pactl load-module module-loopback source="$SOURCE" sink="$SINK" latency_msec=5
-# fi
-
 #!/bin/bash
 
 SOURCE="alsa_input.pci-0000_0b_00.4.analog-stereo"
