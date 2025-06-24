@@ -3,8 +3,8 @@
 set $locktime 3600
 set $offtime 5000
 
-#set $lockcmd 'swaylock -f -e -k -l -c 181926 -i $HOME/.pic/space1.png'
-set $lockcmd 'hyprlock'
+set $lockcmd 'swaylock -f -e -k -l -c 181926 -i $HOME/.pic/space1.png'
+# set $lockcmd 'hyprlock'
 set $calc 'alacritty --config-file $HOME/.config/alacritty/alacritty_calc.toml -T Term-Calculator -e qalc'
 ### Variables
 #
@@ -208,7 +208,7 @@ bindsym Mod1+backspace exec wtype -P delete -p delete
 # App launching
 
 ## Start your launcher
-bindsym $mod+space exec cd ~/code/Lumin && source .venv/bin/activate && make run
+bindsym $mod+space exec wl-copy $(cd ~/code/Lumin && make run)
 
 # search windows
 #bindsym $mod+tab exec $menu -show window
