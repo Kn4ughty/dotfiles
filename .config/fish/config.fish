@@ -29,16 +29,15 @@ if status is-interactive
     export QT_IM_MODULE=fcitx
     export XMODIFIERS=@im=fcitx
     export MOZC_IBUS_CANDIDATE_WINDOW=ibus
-    export _JAVA_AWT_WM_NONREPARENTING=1
 
     # export PATH=$PATH:/home/d/.cargo/bin
     #
-    fish_add_path /home/d/.cargo/bin
+    # fish_add_path /home/d/.cargo/bin
     fish_add_path /home/d/bin/
     fish_add_path /home/d/.local/share/gem/ruby/3.2.0/bin
 
     set --universal pure_show_subsecond_command_duration true
     set --universal pure_threshold_command_duration 1
     set --universal pure_reverse_prompt_symbol_in_vimode true
-    pyenv init - | source
+    # pyenv init - | source
 end
