@@ -1,26 +1,6 @@
 #!/bin/bash
 
 
-
-# DATA=$(curl -s 'https://api.beta.bom.gov.au/apikey/v1/forecasts/1hourly/658/223?timezone=Australia%2FSydney' \
-#         -H 'accept: application/json' \
-#         -H 'accept-language: en-GB,en-US;q=0.9,en;q=0.8' \
-#         -H 'cache-control: no-cache' \
-#         -H 'origin: https://beta.bom.gov.au' \
-#         -H 'pragma: no-cache' \
-#         -H 'priority: u=1, i' \
-#         -H 'referer: https://beta.bom.gov.au/' \
-#         -H 'sec-ch-ua: "Chromium";v="133", "Not(A:Brand";v="99"' \
-#         -H 'sec-ch-ua-mobile: ?0' \
-#         -H 'sec-ch-ua-platform: "Linux"' \
-#         -H 'sec-fetch-dest: empty' \
-#         -H 'sec-fetch-mode: cors' \
-#         -H 'sec-fetch-site: same-site' \
-#         -H 'user-agent: Mozilla/5.0 (X11; Linux aarch64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/133.0.0.0 Safari/537.36')
-#
-# echo $DATA
-
-
 DATA= curl -s 'https://api.beta.bom.gov.au/apikey/v1/observations/latest/66214/atm/surf_air?include_qc_results=false' \
         -H 'accept: application/json, */*;q=0.8' \
         -H 'accept-language: en-GB,en-US;q=0.9,en;q=0.8' \
