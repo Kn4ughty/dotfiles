@@ -26,7 +26,6 @@ label {
   text-shadow: $text-shadow 0.4rem 0.4rem 0.2rem;
 }
 
-
 .left_box {
   margin: 1rem;
   margin-top: 2rem;
@@ -106,6 +105,10 @@ trough highlight {
   background: $pink;
   outline-width: 0px;
   border: 0.1rem;
+}
+
+.music {
+  // background-color: rgba(0,0,0,0);
 }
 
 .music_buttons button {

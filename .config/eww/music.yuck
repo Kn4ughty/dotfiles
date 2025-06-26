@@ -9,8 +9,12 @@
     `playerctl --follow metadata --format '{{mpris:length}}'`)
 
 ; This being defpoll seems to make the music reset when eww reloads
-(defpoll ELAPSED_TIME_F :inital "0:00" :interval "1s"
-    `playerctl metadata --format '{{default(duration(position), "0:00")}}'`)
+;(defpoll ELAPSED_TIME_F :inital "0:00" :interval "1s"
+    ;`playerctl metadata --format '{{default(duration(position), "0:00")}}'`)
+(deflisten ELAPSED_TIME_F :inital "0:00" :interval "1s"
+    `playerctl metadata --format '{{duration(position)}}'`)
+
+
 ; Using deflisten didnt seem to work. :(
 (defpoll ELAPSED_TIME_S :inital 0.0 :interval "1s"
     `playerctl metadata --format '{{position}}'`)
@@ -28,7 +32,8 @@
     `scripts/music_info.sh --statusg`)
 
 (defwidget music_info []
-(info-box
+(info-box 
+    :classname 'music'
     
     (box 
         :orientation "vertical"
@@ -76,10 +81,10 @@
             :orientation "horizontal"
             :valign "end"
             (label
-                :text ELAPSED_TIME_F
+                :text TOTAL_TIME_F
             )
             (label
-                :text TOTAL_TIME_F
+                :text ELAPSED_TIME_F
             )
         )
     )

@@ -10,14 +10,22 @@
   `date +%H:%M:%S | sed 's/0/O/g'`)
 
 
+;(defpoll enabled :interval "1s"
+;    :initial false
+;    `date +"%s" | awk '{a = $1 % 2}{ if (a == 1) {print "true"} else {print "false"}}'`)
+
+(defvar time_expand false)
 
 (defwidget time []
-    (info-box
-        (label 
-            :class "heading"
-            :text time_str)
+    (eventbox
+    :onhover `eww update time_expand=true`
+    :onhoverlost `eww update time_expand=false`
+        (info-box
+            (label 
+                :class "heading"
+                :text time_str)
+        )
     )
-
 )
 
 
@@ -110,13 +118,17 @@ M"
     (box
         :orientation "horizontal"
         (box
-        ;:height 10
+        :orientation "vertical"
         :halign "start"
         :valign "start"
         :hexpand true
         :vexpand true
         :class "left_box"
             (time)
+            ;(info-box)
+            (box :valign "end"
+                (music_info)
+            )
         )
         (box
         :orientation "vertical"
@@ -130,11 +142,7 @@ M"
             (box :valign "start"
                 (sys_info)
             )
-            (box :valign "end"
-                (music_info)
-            )
         )
     )
-
 )
 
