@@ -1,9 +1,11 @@
 /* Text */
 $font: "JetBrainsMono Nerd Font Mono";
+// $font: "Comfortaa";
 
 /* Colours */
 
 $background: rgba(88, 91, 112, 0.35);
+// $background: #FF0000;
 $background_dark: rgba(49, 50, 68, 0.9);
 $border_col: rgb(205, 214, 244, 0.5);
 
@@ -24,6 +26,17 @@ $padding: 0.7rem;
 
 label {
   text-shadow: $text-shadow 0.4rem 0.4rem 0.2rem;
+}
+
+button {
+  margin: 0px;
+  padding: 0px;
+  background: $blank;
+}
+
+graph {
+  padding: 0rem;
+  color: $accent
 }
 
 .left_box {
@@ -66,11 +79,6 @@ label {
   padding-bottom: 0px;
 }
 
-graph {
-  padding: 0rem;
-  color: $accent
-}
-
 
 .graph_box {
   background: $background;
@@ -88,6 +96,7 @@ graph {
 .cpu_graph {
   color: $blue;
 }
+
 
 /* Music things */
 
@@ -118,4 +127,70 @@ trough highlight {
 
 .music_buttons button label {
   font-size: 2rem;
+}
+
+// Bar stuff
+
+$bar_bg: rgba(21, 21, 32, 0.75);
+
+.bar_class {
+  background: $bar_bg;
+
+  margin: 0.5rem;
+  padding: 0.25rem;
+
+  padding-left: 1rem;
+  padding-right: 1rem;
+
+  border-width: 0.1rem;
+  border-color: $border_col;
+  border-style: outset;
+  border-radius: 3rem;
+
+  font-weight: bold;
+}
+
+.home_icon {
+  color: $accent;
+  font-size: 1.5rem;
+  padding: 0px;
+  margin: 0px;
+}
+
+.seperator {
+  color: $border_col;
+  margin-left: 1rem;
+  margin-right: 1rem;
+}
+
+.workspaces {
+  border-color: $blank
+}
+
+.workspace {
+  background: $blank;
+  // padding: 0.3rem;
+  min-width:1rem;
+  min-height:1px;
+  margin: 0.1rem;
+
+  padding-left: 5pt;
+  padding-right: 5pt;
+
+  border-color: $blank;
+  border-radius: 100%;
+}
+
+.workspace:hover {
+  background: $background_dark;
+}
+
+.workspace.focused {
+  // background: $accent;
+  color: $blue;
+  border-color: $background_dark;
+}
+
+.workspace label {
+  outline-width: 0px;
 }

@@ -1,0 +1,74 @@
+(defwindow bar
+    :monitor '["<primary>", "Y25-30", "0"]'
+    :geometry (geometry :x "0%"
+                           :y "0%"
+                           :width "100%"
+                           :height "3%"
+                           :anchor "top center")
+    :stacking "fg"
+    :reserve (struts :distance "40px" :side "top")
+    :exclusive true
+    :windowtype "dock"
+    :wm-ignore false
+    (bar :monitor 'eDP-1')
+)
+
+(defwidget bar [monitor]
+    (box
+        :class 'bar_class'
+        :vexpand false
+        :orientation "h"
+        (box
+            :space-evenly false
+            :halign "start"
+            (home_icon)
+            (sep)
+            (workspaces :monitor monitor)
+            (sep)
+        )
+        (box
+            :halign "center"
+            "center content"
+        )
+        (box
+            :halign "end"
+            "right content"
+        )
+
+    )
+)
+
+(defwidget home_icon []
+    (box
+        :class 'bar_widget'
+        (button
+            :class 'home_icon'
+            :onclick ``
+            ''
+        )
+    )
+)
+
+(defwidget sep []
+    (box
+        :valign "center"
+        :class 'seperator'
+        "//"
+    )
+)
+
+(deflisten WORKSPACES :initial '{"DP-2": [], "HDMI-A-1": [], "eDP-1": []}'
+    `scripts/workspace.py`)
+
+(defwidget workspaces [monitor]
+    (box
+        :class "bar_widget workspaces"
+        :space-evenly false
+        (for wsp in {WORKSPACES[monitor]}
+          (button :class "workspace ${wsp.class} ${wsp.focused == 'true' ? 'focused' : ''}"
+                  :onclick "swaymsg workspace ${wsp.name}"
+                :width 0
+                ;:hexpand true
+              ;(label :class "icon" :text "${wsp.icon}")
+              (label :class "name " :text "${wsp.name}")
+            ))))

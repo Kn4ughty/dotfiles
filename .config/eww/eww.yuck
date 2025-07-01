@@ -1,5 +1,6 @@
 (include "./music.yuck")
 (include "./templates.yuck")
+(include "./bar.yuck")
 
 
 
@@ -22,7 +23,7 @@
     :onhoverlost `eww update time_expand=false`
         (info-box
             (label 
-                :class "heading"
+                :class "heading time"
                 :text time_str)
         )
     )
