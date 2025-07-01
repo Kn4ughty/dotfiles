@@ -1,3 +1,4 @@
+(include "./templates.yuck")
 
 (defwindow barlaptop
     :monitor '["<primary>", "eDP-1", "0"]'
@@ -91,16 +92,18 @@
             :halign "end"
             :space-evenly false
             (bsep)
-            (tooltip
-                (label :class "date tooltip"
-                        :text "${WEATHER.tooltip}")
-                (label :class "date"
+            (revealer-on-hover :var SHOW_WEATHER :varname "SHOW_WEATHER"
+                (label :class "weather"
                         :text "${WEATHER.text}  ")
+                (label :class "weather tooltip"
+                        :text "${WEATHER.tooltip}")
             )
-            (label :class "date" 
-                :text DATE)
-            (label :class "date" 
-                :text TIME)
+            (bsep)
+            (revealer-on-hover :var SHOW_DATE :varname "SHOW_DATE"
+                :transition "slideright"
+                (label :class "date" :text TIME)
+                (label :class "date" :text DATE)
+            )
         )
 
     )
@@ -108,10 +111,13 @@
 
 (defpoll TIME :initial "time" :interval "1s"
     `date "+ %H:%M:%S"`)
+(defvar SHOW_DATE false)
 (defpoll DATE :initial "TIME" :interval "1h"
     `date "+ %a %b %m-%d  "`
 )
 
+
+(defvar SHOW_WEATHER false)
 (defpoll WEATHER 
     :initial '{"text": "\u26c5 11.0\u00b0", "alt": "blah", "tooltip": "feels like:  5.1\u00b0, \ud83d\udca8: 29km/h\nRain past hour 5.4mm"}'
     :interval "1h"
@@ -153,32 +159,26 @@
 (defvar reveal false)
 
 (defwidget workspaces [monitor]
-    (box
-        :class "bar_widget workspaces"
-        :space-evenly false
-        (for wsp in {WORKSPACES[monitor]}
-            (tooltip
-            ;(box
-                (box
-                    :class 'workspace_rep'
-                    :width 320
-                    :height 180
-                    :space-evenly true
-                    (literal
-                        :content {wsp.rep}
-                        :vexpand true
-                        :hexpand true
-                    )
-                )
-                (button 
-                    :class "workspace ${wsp.class} ${wsp.focused == 'true' ? 'focused' : ''}"
-                    :onclick "swaymsg workspace ${wsp.name}"
-                    :width 0
-                  (label :class "name " :text "${wsp.name}")
-                )
-                
-            )
+    (box :class "bar_widget workspaces" :space-evenly false
+    (for wsp in {WORKSPACES[monitor]} (tooltip
+        (box
+            :class 'workspace_rep'
+            :width 320
+            :height 180
+            :space-evenly true
+            (literal
+                :content {wsp.rep}
+                :vexpand true
+                :hexpand true
+            ))
+        (button 
+            :class "workspace ${wsp.class} ${wsp.focused == 'true' ? 'focused' : ''}"
+            :onclick "swaymsg workspace ${wsp.name}"
+            :width 0
+          (label :class "name " :text "${wsp.name}")
         )
+    )
+    )
     )
 )
 

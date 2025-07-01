@@ -71,7 +71,6 @@ trough slider {
   background: $pink;
   border-color: $blank;
 }
-
 trough highlight {
   background: $pink;
   outline-width: 0px;
@@ -193,9 +192,11 @@ trough highlight {
   margin-right: 1rem;
 }
 
+
 .workspaces {
   border-color: $blank
 }
+
 
 .workspace {
   background: $blank;
@@ -221,6 +222,7 @@ trough highlight {
   background: $background;
   color: $accent;
   border-color: $border_col;
+
 }
 .workspace.focused label {
   // text-shadow: 1px 1px 4px $accent ;
@@ -229,6 +231,7 @@ trough highlight {
 .workspace label {
   outline-width: 0px;
 }
+
 
 .workspace_rep {
   opacity: 1;
@@ -260,4 +263,8 @@ trough highlight {
 }
 .date.tooltip {
   color: $text;
+}
+
+.weather {
+  color: $blue;
 }
