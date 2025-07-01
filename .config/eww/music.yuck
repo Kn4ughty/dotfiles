@@ -3,9 +3,9 @@
 
 
 
-(deflisten TOTAL_TIME_F :inital "0:00"
+(deflisten TOTAL_TIME_F :initial "0:00"
     `playerctl --follow metadata --format '{{duration(position)}}'`)
-(deflisten TOTAL_TIME_S :inital 0.0 
+(deflisten TOTAL_TIME_S :initial 0.0 
     `playerctl --follow metadata --format '{{mpris:length}}'`)
 
 ; This being defpoll seems to make the music reset when eww reloads
@@ -16,19 +16,19 @@
 
 
 ; Using deflisten didnt seem to work. :(
-(defpoll ELAPSED_TIME_S :inital 0.0 :interval "1s"
+(defpoll ELAPSED_TIME_S :initial 0.0 :interval "1s"
     `playerctl metadata --format '{{position}}'`)
 
-(deflisten SONG :inital "Unknown"
+(deflisten SONG :initial "Unknown"
     `playerctl --follow metadata --format '{{default(title, "Unknown")}}'`)
-(deflisten ARTIST :inital "Unknown"
+(deflisten ARTIST :initial "Unknown"
     `playerctl --follow metadata --format '{{artist}}'`)
-(deflisten ALBUM :inital "Unknown"
+(deflisten ALBUM :initial "Unknown"
     `playerctl --follow metadata --format '{{album}}'`)
 
-(deflisten STATUS_IMAGE :inital "images/music/pause-button.png"
+(deflisten STATUS_IMAGE :initial "images/music/pause-button.png"
     `scripts/music_info.sh --status`)
-(deflisten STATUS_GLYPH :inital ""
+(deflisten STATUS_GLYPH :initial ""
     `scripts/music_info.sh --statusg`)
 
 (defwidget music_info []
