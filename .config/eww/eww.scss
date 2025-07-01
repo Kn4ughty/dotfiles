@@ -8,6 +8,9 @@ $background: rgba(88, 91, 112, 0.35);
 $background_dark: rgba(49, 50, 68, 0.9);
 $border_col: rgb(205, 214, 244, 0.5);
 
+$bar_bg: rgba(21, 21, 32, 0.75);
+$bar_bg_solid: rgba(21, 21, 32, 1);
+
 $pink: #f5c2e7;
 $mauve: #cba6f7;
 $red : #f38ba8;
@@ -52,8 +55,8 @@ graph {
   color: $accent
 }
 
-tooltip {
-  background: purple;
+tooltip, .tooltip {
+  background: $bar_bg;
   padding: 0px;
   margin: 0px;
   opacity: 1;
@@ -154,8 +157,6 @@ trough highlight {
 
 // Bar stuff
 
-$bar_bg: rgba(21, 21, 32, 0.75);
-$bar_bg_solid: rgba(21, 21, 32, 1);
 
 .bar_class {
   background: $bar_bg;
@@ -256,4 +257,7 @@ $bar_bg_solid: rgba(21, 21, 32, 1);
 
 .date {
   color: $green;
+}
+.date.tooltip {
+  color: $text;
 }

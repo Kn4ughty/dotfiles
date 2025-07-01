@@ -61,8 +61,8 @@ Rain past hour {rain_past_hr:.1f}mm"""
 
 if __name__ == "__main__":
     try:
-        print(json.dumps(main()))
+        print(json.dumps(main(), ensure_ascii=False))
     except KeyError as error:
-        print(json.dumps({"text": "KEYERROR", "tooltip": error}))
+        print(json.dumps({"text": "KEYERROR", "tooltip": error}, ensure_ascii=False))
     except requests.ConnectionError as error:
         print(json.dumps({"text": "CONERROR", "tooltip": error}))

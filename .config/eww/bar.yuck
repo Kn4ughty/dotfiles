@@ -73,15 +73,34 @@
         )
         (box
             :halign "end"
+            :space-evenly false
+            (bsep)
+            (tooltip
+                (label :class "date tooltip"
+                        :text "${WEATHER.tooltip}")
+                (label :class "date"
+                        :text "${WEATHER.text}  ")
+            )
             (label :class "date" 
                 :text DATE)
+            (label :class "date" 
+                :text TIME)
         )
 
     )
 )
 
-(defpoll DATE :initial "time" :interval "1s"
-`date "+ %b %m-%d, %a  %H:%M:%S"`)
+(defpoll TIME :initial "time" :interval "1s"
+    `date "+ %H:%M:%S"`)
+(defpoll DATE :initial "TIME" :interval "1h"
+    `date "+ %a %b %m-%d  "`
+)
+
+(defpoll WEATHER 
+    :initial '{"text": "\u26c5 11.0\u00b0", "alt": "blah", "tooltip": "feels like:  5.1\u00b0, \ud83d\udca8: 29km/h\nRain past hour 5.4mm"}'
+    :interval "1h"
+    `~/.scripts/weather.py`
+)
 
 (defwidget home_icon []
     (box
@@ -96,9 +115,19 @@
 
 (defwidget fsep []
     (box
+        :hexpand false
         :valign "center"
         :class 'seperator'
         "//"
+    )
+)
+
+(defwidget bsep []
+    (box
+        :hexpand false
+        :valign "center"
+        :class 'seperator'
+        "\\\\\\\\" ; why so many!
     )
 )
 
