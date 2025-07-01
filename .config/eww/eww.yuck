@@ -107,7 +107,7 @@ M"
 )
 
 (defwindow background
-    :monitor '["<primary>", "Y25-30", "0"]'
+    :monitor '["<primary>", "DP-2", "Y25-30", "0"]'
     :geometry (geometry :x "0%"
                         :y "0%"
                         :width "100%"

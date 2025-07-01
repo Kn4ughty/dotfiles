@@ -1,17 +1,30 @@
 /* Text */
-$font: "JetBrainsMono Nerd Font Mono";
+$font: "JetBrainsMono Nerd Font";
 // $font: "Comfortaa";
 
 /* Colours */
 
 $background: rgba(88, 91, 112, 0.35);
-// $background: #FF0000;
 $background_dark: rgba(49, 50, 68, 0.9);
 $border_col: rgb(205, 214, 244, 0.5);
 
 $pink: #f5c2e7;
+$mauve: #cba6f7;
+$red : #f38ba8;
+$maroon: #eba0ac;
+$peach: #fab387;
+$yellow: #f9e2af;
+$green: #a6e3a1;
+$teal: #94e2d5;
+$sky: #89dceb;
 $blue: rgb(137, 180, 250);
+$lavender: #b4befe;
+
+$surface1: #45475a;
+
 $text: rgb(205, 214, 244);
+$subtext0: #a6adc8;
+$subtext :$subtext0;
 $accent: $pink;
 
 $text-shadow: rgba(24, 24, 37, 0.8);
@@ -37,6 +50,29 @@ button {
 graph {
   padding: 0rem;
   color: $accent
+}
+
+tooltip {
+  background: purple;
+  padding: 0px;
+  margin: 0px;
+  opacity: 1;
+}
+
+// Music slider
+trough {
+  background: $blue;
+  border-color: $blank;
+}
+trough slider {
+  background: $pink;
+  border-color: $blank;
+}
+
+trough highlight {
+  background: $pink;
+  outline-width: 0px;
+  border: 0.1rem;
 }
 
 .left_box {
@@ -100,23 +136,10 @@ graph {
 
 /* Music things */
 
-// Music slider
-trough {
-  background: $blue;
-  border-color: $blank;
-}
-trough slider {
-  background: $pink;
-  border-color: $blank;
-}
 
-trough highlight {
-  background: $pink;
-  outline-width: 0px;
-  border: 0.1rem;
-}
 
 .music {
+  padding-top: 2rem;
   // background-color: rgba(0,0,0,0);
 }
 
@@ -132,11 +155,17 @@ trough highlight {
 // Bar stuff
 
 $bar_bg: rgba(21, 21, 32, 0.75);
+$bar_bg_solid: rgba(21, 21, 32, 1);
 
 .bar_class {
   background: $bar_bg;
+  // color: $subtext;
+  // background: $background;
 
-  margin: 0.5rem;
+  margin: 0.8rem;
+  margin-bottom: 0rem;
+  // margin-left: 2rem;
+  // margin-right: 2rem;
   padding: 0.25rem;
 
   padding-left: 1rem;
@@ -152,13 +181,13 @@ $bar_bg: rgba(21, 21, 32, 0.75);
 
 .home_icon {
   color: $accent;
-  font-size: 1.5rem;
-  padding: 0px;
-  margin: 0px;
+  font-size: 1.3rem;
+  // padding: 0px;
+  // margin: 0px;
 }
 
 .seperator {
-  color: $border_col;
+  color: $subtext;
   margin-left: 1rem;
   margin-right: 1rem;
 }
@@ -169,16 +198,18 @@ $bar_bg: rgba(21, 21, 32, 0.75);
 
 .workspace {
   background: $blank;
+  color: $subtext;
   // padding: 0.3rem;
-  min-width:1rem;
-  min-height:1px;
+  min-width: 1rem;
+  min-height: 1px;
   margin: 0.1rem;
 
   padding-left: 5pt;
   padding-right: 5pt;
 
   border-color: $blank;
-  border-radius: 100%;
+  border-radius: 1rem;
+  border-width: 1px;
 }
 
 .workspace:hover {
@@ -186,11 +217,43 @@ $bar_bg: rgba(21, 21, 32, 0.75);
 }
 
 .workspace.focused {
-  // background: $accent;
-  color: $blue;
-  border-color: $background_dark;
+  background: $background;
+  color: $accent;
+  border-color: $border_col;
+}
+.workspace.focused label {
+  // text-shadow: 1px 1px 4px $accent ;
 }
 
 .workspace label {
   outline-width: 0px;
+}
+
+.workspace_rep {
+  opacity: 1;
+  background: $bar_bg_solid;
+  margin: 0px;
+  padding: 0px;
+  font-size: 1rem;
+  border-radius: 1rem;
+}
+
+.workspace_rep .container {
+  margin: 0px;
+  padding: 0px;
+}
+
+.workspace_window {
+  background: $background;
+
+  border-width: 2px;
+  border-color: $border_col;
+  border-style: solid;
+  border-radius: 1em;
+
+  margin: 0.3rem;
+}
+
+.date {
+  color: $green;
 }

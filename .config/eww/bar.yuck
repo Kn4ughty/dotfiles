@@ -1,42 +1,87 @@
-(defwindow bar
-    :monitor '["<primary>", "Y25-30", "0"]'
+(defwindow bar1
+    :monitor '["<primary>", "DP-2", "0"]'
     :geometry (geometry :x "0%"
                            :y "0%"
                            :width "100%"
-                           :height "3%"
+                           :height "40"
                            :anchor "top center")
     :stacking "fg"
     :reserve (struts :distance "40px" :side "top")
     :exclusive true
     :windowtype "dock"
     :wm-ignore false
-    (bar :monitor 'eDP-1')
+    (bar :monitor 'DP-2')
 )
+
+(defwindow bar2
+    :monitor '["HDMI-A-1"]'
+    :geometry (geometry :x "0%"
+                           :y "0%"
+                           :width "100%"
+                           :height "40"
+                           :anchor "top center")
+    :stacking "fg"
+    :reserve (struts :distance "40px" :side "top")
+    :exclusive true
+    :windowtype "dock"
+    :wm-ignore false
+    (bar :monitor 'HDMI-A-1')
+)
+
+(defwindow bar3
+    :monitor '["DP-1"]'
+    :geometry (geometry :x "0%"
+                           :y "0%"
+                           :width "100%"
+                           :height "40"
+                           :anchor "top center")
+    :stacking "fg"
+    :reserve (struts :distance "40px" :side "top")
+    :exclusive true
+    :windowtype "dock"
+    :wm-ignore false
+    (bar :monitor 'DP-1')
+)
+
+(deflisten WINDOW_NAME :initial `window`
+    ;`swaymsg -r -t SUBSCRIBE -m \"[ 'window' ]\" | jq -r '.container.name'`)
+    `./scripts/window.sh`
+)
+
 
 (defwidget bar [monitor]
     (box
         :class 'bar_class'
         :vexpand false
+        :hexpand false
         :orientation "h"
         (box
             :space-evenly false
             :halign "start"
             (home_icon)
-            (sep)
+            (fsep)
             (workspaces :monitor monitor)
-            (sep)
+            (fsep)
+            ;(label
+                ;:text WINDOW_NAME :limit-width 60)
         )
         (box
             :halign "center"
-            "center content"
+            :hexpand false
+
+            ;"center content"
         )
         (box
             :halign "end"
-            "right content"
+            (label :class "date" 
+                :text DATE)
         )
 
     )
 )
+
+(defpoll DATE :initial "time" :interval "1s"
+`date "+ %b %m-%d, %a  %H:%M:%S"`)
 
 (defwidget home_icon []
     (box
@@ -44,12 +89,12 @@
         (button
             :class 'home_icon'
             :onclick ``
-            ''
+            ''
         )
     )
 )
 
-(defwidget sep []
+(defwidget fsep []
     (box
         :valign "center"
         :class 'seperator'
@@ -60,15 +105,35 @@
 (deflisten WORKSPACES :initial '{"DP-2": [], "HDMI-A-1": [], "eDP-1": []}'
     `scripts/workspace.py`)
 
+(defvar reveal false)
+
 (defwidget workspaces [monitor]
     (box
         :class "bar_widget workspaces"
         :space-evenly false
         (for wsp in {WORKSPACES[monitor]}
-          (button :class "workspace ${wsp.class} ${wsp.focused == 'true' ? 'focused' : ''}"
-                  :onclick "swaymsg workspace ${wsp.name}"
-                :width 0
-                ;:hexpand true
-              ;(label :class "icon" :text "${wsp.icon}")
-              (label :class "name " :text "${wsp.name}")
-            ))))
+            (tooltip
+            ;(box
+                (box
+                    :class 'workspace_rep'
+                    :width 320
+                    :height 180
+                    :space-evenly true
+                    (literal
+                        :content {wsp.rep}
+                        :vexpand true
+                        :hexpand true
+                    )
+                )
+                (button 
+                    :class "workspace ${wsp.class} ${wsp.focused == 'true' ? 'focused' : ''}"
+                    :onclick "swaymsg workspace ${wsp.name}"
+                    :width 0
+                  (label :class "name " :text "${wsp.name}")
+                )
+                
+            )
+        )
+    )
+)
+

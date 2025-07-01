@@ -38,7 +38,7 @@
     (box 
         :orientation "vertical"
         :halign "center"
-        :valign "center"
+        :valign "start"
         :vexpand true
         :hexpand false
         :space-evenly false
@@ -77,16 +77,16 @@
             :value ELAPSED_TIME_S
             :onchange `playerctl position $(awk "BEGIN {print({} / 1000000 )}")`
         )
-        (box 
-            :orientation "horizontal"
-            :valign "end"
-            (label
-                :text TOTAL_TIME_F
-            )
-            (label
-                :text ELAPSED_TIME_F
-            )
-        )
+        ;(box 
+        ;    :orientation "horizontal"
+        ;    :valign "end"
+        ;    (label
+        ;        :text TOTAL_TIME_F
+        ;    )
+        ;    (label
+        ;        :text ELAPSED_TIME_F
+        ;    )
+        ;)
     )
 
 )
