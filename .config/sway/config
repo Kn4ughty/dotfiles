@@ -163,11 +163,14 @@ input * {
 }
 # Macbook
 input "1452:833:Apple_SPI_Trackpad" {
-   natural_scroll disabled
+   natural_scroll true
    scroll_factor 0.15
    pointer_accel 0
 }
 
+input "1133:45114:LOGI_M240_Mouse" {
+    pointer_accel -0.1
+}
 
 
 # Notification Daemon
