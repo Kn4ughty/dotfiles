@@ -1,3 +1,19 @@
+
+(defwindow barlaptop
+    :monitor '["<primary>", "eDP-1", "0"]'
+    :geometry (geometry :x "0%"
+                           :y "0%"
+                           :width "100%"
+                           :height "40"
+                           :anchor "top center")
+    :stacking "fg"
+    :reserve (struts :distance "40px" :side "top")
+    :exclusive true
+    :windowtype "dock"
+    :wm-ignore false
+    (bar :monitor 'eDP-1')
+)
+
 (defwindow bar1
     :monitor '["<primary>", "DP-2", "0"]'
     :geometry (geometry :x "0%"
