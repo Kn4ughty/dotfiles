@@ -28,7 +28,8 @@ output $out-prim resolution 1920x1080 position 0 0 scale 1 adaptive_sync off
 # 2880 is 3840*1.75
 output $out-sec resolution 3840x2160 position 1920 0 scale 2
 
-output HDMI-A-1 resolution 1920x1080 position 960 -1080
+output HDMI-A-1 resolution 1920x1080 position 3840 -580 transform 270
+# output HDMI-A-1 resolution 1920x1080 position 5760 -580 transform 270
 
 output HEADLESS-1 {
     resolution 2048x1536 
@@ -37,15 +38,15 @@ output HEADLESS-1 {
 }
 # create_output a, resolution 1920x1080 position 0 1080 scale 1
 workspace 10 output HEADLESS-1
-workspace 1 output $out-prim
-workspace 2 output $out-sec
-workspace 3 output HDMI-A-1
+workspace 1 output $out-sec
+workspace 2 output HDMI-A-1
+workspace 3 output $out-prim
 
 ### Wallpaper
-# output * bg $HOME/.pic/space1.jpg fill
+output * bg $HOME/.pic/space1.jpg fill
 # output * bg $HOME/.pic/ayuru_camp___rin___nadeshiko_by_muddymelly_dcmp6rk.jpg fill
 # output * bg $HOME/.pic/cloud_real.jpg fill
-output * bg $HOME/.pic/teapot.png fill
+# output * bg $HOME/.pic/teapot.png fill
 # output * bg $HOME/.pic/teapot-alt.png fill
 # output * bg #000000 solid_color
 
@@ -62,7 +63,9 @@ set $term kitty
 # on the original workspace that the command was run on.
 set $menu rofi 
 
-set $bar waybar
+# set $bar waybar
+set $bar eww open bar
+exec $bar
 
 set $file thunar
 
@@ -78,9 +81,9 @@ client.focused          $acCol  $acCol  $textC  $secCol   $borderCol
 
 # Gaps
 # was inner 3
-gaps inner 0
-gaps outer 0
-smart_gaps true
+gaps inner 10
+gaps outer 3
+smart_gaps false
 
 workspace 10 gaps inner 15
 workspace 10 gaps outer 10
@@ -88,8 +91,8 @@ workspace 10 gaps outer 10
 # swayfx things
 blur enable
 blur_passes 2
-blur_radius 7
-blur_noise 0
+blur_radius 8
+blur_noise 0.5
 blur_brightness 0.8
 blur_contrast 1
 blur_saturation 1.1
@@ -99,7 +102,7 @@ shadow_blur_radius 20
 shadow_color $acColff
 
 # was 15
-corner_radius 0
+corner_radius 15
 
 # app spefcific swayfx
 # layer_effects "waybar" blur enable; shadows enable
@@ -211,7 +214,7 @@ bindsym Mod1+backspace exec wtype -P delete -p delete
 # App launching
 
 ## Start your launcher
-bindsym $mod+space exec wl-copy $(cd ~/code/Lumin && make run)
+bindsym $mod+space exec cd ~/code/Lumin && source .venv/bin/activate && make run
 
 # search windows
 #bindsym $mod+tab exec $menu -show window
@@ -443,25 +446,25 @@ bindsym $mod+Control+Shift+a exec xdg-open 'https://www.youtube.com/watch?v=9J62
 # Status Bar:
 #
 # Read `man 5 sway-bar` for more information about this section.
-bar {
-
-    swaybar_command $bar
-
-    mode hide
-#    position top
+# bar {
 #
-#    # When the status_command prints a new line to stdout, swaybar updates.
-#    # The default just shows the current date and time.
-#    status_command while date +'%Y-%m-%d %X'; do sleep 1; done
+#     swaybar_command $bar
 #
-#    colors {
-#        statusline #ffffff
-#        background #323232
-#        inactive_workspace #32323200 #32323200 #5c5c5c
-#    }
-}
+#     mode hide
+# #    position top
+# #
+# #    # When the status_command prints a new line to stdout, swaybar updates.
+# #    # The default just shows the current date and time.
+# #    status_command while date +'%Y-%m-%d %X'; do sleep 1; done
+# #
+# #    colors {
+# #        statusline #ffffff
+# #        background #323232
+# #        inactive_workspace #32323200 #32323200 #5c5c5c
+# #    }
+# }
 
-exec sworkstyle
+# exec sworkstyle
 
 
 include $HOME/.config/sway/sway.d/*.conf
