@@ -16,7 +16,7 @@
 
 
 ; Using deflisten didnt seem to work. :(
-(defpoll ELAPSED_TIME_S :initial 0.0 :interval "1s"
+(defpoll ELAPSED_TIME_S :initial 0.0 :interval "10s"
     `playerctl metadata --format '{{position}}'`)
 
 (deflisten SONG :initial "Unknown"

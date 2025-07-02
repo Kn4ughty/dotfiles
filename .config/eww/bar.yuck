@@ -67,7 +67,7 @@
 
 
 (defwidget bar [monitor]
-    (box
+    (centerbox
         :class 'bar_class'
         :vexpand false
         :hexpand false
@@ -79,22 +79,30 @@
             (fsep)
             (workspaces :monitor monitor)
             (fsep)
-            ;(label
-                ;:text WINDOW_NAME :limit-width 60)
         )
         (box
             :halign "center"
             :hexpand false
-
-            ;"center content"
+            ; A potential idea is to make this the currently playing song
+            (label :text WINDOW_NAME :limit-width 60)
         )
         (box
             :halign "end"
             :space-evenly false
             (bsep)
+            ; Width is to keep width consistent with changing text length (3% -> 11%)
+            (label :width 50 :class "cpu" :text " ${round(EWW_RAM.used_mem_perc, 0)}% ")
+            (label :width 50 :class "cpu" :text " ${round(EWW_CPU.avg, 0)}%")
+            (bsep)
+            (revealer-on-hover :var SHOW_BATTERY :varname "SHOW_BATTERY" 
+                :class 'battery'
+                (label :text " ${BATTERY.percent}")
+                (label :text {BATTERY.time})
+            )
+            (bsep)
             (revealer-on-hover :var SHOW_WEATHER :varname "SHOW_WEATHER"
                 (label :class "weather"
-                        :text "${WEATHER.text}  ")
+                        :text "${WEATHER.text}")
                 (label :class "weather tooltip"
                         :text "${WEATHER.tooltip}")
             )
@@ -123,6 +131,11 @@
     :interval "1h"
     `~/.scripts/weather.py`
 )
+
+(defvar SHOW_BATTERY false)
+(defvar init_bat ``)
+(deflisten BATTERY :initial '{ "percent": "XX%", "time": "X hours "}'
+    `./scripts/battery.sh`)
 
 (defwidget home_icon []
     (box

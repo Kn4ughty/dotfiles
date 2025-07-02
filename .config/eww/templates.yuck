@@ -10,7 +10,7 @@
     )
 )
 
-
+; Thank you https://github.com/druskus20/eugh
 ; Revealer on hover, using children
 (defwidget revealer-on-hover [var varname ?class ?duration ?transition]
   (box :class "${class} revealer-on-hover"
