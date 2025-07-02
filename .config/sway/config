@@ -63,10 +63,6 @@ set $term kitty
 # on the original workspace that the command was run on.
 set $menu rofi 
 
-# set $bar waybar
-set $bar eww open bar
-exec $bar
-
 set $file thunar
 
 set $acCol #f5bde6
@@ -81,7 +77,7 @@ client.focused          $acCol  $acCol  $textC  $secCol   $borderCol
 
 # Gaps
 # was inner 3
-gaps inner 10
+gaps inner 6
 gaps outer 3
 smart_gaps false
 
@@ -214,7 +210,7 @@ bindsym Mod1+backspace exec wtype -P delete -p delete
 # App launching
 
 ## Start your launcher
-bindsym $mod+space exec cd ~/code/Lumin && source .venv/bin/activate && make run
+bindsym $mod+space exec cd ~/code/Lumin && make run
 
 # search windows
 #bindsym $mod+tab exec $menu -show window
