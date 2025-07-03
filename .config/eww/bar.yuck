@@ -94,11 +94,12 @@
 
             ; Wifi network
             (bsep)
+            (box :tooltip "${NETWORK.ssid}"
             (revealer-on-click :var SHOW_NETWORK :varname "SHOW_NETWORK"
                 :class 'network'
                 (label :text "${NETWORK.icon} ")
                 (label :text "${NETWORK.ip} ")
-            )
+            ))
 
             ; Battery
             (box :visible {laptop != ""}(bsep))

@@ -34,6 +34,7 @@
        :space-evenly false
     (eventbox :class "eventbox"
               :onclick "eww update ${varname}=${!var}"
+              :cursor "pointer"
               ;:onhoverlost "eww update ${varname}=false"
       (box :space-evenly false
         (revealer :reveal var

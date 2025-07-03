@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+# TODO. display SSID
+
 # output of `nmcli -m multiline -t -f STATE`
 # STATE:connected
 # CONNECTIVITY:full
@@ -49,6 +51,7 @@ while read -r line; do
     DATA=$(nmcli -m multiline -t g)
     STATE=$(rg 'STATE:(.+)' -or '$1' <<< $DATA)
     IP=$(nmcli -g IP4.ADDRESS device show $DEVICE_NAME)
+    SSID=$(nmcli -g GENERAL.CONNECTION device show $DEVICE_NAME)
     # WIFI_HW=$(rg 'WIFI-HW:(.+)' -or '$1' <<< $DATA)
     # DEVICE_STATUS=$(nmcli -m multiline -t device status)
 
@@ -58,5 +61,6 @@ while read -r line; do
         --arg state "${STATE}"\
         --arg icon "${icon}"\
         --arg ip "${IP}"\
-        '{ state: $state, icon: $icon, ip: $ip}'
+        --arg ssid "${SSID}"\
+        '{ state: $state, icon: $icon, ip: $ip, ssid: $ssid}'
 done
