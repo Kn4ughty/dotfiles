@@ -60,8 +60,7 @@
     (bar :monitor 'DP-1')
 )
 
-(deflisten WINDOW_NAME :initial `window`
-    ;`swaymsg -r -t SUBSCRIBE -m \"[ 'window' ]\" | jq -r '.container.name'`)
+(deflisten WINDOW_NAME :initial ``
     `./scripts/window.sh`
 )
 
