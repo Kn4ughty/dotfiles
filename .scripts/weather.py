@@ -53,8 +53,8 @@ def main():
     precip = obs["precip"]
     rain_past_hr = float(precip["1h_total_mm"])
 
-    text = f"⛅ {temp_real:.1f}°"
-    tooltip = f"""feels: {temp_apparent: .1f}°, 💨: {int(wind_speed_kmh)}km/h """
+    text = f"  {temp_real:.1f}°"
+    tooltip = f"""󰩑: {temp_apparent: .1f}°, : {int(wind_speed_kmh)}km/h """
 # Rain past hour {rain_past_hr:.1f}mm"""
     return {"text": text, "alt": "blah", "tooltip": tooltip}
 
