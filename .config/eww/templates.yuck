@@ -26,3 +26,19 @@
           (children :nth 1))
         (children :nth 0)
         (children :nth 2)))))
+
+
+(defwidget revealer-on-click [var varname ?class ?duration ?transition]
+  (box :class "${class} revealer-on-hover"
+       :orientation "h"
+       :space-evenly false
+    (eventbox :class "eventbox"
+              :onclick "eww update ${varname}=${!var}"
+              ;:onhoverlost "eww update ${varname}=false"
+      (box :space-evenly false
+        (revealer :reveal var
+                  :transition {transition ?: "slideright"}
+                  :duration {duration ?: "500ms"}
+          (children :nth 1))
+        (children :nth 0)
+        (children :nth 2)))))

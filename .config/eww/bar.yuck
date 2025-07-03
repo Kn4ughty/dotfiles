@@ -91,12 +91,24 @@
             ; Width is to keep width consistent with changing text length (3% -> 11%)
             (label :width 50 :class "cpu" :text " ${round(EWW_RAM.used_mem_perc, 0)}% ")
             (label :width 50 :class "cpu" :text " ${round(EWW_CPU.avg, 0)}%")
+
+            ; Wifi network
+            (bsep)
+            (revealer-on-click :var SHOW_NETWORK :varname "SHOW_NETWORK"
+                :class 'network'
+                (label :text "${NETWORK.icon} ")
+                (label :text "${NETWORK.ip} ")
+            )
+
+            ; Battery
             (box :visible {laptop != ""}(bsep))
             (box :visible {laptop != ""}(revealer-on-hover :var SHOW_BATTERY :varname "SHOW_BATTERY"
                 :class 'battery'
                 (label :text " ${BATTERY.percent}")
                 (label :text {BATTERY.time})
             ))
+
+            ; Weather
             (bsep)
             (revealer-on-hover :var SHOW_WEATHER :varname "SHOW_WEATHER"
                 (label :class "weather"
@@ -104,6 +116,8 @@
                 (label :class "weather tooltip"
                         :text "${WEATHER.tooltip}")
             )
+
+            ; Date
             (bsep)
             (revealer-on-hover :var SHOW_DATE :varname "SHOW_DATE"
                 :transition "slideright"
@@ -134,6 +148,10 @@
 (defvar init_bat ``)
 (deflisten BATTERY :initial '{ "percent": "XX%", "time": "X hours "}'
     `./scripts/battery.sh`)
+
+(defvar SHOW_NETWORK false)
+(deflisten NETWORK :initial '{"state":"connected","icon":"󰤯","ip":"XXX"}'
+    `./scripts/network.sh`)
 
 (defwidget home_icon []
     (box
