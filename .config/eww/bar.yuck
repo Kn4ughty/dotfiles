@@ -12,7 +12,7 @@
     :exclusive true
     :windowtype "dock"
     :wm-ignore false
-    (bar :monitor 'eDP-1')
+    (bar :monitor 'eDP-1' :laptop 'yes')
 )
 
 (defwindow bar1
@@ -61,11 +61,10 @@
 )
 
 (deflisten WINDOW_NAME :initial ``
-    `./scripts/window.sh`
-)
+    `./scripts/window.sh`)
 
 
-(defwidget bar [monitor]
+(defwidget bar [monitor ?laptop]
     (centerbox
         :class 'bar_class'
         :vexpand false
@@ -92,12 +91,12 @@
             ; Width is to keep width consistent with changing text length (3% -> 11%)
             (label :width 50 :class "cpu" :text " ${round(EWW_RAM.used_mem_perc, 0)}% ")
             (label :width 50 :class "cpu" :text " ${round(EWW_CPU.avg, 0)}%")
-            (bsep)
-            (revealer-on-hover :var SHOW_BATTERY :varname "SHOW_BATTERY" 
+            (box :visible {laptop != ""}(bsep))
+            (box :visible {laptop != ""}(revealer-on-hover :var SHOW_BATTERY :varname "SHOW_BATTERY"
                 :class 'battery'
-                (label :text " ${BATTERY.percent}")
+                (label :text " ${BATTERY.percent}")
                 (label :text {BATTERY.time})
-            )
+            ))
             (bsep)
             (revealer-on-hover :var SHOW_WEATHER :varname "SHOW_WEATHER"
                 (label :class "weather"
