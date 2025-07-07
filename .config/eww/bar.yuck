@@ -88,7 +88,7 @@
             :halign "end"
             :space-evenly false
             (bsep)
-            ; Width is to keep width consistent with changing text length (3% -> 11%)
+            ; Width is to keep width consistent with changing text length
             (label :width 50 :class "cpu" :text " ${round(EWW_RAM.used_mem_perc, 0)}% ")
             (label :width 50 :class "cpu" :text " ${round(EWW_CPU.avg, 0)}%")
 

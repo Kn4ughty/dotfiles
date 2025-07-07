@@ -27,6 +27,10 @@ get_wifi_icon () {
             echo 󱛇
             return 0
             ;;
+        "connected (site only)")
+            echo 󰤩
+            return 0
+            ;;
         "connected")
             echo 
             return 0
