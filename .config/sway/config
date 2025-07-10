@@ -151,7 +151,6 @@ input "1739:30382:DLL0704:01_06CB:76AE_Touchpad" {
 
 input * {
     xkb_layout us,jp
-    xkb_options grp:rctrl_toggle
     accel_profile "flat"
     # NOTE TO FUTURE ME
     # Only enable this if you KNOW the layout fully. 
@@ -186,7 +185,7 @@ exec ~/.config/sway/bsp.sh
 bindsym $mod+Shift+Mod1+n exec swaync-client -t -sw
 
 # reload swaync
-bindsym $mod+Shift+Ctrl+n exec swaync-client -R
+bindsym $mod+Shift+Ctrl+n exec swaync-client -R 
 
 
 # Emoji selector
@@ -252,7 +251,7 @@ bindsym $mod+q kill
 floating_modifier $mod normal
 
 # Reload the configuration file
-bindsym $mod+Shift+c reload
+bindsym $mod+Shift+c exec swaymsg reload && eww reload
 
 # Exit sway (logs you out of your Wayland session)
 bindsym $mod+Shift+m exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -B 'Yes, exit sway' 'swaymsg exit'
