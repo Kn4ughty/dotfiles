@@ -1,0 +1,7 @@
+@use 'variables.scss' as v;
+
+.todo_item {
+  background: v.$background_dark;
+  border-radius: v.$border-radius;
+  margin: 0.5rem;
+}

@@ -1,6 +1,7 @@
 (include "./music.yuck")
 (include "./templates.yuck")
 (include "./bar.yuck")
+(include "./todo.yuck")
 
 
 
@@ -124,12 +125,14 @@ M"
         :valign "start"
         :hexpand true
         :vexpand true
+        :space-evenly false
         :class "left_box"
             (time)
             ;(info-box)
             (box :valign "end"
                 (music_info)
             )
+            (todo_overview)
         )
         (box
         :orientation "vertical"

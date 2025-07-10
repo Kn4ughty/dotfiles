@@ -1,11 +1,11 @@
-(defwidget info-box [?classname]
+(defwidget info-box [?classname ?ori]
     (box 
         :class "widget ${classname}"
         :hexpand false
         :vexpand false
         :width 400
         :height 140
-        ;:orientation {ori == 'h' ? 'h' : 'v'}
+        :orientation {ori == 'h' ? 'h' : 'v'}
         (children)
     )
 )

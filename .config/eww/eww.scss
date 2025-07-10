@@ -1,63 +1,24 @@
-/* Text */
-$font: "JetBrainsMono Nerd Font";
-// $font: "Comfortaa";
-
-/* Colours */
-
-$background: rgba(88, 91, 112, 0.35);
-$background_dark: rgba(49, 50, 68, 0.9);
-$border_col: rgb(205, 214, 244, 0.5);
-
-$bar_bg: rgba(21, 21, 32, 0.75);
-$bar_bg_solid: rgba(21, 21, 32, 1);
-
-$pink: #f5c2e7;
-$mauve: #cba6f7;
-$red : #f38ba8;
-$maroon: #eba0ac;
-$peach: #fab387;
-$yellow: #f9e2af;
-$green: #a6e3a1;
-$teal: #94e2d5;
-$sky: #89dceb;
-$blue: rgb(137, 180, 250);
-$lavender: #b4befe;
-
-$surface1: #45475a;
-
-$text: rgb(205, 214, 244);
-$subtext0: #a6adc8;
-$subtext :$subtext0;
-$accent: $pink;
-
-$text-shadow: rgba(24, 24, 37, 0.8);
-
-$blank: rgba(0,0,0,0);
-
-$shadow: #cba6f7;
-
-$border-radius: 1rem;
-$border_width: 0.3rem;
-$padding: 0.7rem;
+@use 'todo.scss';
+@use 'variables.scss' as v;
 
 
 label {
-  text-shadow: $text-shadow 0.4rem 0.4rem 0.2rem;
+  text-shadow: v.$text-shadow 0.4rem 0.4rem 0.2rem;
 }
 
 button {
   margin: 0px;
   padding: 0px;
-  background: $blank;
+  background: v.$blank;
 }
 
 graph {
   padding: 0rem;
-  color: $accent
+  color: v.$accent
 }
 
 tooltip, .tooltip {
-  background: $bar_bg;
+  background: v.$bar_bg;
   padding: 0px;
   margin: 0px;
   opacity: 1;
@@ -65,15 +26,15 @@ tooltip, .tooltip {
 
 // Music slider
 trough {
-  background: $blue;
-  border-color: $blank;
+  background: v.$blue;
+  border-color: v.$blank;
 }
 trough slider {
-  background: $pink;
-  border-color: $blank;
+  background: v.$pink;
+  border-color: v.$blank;
 }
 trough highlight {
-  background: $pink;
+  background: v.$pink;
   outline-width: 0px;
   border: 0.1rem;
 }
@@ -81,59 +42,59 @@ trough highlight {
 .left_box {
   margin: 1rem;
   margin-top: 2rem;
-  background: $blank;
+  background: v.$blank;
 }
 
 .background {
   font-weight: bold;
-  font-family: $font;
-  background: $blank;
-  color: $text;
+  font-family: v.$font;
+  background: v.$blank;
+  color: v.$text;
   padding: 10px;
 }
 
 .widget {
-  background: $background;
+  background: v.$background;
 
-  border-radius: $border-radius;
+  border-radius: v.$border-radius;
   padding: 0px;
   margin: 0.4rem;
 
   border-style: solid;
-  border-width: $border_width;
-  border-color: $border_col;
+  border-width: v.$border_width;
+  border-color: v.$border_col;
 
-  box-shadow: 0.4rem 0.4rem 0.2rem $text-shadow;
+  box-shadow: 0.4rem 0.4rem 0.2rem v.$text-shadow;
 
 }
 
 .heading {
   font-size: 5rem;
-  color: $accent;
-  text-shadow: $text-shadow 0.4rem 0.4rem 0.2rem;
+  color: v.$accent;
+  text-shadow: v.$text-shadow 0.4rem 0.4rem 0.2rem;
 }
 
 .graph_widget {
-  padding: $padding;
+  padding: v.$padding;
   padding-bottom: 0px;
 }
 
 
 .graph_box {
-  background: $background;
-  border-radius: $border-radius;
+  background: v.$background;
+  border-radius: v.$border-radius;
 }
 
 .graph_widget label {
   margin: 0px;
   padding: 0px;
-  padding-right: $padding;
-  background: $blank;
+  padding-right: v.$padding;
+  background: v.$blank;
   font-weight: bold;
 }
 
 .cpu_graph {
-  color: $blue;
+  color: v.$blue;
 }
 
 
@@ -147,7 +108,7 @@ trough highlight {
 }
 
 .music_buttons button {
-  background: $blank;
+  background: v.$blank;
   border-width: 0px;
 }
 
@@ -159,9 +120,9 @@ trough highlight {
 
 
 .bar_class {
-  background: $bar_bg;
-  // color: $subtext;
-  // background: $background;
+  background: v.$bar_bg;
+  // color: v.$subtext;
+  // background: v.$background;
 
   margin: 0.8rem;
   margin-bottom: 0rem;
@@ -173,7 +134,7 @@ trough highlight {
   padding-right: 1rem;
 
   border-width: 0.1rem;
-  border-color: $border_col;
+  border-color: v.$border_col;
   border-style: outset;
   border-radius: 3rem;
 
@@ -181,27 +142,27 @@ trough highlight {
 }
 
 .home_icon {
-  color: $accent;
+  color: v.$accent;
   font-size: 1.3rem;
   // padding: 0px;
   // margin: 0px;
 }
 
 .seperator {
-  color: $subtext;
+  color: v.$subtext;
   margin-left: 1rem;
   margin-right: 1rem;
 }
 
 
 .workspaces {
-  border-color: $blank
+  border-color: v.$blank
 }
 
 
 .workspace {
-  background: $blank;
-  color: $subtext;
+  background: v.$blank;
+  color: v.$subtext;
   // padding: 0.3rem;
   min-width: 1rem;
   min-height: 1px;
@@ -210,23 +171,23 @@ trough highlight {
   padding-left: 5pt;
   padding-right: 5pt;
 
-  border-color: $blank;
+  border-color: v.$blank;
   border-radius: 1rem;
   border-width: 1px;
 }
 
 .workspace:hover {
-  background: $background_dark;
+  background: v.$background_dark;
 }
 
 .workspace.focused {
-  background: $background;
-  color: $accent;
-  border-color: $border_col;
+  background: v.$background;
+  color: v.$accent;
+  border-color: v.$border_col;
 
 }
 .workspace.focused label {
-  // text-shadow: 1px 1px 4px $accent ;
+  // text-shadow: 1px 1px 4px v.$accent ;
 }
 
 .workspace label {
@@ -236,7 +197,7 @@ trough highlight {
 
 .workspace_rep {
   opacity: 1;
-  background: $bar_bg_solid;
+  background: v.$bar_bg_solid;
   margin: 0px;
   padding: 0px;
   font-size: 1rem;
@@ -249,10 +210,10 @@ trough highlight {
 }
 
 .workspace_window {
-  background: $background;
+  background: v.$background;
 
   border-width: 2px;
-  border-color: $border_col;
+  border-color: v.$border_col;
   border-style: solid;
   border-radius: 1em;
 
@@ -260,24 +221,25 @@ trough highlight {
 }
 
 .date {
-  color: $green;
+  color: v.$green;
 }
 .date.tooltip {
-  color: $text;
+  color: v.$text;
 }
 
 .weather {
-  color: $blue;
+  color: v.$blue;
 }
 
 .battery {
-  color: $lavender;
+  color: v.$lavender;
 }
 
 .network {
-  color: $sky;
+  color: v.$sky;
 }
 
 .cpu {
-  color: $mauve
+  color: v.$mauve
 }
+

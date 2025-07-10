@@ -1,0 +1,12 @@
+(include "./templates.yuck")
+
+(defwidget todo_item [text done]
+(box :class "todo_item"
+    (checkbox :checked {done})
+    (label :text {text})
+))
+
+(defwidget todo_overview []
+    (info-box
+        (todo_item :text "helooo" :done true)
+))

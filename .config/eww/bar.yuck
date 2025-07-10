@@ -87,6 +87,7 @@
         (box
             :halign "end"
             :space-evenly false
+            (systray)
             (bsep)
             ; Width is to keep width consistent with changing text length
             (label :width 50 :class "cpu" :text " ${round(EWW_RAM.used_mem_perc, 0)}% ")
