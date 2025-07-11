@@ -117,6 +117,7 @@ M"
     :stacking "bottom"
     :windowtype "dock"
     :wm-ignore false
+    :focusable true
     (box
         :orientation "horizontal"
         (box

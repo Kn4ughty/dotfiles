@@ -91,10 +91,14 @@ def get_tasks(cur):
     task_list = []
     for task in tasks:
         # hope the scheme never changes!
-        task_list.append(Task(task[0], task[1], task[2], task[3]))
+        task_list.append(Task(task[0], task[1], bool(task[2]), task[3]))
 
-    s = json.dumps([asdict(task) for task in task_list])
-    print(s)
+    d = [asdict(task) for task in task_list]
+    for task in d:
+        task["selected"] = False
+
+    s = json.dumps(d)
+    print(s, flush=True)
     return 0
 
 def update_task(id, text, checked, due):
@@ -148,6 +152,7 @@ if __name__ == "__main__":
         case "update":
             code = update_task(args.id, args.text, args.checked, args.due)
         case "watch":
+            get_tasks(cur)
             con.close()
             watch_file(DATABASE_PATH)
             code = 0
