@@ -11,8 +11,8 @@ delete - delete task with uuid from stdin
         {
             "text": "im a todo",
             "checked": "false",
-            "due": "31/04/2025",
-            "uuid": "198273ujlkn12367y1n2kj3789"
+            "due": 1752205583,
+            "uuid": 166881016882768106246742576731943137064
         }
         ... and so on
     ]
@@ -20,13 +20,14 @@ delete - delete task with uuid from stdin
 """
 
 import sqlite3
-from dataclasses import dataclass
+from dataclasses import dataclass, asdict
 import json
 import argparse
-import uuid
 from pathlib import Path
-import sys
-from typing import Optional
+import os
+from watchdog.events import FileSystemEvent, FileSystemEventHandler
+from watchdog.observers import Observer
+import time
 
 DATABASE_PATH=Path("~/.local/share/todo.sqlite3").expanduser()
 
@@ -37,36 +38,87 @@ cur = con.cursor()
 
 @dataclass
 class Task():
-    id: bytes
+    id: int
     text: str
-    checked: bool
-    due: Optional[str]
+    checked: bool = False
+    due: int = 0
 
 
-def add_task():
-    # Convert stdin str to json
-    a = json.load(sys.stdin)
-    print(a)
+class ChangeHandler(FileSystemEventHandler):
+    def __init__(self, path):
+        self.path = os.path.abspath(path)
+
+    def on_modified(self, event):
+        if os.path.abspath(event.src_path) == self.path:
+            self.con = sqlite3.connect(DATABASE_PATH)
+            self.cur = self.con.cursor()
+            get_tasks(self.cur)
 
 
-    # cur.execute()
-    pass
+def watch_file(path):
+    handler = ChangeHandler(path)
+    observer = Observer()
+    observer.schedule(handler, path=os.path.dirname(path), recursive=False)
+    observer.start()
+    try:
+        while True:
+            time.sleep(1)
+    except KeyboardInterrupt:
+        observer.stop()
+    observer.join()
 
-def delete_task():
-    pass
 
-def get_tasks():
+def add_task(text):
+    cur.execute("""
+        INSERT INTO tasks (text)
+        VALUES (?)""", 
+                (text,)) # trailing comma to create single element tuple
+    con.commit()
+    return 0
+
+
+def delete_task(id):
+    cur.execute("""
+        DELETE FROM tasks WHERE id=(?)
+    """, (id,))
+    con.commit()
+    return 0
+
+def get_tasks(cur):
     res = cur.execute("SELECT * FROM tasks")
-    print(res.fetchall())
-    pass
+    tasks = res.fetchall()
+
+    task_list = []
+    for task in tasks:
+        # hope the scheme never changes!
+        task_list.append(Task(task[0], task[1], task[2], task[3]))
+
+    s = json.dumps([asdict(task) for task in task_list])
+    print(s)
+    return 0
+
+def update_task(id, text, checked, due):
+    print(id, text, checked, due)
+
+    cur.execute("""UPDATE tasks 
+        SET
+            text = CASE WHEN ? IS NOT NULL THEN ? ELSE text END,
+            checked = CASE WHEN ? IS NOT NULL THEN ? ELSE checked END,
+            due = CASE WHEN ? IS NOT NULL THEN ? ELSE due END
+        WHERE id = ?
+        """, (text, text, checked, checked, due, due, id))
+
+    con.commit()
+    return 0
+
 
 if __name__ == "__main__":
     try:
         cur.execute("""CREATE TABLE tasks (
-            id str PRIMARY KEY,
-            text str NOT NULL,
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            text TEXT NOT NULL,
             checked bool DEFAULT False,
-            due str
+            due INTEGER DEFAULT 0
         )""")
     except sqlite3.OperationalError:
         # Table must already exist
@@ -77,28 +129,31 @@ if __name__ == "__main__":
         description="description"
     )
     parser.add_argument("action",
-                        choices=['add', 'delete', 'get'],
+                        choices=['add', 'delete', 'get', 'update', 'watch'],
                         help="What to do")
     parser.add_argument("-i", "--id")
     parser.add_argument("-t", "--text")
     parser.add_argument("-c", "--checked")
+    parser.add_argument("-d", "--due")
 
+    args = parser.parse_args()
 
-    parser.parse_args()
+    match args.action:
+        case "add":
+            code = add_task(args.text)
+        case "get":
+            code = get_tasks(cur)
+        case "delete":
+            code = delete_task(args.id)
+        case "update":
+            code = update_task(args.id, args.text, args.checked, args.due)
+        case "watch":
+            con.close()
+            watch_file(DATABASE_PATH)
+            code = 0
+        case _:
+            # how did i get here. Should be impossible
+            code = 1
 
-    # args = sys.argv
-    # if len(sys.argv) != 2:
-    #     print("invalid number of arguments", file=sys.stderr)
-    #     exit(1)
-    #
-    # match args[1]:
-    #     case "add":
-    #         add_task()
-    #     case "delete":
-    #         delete_task()
-    #     case "get":
-    #         get_tasks()
-    #     case _:
-    #         get_tasks()
-
-    exit(0)
+    con.close()
+    exit(code)
