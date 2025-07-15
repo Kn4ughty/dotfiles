@@ -63,6 +63,9 @@
 (deflisten WINDOW_NAME :initial ``
     `./scripts/window.sh`)
 
+(deflisten MODE :initial "default"
+    `./scripts/mode.sh`)
+
 
 (defwidget bar [monitor ?laptop]
     (centerbox
@@ -77,6 +80,8 @@
             (fsep)
             (workspaces :monitor monitor)
             (fsep)
+            (label :class "mode" :visible { MODE != "default" ? true : false }
+                :text MODE)
         )
         (box
             :halign "center"
@@ -154,6 +159,7 @@
 (defvar SHOW_NETWORK false)
 (deflisten NETWORK :initial '{"state":"connected","icon":"󰤯","ip":"XXX"}'
     `./scripts/network.sh`)
+
 
 (defwidget home_icon []
     (box
