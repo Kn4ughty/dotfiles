@@ -19,18 +19,24 @@
                 :onunchecked `~/.scripts/todo.py update --id=${id} --checked=0`)
             (label :text {text} :halign "start"))
         (box :halign "end" :space-evenly false
-            (button :onclick `eww update SHOW_CALENDAR=${!SHOW_CALENDAR} SELECTED_ID=${id} SELECTED_TASK='${jq(todo_list, "select(.[].id == ${SELECTED_ID})")}'`
-                (label 
-                    :text {formattime(due, TIME_FORMAT)}
-                    :tooltip {formattime(due - EWW_TIME, TIME_FORMAT_RELATIVE)}))
-            (button :halign "end" 
-                :onclick `~/.scripts/todo.py delete --id=${id}` "󰆴"))
+            ; Select date
+            ;(box :class "button"
+            ;(eventbox :onclick `eww update SHOW_CALENDAR=${!SHOW_CALENDAR} SELECTED_ID=${id} SELECTED_TASK='${jq(todo_list, "select(.[].id == ${SELECTED_ID})")}'`
+            ;    :cursor "pointer"
+            ;    (label 
+            ;        :text {formattime(due, TIME_FORMAT)}
+            ;        :tooltip {formattime(due - EWW_TIME, TIME_FORMAT_RELATIVE)})))
+            ; Delete task
+            (box :class "button"
+            (eventbox :halign "end" 
+                :cursor "pointer"
+                :onclick `~/.scripts/todo.py delete --id=${id}` "󰆴")))
     )
 )
 
 (defwidget todo_overview []
 (info-box (box :space-evenly false :orientation "v"
-    (input :onaccept `~/.scripts/todo.py add --text={}`)
+    (input :onaccept `~/.scripts/todo.py add --text="{}"`)
     (box :orientation "v"
         (for entry in todo_list
             (todo_item 

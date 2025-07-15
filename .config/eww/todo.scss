@@ -4,4 +4,9 @@
   background: v.$background_dark;
   border-radius: v.$border-radius;
   margin: 0.5rem;
+  padding: 0.30rem;
+}
+
+.todo_item box label {
+  margin-left: 0.5rem;
 }

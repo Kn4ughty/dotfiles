@@ -39,6 +39,32 @@ trough highlight {
   border: 0.1rem;
 }
 
+@keyframes highlight {
+  from { background-color: v.$surface1 }
+  to { background-color: v.$background_dark; }
+}
+
+.button {
+  margin-left: 0.2rem;
+  margin-right: 0.2rem;
+  padding: 0.2rem;
+  // Child event box
+  > * {
+    padding: 0.2rem;
+    border-radius: 1rem;
+    // background: v.$surface1;
+    animation-fill-mode: initial;
+  }
+}
+
+.button >:hover {
+  // animation-name: highlight;
+  animation-fill-mode: forwards;
+  animation-timing-function: ease-in;
+  animation-duration: 0.5s;
+  animation-iteration-count: 1;
+}
+
 .left_box {
   margin: 1rem;
   margin-top: 2rem;
@@ -243,3 +269,9 @@ trough highlight {
   color: v.$mauve
 }
 
+.mode {
+  background: v.$background;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+  border-radius: 1rem;
+}

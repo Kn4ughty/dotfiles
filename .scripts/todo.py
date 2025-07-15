@@ -29,12 +29,13 @@ from watchdog.events import FileSystemEvent, FileSystemEventHandler
 from watchdog.observers import Observer
 import time
 
-DATABASE_PATH=Path("~/.local/share/todo.sqlite3").expanduser()
+DATABASE_PATH = Path("~/.local/share/todo.sqlite3").expanduser()
 
 global con
 global cur
 con = sqlite3.connect(DATABASE_PATH)
 cur = con.cursor()
+
 
 @dataclass
 class Task():
@@ -71,8 +72,8 @@ def watch_file(path):
 def add_task(text):
     cur.execute("""
         INSERT INTO tasks (text)
-        VALUES (?)""", 
-                (text,)) # trailing comma to create single element tuple
+        VALUES (?)""",
+                (text,))  # trailing comma to create single element tuple
     con.commit()
     return 0
 
@@ -83,6 +84,7 @@ def delete_task(id):
     """, (id,))
     con.commit()
     return 0
+
 
 def get_tasks(cur):
     res = cur.execute("SELECT * FROM tasks")
@@ -101,10 +103,11 @@ def get_tasks(cur):
     print(s, flush=True)
     return 0
 
-def update_task(id, text, checked, due):
-    print(id, text, checked, due)
 
-    cur.execute("""UPDATE tasks 
+def update_task(id, text, checked, due):
+    # print(id, text, checked, due)
+
+    cur.execute("""UPDATE tasks
         SET
             text = CASE WHEN ? IS NOT NULL THEN ? ELSE text END,
             checked = CASE WHEN ? IS NOT NULL THEN ? ELSE checked END,
@@ -127,7 +130,7 @@ if __name__ == "__main__":
     except sqlite3.OperationalError:
         # Table must already exist
         pass
-    
+
     parser = argparse.ArgumentParser(
         prog="./todo.py",
         description="description"
