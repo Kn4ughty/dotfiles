@@ -15,7 +15,7 @@
     (box :class "todo_item" :space-evenly false :orientation "h"
         (eventbox :cursor "pointer" :halign "start" :hexpand true
             :onclick `~/.scripts/todo.py update --id=${id} --checked=${!done*1}`
-            (box
+            (box :space-evenly false
                 (label :text {done == true ? "" : ""} 
                     :class "checkbox ${done ? 'ticked' : ''}")
                 (label :text {text} :halign "start"))
