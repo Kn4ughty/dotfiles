@@ -17,6 +17,22 @@ graph {
   color: v.$accent
 }
 
+entry {
+  background: v.$background_dark;
+  margin: 0.5rem;
+  margin-bottom: 0.1rem;
+  border-radius: v.$border-radius;
+  border-color: v.$blank;
+  outline-color: v.$blank;
+}
+
+entry highlight {
+  // background: red;
+  border-color: v.$blank;
+  outline-color: v.$blank;
+  color: v.$blank;
+}
+
 tooltip, .tooltip {
   background: v.$bar_bg;
   padding: 0px;

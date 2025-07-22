@@ -5,8 +5,14 @@
   border-radius: v.$border-radius;
   margin: 0.5rem;
   padding: 0.30rem;
+  padding-left: 0rem;
 }
 
-.todo_item box label {
-  margin-left: 0.5rem;
+.checkbox {
+  color: v.$lavender;
+  font-size: 1.1rem;
+}
+
+.checkbox.ticked {
+  color: v.$green;
 }

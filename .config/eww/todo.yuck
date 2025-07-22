@@ -13,11 +13,16 @@
 
 (defwidget todo_item [id text done due]
     (box :class "todo_item" :space-evenly false :orientation "h"
-        (box :halign "start" :hexpand true :space-evenly false
-            (checkbox :checked {done}
-                :onchecked `~/.scripts/todo.py update --id=${id} --checked=1`
-                :onunchecked `~/.scripts/todo.py update --id=${id} --checked=0`)
-            (label :text {text} :halign "start"))
+        (eventbox :cursor "pointer" :halign "start" :hexpand true
+            :onclick `~/.scripts/todo.py update --id=${id} --checked=${!done*1}`
+            (box
+                (label :text {done == true ? "" : ""} 
+                    :class "checkbox ${done ? 'ticked' : ''}")
+                (label :text {text} :halign "start"))
+            )
+            ;(checkbox :checked {done}
+            ;    :onchecked `~/.scripts/todo.py update --id=${id} --checked=1`
+            ;    :onunchecked `~/.scripts/todo.py update --id=${id} --checked=0`)
         (box :halign "end" :space-evenly false
             ; Select date
             ;(box :class "button"
