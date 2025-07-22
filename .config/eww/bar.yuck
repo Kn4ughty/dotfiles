@@ -12,6 +12,7 @@
     :exclusive true
     :windowtype "dock"
     :wm-ignore false
+    :focusable false
     (bar :monitor 'eDP-1' :laptop 'yes')
 )
 
