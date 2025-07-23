@@ -21,7 +21,7 @@ set $right l
 set $out-prim DP-1
 set $out-sec DP-2
 
-output eDP-1 scale 1.5
+output eDP-1 scale 1.4
 
 output $out-prim resolution 1920x1080 position 0 0 scale 1 adaptive_sync off
 
@@ -179,7 +179,7 @@ exec swaync
 exec /usr/lib/polkit-kde-authentication-agent-1
 
 # Exec binary space partitioning script
-exec ~/.config/sway/bsp.sh
+# exec ~/.config/sway/bsp.sh
 
 # Toggle control center
 bindsym $mod+Shift+Mod1+n exec swaync-client -t -sw
