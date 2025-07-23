@@ -1,8 +1,17 @@
 #!/bin/env python3
 """
 # Arguments
+To specify id, add -i then id.
 add text='im a todo' etc... - add task from arguments
-delete - delete task with uuid from stdin
+delete
+    Delete task with uuid from stdin
+get
+    Get a json list of all tasks
+update
+    Change data for task with id
+watch
+    continously output the same thing as get, but only when the database file is written to
+    in other words, watch for changes.
 
 
 # Example ouput for ./todo get
