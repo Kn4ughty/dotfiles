@@ -20,7 +20,7 @@ get_icon () {
         return 0
     fi
 
-    if [[ -n $ischarging ]]; then
+    if [[ $ischarging == "yes" ]]; then
         if (( $percentage == 100 )); then
             echo 󰂅
             return 0
@@ -119,12 +119,16 @@ while read -r line; do
 
         percentage=$(rg 'percentage: +([0-9]+)' -or '$1' <<< $buffer)
         if [[ -z $percentage ]]; then
-            percentage=1
+            # invalid data
+            continue
         fi
         state=$(rg 'state: +(.+)' -or '$1' <<< $buffer)
 
         if [[ -z $state ]]; then
-            state='unknown'
+            ##state='unknown'
+
+            # invalid data
+            continue
         fi
         
         
@@ -132,7 +136,7 @@ while read -r line; do
             time_display=$(rg 'time to full: +(.+)' -or '$1' <<< $buffer)
             is_charging="yes"
         else
-            ischarging=''
+            is_charging="no"
             time_display=$(rg 'time to empty: +(.+)' -or '$1' <<< $buffer)
         fi
         
