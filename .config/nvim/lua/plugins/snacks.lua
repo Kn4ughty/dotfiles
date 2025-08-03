@@ -6,20 +6,31 @@ vim.keymap.set("n", "<C-n>", ":lua Snacks.words.jump(1, true)<CR>")
 vim.keymap.set("n", "<C-b>", ":lua Snacks.words.jump(-2, true)<CR>")
 
 
-vim.keymap.set("n", "<leader>fr", ":lua Snacks.picker.recent()<CR>")
 
+
+vim.keymap.set("n", "<leader>e", ":lua Snacks.explorer()<CR>")
 
 -- vim.keymap.set('n', '<leader>ff', builtin.find_files, { desc = 'Telescope find files' })
 -- vim.keymap.set('n', '<leader>fg', builtin.live_grep, { desc = 'Telescope live grep' })
 -- vim.keymap.set('n', '<leader>fb', builtin.buffers, { desc = 'Telescope buffers' })
 -- vim.keymap.set('n', '<leader>fh', builtin.help_tags, { desc = 'Telescope help tags' })
 
+-- Picker
+vim.keymap.set("n", "<leader><space>", ":lua Snacks.picker.smart()<CR>", {desc = 'Smart'})
+vim.keymap.set("n", "<leader>/", ":lua Snacks.picker.grep()<CR>", {desc = 'Grep'})
 
 
-vim.keymap.set("n", "<leader><space>", ":lua Snacks.picker.smart()<CR>")
-vim.keymap.set("n", "<leader>fl", ":lua Snacks.picker.lines()<CR>")
-vim.keymap.set("n", "<leader>fb", ":lua Snacks.picker.buffers()<CR>")
-vim.keymap.set("n", "<leader>fh", ":lua Snacks.picker.help()<CR>")
+vim.keymap.set("n", "<leader>fr", ":lua Snacks.picker.recent()<CR>", {desc = 'Recent'})
+vim.keymap.set("n", "<leader>fl", ":lua Snacks.picker.lines()<CR>", {desc = 'Lines'})
+vim.keymap.set("n", "<leader>fb", ":lua Snacks.picker.buffers()<CR>", {desc = 'Buffers'})
+vim.keymap.set("n", "<leader>fh", ":lua Snacks.picker.help()<CR>", {desc = 'Help'})
+vim.keymap.set("n", "<leader>fp", ":lua Snacks.picker.projects()<CR>", {desc = 'Projects'})
+
+-- diagnostics fd``
+vim.keymap.set("n", "<leader>fd", ":lua Snacks.diagnostics_buffer()<CR>", {desc = 'Diagnostics buffer'})
+
+-- vim.keymap.set("n", "<leader>ft", ":lua Snacks.picker.todo_comments()<CR>", {desc = 'todo'})
+--
 
 
 return {
@@ -42,7 +53,7 @@ return {
 
         terminal = { enabled = true },
 
-        image = { enabled = true },
+        -- image = { enabled = true },
 
         indent = {
             enabled = true,
@@ -62,7 +73,7 @@ return {
         quickfile = { enabled = true },
 
         dashboard = {
-            enabled = false,
+            enabled = true,
             preset = {
                 keys = {
                     -- { icon = " ", key = "f", desc = "Find File", action = ":lua Snacks.dashboard.pick('files')" },
@@ -77,10 +88,19 @@ return {
                 header = [[Neovim!]]
             },
         },
-        -- explorer = { enabled = true },
+        explorer = { enabled = true },
         -- indent = { enabled = true },
         -- input = { enabled = true },
-        picker = { enabled = true },
+        picker = {
+            hidden= true,
+            enabled = true,
+            optional = true,
+            sources = {
+                explorer = {
+                },
+                files = {}
+            }
+        },
         -- notifier = { enabled = true },
         -- scope = { enabled = true },
         -- scroll = { enabled = true },

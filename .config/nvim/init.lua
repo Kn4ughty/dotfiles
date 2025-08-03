@@ -90,7 +90,7 @@ vim.g.copilot_no_tab_map = true
 
 -- Do neovide things
 if vim.g.neovide then
-    vim.o.guifont = "JetBrainsMono Nerd Font:h13"
+    vim.o.guifont = "JetBrainsMono Nerd Font:h11"
     vim.g.neovide_scale_factor = 1.0
 
     vim.keymap.set("n", "<C-+>", ":lua vim.g.neovide_scale_factor = (vim.g.neovide_scale_factor + 0.1)<CR>")
