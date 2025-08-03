@@ -16,7 +16,7 @@
 
 
 ; Using deflisten didnt seem to work. :(
-(defpoll ELAPSED_TIME_S :initial 0.0 :interval "10s"
+(defpoll ELAPSED_TIME_S :initial 0.0 :interval "1s"
     `playerctl metadata --format '{{position}}'`)
 
 (deflisten SONG :initial "Unknown"
@@ -52,8 +52,18 @@
             :wrap true
             :wrap-mode "char"
             :limit-width 40
-            :text "${SONG} : ${ALBUM} - ${ARTIST}"
+            ;:text "${SONG} : ${ALBUM} - ${ARTIST}"
+            :text "${SONG}"
         )
+        (label
+            :width 10
+            :halign "center"
+            :valign "center"
+            :hexpand false
+            :wrap true
+            :wrap-mode "char"
+            :limit-width 40
+            :text "${ALBUM} - ${ARTIST}")
 
 ;        (box 
 ;            :class "music_buttons"
