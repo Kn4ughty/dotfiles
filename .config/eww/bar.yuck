@@ -88,7 +88,7 @@
             :halign "center"
             :hexpand false
             ; A potential idea is to make this the currently playing song
-            (label :text WINDOW_NAME :limit-width 60)
+            (label :limit-width 80 :text WINDOW_NAME)
         )
         (box
             :halign "end"
@@ -102,6 +102,7 @@
             ; Wifi network
             (bsep)
             (box :tooltip "${NETWORK.ssid}"
+            ; TODO. Make me revealer toggler
             (revealer-on-click :var SHOW_NETWORK :varname "SHOW_NETWORK"
                 :class 'network'
                 (label :text "${NETWORK.icon} ")
