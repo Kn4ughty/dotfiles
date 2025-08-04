@@ -1,120 +1,133 @@
-vim.g.mapleader = " " -- Set leader key before Lazy
+-- Thank you https://github.com/boltlessengineer/NativeVim/
 
-require("config.lazy")
+vim.o.relativenumber = true
+vim.o.number = true
 
-vim.opt.termguicolors = true
-vim.cmd.colorscheme("catppuccin")
-
-
--- Folding
--- https://www.jackfranklin.co.uk/blog/code-folding-in-vim-neovim/
-vim.opt.foldmethod = "expr"
-vim.opt.foldexpr = "v:lua.vim.treesitter.foldexpr()"
-vim.opt.foldtext = ""
-vim.opt.foldlevel = 99
-vim.opt.foldlevelstart = 99
-
--- vim.opt.clipboard = "unnamedplus"
-
--- Text wrapping
-vim.opt.wrap = true
-vim.opt.linebreak = true
-
--- scroll buffer above and below cursor
 vim.opt.scrolloff = 5
 
--- Allow incrementing characters. ex. ia<Esc><C-a> a -> b
-vim.opt.nrformats = "alpha"
+vim.o.smartindent = true
+vim.o.expandtab = true
+vim.o.tabstop = 4
+vim.o.shiftwidth = 4
 
--- Set up indenting with 4 spaces
-vim.opt.smartindent = true
-vim.opt.expandtab = true
-vim.opt.tabstop = 4
-vim.opt.shiftwidth = 4
+vim.o.completeopt = "menu,menuone,popup,fuzzy" -- modern completion menu
+vim.o.pumheight = 10        -- max height of completion menu
 
-vim.opt.colorcolumn = "120"    -- column indicator
-vim.opt.relativenumber = true -- Relative line numbers
-vim.opt.number = true
--- left side padding to fix lsp resizing things
-vim.opt.signcolumn = "yes:1"
+vim.o.winborder = "rounded"
+vim.o.splitright = true
 
--- Mapping to exit terminal with control + escape
--- tnoremap <Esc> <C-\><C-n>
--- This mess stolen from https://github.com/niyabits/nvy/blob/main/lua/utils.lua
-local M = {}
+vim.o.list = true           -- use special characters to represent things like tabs or trailing spaces
+vim.opt.listchars = {       -- NOTE: using `vim.opt` instead of `vim.o` to pass rich object
+    tab = "▏ ",
+    trail = "·",
+    extends = "»",
+    precedes = "«",
+}
 
-function M.noremap(mode, lhs, rhs)
-    vim.api.nvim_set_keymap(mode, lhs, rhs, { noremap = true, silent = true })
-end
+vim.o.undofile = true
+vim.o.undolevels = 10000 -- 10x more undo levels
 
-function M.nnoremap(lhs, rhs) M.noremap('n', lhs, rhs) end
+vim.o.termguicolors = true
 
-function M.tnoremap(lhs, rhs) M.noremap('t', lhs, rhs) end
+vim.o.signcolumn = "yes:1"
 
-M.tnoremap("<C-Esc>", "<C-\\><C-n>")
+vim.g.netrw_banner = 1
 
--- TODO. Create a map to reload config
-vim.keymap.set("n", "<leader>r", ":so $MYVIMRC<CR>", { desc = "Reload vimrc" })
+-- Regular binds
+vim.g.mapleader = vim.keycode("<space>")
+vim.g.maplocalleader = vim.keycode("<cr>")
 
-vim.keymap.set("v", "<M-y>", "\"+y") -- copy to system clipboard
-vim.keymap.set("n", "<M-y>y", "\"+yy")
-vim.keymap.set("n", "<M-p>", "\"+p")
+vim.keymap.set("n", "<leader>r", ":so<CR>")
 
-vim.keymap.set("i", "<C-V>", "\"+p")
+-- Packages
+-- -- Catppuccin
+vim.pack.add({"https://github.com/catppuccin/nvim"}, {
+	flavour = "mocha"})
 
--- Text movement with arrow keys
-vim.keymap.set("n", "<Left>", "<<")
-vim.keymap.set("n", "<Right>", ">>")
-vim.keymap.set("n", "<Up>", "<cmd>m -2<CR>")
-vim.keymap.set("n", "<Down>", "<cmd>m +1<CR>")
+vim.cmd.colorscheme "catppuccin"
 
-vim.keymap.set("v", "<Left>", "<gv")
-vim.keymap.set("v", "<Right>", ">gv")
+-- -- Snacks
 
+vim.keymap.set("n", "<leader>e", ":lua Snacks.explorer()<CR>")
+vim.keymap.set("n", "<leader>t", ":lua Snacks.terminal()<CR>")
+vim.keymap.set("n", "<leader>g", ":lua Snacks.lazygit.open() <CR>")
 
--- Add newlines with o binds
-vim.keymap.set("n", "<M-o>", "o<Esc>")
-vim.keymap.set("n", "<M-S-o>", "O<Esc>")
+vim.keymap.set("n", "<leader><space>", ":lua Snacks.picker.smart()<CR>", {desc = 'Smart'})
+vim.keymap.set("n", "<leader>/", ":lua Snacks.picker.grep()<CR>", {desc = 'Grep'})
 
--- Toggle spellcheck
+vim.keymap.set("n", "<leader>fr", ":lua Snacks.picker.recent()<CR>", {desc = 'Recent'})
+vim.keymap.set("n", "<leader>fl", ":lua Snacks.picker.lines()<CR>", {desc = 'Lines'})
+vim.keymap.set("n", "<leader>fb", ":lua Snacks.picker.buffers()<CR>", {desc = 'Buffers'})
+vim.keymap.set("n", "<leader>fh", ":lua Snacks.picker.help()<CR>", {desc = 'Help'})
+vim.keymap.set("n", "<leader>fp", ":lua Snacks.picker.projects()<CR>", {desc = 'Projects'})
 
+vim.keymap.set("n", "<leader>fd", ":lua Snacks.diagnostics_buffer()<CR>", {desc = 'Diagnostics buffer'})
 
-vim.keymap.set("n", "<leader>s", ":setlocal spell spelllang=en_au<CR>", { desc = "Turn on spellchecl" })
-
-
-vim.keymap.set('i', '<C-f>', 'copilot#Accept("\\<CR>")', {
-    expr = true,
-    replace_keycodes = false
+vim.pack.add({"https://github.com/folke/snacks.nvim"}, {
+    lazygit = {
+        enabled = true,
+    },
+    words = {
+        enabled = true,
+        debounce = 10, -- time in ms to wait before updating
+    },
+    indent = {
+        enabled = true,
+        animate = {
+            -- enabled = vim.fn.has("nvim-0.10") == 1,
+            enabled = false,
+            style = "out",
+            easing = "linear",
+            duration = {
+                step = 20,   -- ms per step
+                total = 500, -- maximum duration
+            },
+            -- style = "out",
+            -- easing = "quart"
+        }
+    },
+    explorer = { enabled = true },
+    picker = {
+        hidden= true,
+        enabled = true,
+        optional = true,
+        sources = {
+            explorer = {
+            },
+            files = {}
+        }
+    },
+    terminal = { enabled = true },
+    -- indent = { enabled = true },
+    -- bigfile = { enabled = true },
+    -- image = { enabled = true },
+    -- input = { enabled = true },
+    -- dashboard = { enabled = true },
+    -- notifier = { enabled = true },
+    -- scope = { enabled = true },
+    -- scroll = { enabled = true },
+    -- statuscolumn = { enabled = true },
 })
-vim.g.copilot_no_tab_map = true
 
--- Do neovide things
-if vim.g.neovide then
-    vim.o.guifont = "JetBrainsMono Nerd Font:h11"
-    vim.g.neovide_scale_factor = 1.0
+require("snacks").setup()
+Snacks.indent.enable()
+Snacks.words.enable()
+-- Snacks.explorer.enable()
 
-    vim.keymap.set("n", "<C-+>", ":lua vim.g.neovide_scale_factor = (vim.g.neovide_scale_factor + 0.1)<CR>")
-    vim.keymap.set("n", "<C-_>", ":lua vim.g.neovide_scale_factor = (vim.g.neovide_scale_factor - 0.1)<CR>")
+-- -- Lspconfig
+vim.pack.add({
+  { src = 'https://github.com/neovim/nvim-lspconfig' },
+})
 
-    vim.g.transparency = 0.5
+-- -- Mason
+vim.pack.add({
+  { src = 'https://github.com/mason-org/mason.nvim' },
+})
+require("mason").setup()
 
-    vim.g.neovide_cursor_animation_length = 0.05
-    vim.g.neovide_cursor_trail_size = 0.5
-    vim.g.neovide_cursor_animate_command_line = false
+-- -- -- Mason lsp
+vim.pack.add({
+  { src = 'https://github.com/mason-org/mason-lspconfig.nvim' },
+})
 
-    vim.g.neovide_cursor_vfx_mode = ""
-    vim.g.neovide_cursor_vfx_particle_density = 1.0
-    vim.g.neovide_cursor_vfx_opacity = 200.0
-
-    local pad = 0
-    vim.g.neovide_padding_top = pad
-    vim.g.neovide_padding_bottom = pad
-    vim.g.neovide_padding_right = pad
-    vim.g.neovide_padding_left = pad
-
-    local blur = 5
-    vim.g.neovide_floating_blur_amount_x = blur
-    vim.g.neovide_floating_blur_amount_y = blur
-end
-
-require('overseer').setup()
+require("mason-lspconfig").setup()
