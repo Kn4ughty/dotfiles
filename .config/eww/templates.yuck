@@ -43,3 +43,21 @@
           (children :nth 1))
         (children :nth 0)
         (children :nth 2)))))
+
+
+(defwidget revealer-toggler [var varname ?class ?duration ?transition]
+  (box :class "${class} revealer-toggler"
+       :orientation "h"
+       :space-evenly false
+    (eventbox :class "eventbox"
+              :onclick "eww update ${varname}=${!var.toggled}"
+              :cursor "pointer"
+              :onhover "eww update ${varname}.hovered=true"
+              :onhoverlost "eww update ${varname}.hovered=false"
+      (box :space-evenly false
+        (revealer :reveal {var.hovered || var.toggled}
+                  :transition {transition ?: "slideright"}
+                  :duration {duration ?: "500ms"}
+          (children :nth 1))
+        (children :nth 0)
+        (children :nth 2)))))

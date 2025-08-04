@@ -1,4 +1,4 @@
 
 sudo dnf copr enable swayfx/swayfx 
 
-alacritty bat automake cava cowsay btop clang blender blueman cbonsai fishs flatpak gdb gimp git golang hyprland hyprpaper hyperpicker inkscape mpc mpd playerctl nmap powdertoy tmux vlc waybar gtk4-devel gtk3-devel glibc-devel libdbusmenu-devel libdbusmenu-gtk3-devel gtk-layer-shell-devel meson ninja-build swayfx python3-devel libqalculate-devel gobject-introspection-devel gtk4-layer-shell-devel NetworkManager-tui acpid wtype
+alacritty bat automake cava cowsay btop clang blender blueman cbonsai fish flatpak gdb gimp git golang hyprland hyprpaper hyperpicker inkscape mpc mpd playerctl nmap powdertoy tmux vlc waybar gtk4-devel gtk3-devel glibc-devel libdbusmenu-devel libdbusmenu-gtk3-devel gtk-layer-shell-devel meson ninja-build swayfx python3-devel libqalculate-devel gobject-introspection-devel gtk4-layer-shell-devel NetworkManager-tui acpid wtype
