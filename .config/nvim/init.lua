@@ -1,5 +1,5 @@
 -- Thank you https://github.com/boltlessengineer/NativeVim/
-
+local vim = vim -- hide errors stupidly
 vim.o.relativenumber = true
 vim.o.number = true
 
@@ -11,13 +11,13 @@ vim.o.tabstop = 4
 vim.o.shiftwidth = 4
 
 vim.o.completeopt = "menu,menuone,popup,fuzzy" -- modern completion menu
-vim.o.pumheight = 10        -- max height of completion menu
+vim.o.pumheight = 10                           -- max height of completion menu
 
 vim.o.winborder = "rounded"
 vim.o.splitright = true
 
-vim.o.list = true           -- use special characters to represent things like tabs or trailing spaces
-vim.opt.listchars = {       -- NOTE: using `vim.opt` instead of `vim.o` to pass rich object
+vim.o.list = true     -- use special characters to represent things like tabs or trailing spaces
+vim.opt.listchars = { -- NOTE: using `vim.opt` instead of `vim.o` to pass rich object
     tab = "▏ ",
     trail = "·",
     extends = "»",
@@ -38,11 +38,12 @@ vim.g.mapleader = vim.keycode("<space>")
 vim.g.maplocalleader = vim.keycode("<cr>")
 
 vim.keymap.set("n", "<leader>r", ":so<CR>")
+vim.keymap.set("n", "<leader>lf", vim.lsp.buf.format)
 
 -- Packages
 -- -- Catppuccin
-vim.pack.add({"https://github.com/catppuccin/nvim"}, {
-	flavour = "mocha"})
+vim.pack.add({ "https://github.com/catppuccin/nvim" }, {
+    flavour = "mocha" })
 
 vim.cmd.colorscheme "catppuccin"
 
@@ -52,18 +53,18 @@ vim.keymap.set("n", "<leader>e", ":lua Snacks.explorer()<CR>")
 vim.keymap.set("n", "<leader>t", ":lua Snacks.terminal()<CR>")
 vim.keymap.set("n", "<leader>g", ":lua Snacks.lazygit.open() <CR>")
 
-vim.keymap.set("n", "<leader><space>", ":lua Snacks.picker.smart()<CR>", {desc = 'Smart'})
-vim.keymap.set("n", "<leader>/", ":lua Snacks.picker.grep()<CR>", {desc = 'Grep'})
+vim.keymap.set("n", "<leader><space>", ":lua Snacks.picker.smart()<CR>", { desc = 'Smart' })
+vim.keymap.set("n", "<leader>/", ":lua Snacks.picker.grep()<CR>", { desc = 'Grep' })
 
-vim.keymap.set("n", "<leader>fr", ":lua Snacks.picker.recent()<CR>", {desc = 'Recent'})
-vim.keymap.set("n", "<leader>fl", ":lua Snacks.picker.lines()<CR>", {desc = 'Lines'})
-vim.keymap.set("n", "<leader>fb", ":lua Snacks.picker.buffers()<CR>", {desc = 'Buffers'})
-vim.keymap.set("n", "<leader>fh", ":lua Snacks.picker.help()<CR>", {desc = 'Help'})
-vim.keymap.set("n", "<leader>fp", ":lua Snacks.picker.projects()<CR>", {desc = 'Projects'})
+vim.keymap.set("n", "<leader>fr", ":lua Snacks.picker.recent()<CR>", { desc = 'Recent' })
+vim.keymap.set("n", "<leader>fl", ":lua Snacks.picker.lines()<CR>", { desc = 'Lines' })
+vim.keymap.set("n", "<leader>fb", ":lua Snacks.picker.buffers()<CR>", { desc = 'Buffers' })
+vim.keymap.set("n", "<leader>fh", ":lua Snacks.picker.help()<CR>", { desc = 'Help' })
+vim.keymap.set("n", "<leader>fp", ":lua Snacks.picker.projects()<CR>", { desc = 'Projects' })
 
-vim.keymap.set("n", "<leader>fd", ":lua Snacks.diagnostics_buffer()<CR>", {desc = 'Diagnostics buffer'})
+vim.keymap.set("n", "<leader>fd", ":lua Snacks.diagnostics_buffer()<CR>", { desc = 'Diagnostics buffer' })
 
-vim.pack.add({"https://github.com/folke/snacks.nvim"}, {
+vim.pack.add({ "https://github.com/folke/snacks.nvim" }, {
     lazygit = {
         enabled = true,
     },
@@ -88,7 +89,7 @@ vim.pack.add({"https://github.com/folke/snacks.nvim"}, {
     },
     explorer = { enabled = true },
     picker = {
-        hidden= true,
+        hidden = true,
         enabled = true,
         optional = true,
         sources = {
@@ -108,26 +109,24 @@ vim.pack.add({"https://github.com/folke/snacks.nvim"}, {
     -- scroll = { enabled = true },
     -- statuscolumn = { enabled = true },
 })
-
 require("snacks").setup()
 Snacks.indent.enable()
 Snacks.words.enable()
--- Snacks.explorer.enable()
 
 -- -- Lspconfig
 vim.pack.add({
-  { src = 'https://github.com/neovim/nvim-lspconfig' },
+    { src = 'https://github.com/neovim/nvim-lspconfig' },
 })
 
 -- -- Mason
 vim.pack.add({
-  { src = 'https://github.com/mason-org/mason.nvim' },
+    { src = 'https://github.com/mason-org/mason.nvim' },
 })
 require("mason").setup()
 
 -- -- -- Mason lsp
 vim.pack.add({
-  { src = 'https://github.com/mason-org/mason-lspconfig.nvim' },
+    { src = 'https://github.com/mason-org/mason-lspconfig.nvim' },
 })
 
 require("mason-lspconfig").setup()
