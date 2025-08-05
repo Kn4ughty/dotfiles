@@ -1,28 +1,50 @@
 
+(defcfg
+    movemouse-inherit-accel-state yes
+    movemouse-smooth-diagonals yes
+    log-layer-changes no
+    process-unmapped-keys no
+)
 
 (defsrc
     caps
     h j k l
-    left up down right
+    u i o scln /
+    a w s d
 )
 
 (deflayer default
     @caps
     _ _ _ _
+    _ _ _ _ _
     _ _ _ _
 )
 
 (deflayer cap-mod
     _
     left down up right
-    home pgup pgdn end
+    mlft mmid mrgt @mwheel-up @mwheel-down
+    @mleft @mup @mdown @mright
 )
 
 (defvar
       tap-time 200
       hold-time 250
+      mouse-interval 16
+      mouse-acceleration-time 700
+      mouse-min 1
+      mouse-max 10
+
+      mwheel-interval 16
+      mwheel-distance 10
 )
 
 (defalias
     caps (tap-hold-press $tap-time $hold-time esc (layer-toggle cap-mod))
+    mleft  (movemouse-accel-left $mouse-interval $mouse-acceleration-time $mouse-min $mouse-max)
+    mright (movemouse-accel-right $mouse-interval $mouse-acceleration-time $mouse-min $mouse-max)
+    mup    (movemouse-accel-up $mouse-interval $mouse-acceleration-time $mouse-min $mouse-max)
+    mdown  (movemouse-accel-down $mouse-interval $mouse-acceleration-time $mouse-min $mouse-max)
+    mwheel-up (mwheel-up $mwheel-interval $mwheel-distance)
+    mwheel-down (mwheel-down $mwheel-interval $mwheel-distance)
 )
