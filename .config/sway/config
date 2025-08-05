@@ -139,6 +139,18 @@ exec swayidle -w \
          timeout $offtime 'swaymsg "output * power off"' resume 'swaymsg "output * power on"' \
          before-sleep $lockcmd
 
+# Notification Daemon
+# exec dunst
+exec swaync
+
+# KDE auth thing passwd
+exec /usr/lib/polkit-kde-authentication-agent-1
+
+# Exec binary space partitioning script
+# exec ~/.config/sway/bsp.sh
+
+exec kanata --cfg ~/.config/kanata/conf.kbd
+
 primary_selection disabled
 
 # Dell
@@ -150,7 +162,7 @@ input "1739:30382:DLL0704:01_06CB:76AE_Touchpad" {
 # keyboard layout
 
 input * {
-    xkb_layout us,jp
+    xkb_layout us
     accel_profile "flat"
     # NOTE TO FUTURE ME
     # Only enable this if you KNOW the layout fully. 
@@ -170,16 +182,6 @@ input "1133:45114:LOGI_M240_Mouse" {
     pointer_accel -0.1
 }
 
-
-# Notification Daemon
-# exec dunst
-exec swaync
-
-# KDE auth thing passwd
-exec /usr/lib/polkit-kde-authentication-agent-1
-
-# Exec binary space partitioning script
-# exec ~/.config/sway/bsp.sh
 
 # Toggle control center
 bindsym $mod+Shift+Mod1+n exec swaync-client -t -sw
@@ -436,6 +438,7 @@ bindsym XF86Search exec alacritty -e less $HOME/.scripts/cat.txt
 
 # cat videos!
 bindsym $mod+Control+Shift+a exec xdg-open 'https://www.youtube.com/watch?v=9J62hGda9BQ' && xdg-open 'https://www.youtube.com/watch?v=YRvOePz2OqQ'&& xdg-open 'https://www.youtube.com/watch?v=2GgiZZhO-PA' && xdg-open 'https://www.youtube.com/watch?v=0sTGxJ7rp9w' && xdg-open 'https://www.youtube.com/watch?v=WhpNmxKIt78' && xdg-open 'https://www.youtube.com/watch?v=zWLAbNHn5Ho'
+
 
 #
 # Status Bar:

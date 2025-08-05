@@ -1,0 +1,28 @@
+
+
+(defsrc
+    caps
+    h j k l
+    left up down right
+)
+
+(deflayer default
+    @caps
+    _ _ _ _
+    _ _ _ _
+)
+
+(deflayer cap-mod
+    _
+    left down up right
+    home pgup pgdn end
+)
+
+(defvar
+      tap-time 200
+      hold-time 250
+)
+
+(defalias
+    caps (tap-hold-press $tap-time $hold-time esc (layer-toggle cap-mod))
+)
