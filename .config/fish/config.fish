@@ -11,6 +11,8 @@ if status is-interactive
     alias :q="echo \"okay if you are sure\" && sleep 1 && exit"
     alias abcdefghijklmnopqrstuvwxyz="calcurse"
 
+    alias doitnow="sudo fish -c \$history[1]"
+
     alias -- "+x"="chmod +x"
 
     export EDITOR=/usr/bin/nvim
