@@ -1,4 +1,5 @@
 -- Thank you https://github.com/boltlessengineer/NativeVim/
+-- TODO. Speed up install by putting all pack.adds into one function
 local vim = vim -- hide errors stupidly
 vim.o.relativenumber = true
 vim.o.number = true
@@ -27,6 +28,8 @@ vim.opt.listchars = { -- NOTE: using `vim.opt` instead of `vim.o` to pass rich o
 vim.o.undofile = true
 vim.o.undolevels = 10000 -- 10x more undo levels
 
+vim.o.ignorecase = true
+
 vim.o.termguicolors = true
 
 vim.o.signcolumn = "yes:1"
@@ -39,6 +42,12 @@ vim.g.maplocalleader = vim.keycode("<cr>")
 
 vim.keymap.set("n", "<leader>r", ":so<CR>")
 vim.keymap.set("n", "<leader>lf", vim.lsp.buf.format)
+
+-- Alternate, use <C-w>d
+vim.keymap.set('n', 'gK', function()
+  local new_config = not vim.diagnostic.config().virtual_lines
+  vim.diagnostic.config({ virtual_lines = new_config })
+end, { desc = 'Toggle diagnostic virtual_lines' })
 
 -- Packages
 -- -- Catppuccin
@@ -128,5 +137,40 @@ require("mason").setup()
 vim.pack.add({
     { src = 'https://github.com/mason-org/mason-lspconfig.nvim' },
 })
-
 require("mason-lspconfig").setup()
+
+-- Treesitter
+vim.pack.add({
+    { src = 'https://github.com/nvim-treesitter/nvim-treesitter' },
+})
+require('nvim-treesitter.configs').setup {
+  -- A list of parser names, or "all" (the listed parsers MUST always be installed)
+  ensure_installed = { "c", "lua", "vim", "vimdoc", "query", "markdown", "markdown_inline" },
+
+  -- Install parsers synchronously (only applied to `ensure_installed`)
+  sync_install = false,
+
+  -- Automatically install missing parsers when entering buffer
+  -- Recommendation: set to false if you don't have `tree-sitter` CLI installed locally
+  auto_install = true,
+
+  -- List of parsers to ignore installing (or "all")
+  ignore_install = { "javascript" },
+
+  ---- If you need to change the installation directory of the parsers (see -> Advanced Setup)
+  -- parser_install_dir = "/some/path/to/store/parsers", -- Remember to run vim.opt.runtimepath:append("/some/path/to/store/parsers")!
+
+  highlight = {
+    enable = true,
+    -- Set this to `true` if you depend on 'syntax' being enabled (like for indentation).
+    -- Using this option may slow down your editor, and you may see some duplicate highlights.
+    -- Instead of true it can also be a list of languages
+    additional_vim_regex_highlighting = false,
+  },
+}
+
+-- Dropbar
+vim.pack.add({
+    {src = "https://github.com/Bekaboo/dropbar.nvim"}
+})
+
