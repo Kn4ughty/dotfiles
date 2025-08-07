@@ -25,7 +25,7 @@
         (info-box
             (label 
                 :class "heading time"
-                :text time_str)
+                :text "${replace(formattime(EWW_TIME, '%H:%M:%S'), '0', 'O')}")
         )
     )
 )
