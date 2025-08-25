@@ -4,6 +4,9 @@ local vim = vim -- hide errors stupidly
 vim.o.relativenumber = true
 vim.o.number = true
 
+vim.o.cursorline = true
+-- vim.o.cursorcolumn = true
+
 vim.opt.scrolloff = 5
 
 vim.o.smartindent = true
@@ -36,12 +39,16 @@ vim.o.signcolumn = "yes:1"
 
 vim.g.netrw_banner = 1
 
+
+
 -- Regular binds
 vim.g.mapleader = vim.keycode("<space>")
 vim.g.maplocalleader = vim.keycode("<cr>")
 
 vim.keymap.set("n", "<leader>r", ":so<CR>")
 vim.keymap.set("n", "<leader>lf", vim.lsp.buf.format)
+
+vim.api.nvim_set_keymap("t", "<C-Esc>", "<C-\\><C-n>", {noremap = true, silent = true})
 
 vim.api.nvim_create_autocmd('LspAttach', {
     desc = 'LSP actions',
@@ -51,8 +58,8 @@ vim.api.nvim_create_autocmd('LspAttach', {
 
         -- Alternate, use <C-w>d
         vim.keymap.set('n', 'gK', function()
-          local new_config = not vim.diagnostic.config().virtual_lines
-          vim.diagnostic.config({ virtual_lines = new_config })
+            local new_config = not vim.diagnostic.config().virtual_lines
+            vim.diagnostic.config({ virtual_lines = new_config })
         end, { desc = 'Toggle diagnostic virtual_lines' })
 
         vim.keymap.set('n', 'K', '<cmd>lua vim.lsp.buf.hover()<cr>', opts)
@@ -164,33 +171,59 @@ vim.pack.add({
     { src = 'https://github.com/nvim-treesitter/nvim-treesitter' },
 })
 require('nvim-treesitter.configs').setup {
-  -- A list of parser names, or "all" (the listed parsers MUST always be installed)
-  ensure_installed = { "c", "lua", "vim", "vimdoc", "query", "markdown", "markdown_inline" },
+    -- A list of parser names, or "all" (the listed parsers MUST always be installed)
+    ensure_installed = { "c", "lua", "vim", "vimdoc", "query", "markdown", "markdown_inline" },
 
-  -- Install parsers synchronously (only applied to `ensure_installed`)
-  sync_install = false,
+    -- Install parsers synchronously (only applied to `ensure_installed`)
+    sync_install = false,
 
-  -- Automatically install missing parsers when entering buffer
-  -- Recommendation: set to false if you don't have `tree-sitter` CLI installed locally
-  auto_install = true,
+    -- Automatically install missing parsers when entering buffer
+    -- Recommendation: set to false if you don't have `tree-sitter` CLI installed locally
+    auto_install = true,
 
-  -- List of parsers to ignore installing (or "all")
-  ignore_install = { "javascript" },
+    -- List of parsers to ignore installing (or "all")
+    ignore_install = { "javascript" },
 
-  ---- If you need to change the installation directory of the parsers (see -> Advanced Setup)
-  -- parser_install_dir = "/some/path/to/store/parsers", -- Remember to run vim.opt.runtimepath:append("/some/path/to/store/parsers")!
+    ---- If you need to change the installation directory of the parsers (see -> Advanced Setup)
+    -- parser_install_dir = "/some/path/to/store/parsers", -- Remember to run vim.opt.runtimepath:append("/some/path/to/store/parsers")!
 
-  highlight = {
-    enable = true,
-    -- Set this to `true` if you depend on 'syntax' being enabled (like for indentation).
-    -- Using this option may slow down your editor, and you may see some duplicate highlights.
-    -- Instead of true it can also be a list of languages
-    additional_vim_regex_highlighting = false,
-  },
+    highlight = {
+        enable = true,
+        -- Set this to `true` if you depend on 'syntax' being enabled (like for indentation).
+        -- Using this option may slow down your editor, and you may see some duplicate highlights.
+        -- Instead of true it can also be a list of languages
+        additional_vim_regex_highlighting = false,
+    },
 }
 
 -- Dropbar
 vim.pack.add({
-    {src = "https://github.com/Bekaboo/dropbar.nvim"}
+    { src = "https://github.com/Bekaboo/dropbar.nvim" }
 })
 
+-- cmp
+vim.pack.add({
+    'https://github.com/hrsh7th/cmp-nvim-lsp',
+    'https://github.com/hrsh7th/cmp-buffer',
+    'https://github.com/hrsh7th/cmp-path',
+    'https://github.com/hrsh7th/cmp-cmdline',
+    'https://github.com/hrsh7th/nvim-cmp',
+})
+
+local cmp = require("cmp")
+
+cmp.setup({
+    mapping = cmp.mapping.preset.insert({
+        ['<C-b>'] = cmp.mapping.scroll_docs(-4),
+        ['<C-f>'] = cmp.mapping.scroll_docs(4),
+        ['<C-Space>'] = cmp.mapping.complete(),
+        ['<C-e>'] = cmp.mapping.abort(),
+        ['<Tab>'] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
+    }),
+    sources = cmp.config.sources({
+        { name = 'nvim_lsp' },
+    },
+    {
+        { name = 'buffer' },
+    })
+})
