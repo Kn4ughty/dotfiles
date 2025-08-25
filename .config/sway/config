@@ -57,7 +57,7 @@ output HEADLESS-1 bg $HOME/.pic/magicpattern_mocha_stars.png fill
 # Apps
 
 # Your preferred terminal emulator
-set $term kitty
+set $term alacritty
 # Your preferred application launcher
 # Note: pass the final command to swaymsg so that the resulting window can be opened
 # on the original workspace that the command was run on.
@@ -74,6 +74,8 @@ set $borderCol $acCol
 # Colours
 # class                 border  backgr. text    indicator child_border
 client.focused          $acCol  $acCol  $textC  $secCol   $borderCol
+
+font pango:JetBrainsMono NF 10
 
 # Gaps
 # was inner 3
@@ -175,7 +177,7 @@ input * {
 input "1452:833:Apple_SPI_Trackpad" {
    natural_scroll true
    scroll_factor 0.15
-   pointer_accel 0
+   pointer_accel 0 # Disabled :P
 }
 
 input "1133:45114:LOGI_M240_Mouse" {
@@ -263,7 +265,7 @@ bindsym $mod+delete exec $lockcmd
 
 
 # Mouse follows focus
-# mouse_warping container
+mouse_warping container
 
 
 focus_follows_mouse yes
