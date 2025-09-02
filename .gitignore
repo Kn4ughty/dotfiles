@@ -7,3 +7,5 @@ IGNORE*
 .config/btop/btop.conf
 .config/btop/btop.conf
 .config/nvim/lazy-lock.json
+
+.qmlls.ini
