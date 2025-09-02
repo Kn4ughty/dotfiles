@@ -28,6 +28,7 @@
     :exclusive true
     :windowtype "dock"
     :wm-ignore false
+    :focusable false
     (bar :monitor 'DP-2')
 )
 
@@ -43,6 +44,7 @@
     :exclusive true
     :windowtype "dock"
     :wm-ignore false
+    :focusable false
     (bar :monitor 'HDMI-A-1')
 )
 
@@ -58,6 +60,7 @@
     :exclusive true
     :windowtype "dock"
     :wm-ignore false
+    :focusable false
     (bar :monitor 'DP-1')
 )
 

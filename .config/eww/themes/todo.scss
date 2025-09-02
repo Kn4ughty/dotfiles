@@ -1,5 +1,9 @@
 @use 'variables.scss' as v;
 
+.todo_overview {
+  padding-bottom: 0.4rem;
+}
+
 .todo_item {
   background: v.$background_dark;
   border-radius: v.$border-radius;

@@ -32,6 +32,7 @@ if status is-interactive
     export QT_IM_MODULE=fcitx
     export XMODIFIERS=@im=fcitx
     export MOZC_IBUS_CANDIDATE_WINDOW=ibus
+    export HOSTNAME=$(hostname)
 
     # export PATH=$PATH:/home/d/.cargo/bin
     #
