@@ -198,8 +198,11 @@ require('nvim-treesitter.configs').setup {
 
 -- Dropbar
 vim.pack.add({
-    { src = "https://github.com/Bekaboo/dropbar.nvim" }
-})
+    { src = "https://github.com/Bekaboo/dropbar.nvim",
+}})
+
+local dropbar_api = require('dropbar.api')
+vim.keymap.set('n', '<Leader>;', dropbar_api.pick, { desc = 'Pick symbols in winbar' })
 
 -- cmp
 vim.pack.add({
