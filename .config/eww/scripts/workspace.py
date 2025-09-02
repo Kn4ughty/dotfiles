@@ -8,6 +8,7 @@ def get_workspaces():
     output = subprocess.check_output(["swaymsg", "-t", "get_workspaces"])
     return json.loads(output.decode("utf-8"))
 
+
 class TreeNode:
     def __init__(self, ori: str, children=None, name=None):
         self.ori = ori
@@ -30,7 +31,8 @@ class TreeNode:
         sp = "  " * indent
         if self.children:
             orient = self.ori.lower()
-            s = f'{sp}(box :orientation "{orient}" :hexpand true :vexpand true :class "container" \n'
+            s = f'{sp}(box :orientation "{
+                orient}" :hexpand true :vexpand true :class "container" \n'
             for child in self.children:
                 s += child.to_yuck(indent + 1) + "\n"
             s += f"{sp})"
@@ -38,7 +40,6 @@ class TreeNode:
         # We must be a leaf node
 
         return f'{sp}(box :class "workspace_window" "{self.name}")'
-
 
 
 def parse_layout(s: str):
@@ -49,7 +50,7 @@ def parse_layout(s: str):
         (box :orientation "h")
         (box :orientation "h")
         )'
-    
+
     """
 
     if s is None or len(s) == 0:
@@ -83,22 +84,21 @@ def parse_layout(s: str):
 
             idx += 1
             return TreeNode(ori, children)
-        
+
         # We must be at a leaf node
-        idx -= 1 # correct for pre indexing
+        idx -= 1  # correct for pre indexing
         name = ""
         while idx < len(s) and s[idx] not in " []":
             name += s[idx]
             idx += 1
         return TreeNode(ori, name=name)
-    
+
     root = parse()
 
     if idx != len(s):
         raise ValueError("theres been a problem")
 
     return root
-
 
 
 def generate_workspace_data() -> dict:
@@ -108,12 +108,12 @@ def generate_workspace_data() -> dict:
         if wsp["output"] not in data:
             data[wsp["output"]] = []
 
-        i = { "name": wsp["name"],
-              "monitor": wsp["output"],
-              "focused": wsp["focused"],
-              "visible": wsp["visible"],
-              "rep": parse_layout(wsp["representation"]).to_yuck()
-            }
+        i = {"name": wsp["name"],
+             "monitor": wsp["output"],
+             "focused": wsp["focused"],
+             "visible": wsp["visible"],
+             "rep": parse_layout(wsp["representation"]).to_yuck()
+             }
 
         if wsp["focused"]:
             i["class"] = "focused"
@@ -125,7 +125,6 @@ def generate_workspace_data() -> dict:
             i["class"] = "hidden"
             i["icon"] = ""
 
-
         # print("Layout!")
         # print(parse_layout(wsp["representation"]).to_yuck())
         # print("_________")
@@ -133,10 +132,8 @@ def generate_workspace_data() -> dict:
         # i["rep"] = gen_yuck_rep(wsp["representation"])
 
         data[wsp["output"]].append(i)
-        
 
     return data
-
 
 
 if __name__ == "__main__":

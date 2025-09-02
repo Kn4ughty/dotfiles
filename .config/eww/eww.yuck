@@ -131,7 +131,6 @@ M"
             (time)
             ;(info-box)
             (box :valign "end"
-                (music_info)
             )
             (todo_overview)
         )
@@ -147,6 +146,7 @@ M"
             (box :valign "start"
                 (sys_info)
             )
+                (music_info)
         )
     )
 )

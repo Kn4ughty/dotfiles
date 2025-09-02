@@ -12,17 +12,16 @@
     `~/.scripts/todo.py watch`)
 
 (defwidget todo_item [id text done due]
-    (box :class "todo_item" :space-evenly false :orientation "h"
+    (box :class "todo_item" :space-evenly false :orientation "h" :vexpand true
         (eventbox :cursor "pointer" :halign "start" :hexpand true
             :onclick `~/.scripts/todo.py update --id=${id} --checked=${!done*1}`
-            (box :space-evenly false
+            ;; Left aligned box
+            (box :space-evenly false :vexpand true :width 10
                 (label :text {done == true ? "" : ""} 
                     :class "checkbox ${done ? 'ticked' : ''}")
-                (label :text {text} :halign "start"))
+                (label :text {text} :valign "center" :halign "start" :wrap true
+                :wrap-mode "word" :width 10 :hexpand true :vexpand true))
             )
-            ;(checkbox :checked {done}
-            ;    :onchecked `~/.scripts/todo.py update --id=${id} --checked=1`
-            ;    :onunchecked `~/.scripts/todo.py update --id=${id} --checked=0`)
         (box :halign "end" :space-evenly false
             ; Select date
             ;(box :class "button"
