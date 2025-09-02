@@ -36,7 +36,7 @@
       mouse-max 10
 
       mwheel-interval 16
-      mwheel-distance 10
+      mwheel-distance 20
 )
 
 (defalias
