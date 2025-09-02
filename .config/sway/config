@@ -128,7 +128,7 @@ exec systemctl --user import-environment WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
 exec dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP=sway
 
 exec --no-startup-id /usr/lib/xdg-desktop-portal -r
-seat seat0 xcursor_theme Bibata-Modern-Classic 24
+seat seat0 xcursor_theme Bibata-Modern-Classic 28
 exec gsettings set org.gnome.desktop.interface gtk-theme 'Adwaita-Dark'
 
 
@@ -213,7 +213,8 @@ bindsym Mod1+backspace exec wtype -P delete -p delete
 # App launching
 
 ## Start your launcher
-bindsym $mod+space exec cd ~/code/Lumin && make run
+# bindsym $mod+space exec cd ~/code/Lumin && make run
+bindsym $mod+space exec wofi --show drun
 
 # search windows
 #bindsym $mod+tab exec $menu -show window
