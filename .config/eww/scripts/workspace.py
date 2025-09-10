@@ -4,7 +4,7 @@ import subprocess
 import json
 
 
-def get_workspaces():
+def sway_get_workspaces():
     output = subprocess.check_output(["swaymsg", "-t", "get_workspaces"])
     return json.loads(output.decode("utf-8"))
 
@@ -101,9 +101,9 @@ def parse_layout(s: str):
     return root
 
 
-def generate_workspace_data() -> dict:
+def sway_generate_workspace_data() -> dict:
     data = {}
-    for wsp in get_workspaces():
+    for wsp in sway_get_workspaces():
 
         if wsp["output"] not in data:
             data[wsp["output"]] = []
@@ -144,8 +144,9 @@ if __name__ == "__main__":
     if process.stdout is None:
         print("Error: could not subscribe to sway events")
         exit(1)
+
     while True:
-        print(json.dumps(generate_workspace_data()), flush=True)
+        print(json.dumps(sway_generate_workspace_data()), flush=True)
         # This just maakes it wait until something changes before getting the data again
         line = process.stdout.readline().decode("utf-8")
         if line == "":
