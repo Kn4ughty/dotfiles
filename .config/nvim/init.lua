@@ -52,7 +52,6 @@ vim.api.nvim_set_keymap("t", "<C-Esc>", "<C-\\><C-n>", {noremap = true, silent =
 
 vim.api.nvim_create_autocmd('LspAttach', {
     desc = 'LSP actions',
-
     callback = function(event)
         local opts = { buffer = event.buf }
 
@@ -73,6 +72,9 @@ vim.api.nvim_create_autocmd('LspAttach', {
         vim.keymap.set({ 'n', 'x' }, '<F3>', '<cmd>lua vim.lsp.buf.format({async = true})<cr>', opts)
         vim.keymap.set('n', '<F4>', '<cmd>lua vim.lsp.buf.code_action()<cr>', opts)
         vim.keymap.set('n', 'gp', '<cmd>lua line_diagnostics()<cr>', opts)
+
+        vim.keymap.set('n', 'ln', '<cmd>lua vim.diagnostic.goto_next()<cr>', opts)
+        vim.keymap.set('n', 'lp', '<cmd>lua vim.diagnostic.goto_prev()<cr>', opts)
     end,
 })
 
@@ -105,7 +107,7 @@ vim.pack.add({ "https://github.com/folke/snacks.nvim" }, {
         enabled = true,
     },
     words = {
-        enabled = true,
+        enabled = false,
         debounce = 10, -- time in ms to wait before updating
     },
     indent = {
