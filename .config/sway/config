@@ -28,8 +28,8 @@ output $out-prim resolution 1920x1080 position 0 0 scale 1 adaptive_sync off
 # 2880 is 3840*1.75
 output $out-sec resolution 3840x2160 position 1920 0 scale 2
 
-output HDMI-A-1 resolution 1920x1080 position 3840 -580 transform 270
-# output HDMI-A-1 resolution 1920x1080 position 5760 -580 transform 270
+# output HDMI-A-1 resolution 1920x1080 position 3840 -580 transform 270
+output HDMI-A-1 resolution 1920x1080 position 5760 -580 transform 270
 
 output HEADLESS-1 {
     resolution 2048x1536 
@@ -214,7 +214,7 @@ bindsym Mod1+backspace exec wtype -P delete -p delete
 
 ## Start your launcher
 # bindsym $mod+space exec cd ~/code/Lumin && make run
-bindsym $mod+space exec wofi --show drun
+bindsym $mod+space exec lumin
 
 # search windows
 #bindsym $mod+tab exec $menu -show window
