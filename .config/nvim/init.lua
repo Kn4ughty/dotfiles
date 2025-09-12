@@ -92,7 +92,7 @@ vim.keymap.set("n", "<leader>t", ":lua Snacks.terminal()<CR>")
 vim.keymap.set("n", "<leader>g", ":lua Snacks.lazygit.open() <CR>")
 
 vim.keymap.set("n", "<leader><space>", ":lua Snacks.picker.smart()<CR>", { desc = 'Smart' })
-vim.keymap.set("n", "<leader>/", ":lua Snacks.picker.grep()<CR>", { desc = 'Grep' })
+vim.keymap.set("n", "<leader>fg", ":lua Snacks.picker.grep()<CR>", { desc = 'Grep' })
 
 vim.keymap.set("n", "<leader>fr", ":lua Snacks.picker.recent()<CR>", { desc = 'Recent' })
 vim.keymap.set("n", "<leader>fl", ":lua Snacks.picker.lines()<CR>", { desc = 'Lines' })
@@ -111,7 +111,7 @@ vim.pack.add({ "https://github.com/folke/snacks.nvim" }, {
         debounce = 10, -- time in ms to wait before updating
     },
     indent = {
-        enabled = true,
+        enabled = false,
         animate = {
             -- enabled = vim.fn.has("nvim-0.10") == 1,
             enabled = false,
@@ -136,7 +136,7 @@ vim.pack.add({ "https://github.com/folke/snacks.nvim" }, {
             files = {}
         }
     },
-    terminal = { enabled = true },
+    terminal = { enabled = false },
     -- indent = { enabled = true },
     -- bigfile = { enabled = true },
     -- image = { enabled = true },
