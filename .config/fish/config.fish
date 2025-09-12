@@ -2,7 +2,7 @@ if status is-interactive
     # Commands to run in interactive sessions can go here
     alias lsa="ls -la"
     alias py="python3"
-    alias vim="nvim"
+    alias n="nvim"
     # alias l="lvim"
     alias lg="lazygit"
     alias zed="flatpak run dev.zed.Zed"
