@@ -36,8 +36,8 @@ bar_spacing = 1
 ; bar_spacing = 5
 
 # sdl_glsl have these default values, they are only used to calulate max number of bars.
-; bar_width = 1
-; bar_spacing = 0
+bar_width = 20
+bar_spacing = 5
 
 
 # Lower and higher cutoff frequencies for lowest and highest bars
@@ -145,7 +145,7 @@ bar_spacing = 1
 # 'sdl' uses the Simple DirectMedia Layer to render in a graphical context.
 # 'sdl_glsl' uses SDL to create an OpenGL context. Write your own shaders or
 # use one of the predefined ones.
-method = noncurses
+method = sdl_glsl
 
 # Orientation of the visualization. Can be 'bottom', 'top', 'left' or 'right'.
 # Default is 'bottom'. Other orientations are only supported on sdl and ncruses
@@ -194,11 +194,11 @@ channels = mono
 # enable alacritty synchronized updates. 1 = on, 0 = off
 # removes flickering in alacritty terminal emulator.
 # defaults to off since the behaviour in other terminal emulators is unknown
-alacritty_sync = 1
+alacritty_sync = 0
 
 # Shaders for sdl_glsl, located in $HOME/.config/cava/shaders
 ; vertex_shader = pass_through.vert
-; fragment_shader = northern_lights.frag
+; fragment_shader = eye_of_phi.frag
 
 ; for glsl output mode, keep rendering even if no audio
 ; continuous_rendering = 0
@@ -211,7 +211,7 @@ alacritty_sync = 1
 ; show_idle_bar_heads = 1
 
 # show waveform instead of frequency spectrum, 1 = on, 0 = off
-; waveform = 0
+; waveform = 1
 
 [color]
 
@@ -223,7 +223,7 @@ alacritty_sync = 1
 ; foreground = default
 
 # SDL and sdl_glsl only support hex code colors, these are the default:
-; background = '#111111'
+background = '#1e1e2e'
 ; foreground = '#33ffff'
 
 foreground_opacity = 0.5
@@ -244,15 +244,23 @@ gradient_count = 8
 
 # Catppuccin colours
 
+# gradient_color_1 = '#94e2d5'
+# gradient_color_2 = '#89dceb'
+# gradient_color_3 = '#74c7ec'
+# gradient_color_4 = '#89b4fa'
+# gradient_color_5 = '#cba6f7'
+# gradient_color_6 = '#f5c2e7'
+# gradient_color_7 = '#eba0ac'
+# gradient_color_8 = '#f38ba8'
+
 gradient_color_1 = '#94e2d5'
 gradient_color_2 = '#89dceb'
 gradient_color_3 = '#74c7ec'
 gradient_color_4 = '#89b4fa'
 gradient_color_5 = '#cba6f7'
-gradient_color_6 = '#f5c2e7'
+gradient_color_6 = '#eba0ac'
 gradient_color_7 = '#eba0ac'
 gradient_color_8 = '#f38ba8'
-
 
 [smoothing]
 
