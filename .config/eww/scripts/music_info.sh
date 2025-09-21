@@ -5,14 +5,15 @@ STATUS="$(mpc status)"
 COVER="/tmp/.music_cover.jpg"
 MUSIC_DIR="$HOME/Music"
 
+ICON=$HOME/.local/share/icons/target
+
 get_status_image() {
-    playerctl --follow status 2>/dev/null | while read -r status; do
-        if [[ "$status" == "Playing" ]]; then
-            echo "images/music/pause-button.png"
-        else
-            echo "images/music/play-button.png"
-        fi
-    done
+    # https://github.com/madic-creates/Sway-DE/blob/ddfc746b3851ed495b027edb927915c4d00d8396/bin/player-song.sh#L6
+    RAW=$(playerctl -i firefox metadata --format '{{mpris:artUrl}}')
+    if [ -n "$THUMB" ]; then
+        convert "$THUMB" -flatten -thumbnail 256x256 "$ICON"
+    fi
+
 }
 
 get_status_glyph() {
