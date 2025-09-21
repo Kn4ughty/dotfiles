@@ -48,7 +48,7 @@ vim.g.maplocalleader = vim.keycode("<cr>")
 vim.keymap.set("n", "<leader>r", ":so<CR>")
 vim.keymap.set("n", "<leader>lf", vim.lsp.buf.format)
 
-vim.api.nvim_set_keymap("t", "<C-Esc>", "<C-\\><C-n>", {noremap = true, silent = true})
+vim.api.nvim_set_keymap("t", "<C-Esc>", "<C-\\><C-n>", { noremap = true, silent = true })
 
 vim.api.nvim_create_autocmd('LspAttach', {
     desc = 'LSP actions',
@@ -106,10 +106,10 @@ vim.pack.add({ "https://github.com/folke/snacks.nvim" }, {
     lazygit = {
         enabled = true,
     },
-    words = {
-        enabled = false,
-        debounce = 10, -- time in ms to wait before updating
-    },
+    -- words = {
+    --     enabled = false,
+    --     debounce = 10, -- time in ms to wait before updating
+    -- },
     indent = {
         enabled = false,
         animate = {
@@ -201,7 +201,7 @@ require('nvim-treesitter.configs').setup {
 -- Dropbar
 vim.pack.add({
     { src = "https://github.com/Bekaboo/dropbar.nvim",
-}})
+    } })
 
 local dropbar_api = require('dropbar.api')
 vim.keymap.set('n', '<Leader>;', dropbar_api.pick, { desc = 'Pick symbols in winbar' })
@@ -228,9 +228,18 @@ cmp.setup({
         ['<Tab>'] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
     }),
     sources = cmp.config.sources({
-        { name = 'nvim_lsp' },
-    },
-    {
-        { name = 'buffer' },
-    })
+            { name = 'nvim_lsp' },
+        },
+        {
+            { name = 'buffer' },
+        })
 })
+
+-- vim.pack.add({
+--     "https://github.com/monkoose/neocodeium"
+-- })
+-- local neocodeium = require("neocodeium")
+-- neocodeium.setup()
+-- vim.keymap.set("i", "<A-y>", neocodeium.accept)
+
+
