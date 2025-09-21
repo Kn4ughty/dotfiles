@@ -28,16 +28,9 @@ output $out-prim resolution 1920x1080 position 0 0 scale 1 adaptive_sync off
 # 2880 is 3840*1.75
 output $out-sec resolution 3840x2160 position 1920 0 scale 2
 
-# output HDMI-A-1 resolution 1920x1080 position 3840 -580 transform 270
-output HDMI-A-1 resolution 1920x1080 position 5760 -580 transform 270
+output HDMI-A-1 resolution 1920x1080 position 3840 0
+# output HDMI-A-1 resolution 1920x1080 position 5760 -580
 
-output HEADLESS-1 {
-    resolution 2048x1536 
-    position 0 1080 
-    scale 2
-}
-# create_output a, resolution 1920x1080 position 0 1080 scale 1
-workspace 10 output HEADLESS-1
 workspace 1 output $out-sec
 workspace 2 output HDMI-A-1
 workspace 3 output $out-prim
@@ -50,7 +43,6 @@ output * bg $HOME/.pic/space1.jpg fill
 # output * bg $HOME/.pic/teapot-alt.png fill
 # output * bg #000000 solid_color
 
-output HEADLESS-1 bg $HOME/.pic/magicpattern_mocha_stars.png fill
 
 
 
@@ -90,7 +82,7 @@ workspace 10 gaps outer 10
 blur enable
 blur_passes 2
 blur_radius 8
-blur_noise 0.5
+blur_noise 0
 blur_brightness 0.8
 blur_contrast 1
 blur_saturation 1.1
