@@ -92,7 +92,16 @@ vim.api.nvim_create_autocmd('LspAttach', {
 -- Packages
 -- -- Catppuccin
 vim.pack.add({ "https://github.com/catppuccin/nvim" }, {
-    flavour = "mocha" })
+    -- flavour = "mocha",
+    -- transparent_background = true,
+    -- term_colors = true,
+})
+
+require("catppuccin").setup({
+    flavour = "mocha",
+    -- transparent_background = true,
+    term_colors = true,
+})
 
 vim.cmd.colorscheme "catppuccin"
 
@@ -237,7 +246,6 @@ vim.pack.add({
     -- 'https://github.com/f-person/git-blame.nvim',
 })
 
-
 local cmp = require("cmp")
 
 cmp.setup({
@@ -262,3 +270,39 @@ cmp.setup({
 -- local neocodeium = require("neocodeium")
 -- neocodeium.setup()
 -- vim.keymap.set("i", "<A-y>", neocodeium.accept)
+--
+
+
+-- Do neovide things
+if vim.g.neovide then
+    vim.o.guifont = "JetBrainsMono Nerd Font:h11"
+    vim.g.neovide_scale_factor = 1.0
+
+    vim.keymap.set("n", "<C-+>", ":lua vim.g.neovide_scale_factor = (vim.g.neovide_scale_factor + 0.1)<CR>")
+    vim.keymap.set("n", "<C-_>", ":lua vim.g.neovide_scale_factor = (vim.g.neovide_scale_factor - 0.1)<CR>")
+
+    -- Copy paste bindings
+    vim.keymap.set('i', '<C-S-V>', '<ESC>"+pi')
+
+    vim.g.neovide_opacity = 0.9
+    vim.g.neovide_normal_opacity = 0.9
+    -- vim.g.neovide_background_color = "#0000FF"
+
+    vim.g.neovide_cursor_animation_length = 0.05
+    vim.g.neovide_cursor_trail_size = 0.5
+    vim.g.neovide_cursor_animate_command_line = false
+
+    vim.g.neovide_cursor_vfx_mode = ""
+    vim.g.neovide_cursor_vfx_particle_density = 1.0
+    vim.g.neovide_cursor_vfx_opacity = 200.0
+
+    local pad = 0
+    vim.g.neovide_padding_top = pad
+    vim.g.neovide_padding_bottom = pad
+    vim.g.neovide_padding_right = pad
+    vim.g.neovide_padding_left = pad
+
+    local blur = 5
+    vim.g.neovide_floating_blur_amount_x = blur
+    vim.g.neovide_floating_blur_amount_y = blur
+end
