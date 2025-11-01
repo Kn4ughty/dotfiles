@@ -40,7 +40,6 @@ vim.o.signcolumn = "yes:1"
 vim.g.netrw_banner = 1
 
 
-
 -- Regular binds
 vim.g.mapleader = vim.keycode("<space>")
 vim.g.maplocalleader = vim.keycode("<cr>")
@@ -48,7 +47,6 @@ vim.g.maplocalleader = vim.keycode("<cr>")
 vim.keymap.set("n", "<leader>r", ":so<CR>")
 vim.keymap.set("n", "<leader>lf", vim.lsp.buf.format)
 
-vim.api.nvim_set_keymap("t", "<C-Esc>", "<C-\\><C-n>", { noremap = true, silent = true })
 
 vim.api.nvim_create_autocmd('LspAttach', {
     desc = 'LSP actions',
@@ -71,12 +69,25 @@ vim.api.nvim_create_autocmd('LspAttach', {
         vim.keymap.set('n', '<F2>', '<cmd>lua vim.lsp.buf.rename()<cr>', opts)
         vim.keymap.set({ 'n', 'x' }, '<F3>', '<cmd>lua vim.lsp.buf.format({async = true})<cr>', opts)
         vim.keymap.set('n', '<F4>', '<cmd>lua vim.lsp.buf.code_action()<cr>', opts)
-        vim.keymap.set('n', 'gp', '<cmd>lua line_diagnostics()<cr>', opts)
+        vim.keymap.set('n', 'gP', '<cmd>lua line_diagnostics()<cr>', opts)
 
-        vim.keymap.set('n', 'ln', '<cmd>lua vim.diagnostic.goto_next()<cr>', opts)
-        vim.keymap.set('n', 'lp', '<cmd>lua vim.diagnostic.goto_prev()<cr>', opts)
+        vim.keymap.set('n', 'gn', '<cmd>lua vim.diagnostic.goto_next()<cr>', opts)
+        vim.keymap.set('n', 'gp', '<cmd>lua vim.diagnostic.goto_prev()<cr>', opts)
+
+        vim.api.nvim_create_autocmd("BufWritePre", {
+            buffer = event.buf,
+            callback = function()
+                vim.lsp.buf.format { async = false, id = event.data.client_id }
+            end,
+        })
     end,
 })
+
+-- Auto commands
+
+-- Format buffer on save
+
+--
 
 -- Packages
 -- -- Catppuccin
@@ -87,20 +98,6 @@ vim.cmd.colorscheme "catppuccin"
 
 -- -- Snacks
 
-vim.keymap.set("n", "<leader>e", ":lua Snacks.explorer()<CR>")
-vim.keymap.set("n", "<leader>t", ":lua Snacks.terminal()<CR>")
-vim.keymap.set("n", "<leader>g", ":lua Snacks.lazygit.open() <CR>")
-
-vim.keymap.set("n", "<leader><space>", ":lua Snacks.picker.smart()<CR>", { desc = 'Smart' })
-vim.keymap.set("n", "<leader>fg", ":lua Snacks.picker.grep()<CR>", { desc = 'Grep' })
-
-vim.keymap.set("n", "<leader>fr", ":lua Snacks.picker.recent()<CR>", { desc = 'Recent' })
-vim.keymap.set("n", "<leader>fl", ":lua Snacks.picker.lines()<CR>", { desc = 'Lines' })
-vim.keymap.set("n", "<leader>fb", ":lua Snacks.picker.buffers()<CR>", { desc = 'Buffers' })
-vim.keymap.set("n", "<leader>fh", ":lua Snacks.picker.help()<CR>", { desc = 'Help' })
-vim.keymap.set("n", "<leader>fp", ":lua Snacks.picker.projects()<CR>", { desc = 'Projects' })
-
-vim.keymap.set("n", "<leader>fd", ":lua Snacks.diagnostics_buffer()<CR>", { desc = 'Diagnostics buffer' })
 
 vim.pack.add({ "https://github.com/folke/snacks.nvim" }, {
     lazygit = {
@@ -139,7 +136,7 @@ vim.pack.add({ "https://github.com/folke/snacks.nvim" }, {
     terminal = { enabled = false },
     -- indent = { enabled = true },
     -- bigfile = { enabled = true },
-    -- image = { enabled = true },
+    image = { enabled = true },
     -- input = { enabled = true },
     -- dashboard = { enabled = true },
     -- notifier = { enabled = true },
@@ -150,6 +147,30 @@ vim.pack.add({ "https://github.com/folke/snacks.nvim" }, {
 require("snacks").setup()
 Snacks.indent.enable()
 Snacks.words.enable()
+
+vim.keymap.set("n", "<leader>e", ":lua Snacks.explorer()<CR>")
+
+vim.keymap.set("n", "<leader>t", ":lua Snacks.terminal()<CR>")
+-- vim.keymap.set("tn", "<M-f>", ":lua Snacks.terminal.toggle()<CR>")
+
+vim.keymap.set("n", "<M-f>", Snacks.terminal.toggle, { noremap = true })
+vim.keymap.set("t", "<M-f>", Snacks.terminal.toggle, { noremap = true })
+
+vim.api.nvim_set_keymap("t", "<C-x>", "<C-\\><C-n>", { noremap = true, silent = true })
+
+vim.keymap.set("n", "<leader>g", ":lua Snacks.lazygit.open() <CR>")
+
+vim.keymap.set("n", "<leader><space>", ":lua Snacks.picker.smart()<CR>", { desc = 'Smart' })
+vim.keymap.set("n", "<leader>fg", ":lua Snacks.picker.grep()<CR>", { desc = 'Grep' })
+
+vim.keymap.set("n", "<leader>fr", ":lua Snacks.picker.recent()<CR>", { desc = 'Recent' })
+vim.keymap.set("n", "<leader>fl", ":lua Snacks.picker.lines()<CR>", { desc = 'Lines' })
+vim.keymap.set("n", "<leader>fb", ":lua Snacks.picker.buffers()<CR>", { desc = 'Buffers' })
+vim.keymap.set("n", "<leader>fh", ":lua Snacks.picker.help()<CR>", { desc = 'Help' })
+vim.keymap.set("n", "<leader>fp", ":lua Snacks.picker.projects()<CR>", { desc = 'Projects' })
+
+vim.keymap.set("n", "<leader>fd", ":lua Snacks.diagnostics_buffer()<CR>", { desc = 'Diagnostics buffer' })
+
 
 -- -- Lspconfig
 vim.pack.add({
@@ -241,5 +262,3 @@ cmp.setup({
 -- local neocodeium = require("neocodeium")
 -- neocodeium.setup()
 -- vim.keymap.set("i", "<A-y>", neocodeium.accept)
-
-
