@@ -186,6 +186,18 @@ vim.pack.add({
     { src = 'https://github.com/neovim/nvim-lspconfig' },
 })
 
+vim.lsp.config('rust_analyzer', {
+    settings = {
+        ["rust-analyzer"] = {
+            check = {
+                command = "clippy"
+            },
+        }
+    }
+})
+
+
+
 -- -- Mason
 vim.pack.add({
     { src = 'https://github.com/mason-org/mason.nvim' },
