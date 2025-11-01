@@ -23,17 +23,17 @@ set $out-sec DP-2
 
 output eDP-1 scale 1.4
 
-output $out-prim resolution 1920x1080 position 0 0 scale 1 adaptive_sync off
+output $out-prim resolution 1920x1080 position 0 -450 scale 1 adaptive_sync off transform 270
 
 # 2880 is 3840*1.75
-output $out-sec resolution 3840x2160 position 1920 0 scale 2
+output $out-sec resolution 3840x2160 position 1080 0 scale 2
 
-output HDMI-A-1 resolution 1920x1080 position 3840 0
-# output HDMI-A-1 resolution 1920x1080 position 5760 -580
+# output HDMI-A-1 resolution 1920x1080 position 3840 0
+output HDMI-A-1 resolution 1920x1080 position 5760 0
 
 workspace 1 output $out-sec
-workspace 2 output HDMI-A-1
-workspace 3 output $out-prim
+# workspace 2 output HDMI-A-1
+workspace 2 output $out-prim
 
 ### Wallpaper
 output * bg $HOME/.pic/space1.jpg fill
@@ -106,9 +106,10 @@ for_window [shell="xwayland"] title_format "[XWayland] %title"
 focus_on_window_activation smart
 focus_wrapping no
 
-for_window [all] title_window_icon yes
+for_window [all] title_window_icon true
 
 default_border pixel
+# default_floating_border normal
 
 # app floating settings
 for_window [title="Term-Calculator"] floating enable
@@ -136,6 +137,9 @@ exec swayidle -w \
 # Notification Daemon
 # exec dunst
 exec swaync
+
+# Screen oranger
+exec wlsunset -s 19:00
 
 # KDE auth thing passwd
 exec /usr/lib/polkit-kde-authentication-agent-1
