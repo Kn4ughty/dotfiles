@@ -116,6 +116,8 @@ for_window [title="Term-Calculator"] floating enable
 for_window [title="Term-Calculator"] resize set width 300
 for_window [title="Term-Calculator"] resize set height 500
 
+############### Background processes
+
 # arch wiki said this will make xdg-desktop-portal-wlr start automatically
 exec systemctl --user import-environment WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
 exec dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP=sway
@@ -148,6 +150,7 @@ exec /usr/lib/polkit-kde-authentication-agent-1
 # exec ~/.config/sway/bsp.sh
 
 exec kanata --cfg ~/.config/kanata/conf.kbd
+
 
 primary_selection disabled
 
@@ -431,6 +434,12 @@ set $kbd_light_step 50
 bindsym XF86KbdBrightnessDown exec $HOME/.scripts/1but-kb-light.py 
 
 bindsym XF86KbdBrightnessUp exec wtype -P end
+
+# Clipboard stuff
+exec wl-paste --watch cliphist store
+
+bindsym $mod+Ctrl+C exec cliphist list | lumin --dmenu | cliphist decode | wl-copy
+bindsym $mod+Ctrl+D exec cliphist list | lumin --dmenu | cliphist delete 
 
 # cat!
 bindsym XF86Search exec alacritty -e less $HOME/.scripts/cat.txt
