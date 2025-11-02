@@ -16,7 +16,7 @@ if status is-interactive
 
     alias -- "+x"="chmod +x"
 
-    export EDITOR=/usr/bin/nvim
+    export EDITOR=nvim
 
 
     export GTK_THEME=Adwaita:dark
@@ -43,5 +43,8 @@ if status is-interactive
     set --universal pure_show_subsecond_command_duration true
     set --universal pure_threshold_command_duration 1
     set --universal pure_reverse_prompt_symbol_in_vimode true
+    source "$HOME/.cargo/env.fish"
     # pyenv init - | source
 end
+
+eval "$(/opt/homebrew/bin/brew shellenv)"
