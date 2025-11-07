@@ -438,8 +438,8 @@ bindsym XF86KbdBrightnessUp exec wtype -P end
 # Clipboard stuff
 exec wl-paste --watch cliphist store
 
-bindsym $mod+Ctrl+C exec cliphist list | lumin --dmenu | cliphist decode | wl-copy
-bindsym $mod+Ctrl+D exec cliphist list | lumin --dmenu | cliphist delete 
+bindsym $mod+Ctrl+C exec cliphist list -preview-width 50| lumin --dmenu | cliphist decode | wl-copy
+bindsym $mod+Ctrl+D exec cliphist list -preview-width 50| lumin --dmenu | cliphist delete 
 
 # cat!
 bindsym XF86Search exec alacritty -e less $HOME/.scripts/cat.txt
