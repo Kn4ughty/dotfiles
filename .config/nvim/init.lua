@@ -179,6 +179,9 @@ vim.keymap.set("n", "<leader>fh", ":lua Snacks.picker.help()<CR>", { desc = 'Hel
 vim.keymap.set("n", "<leader>fp", ":lua Snacks.picker.projects()<CR>", { desc = 'Projects' })
 
 vim.keymap.set("n", "<leader>fd", ":lua Snacks.diagnostics_buffer()<CR>", { desc = 'Diagnostics buffer' })
+vim.keymap.set("n", "<leader>fs", Snacks.picker.lsp_symbols, { desc = 'Diagnostics buffer' })
+vim.keymap.set("n", "<leader>fS", Snacks.picker.lsp_workspace_symbols, { desc = 'Diagnostics buffer' })
+
 
 
 -- -- Lspconfig
