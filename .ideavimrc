@@ -1,0 +1,10 @@
+let mapleader = " "
+
+" Format current file
+map <Leader>f <action>(ReformatCode)
+"
+" Shows hover info for cursor position, good for checking errors or warnings
+map <C-W>d <action>(ShowHoverInfo)
+
+map <Leader>c <action>(CommentByBlockComment)
+map gcc <action>(CommentByLineComment)
