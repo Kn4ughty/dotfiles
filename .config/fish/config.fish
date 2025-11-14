@@ -4,7 +4,7 @@ if status is-interactive
     alias py="python3"
     alias n="nvim"
     # alias l="lvim"
-    alias lg="lazygit"
+    alias lg="lazygit" 
     alias zed="flatpak run dev.zed.Zed"
     alias "icat"="kitten icat"
     alias neovim="echo \"Wrong\""
@@ -33,6 +33,7 @@ if status is-interactive
     export XMODIFIERS=@im=fcitx
     export MOZC_IBUS_CANDIDATE_WINDOW=ibus
     export HOSTNAME=$(hostname)
+    export WINIT_X11_SCALE_FACTOR=1.0
 
     # export PATH=$PATH:/home/d/.cargo/bin
     #
@@ -43,8 +44,7 @@ if status is-interactive
     set --universal pure_show_subsecond_command_duration true
     set --universal pure_threshold_command_duration 1
     set --universal pure_reverse_prompt_symbol_in_vimode true
-    source "$HOME/.cargo/env.fish"
+    # source "$HOME/.cargo/env.fish"
     # pyenv init - | source
 end
 
-eval "$(/opt/homebrew/bin/brew shellenv)"
