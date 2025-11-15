@@ -153,7 +153,7 @@
 (defvar SHOW_WEATHER false)
 (defpoll WEATHER 
     :initial '{"text": "\u26c5 11.0\u00b0", "alt": "blah", "tooltip": "feels like:  5.1\u00b0, \ud83d\udca8: 29km/h\nRain past hour 5.4mm"}'
-    :interval "1h"
+    :interval "30m"
     `~/.scripts/weather.py`
 )
 
