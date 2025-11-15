@@ -27,7 +27,6 @@ class TreeNode:
         return s
 
     def to_yuck(self, indent=0):
-        # TODO. Remove unrequired whitespace
         sp = "  " * indent
         if self.children:
             orient = self.ori.lower()
@@ -50,7 +49,6 @@ def parse_layout(s: str):
         (box :orientation "h")
         (box :orientation "h")
         )'
-
     """
 
     if s is None or len(s) == 0:
@@ -125,12 +123,6 @@ def sway_generate_workspace_data() -> dict:
             i["class"] = "hidden"
             i["icon"] = ""
 
-        # print("Layout!")
-        # print(parse_layout(wsp["representation"]).to_yuck())
-        # print("_________")
-
-        # i["rep"] = gen_yuck_rep(wsp["representation"])
-
         data[wsp["output"]].append(i)
 
     return data
@@ -147,7 +139,7 @@ if __name__ == "__main__":
 
     while True:
         print(json.dumps(sway_generate_workspace_data()), flush=True)
-        # This just maakes it wait until something changes before getting the data again
+        # Block until something has changed
         line = process.stdout.readline().decode("utf-8")
         if line == "":
             break
