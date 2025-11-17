@@ -291,3 +291,14 @@ trough highlight {
   padding-right: 0.5rem;
   border-radius: 1rem;
 }
+
+.countdowner {
+  background: v.$background_dark;
+  border-width: 2px;
+  border-color: v.$border_col;
+  border-style: solid;
+  border-radius: 1em;
+
+  margin: 0.3rem;
+  padding: 0.5rem;
+}

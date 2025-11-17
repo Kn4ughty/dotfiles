@@ -4,8 +4,6 @@
 (include "./todo.yuck")
 
 
-
-
 (defpoll time_str :interval "1s"
               :initial "initial-value"  ; optional, defaults to poll at startup
               :run-while time-visible   ; optional, defaults to 'true'
@@ -59,7 +57,7 @@
                     :hexpand true
                     :class "${name}_graph"
                     :value value
-                    :time-range {duration == "" ? "20s" : duration}
+                    :time-range {duration == "" ? "60s" : duration}
                     :max 100
                     :line-style "round"
                     :thickness 5.0
@@ -75,7 +73,7 @@
             :valign 'center'
             :space-evenly true
             (label
-                :text {duration == "" ? "20s" : duration})
+                :text {duration == "" ? "60s" : duration})
             (label
                 :text "${value}%")
             (label
@@ -103,6 +101,27 @@ M"
             :name "mem"
             :value "${round(jq(EWW_RAM, '.used_mem_perc'), 1)}"
             :duration "60s"
+        )
+    )
+)
+
+
+(defwidget countdowner [time name] 
+    (centerbox
+        :class "countdowner"
+        :orientation "horizontal"
+        (label
+            :class "name"
+            :text name
+            :halign "start"
+            :hexpand true
+        )
+        (box)
+        (label
+            :class "date"
+            :text "${formattime(time - EWW_TIME - (24*60*60), "%j days %Hh %Mmin", "Etc/UTC")}"
+            :halign "end"
+            :hexpand true
         )
     )
 )
@@ -146,7 +165,8 @@ M"
             (box :valign "start"
                 (sys_info)
             )
-                (music_info)
+                ;(countdown)
+                ;(music_info)
         )
     )
 )
