@@ -44,6 +44,8 @@ vim.g.netrw_banner = 1
 vim.g.mapleader = vim.keycode("<space>")
 vim.g.maplocalleader = vim.keycode("<cr>")
 
+vim.keymap.set("n", "<leader>w", ":w<CR>")
+
 vim.keymap.set("n", "<leader>r", ":so<CR>")
 vim.keymap.set("n", "<leader>lf", vim.lsp.buf.format)
 
