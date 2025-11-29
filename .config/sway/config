@@ -17,17 +17,16 @@ set $down j
 set $up k
 set $right l
 
-
 # Display
 set $out-prim DP-1
 set $out-sec DP-2
 
 output eDP-1 scale 1.3
 
-output $out-prim resolution 1920x1080 position 0 -450 scale 1 adaptive_sync off transform 270
+output $out-prim resolution 1920x1080 position -1920 0 scale 1 adaptive_sync off transform 0
 
 # 2880 is 3840*1.75
-output $out-sec resolution 3840x2160 position 1080 0 scale 2
+output $out-sec resolution 3840x2160 position 0 0 scale 2
 
 # output HDMI-A-1 resolution 1920x1080 position 3840 0
 output HDMI-A-1 resolution 1920x1080 position 5760 0
@@ -110,7 +109,7 @@ focus_wrapping no
 for_window [all] title_window_icon true
 
 default_border pixel
-# default_floating_border normal
+default_floating_border pixel
 
 # app floating settings
 for_window [title="Term-Calculator"] floating enable
@@ -216,6 +215,9 @@ bindsym Mod1+backspace exec wtype -P delete -p delete
 ## Start your launcher
 # bindsym $mod+space exec cd ~/code/Lumin && make run
 bindsym $mod+space exec lumin
+bindsym $mod+Ctrl+space exec rofi -show drun
+
+bindsym $mod+Ctrl+t exec /home/d/temp/iced_testing/target/release/iced_bug
 
 # search windows
 #bindsym $mod+tab exec $menu -show window
@@ -438,10 +440,10 @@ bindsym XF86KbdBrightnessDown exec $HOME/.scripts/1but-kb-light.py
 bindsym XF86KbdBrightnessUp exec wtype -P end
 
 # Clipboard stuff
-exec wl-paste --watch cliphist store
+# exec wl-paste --watch cliphist store
 
-bindsym $mod+Ctrl+C exec cliphist list -preview-width 50| lumin --dmenu | cliphist decode | wl-copy
-bindsym $mod+Ctrl+D exec cliphist list -preview-width 50| lumin --dmenu | cliphist delete 
+# bindsym $mod+Ctrl+C exec cliphist list -preview-width 50| lumin --dmenu | cliphist decode | wl-copy
+# bindsym $mod+Ctrl+D exec cliphist list -preview-width 50| lumin --dmenu | cliphist delete 
 
 # cat!
 bindsym XF86Search exec alacritty -e less $HOME/.scripts/cat.txt
