@@ -32,8 +32,8 @@
         global: {
             ":":       CommandMode,
             ",":       VolumeDown,
-            "s":       Stop,
             ".":       VolumeUp,
+            "s":       Stop,
             "<Tab>":   NextTab,
             "<S-Tab>": PreviousTab,
             "1":       SwitchToTab("Queue"),
@@ -46,6 +46,7 @@
             "q":       Quit,
             ">":       NextTrack,
             "p":       TogglePause,
+            "<Space>":   TogglePause,
             "<":       PreviousTrack,
             "f":       SeekForward,
             "z":       ToggleRepeat,
@@ -81,7 +82,6 @@
             "r":         Rename,
             "n":         NextResult,
             "g":         Top,
-            "<Space>":   Select,
             "<C-Space>": InvertSelection,
             "G":         Bottom,
             "<CR>":      Confirm,
@@ -136,7 +136,7 @@
                         direction: Vertical,
                         panes: [
                             (size: "100%", borders: "BOTTOM", pane: Pane(AlbumArt)),
-                            (size: "20%", pane: Pane(Cava)),
+                            (size: "12%", pane: Pane(Cava)),
                         ])
                     ),
                         (size: "50%", borders: "LEFT", pane: Pane(Queue)),

@@ -43,7 +43,8 @@
     ),
     progress_bar: (
         // symbols: ["[", "-", ">", " ", "]"],
-        symbols: ["", "█", "", "█", "" ],
+        // symbols: ["", "█", "", "█", "" ],
+        symbols: ["", "", "⭘", " ", " "],
         track_style: (fg: "#313244"),
         elapsed_style: (fg: "magenta"),
         thumb_style: (fg: "magenta", bg: "#313244"),
@@ -179,8 +180,8 @@
     cava: (
         bar_color: Gradient({
             0   : "#94e2d5",
-            10  : "#89dceb",
-            15  : "#74c7ec",
+            5   : "#89dceb",
+            10  : "#74c7ec",
             25  : "#89b4fa",
             50  : "#cba6f7",
             62  : "#eba0ac",
