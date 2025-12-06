@@ -137,8 +137,7 @@ exec swayidle -w \
          before-sleep $lockcmd
 
 # Notification Daemon
-# exec dunst
-exec swaync
+exec dunst
 exec kitten desktop-ui run-server
 
 # Screen oranger
@@ -415,14 +414,21 @@ bindsym $mod+Shift+D exec cd ~/code/screenshot_painter/ && make run
 # set $displayVolume dunstify "Progress: " -h int:value:"`pactl get-sink-volume @DEFAULT_SINK@ | egrep -m 1 -o "[0-9]*%" | head -n 1`"
 set $displayVolume echo 1
 
-bindsym XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +5% && $displayVolume
-bindsym XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -5% && $displayVolume
+bindsym XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +2% && $displayVolume
+bindsym XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -2% && $displayVolume
 bindsym XF86AudioMute exec pactl set-sink-mute @DEFAULT_SINK@ toggle
 bindsym XF86AudioMicMute exec pactl set-source-mute @DEFAULT_SOURCE@ toggle
-# bindsym XF86AudioPlay exec playerctl play-pause && mpc toggle
-bindsym XF86AudioPlay exec mpc toggle
+
+bindsym XF86AudioPlay exec playerctl play-pause
 bindsym XF86AudioNext exec playerctl next
 bindsym XF86AudioPrev exec playerctl previous
+
+bindsym XF86AudioPlay+Shift exec mpc toggle
+bindsym XF86AudioNext+Shift exec mpc next
+bindsym XF86AudioPrev+Shift exec mpc prev
+
+# playerctl background daemon to detect mpd
+exec playerctld daemon
 
 set $brightStep 5%
 set $brightExpo 5
