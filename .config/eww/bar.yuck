@@ -112,6 +112,11 @@
                 (label :text "${NETWORK.ip} ")
             ))
 
+            (bsep)
+            (box :class "volume"
+                (label :text "  ${VOLUME}")
+            )
+
             ; Battery
             (box :visible {laptop != ""}(bsep))
             (box :visible {laptop != ""}(revealer-on-hover :var SHOW_BATTERY :varname "SHOW_BATTERY"
@@ -166,6 +171,10 @@
 (deflisten NETWORK :initial '{"state":"connected","icon":"󰤯","ip":"XXX"}'
     `./scripts/network.sh`)
 
+; TODO. Use pw-mon
+(defpoll VOLUME :interval "1s"
+    `wpctl get-volume @DEFAULT_SINK@ | sed -E "s/.+\\.(.+)/\\1%/"`
+)
 
 (defwidget home_icon []
     (box
@@ -224,4 +233,5 @@
     )
     )
 )
+
 

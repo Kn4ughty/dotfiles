@@ -33,7 +33,8 @@ entry highlight {
   color: v.$blank;
 }
 
-tooltip, .tooltip {
+tooltip,
+.tooltip {
   background: v.$bar_bg;
   padding: 0px;
   margin: 0px;
@@ -45,10 +46,12 @@ trough {
   background: v.$blue;
   border-color: v.$blank;
 }
+
 trough slider {
   background: v.$pink;
   border-color: v.$blank;
 }
+
 trough highlight {
   background: v.$pink;
   outline-width: 0px;
@@ -56,16 +59,22 @@ trough highlight {
 }
 
 @keyframes highlight {
-  from { background-color: v.$surface1 }
-  to { background-color: v.$background_dark; }
+  from {
+    background-color: v.$surface1
+  }
+
+  to {
+    background-color: v.$background_dark;
+  }
 }
 
 .button {
   margin-left: 0.2rem;
   margin-right: 0.2rem;
   padding: 0.2rem;
+
   // Child event box
-  > * {
+  >* {
     padding: 0.2rem;
     border-radius: 1rem;
     // background: v.$surface1;
@@ -73,7 +82,7 @@ trough highlight {
   }
 }
 
-.button >:hover {
+.button>:hover {
   // animation-name: highlight;
   animation-fill-mode: forwards;
   animation-timing-function: ease-in;
@@ -228,6 +237,7 @@ trough highlight {
   border-color: v.$border_col;
 
 }
+
 .workspace.focused label {
   // text-shadow: 1px 1px 4px v.$accent ;
 }
@@ -265,6 +275,7 @@ trough highlight {
 .date {
   color: v.$green;
 }
+
 .date.tooltip {
   color: v.$text;
 }
@@ -283,6 +294,10 @@ trough highlight {
 
 .cpu {
   color: v.$mauve
+}
+
+.volume {
+  color: v.$teal
 }
 
 .mode {
