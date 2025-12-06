@@ -145,7 +145,7 @@ bar_spacing = 5
 # 'sdl' uses the Simple DirectMedia Layer to render in a graphical context.
 # 'sdl_glsl' uses SDL to create an OpenGL context. Write your own shaders or
 # use one of the predefined ones.
-method = sdl_glsl
+method = noncurses
 
 # Orientation of the visualization. Can be 'bottom', 'top', 'left' or 'right'.
 # Default is 'bottom'. Other orientations are only supported on sdl and ncruses
