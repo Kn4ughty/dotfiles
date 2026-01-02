@@ -1,0 +1,14 @@
+# The color_scheme to use for the app.
+# See: https://docs.iced.rs/iced/enum.Theme.html for full list of options
+# (no Custom support)
+color_scheme = "CatppuccinMocha"
+
+# If the background of the app should be set to be transparent
+# This can be removed once custom colour schemes are supported
+transparent_background = false
+
+# Sadly the toml parser I use doesnt allow newlines and nice formatting :/
+app_prefixes = { AppSearch = "", WebSearch = "!", FileSearch = "'", HelpScreen = "?", Calculator = "=" }
+
+[file_settings]
+search_directories = ["Documents", "Desktop", "Downloads"]

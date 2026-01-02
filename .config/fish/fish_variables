@@ -1,7 +1,7 @@
 # This file contains fish universal variable definitions.
 # VERSION: 3.0
 SETUVAR --export PYENV_ROOT:/home/d/\x2epyenv
-SETUVAR __fish_initialized:3800
+SETUVAR __fish_initialized:4300
 SETUVAR _fisher_catppuccin_2F_fish_files:\x7e/\x2econfig/fish/themes/Catppuccin\x20Frappe\x2etheme\x1e\x7e/\x2econfig/fish/themes/Catppuccin\x20Latte\x2etheme\x1e\x7e/\x2econfig/fish/themes/Catppuccin\x20Macchiato\x2etheme\x1e\x7e/\x2econfig/fish/themes/Catppuccin\x20Mocha\x2etheme
 SETUVAR _fisher_jorgebucaran_2F_fisher_files:\x7e/\x2econfig/fish/functions/fisher\x2efish\x1e\x7e/\x2econfig/fish/completions/fisher\x2efish
 SETUVAR _fisher_plugins:jorgebucaran/fisher\x1ecatppuccin/fish\x1epure\x2dfish/pure
@@ -10,46 +10,7 @@ SETUVAR _fisher_upgraded_to_4_4:\x1d
 SETUVAR _tide_left_items:os\x1epwd\x1egit\x1enewline\x1echaracter
 SETUVAR _tide_prompt_1124:\x1b\x5bm\x0f\x1b\x5bm\x0f\x1b\x5b90m\ue0b6\x1b\x5b36m\x1b\x5b100m\x20\uf303\x20\x1b\x5b90m\x1b\x5b46m\ue0b4\x1b\x5b46m\x20\x40PWD\x40\x20\x1b\x5bm\x0f\x1b\x5bm\x0f\x1b\x5b36m\ue0b0\x1e\x1b\x5b33m\u276f
 SETUVAR _tide_right_items:status\x1ecmd_duration\x1econtext\x1ejobs\x1enode\x1epython\x1erustc\x1ejava\x1ephp\x1eruby\x1ego\x1edistrobox
-SETUVAR fish_color_autosuggestion:6c7086
-SETUVAR fish_color_cancel:f38ba8
-SETUVAR fish_color_command:89b4fa
-SETUVAR fish_color_comment:7f849c
-SETUVAR fish_color_cwd:f9e2af
-SETUVAR fish_color_cwd_root:red
-SETUVAR fish_color_end:fab387
-SETUVAR fish_color_error:f38ba8
-SETUVAR fish_color_escape:eba0ac
-SETUVAR fish_color_gray:6c7086
-SETUVAR fish_color_history_current:\x2d\x2dbold
-SETUVAR fish_color_host:89b4fa
-SETUVAR fish_color_host_remote:a6e3a1
-SETUVAR fish_color_keyword:f38ba8
-SETUVAR fish_color_normal:cdd6f4
-SETUVAR fish_color_operator:f5c2e7
-SETUVAR fish_color_option:a6e3a1
-SETUVAR fish_color_param:f2cdcd
-SETUVAR fish_color_quote:a6e3a1
-SETUVAR fish_color_redirection:f5c2e7
-SETUVAR fish_color_search_match:\x2d\x2dbackground\x3d313244
-SETUVAR fish_color_selection:\x2d\x2dbackground\x3d313244
-SETUVAR fish_color_status:f38ba8
-SETUVAR fish_color_user:94e2d5
-SETUVAR fish_color_valid_path:\x2d\x2dunderline
 SETUVAR fish_greeting:\x1d
-SETUVAR fish_key_bindings:fish_default_key_bindings
-SETUVAR fish_pager_color_background:\x1d
-SETUVAR fish_pager_color_completion:cdd6f4
-SETUVAR fish_pager_color_description:6c7086
-SETUVAR fish_pager_color_prefix:f5c2e7
-SETUVAR fish_pager_color_progress:6c7086
-SETUVAR fish_pager_color_secondary_background:\x1d
-SETUVAR fish_pager_color_secondary_completion:\x1d
-SETUVAR fish_pager_color_secondary_description:\x1d
-SETUVAR fish_pager_color_secondary_prefix:\x1d
-SETUVAR fish_pager_color_selected_background:\x1d
-SETUVAR fish_pager_color_selected_completion:\x1d
-SETUVAR fish_pager_color_selected_description:\x1d
-SETUVAR fish_pager_color_selected_prefix:\x1d
 SETUVAR fish_user_paths:/home/d/\x2elocal/bin\x1e/home/d/\x2elocal/share/gem/ruby/3\x2e2\x2e0/bin\x1e/home/d/bin\x1e/home/d/\x2epyenv/bin\x1e/home/d/\x2ecargo/bin
 SETUVAR pure_begin_prompt_with_current_directory:true
 SETUVAR pure_check_for_new_release:false

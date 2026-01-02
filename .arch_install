@@ -1,0 +1,35 @@
+#!/bin/bash
+
+sudo pacman -Syu --needed base-devel kitty bat cava btop clang fish flatpak gdb git mpc mpd playerctl nmap wtype python rustup swaybg ttf-jetbrains-mono-nerd inetutils brightnessctl wget man-db github-cli usbutils polkit lazygit jq python-requests networkmanager python-watchdog ripgrep
+
+# eww compilation things
+sudo pacman -Syu --needed libdbusmenu-glib libdbusmenu-gtk3 gtk-layer-shell
+
+if [ "$1" !=  "all" ]; then 
+	exit
+fi
+
+echo all
+
+sudo systemctl enable --now NetworkManager.service
+
+rustup default stable
+
+cd ~
+mkdir build
+cd build
+
+# From paru readme
+
+git clone https://aur.archlinux.org/paru.git
+cd paru
+makepkg -si
+
+
+paru -Syu swayfx librewolf-bin bibata-cursor-theme-bin
+
+sudo sh -c "curl https://raw.githubusercontent.com/qmk/qmk_firmware/refs/
+heads/master/util/udev/50-qmk.rules > /etc/udev/rules.d/50-qmk.rules"
+
+
+mkdir code
