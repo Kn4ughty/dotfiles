@@ -33,7 +33,7 @@
 )
 
 (defwindow bar2
-    :monitor '["HDMI-A-1"]'
+    :monitor '["HDMI-A-1", "1"]'
     :geometry (geometry :x "0%"
                            :y "0%"
                            :width "100%"
@@ -45,7 +45,7 @@
     :windowtype "dock"
     :wm-ignore false
     :focusable false
-    (bar :monitor 'HDMI-A-1')
+    (bar :monitor 'DP-4')
 )
 
 (defwindow bar3

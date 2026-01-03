@@ -219,7 +219,7 @@ require("mason-lspconfig").setup()
 vim.pack.add({
     { src = 'https://github.com/nvim-treesitter/nvim-treesitter' },
 })
-require('nvim-treesitter.configs').setup {
+require('nvim-treesitter').setup {
     -- A list of parser names, or "all" (the listed parsers MUST always be installed)
     ensure_installed = { "c", "lua", "vim", "vimdoc", "query", "markdown", "markdown_inline" },
 
@@ -244,6 +244,7 @@ require('nvim-treesitter.configs').setup {
         additional_vim_regex_highlighting = false,
     },
 }
+
 
 -- Dropbar
 vim.pack.add({

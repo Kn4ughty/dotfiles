@@ -51,13 +51,13 @@ function send_keys () {
 
 function get_emoji () {
     sed '1,/^### DATA ###$/d' $0 \
-        | rofi -dmenu -p 'Search' -i \
+        | lumin --dmenu -p 'Search' -i --no_icon \
         | cut -d ' ' -f 1 \
         | tr -d '\n'
 }
+        # | rofi -dmenu -p 'Search' -i \
 
-old="$(wl-paste)" \
-    && emoji="$(get_emoji)"
+emoji="$(get_emoji)"
 
 if [ `printf "$emoji" | wc -l` -ge "2" ]
 then
@@ -65,12 +65,9 @@ then
     >&2 echo "ERROR: emoji variable has more than 1 line."
 else
     printf "$emoji" \
-        | wl-copy \
-        && sleep 0.1 \
-        && send_keys "$focused_app_id"
+        | wl-copy
 fi
 
-echo "$old" | wl-copy
 
 exit 0
 ### DATA ###

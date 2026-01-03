@@ -1,6 +1,6 @@
 #!/bin/bash
 
-sudo pacman -Syu --needed base-devel kitty bat cava btop clang fish flatpak gdb git mpc mpd playerctl nmap wtype python rustup swaybg ttf-jetbrains-mono-nerd inetutils brightnessctl wget man-db github-cli usbutils polkit lazygit jq python-requests networkmanager python-watchdog ripgrep
+sudo pacman -Syu --needed base-devel kitty bat cava btop clang fish flatpak gdb git mpc mpd playerctl nmap wtype python rustup swaybg ttf-jetbrains-mono-nerd inetutils brightnessctl wget man-db github-cli usbutils polkit lazygit jq python-requests networkmanager python-watchdog ripgrep swaylock wl-clipboard noto-fonts-emoji
 
 # eww compilation things
 sudo pacman -Syu --needed libdbusmenu-glib libdbusmenu-gtk3 gtk-layer-shell
@@ -26,7 +26,7 @@ cd paru
 makepkg -si
 
 
-paru -Syu swayfx librewolf-bin bibata-cursor-theme-bin
+paru -Syu swayfx librewolf-bin bibata-cursor-theme-bin neovim-git
 
 sudo sh -c "curl https://raw.githubusercontent.com/qmk/qmk_firmware/refs/
 heads/master/util/udev/50-qmk.rules > /etc/udev/rules.d/50-qmk.rules"
