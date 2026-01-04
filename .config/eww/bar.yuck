@@ -67,8 +67,8 @@
 (deflisten WINDOW_NAME :initial ``
     `./scripts/hyprland.sh title`)
 
-(deflisten MODE :initial "default"
-    `./scripts/mode.sh`)
+(deflisten MODE :initial ""
+    `./scripts/hyprland.sh submap`)
 
 
 (defwidget bar [monitor ?laptop]
@@ -84,7 +84,7 @@
             (fsep)
             (workspaces :monitor monitor)
             (fsep)
-            (label :class "mode" :visible { MODE != "default" ? true : false }
+            (label :class "mode" :visible { MODE != "" ? true : false }
                 :text MODE)
         )
         (box
@@ -218,14 +218,15 @@
             :width 320
             :height 180
             :space-evenly true
-            (literal
-                :content {wsp.name}
-                :vexpand true
-                :hexpand true
-            ))
+             ;  (literal
+             ;      :content {wsp.name}
+             ;      :vexpand true
+             ;      :hexpand true
+             ;  )
+            )
         (button 
             :class "workspace ${wsp.class} ${wsp.focused == 'true' ? 'focused' : ''}"
-            :onclick "hyprctl dispatch workspace ${wsp.name}"
+            :onclick "hyprctl dispatch workspace ${wsp.id}"
             :width 0
           (label :class "name " :text "${wsp.name}")
         )

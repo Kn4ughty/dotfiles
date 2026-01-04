@@ -2,10 +2,9 @@
 
 handle() {
   case $1 in
-    workspace\>\>*) output ;;
-    activewindow\>\>*) output ;;
-    # monitoradded*) echo "Monitor connected: $1" ;;
-    # configreloaded*) echo "Configuration reloaded" ;;
+    workspace\>\>*) output $1 ;;
+    activewindow\>\>*) output $1 ;;
+    submap*) output $1 ;;
   esac
 }
 
@@ -14,11 +13,21 @@ output() {
         "workspace")
             active=$(hyprctl activeworkspace -j | jq ".id")
             # hyprctl workspaces -j | jq -c --arg active "$active" ''
-            hyprctl workspaces -j | jq -c --argjson active "$active" 'map(.+={"focused":.id==$active})'
+            hyprctl workspaces -j | \
+                jq -c --argjson active "$active" 'map(.+={"focused":.id==$active})
+                | sort_by(.name)'
             ;;
         "title")
-            hyprctl activewindow -j | jq ".title" 
+            hyprctl activewindow -j | jq -r ".title" 
             ;;
+        "submap") 
+            # echo $1
+            regex="^submap"
+            if [[ $1 =~ $regex ]]; then 
+                echo $1 | sed -E "s/submap>>(.*)/\1/"
+            fi
+            ;;
+
     esac
 
 }
