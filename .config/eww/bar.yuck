@@ -65,7 +65,7 @@
 )
 
 (deflisten WINDOW_NAME :initial ``
-    `./scripts/window.sh`)
+    `./scripts/hyprland.sh title`)
 
 (deflisten MODE :initial "default"
     `./scripts/mode.sh`)
@@ -205,7 +205,7 @@
     )
 )
 
-(deflisten WORKSPACES 
+(deflisten WORKSPACES
     `scripts/hyprland.sh workspace`)
 
 (defvar reveal false)
