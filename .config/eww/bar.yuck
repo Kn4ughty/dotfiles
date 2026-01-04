@@ -205,27 +205,27 @@
     )
 )
 
-(deflisten WORKSPACES :initial '{"DP-2": [], "HDMI-A-1": [], "eDP-1": []}'
-    `scripts/workspace.py`)
+(deflisten WORKSPACES 
+    `scripts/hyprland.sh workspace`)
 
 (defvar reveal false)
 
 (defwidget workspaces [monitor]
     (box :class "bar_widget workspaces" :space-evenly false
-    (for wsp in {WORKSPACES[monitor]} (tooltip
+    (for wsp in {jq(WORKSPACES, 'map(select(.monitor == "eDP-1"))')} (tooltip
         (box
             :class 'workspace_rep'
             :width 320
             :height 180
             :space-evenly true
             (literal
-                :content {wsp.rep}
+                :content {wsp.name}
                 :vexpand true
                 :hexpand true
             ))
         (button 
             :class "workspace ${wsp.class} ${wsp.focused == 'true' ? 'focused' : ''}"
-            :onclick "swaymsg workspace ${wsp.name}"
+            :onclick "hyprctl dispatch workspace ${wsp.name}"
             :width 0
           (label :class "name " :text "${wsp.name}")
         )
