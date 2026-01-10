@@ -136,7 +136,10 @@ M"
     :stacking "bottom"
     :windowtype "dock"
     :wm-ignore false
-    :focusable true
+    :focusable "ondemand"
+
+    :namespace "bar"
+
     (box
         :orientation "horizontal"
         (box

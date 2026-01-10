@@ -1,11 +1,14 @@
 @use 'variables.scss' as v;
+@use 'sass:color';
 
 .todo_overview {
   padding-bottom: 0.4rem;
 }
 
 .todo_item {
-  background: v.$background_dark;
+  // background: v.$background_dark;
+  // background: color.scale(v.$background, $alpha: +50%);
+  background: v.$background;
   border-radius: v.$border-radius;
   border-color: v.$accent;
   border-width: 5px;
@@ -24,3 +27,4 @@
 .checkbox.ticked {
   color: v.$green;
 }
+

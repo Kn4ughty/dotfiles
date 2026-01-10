@@ -1,15 +1,20 @@
+@use 'sass:color';
 
 /* Text */
 $font: "JetBrainsMono Nerd Font";
+$font_prop: "Readex Pro";
+
 // $font: "Comfortaa";
 
 /* Colours */
 
-$background: rgba(88, 91, 112, 0.35);
-$background_dark: rgba(49, 50, 68, 0.9);
+$background: rgba(88, 91, 112, 0.4);
+// $background_dark: rgba(49, 50, 68, 0.9);
+$background_dark: color.scale($background, $alpha: +50%);
 $border_col: rgb(205, 214, 244, 0.5);
 
-$bar_bg: rgba(21, 21, 32, 0.75);
+// $bar_bg: rgba(21, 21, 32, 0.7);
+$bar_bg: rgba(50, 50, 75, 0.7);
 $bar_bg_solid: rgba(21, 21, 32, 1);
 
 $pink: #f5c2e7;
@@ -31,7 +36,7 @@ $subtext0: #a6adc8;
 $subtext :$subtext0;
 $accent: $pink;
 
-$text-shadow: rgba(24, 24, 37, 0.8);
+$text-shadow: rgba(24, 24, 37, 0.15);
 
 $blank: rgba(0,0,0,0);
 

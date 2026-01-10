@@ -1,6 +1,7 @@
 @use 'themes/todo.scss';
 @use 'themes/variables.scss' as v;
 
+@use 'sass:color';
 
 label {
   text-shadow: v.$text-shadow 0.4rem 0.4rem 0.2rem;
@@ -24,6 +25,10 @@ entry {
   border-radius: v.$border-radius;
   border-color: v.$blank;
   outline-color: v.$blank;
+}
+
+entry:focus {
+  border: none;
 }
 
 entry highlight {
@@ -132,7 +137,7 @@ trough highlight {
 
 
 .graph_box {
-  background: v.$background;
+  background: color.scale(v.$background, $alpha: -50%);
   border-radius: v.$border-radius;
 }
 
@@ -195,6 +200,7 @@ trough highlight {
 .home_icon {
   color: v.$accent;
   font-size: 1.3rem;
+  border: none;
   // padding: 0px;
   // margin: 0px;
 }
@@ -305,6 +311,11 @@ trough highlight {
   padding-left: 0.5rem;
   padding-right: 0.5rem;
   border-radius: 1rem;
+}
+
+.window_name {
+  font-family: v.$font_prop;
+  font-weight: normal;
 }
 
 .countdowner {

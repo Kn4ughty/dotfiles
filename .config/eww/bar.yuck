@@ -1,7 +1,8 @@
 (include "./templates.yuck")
 
-(defwindow barlaptop
-    :monitor '["<primary>", "eDP-1", "0"]'
+
+(defwindow bar [mon]
+    :monitor mon
     :geometry (geometry :x "0%"
                            :y "0%"
                            :width "100%"
@@ -13,56 +14,10 @@
     :windowtype "dock"
     :wm-ignore false
     :focusable false
-    (bar :monitor 'eDP-1' :laptop 'yes')
+    :namespace "bar"
+    (bar :monitor mon :laptop 'yes')
 )
 
-(defwindow bar1
-    :monitor '["<primary>", "DP-2", "0"]'
-    :geometry (geometry :x "0%"
-                           :y "0%"
-                           :width "100%"
-                           :height "40"
-                           :anchor "top center")
-    :stacking "fg"
-    :reserve (struts :distance "40px" :side "top")
-    :exclusive true
-    :windowtype "dock"
-    :wm-ignore false
-    :focusable false
-    (bar :monitor 'DP-2')
-)
-
-(defwindow bar2
-    :monitor '["HDMI-A-1", "1"]'
-    :geometry (geometry :x "0%"
-                           :y "0%"
-                           :width "100%"
-                           :height "40"
-                           :anchor "top center")
-    :stacking "fg"
-    :reserve (struts :distance "40px" :side "top")
-    :exclusive true
-    :windowtype "dock"
-    :wm-ignore false
-    :focusable false
-    (bar :monitor 'DP-4')
-)
-
-(defwindow bar3
-    :monitor '["DP-1"]'
-    :geometry (geometry :x "0%"
-                           :y "0%"
-                           :width "100%"
-                           :height "40"
-                           :anchor "top center")
-    :stacking "fg"
-    :reserve (struts :distance "40px" :side "top")
-    :exclusive true
-    :windowtype "dock"
-    :wm-ignore false
-    :focusable false
-    (bar :monitor 'DP-1')
-)
 
 (deflisten WINDOW_NAME :initial ``
     `./scripts/hyprland.sh title`)
@@ -106,7 +61,7 @@
             (bsep)
             (box :tooltip "${NETWORK.ssid}"
             ; TODO. Make me revealer toggler
-            (revealer-on-click :var SHOW_NETWORK :varname "SHOW_NETWORK"
+            (revealer-toggler :var SHOW_NETWORK :varname "SHOW_NETWORK"
                 :class 'network'
                 (label :text "${NETWORK.icon} ")
                 (label :text "${NETWORK.ip} ")
@@ -119,7 +74,7 @@
 
             ; Battery
             (box :visible {laptop != ""}(bsep))
-            (box :visible {laptop != ""}(revealer-on-hover :var SHOW_BATTERY :varname "SHOW_BATTERY"
+            (box :visible {laptop != ""}(revealer-toggler :var SHOW_BATTERY :varname "SHOW_BATTERY"
                 :class 'battery'
                 (label :text " ${BATTERY.percent}")
                 (label :text {BATTERY.time})
@@ -127,7 +82,7 @@
 
             ; Weather
             (bsep)
-            (revealer-on-hover :var SHOW_WEATHER :varname "SHOW_WEATHER"
+            (revealer-toggler :var SHOW_WEATHER :varname "SHOW_WEATHER"
                 (label :class "weather"
                         :text "${WEATHER.text}")
                 (label :class "weather tooltip"
@@ -136,7 +91,7 @@
 
             ; Date
             (bsep)
-            (revealer-on-hover :var SHOW_DATE :varname "SHOW_DATE"
+            (revealer-toggler :var SHOW_DATE :varname "SHOW_DATE"
                 :transition "slideright"
                 ; EWW_TIME
                 (label :class "date" :text " ${formattime(EWW_TIME, '%H:%M:%S')}")
@@ -149,25 +104,25 @@
 
 (defpoll TIME :initial "time" :interval "1s"
     `date "+ %H:%M:%S"`)
-(defvar SHOW_DATE false)
+(defvar SHOW_DATE '{"hovered": false, "toggled": false}')
 (defpoll DATE :initial "TIME" :interval "1h"
     `date "+ %a %b %m-%d  "`
 )
 
 
-(defvar SHOW_WEATHER false)
+(defvar SHOW_WEATHER '{"hovered": false, "toggled": false}')
 (defpoll WEATHER 
     :initial '{"text": "\u26c5 11.0\u00b0", "alt": "blah", "tooltip": "feels like:  5.1\u00b0, \ud83d\udca8: 29km/h\nRain past hour 5.4mm"}'
     :interval "30m"
     `~/.scripts/weather.py`
 )
 
-(defvar SHOW_BATTERY false)
+(defvar SHOW_BATTERY '{"hovered": false, "toggled": false}')
 (defvar init_bat ``)
 (deflisten BATTERY :initial '{ "percent": "XX%", "time": "X hours "}'
     `./scripts/battery.sh`)
 
-(defvar SHOW_NETWORK false)
+(defvar SHOW_NETWORK '{"hovered": false, "toggled": false}')
 (deflisten NETWORK :initial '{"state":"connected","icon":"󰤯","ip":"XXX"}'
     `./scripts/network.sh`)
 
