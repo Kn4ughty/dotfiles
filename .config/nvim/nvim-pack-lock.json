@@ -36,6 +36,14 @@
       "rev": "85bbfad83f804f11688d1ab9486b459e699292d6",
       "src": "https://github.com/hrsh7th/nvim-cmp"
     },
+    "nvim-dap": {
+      "rev": "cdfd55a133f63228c55f91378f12908cb2a78ded",
+      "src": "https://github.com/mfussenegger/nvim-dap"
+    },
+    "nvim-dap-virtual-text": {
+      "rev": "fbdb48c2ed45f4a8293d0d483f7730d24467ccb6",
+      "src": "https://github.com/theHamsta/nvim-dap-virtual-text"
+    },
     "nvim-lspconfig": {
       "rev": "ac04ec3c2af08e9821b4eb64ede86072b9b213bf",
       "src": "https://github.com/neovim/nvim-lspconfig"
@@ -43,6 +51,10 @@
     "nvim-treesitter": {
       "rev": "737088f8571293f6a1ef8cd6c858d5daf9a38162",
       "src": "https://github.com/nvim-treesitter/nvim-treesitter"
+    },
+    "rustaceanvim": {
+      "rev": "4e9e40432b21df641f08c4ec058f2d6f89365526",
+      "src": "https://github.com/mrcjkb/rustaceanvim"
     },
     "snacks.nvim": {
       "rev": "fe7cfe9800a182274d0f868a74b7263b8c0c020b",

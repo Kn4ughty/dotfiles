@@ -14,7 +14,8 @@ output() {
             active=$(hyprctl activeworkspace -j | jq ".id")
             # hyprctl workspaces -j | jq -c --arg active "$active" ''
             hyprctl workspaces -j | \
-                jq -c --argjson active "$active" 'map(.+={"focused":.id==$active})
+                jq -c --argjson active "$active" 'map(select(.id>0)) 
+                | map(.+={"focused":.id==$active})
                 | sort_by(.name)'
             ;;
         "title")

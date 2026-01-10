@@ -201,6 +201,29 @@ vim.lsp.config('rust_analyzer', {
     }
 })
 
+-- Debugging stuff
+-- vim.pack.add({
+--     "https://github.com/mfussenegger/nvim-dap",
+--     "https://github.com/mrcjkb/rustaceanvim",
+--     "https://github.com/theHamsta/nvim-dap-virtual-text"
+-- })
+--
+-- require("nvim-dap-virtual-text").setup()
+--
+-- vim.keymap.set(
+--   "n",
+--   "<leader>a",
+--   function()
+--     vim.cmd.RustLsp('codeAction') -- supports rust-analyzer's grouping
+--     -- or vim.lsp.buf.codeAction() if you don't want grouping.
+--   end,
+--   { silent = true}
+-- )
+--
+-- vim.keymap.set("n", "<leader>dn", ":DapNew<CR>", { desc = 'New DAP' })
+-- vim.keymap.set("n", "<leader>dc", ":DapContinue<CR>", { desc = 'Continue' })
+-- vim.keymap.set("n", "<leader>do", ":DapStepOver<CR>", { desc = 'StepOver' })
+-- vim.keymap.set("n", "<leader>db", ":DapToggleBreakpoint<CR>", { desc = 'breakpoint' })
 
 
 -- -- Mason
@@ -221,7 +244,14 @@ vim.pack.add({
 })
 require('nvim-treesitter').setup {
     -- A list of parser names, or "all" (the listed parsers MUST always be installed)
-    ensure_installed = { "c", "lua", "vim", "vimdoc", "query", "markdown", "markdown_inline" },
+    ensure_installed = { "c",
+    "lua",
+    "vim",
+    "vimdoc",
+    "query",
+    "markdown",
+    "yuck",
+    "markdown_inline" },
 
     -- Install parsers synchronously (only applied to `ensure_installed`)
     sync_install = false,
@@ -244,6 +274,11 @@ require('nvim-treesitter').setup {
         additional_vim_regex_highlighting = false,
     },
 }
+
+vim.api.nvim_create_autocmd('FileType', {
+  pattern = { 'yuck' },
+  callback = function() vim.treesitter.start() end,
+})
 
 
 -- Dropbar
