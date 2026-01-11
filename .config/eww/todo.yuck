@@ -40,7 +40,7 @@
 
 (defwidget todo_overview []
 (info-box (box :space-evenly false :orientation "v"
-    (input :onaccept `~/.scripts/todo.py add --text="{}"`)
+    (input :onaccept `~/.scripts/todo.py add --text="{}"`:placeholder "Todo:")
     (box :orientation "v"
         (for entry in todo_list
             (todo_item 
