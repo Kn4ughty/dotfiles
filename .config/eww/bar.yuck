@@ -167,7 +167,7 @@
 
 (defwidget workspaces [monitor]
     (box :class "bar_widget workspaces" :space-evenly false
-    (for wsp in {jq(WORKSPACES, 'map(select(.monitor == "eDP-1"))')} (tooltip
+    (for wsp in {jq(WORKSPACES, 'map(select(.monitor == "${monitor}"))')} (tooltip
         (box
             :class 'workspace_rep'
             :width 320
