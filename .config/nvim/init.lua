@@ -39,6 +39,18 @@ vim.o.signcolumn = "yes:1"
 
 vim.g.netrw_banner = 1
 
+-- vim.opt.foldmethod = "indent"
+-- vim.opt.foldexpr = "vim.treesitter.foldexpr()"
+vim.opt.foldmethod = "expr"
+vim.opt.foldexpr = "v:lua.vim.treesitter.foldexpr()"
+
+vim.opt.foldtext = ""
+vim.opt.foldcolumn = "0"
+
+vim.opt.foldlevel = 99
+vim.opt.foldlevelstart = 1
+
+vim.opt.foldnestmax = 4
 
 -- Regular binds
 vim.g.mapleader = vim.keycode("<space>")
@@ -245,13 +257,13 @@ vim.pack.add({
 require('nvim-treesitter').setup {
     -- A list of parser names, or "all" (the listed parsers MUST always be installed)
     ensure_installed = { "c",
-    "lua",
-    "vim",
-    "vimdoc",
-    "query",
-    "markdown",
-    "yuck",
-    "markdown_inline" },
+        "lua",
+        "vim",
+        "vimdoc",
+        "query",
+        "markdown",
+        "yuck",
+        "markdown_inline" },
 
     -- Install parsers synchronously (only applied to `ensure_installed`)
     sync_install = false,
@@ -276,8 +288,8 @@ require('nvim-treesitter').setup {
 }
 
 vim.api.nvim_create_autocmd('FileType', {
-  pattern = { 'yuck' },
-  callback = function() vim.treesitter.start() end,
+    pattern = { 'yuck' },
+    callback = function() vim.treesitter.start() end,
 })
 
 
