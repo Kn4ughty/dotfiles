@@ -20,14 +20,6 @@
       "rev": "ce202248134e3949aac375fd66c28e5207785b10",
       "src": "https://github.com/Bekaboo/dropbar.nvim"
     },
-    "git-conflict.nvim": {
-      "rev": "a1badcd070d176172940eb55d9d59029dad1c5a6",
-      "src": "https://github.com/akinsho/git-conflict.nvim"
-    },
-    "image.nvim": {
-      "rev": "446a8a5cc7a3eae3185ee0c697732c32a5547a0b",
-      "src": "https://github.com/3rd/image.nvim"
-    },
     "mason-lspconfig.nvim": {
       "rev": "4cfe411526a7a99c18281135e8b4765ae6330d15",
       "src": "https://github.com/mason-org/mason-lspconfig.nvim"
@@ -35,10 +27,6 @@
     "mason.nvim": {
       "rev": "57e5a8addb8c71fb063ee4acda466c7cf6ad2800",
       "src": "https://github.com/mason-org/mason.nvim"
-    },
-    "neocodeium": {
-      "rev": "f67384cee91f8ffc0d2e09d257691b2461725d5b",
-      "src": "https://github.com/monkoose/neocodeium"
     },
     "nvim": {
       "rev": "ce8d176faa4643e026e597ae3c31db59b63cef09",
@@ -56,10 +44,6 @@
       "rev": "fbdb48c2ed45f4a8293d0d483f7730d24467ccb6",
       "src": "https://github.com/theHamsta/nvim-dap-virtual-text"
     },
-    "nvim-java": {
-      "rev": "3d56b7461facb42f135e25b2636bf220a7f0ed42",
-      "src": "https://github.com/nvim-java/nvim-java"
-    },
     "nvim-lspconfig": {
       "rev": "ac04ec3c2af08e9821b4eb64ede86072b9b213bf",
       "src": "https://github.com/neovim/nvim-lspconfig"
@@ -68,10 +52,6 @@
       "rev": "737088f8571293f6a1ef8cd6c858d5daf9a38162",
       "src": "https://github.com/nvim-treesitter/nvim-treesitter"
     },
-    "plenary.nvim": {
-      "rev": "b9fd5226c2f76c951fc8ed5923d85e4de065e509",
-      "src": "https://github.com/nvim-lua/plenary.nvim"
-    },
     "rustaceanvim": {
       "rev": "4e9e40432b21df641f08c4ec058f2d6f89365526",
       "src": "https://github.com/mrcjkb/rustaceanvim"
@@ -79,10 +59,6 @@
     "snacks.nvim": {
       "rev": "fe7cfe9800a182274d0f868a74b7263b8c0c020b",
       "src": "https://github.com/folke/snacks.nvim"
-    },
-    "windsurf.nvim": {
-      "rev": "821b570b526dbb05b57aa4ded578b709a704a38a",
-      "src": "https://github.com/Exafunction/windsurf.nvim"
     }
   }
 }
