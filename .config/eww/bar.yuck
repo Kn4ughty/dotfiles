@@ -20,11 +20,13 @@
 
 
 (deflisten WINDOW_NAME :initial ``
-    `./scripts/hyprland.sh title`)
+    `./scripts/window.sh`)
 
 (deflisten MODE :initial ""
-    `./scripts/hyprland.sh submap`)
+    `./scripts/mode.sh`)
 
+(deflisten WORKSPACES
+    `./scripts/workspace.py`)
 
 (defwidget bar [monitor ?laptop]
     (centerbox
@@ -160,8 +162,6 @@
     )
 )
 
-(deflisten WORKSPACES
-    `scripts/hyprland.sh workspace`)
 
 (defvar reveal false)
 

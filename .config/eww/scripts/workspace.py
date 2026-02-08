@@ -17,7 +17,7 @@ class TreeNode:
 
     def __str__(self):
         s = ""
-        s += 'ori ' + self.ori + '\n'
+        s += "ori " + self.ori + "\n"
 
         if self.children is not None:
             s += "("
@@ -31,7 +31,8 @@ class TreeNode:
         if self.children:
             orient = self.ori.lower()
             s = f'{sp}(box :orientation "{
-                orient}" :hexpand true :vexpand true :class "container" \n'
+                orient
+            }" :hexpand true :vexpand true :class "container" \n'
             for child in self.children:
                 s += child.to_yuck(indent + 1) + "\n"
             s += f"{sp})"
@@ -42,7 +43,7 @@ class TreeNode:
 
 
 def parse_layout(s: str):
-    """ in a form like this:
+    """in a form like this:
     layout = V[H[vesktop] H[steam]]
 
     output = '(box :orientation "v"
@@ -99,19 +100,19 @@ def parse_layout(s: str):
     return root
 
 
-def sway_generate_workspace_data() -> dict:
-    data = {}
+def sway_generate_workspace_data():
+    data = []
     for wsp in sway_get_workspaces():
+        # if wsp["output"] not in data:
+        #     data[wsp["output"]] = []
 
-        if wsp["output"] not in data:
-            data[wsp["output"]] = []
-
-        i = {"name": wsp["name"],
-             "monitor": wsp["output"],
-             "focused": wsp["focused"],
-             "visible": wsp["visible"],
-             "rep": parse_layout(wsp["representation"]).to_yuck()
-             }
+        i = {
+            "name": wsp["name"],
+            "monitor": wsp["output"],
+            "focused": wsp["focused"],
+            "visible": wsp["visible"],
+            "rep": parse_layout(wsp["representation"]).to_yuck(),
+        }
 
         if wsp["focused"]:
             i["class"] = "focused"
@@ -123,7 +124,7 @@ def sway_generate_workspace_data() -> dict:
             i["class"] = "hidden"
             i["icon"] = ""
 
-        data[wsp["output"]].append(i)
+        data.append(i)
 
     return data
 
