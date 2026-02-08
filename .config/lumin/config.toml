@@ -7,10 +7,19 @@ color_scheme = "CatppuccinMocha"
 # This can be removed once custom colour schemes are supported
 transparent_background = false
 
-# Sadly the toml parser I use doesnt allow newlines and nice formatting :/
-app_prefixes = { AppSearch = "", WebSearch = "!", FileSearch = "'", HelpScreen = "?", Calculator = "=" }
+app_prefixes = { 
+    AppSearch  = "" ,
+    WebSearch  = "!",
+    FileSearch = "'",
+    HelpScreen = "?",
+    Calculator = "=" 
+}
 
-input_prompt = "Type to searchaklsjd"
+# The background text where you type your search
+input_prompt = "Type to search"
+
+# Show icons for search results
+show_icons = true
 
 [file_settings]
 search_directories = ["Documents", "Desktop", "Downloads"]

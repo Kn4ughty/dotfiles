@@ -121,6 +121,8 @@ for_window [title="Term-Calculator"] resize set height 500
 
 ############### Background processes
 
+exec dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
+
 # arch wiki said this will make xdg-desktop-portal-wlr start automatically
 exec systemctl --user import-environment WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
 exec dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP=sway
@@ -144,7 +146,7 @@ exec dunst
 exec kitten desktop-ui run-server
 
 # Screen oranger
-exec wlsunset -s 19:00
+exec wlsunset -s 20:00
 
 # KDE auth thing passwd
 exec /usr/lib/polkit-kde-authentication-agent-1
