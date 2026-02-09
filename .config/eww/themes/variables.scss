@@ -8,7 +8,7 @@ $font_prop: "Readex Pro";
 
 /* Colours */
 
-$background: rgba(88, 91, 112, 0.4);
+$background: rgba(88, 91, 112, 0.58);
 // $background_dark: rgba(49, 50, 68, 0.9);
 $background_dark: color.scale($background, $alpha: +50%);
 $border_col: rgb(205, 214, 244, 0.5);
@@ -38,7 +38,7 @@ $accent: $pink;
 
 $text-shadow: rgba(24, 24, 37, 0.15);
 
-$blank: rgba(0,0,0,0);
+$blank: rgba(0, 0, 0, 0);
 
 $shadow: #cba6f7;
 
