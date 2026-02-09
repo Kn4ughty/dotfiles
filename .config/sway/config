@@ -39,7 +39,7 @@ workspace 1 output $out-sec
 workspace 2 output $out-prim
 
 ### Wallpaper
-output * bg $HOME/.pic/space1.jpg fill
+output * bg $HOME/.pic/miracle.jpeg fill
 # output * bg $HOME/.pic/ayuru_camp___rin___nadeshiko_by_muddymelly_dcmp6rk.jpg fill
 # output * bg $HOME/.pic/cloud_real.jpg fill
 # output * bg $HOME/.pic/teapot.png fill
@@ -84,17 +84,23 @@ workspace 10 gaps outer 10
 # swayfx things
 blur enable
 blur_passes 2
-blur_radius 8
+blur_radius 5
 blur_noise 0
 blur_brightness 0.8
 blur_contrast 1
 blur_saturation 1.1
 
-shadows disabled
+shadows enable
 shadow_blur_radius 20
 shadow_color $acColff
 
-# was 15
+layer_effects "bar" {
+    blur enable;
+    # blur_xray enable;
+    blur_ignore_transparent enable;
+    shadows enable;
+}
+
 corner_radius 15
 
 # app spefcific swayfx
