@@ -39,7 +39,7 @@ workspace 1 output $out-sec
 workspace 2 output $out-prim
 
 ### Wallpaper
-output * bg $HOME/.pic/miracle.jpeg fill
+output * bg $HOME/.pic/space1.jpg fill
 # output * bg $HOME/.pic/ayuru_camp___rin___nadeshiko_by_muddymelly_dcmp6rk.jpg fill
 # output * bg $HOME/.pic/cloud_real.jpg fill
 # output * bg $HOME/.pic/teapot.png fill
@@ -90,16 +90,30 @@ blur_brightness 0.8
 blur_contrast 1
 blur_saturation 1.1
 
-shadows enable
+shadows disabled
 shadow_blur_radius 20
 shadow_color $acColff
 
 layer_effects "bar" {
     blur enable;
+    blur_radius 2;
     # blur_xray enable;
     blur_ignore_transparent enable;
-    shadows enable;
 }
+
+layer_effects "kitty-panel" {
+    blur enable;
+    # blur_xray enable;
+    blur_ignore_transparent enable;
+    corner_radius 15;
+}
+
+# layer_effects "bar" {
+#     blur enable;
+#     # blur_xray enable;
+#     blur_ignore_transparent enable;
+#     shadows enable;
+# }
 
 corner_radius 15
 
