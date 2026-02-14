@@ -61,14 +61,20 @@ set $menu rofi
 set $file thunar
 
 set $acCol #f5bde6
-set $secCol #89b4fa
-set $textC #181926
 
-set $borderCol $acCol
+set $backCol #313244
+set $back2Col #11111b
+
+set $secCol #89b4fa
+set $textC #cdd6f4
+
+set $borderCol #181825
 
 # Colours
-# class                 border  backgr. text    indicator child_border
-client.focused          $acCol  $acCol  $textC  $secCol   $borderCol
+# class                 border      backgr.    text    indicator  child_border
+client.focused          $acCol      $backCol   $textC  $secCol    $acCol
+client.unfocused        $borderCol  $back2Col  $textC  $secCol    $borderCol
+client.focused_inactive $borderCol  $backCol   $textC  $secCol    $borderCol
 
 font pango:JetBrainsMono NF 10
 
