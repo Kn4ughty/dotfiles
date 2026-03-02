@@ -1,4 +1,5 @@
 #!/bin/bash
+IFS=$'\n'
 
 handle() {
   case $1 in
@@ -13,9 +14,11 @@ handle() {
   esac
 }
 
-IFS=$'\n'
+
+eww daemon
 
 mons=$(hyprctl monitors -j | jq -r '.[].name')
+
 
 while read -r mon; do
     if echo $mon | grep -e 'headless'; then
