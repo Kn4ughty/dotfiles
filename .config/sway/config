@@ -56,7 +56,7 @@ set $term kitty
 # Your preferred application launcher
 # Note: pass the final command to swaymsg so that the resulting window can be opened
 # on the original workspace that the command was run on.
-set $menu rofi 
+set $menu lumin 
 
 set $file thunar
 
@@ -157,6 +157,8 @@ exec --no-startup-id /usr/lib/xdg-desktop-portal -r
 seat seat0 xcursor_theme Bibata-Modern-Classic 28
 exec gsettings set org.gnome.desktop.interface gtk-theme 'Adwaita-Dark'
 
+exec /usr/lib/hyprpolkitagent/hyprpolkitagent
+
 
 ### Idle configuration
 #
@@ -231,7 +233,7 @@ bindsym $mod+semicolon exec ~/.scripts/rofi-emoji-paster
 #
 bindgesture swipe:right workspace next
 bindgesture swipe:left workspace prev
-bindgesture swipe:up exec $menu -show window
+# bindgesture swipe:up exec $menu -show window
 
 
 # space bar fix
