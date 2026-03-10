@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 swaymsg -m -t subscribe '["mode"]' |
 while read -r event_json; do

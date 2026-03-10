@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 # this script isnt very good
 
 # quick=$(acpi -b)
