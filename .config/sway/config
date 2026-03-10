@@ -62,15 +62,15 @@ set $file thunar
 
 set $acCol #f5bde6
 
-set $backCol #313244
+set $backCol #1e1e2e
 set $back2Col #11111b
 
 set $secCol #89b4fa
 set $textC #cdd6f4
 
-set $borderCol #181825
+set $borderCol #45475a
 
-# Colours
+# colours
 # class                 border      backgr.    text    indicator  child_border
 client.focused          $acCol      $backCol   $textC  $secCol    $acCol
 client.unfocused        $borderCol  $back2Col  $textC  $secCol    $borderCol
