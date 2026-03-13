@@ -4,8 +4,8 @@ set $locktime 3600
 set $offtime 5000
 
 # set $lockcmd 'swaylock -f -e -k -l -c 181926 -i $HOME/.pic/space1.png'
-set $lockcmd 'swaylock -f -e -k -l -c 181926'
-# set $lockcmd 'hyprlock'
+#set $lockcmd 'swaylock -f -e -k -l -c 181926'
+set $lockcmd 'hyprlock'
 set $calc 'alacritty --config-file $HOME/.config/alacritty/alacritty_calc.toml -T Term-Calculator -e qalc'
 ### Variables
 #
@@ -399,6 +399,7 @@ focus_follows_mouse yes
     # I can summon a window to appear by a shortcut
     bindsym $mod+Mod1+t [title="^To[d|D]o"] scratchpad show
     bindsym $mod+Mod1+c [title="Calendar"] scratchpad show
+    bindsym $mod+Mod1+m [title="rmpc"] scratchpad show
 
 #
 # Resizing containers:
@@ -487,9 +488,6 @@ bindsym XF86KbdBrightnessUp exec wtype -P end
 
 # bindsym $mod+Ctrl+C exec cliphist list -preview-width 50| lumin --dmenu | cliphist decode | wl-copy
 # bindsym $mod+Ctrl+D exec cliphist list -preview-width 50| lumin --dmenu | cliphist delete 
-
-# cat!
-bindsym XF86Search exec alacritty -e less $HOME/.scripts/cat.txt
 
 # cat videos!
 bindsym $mod+Control+Shift+a exec xdg-open 'https://www.youtube.com/watch?v=9J62hGda9BQ' && xdg-open 'https://www.youtube.com/watch?v=YRvOePz2OqQ'&& xdg-open 'https://www.youtube.com/watch?v=2GgiZZhO-PA' && xdg-open 'https://www.youtube.com/watch?v=0sTGxJ7rp9w' && xdg-open 'https://www.youtube.com/watch?v=WhpNmxKIt78' && xdg-open 'https://www.youtube.com/watch?v=zWLAbNHn5Ho'
