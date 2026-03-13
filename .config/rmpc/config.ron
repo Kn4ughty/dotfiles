@@ -96,6 +96,7 @@
             "B":         ShowInfo,
             "<C-z>":     ContextMenu(),
             "<C-s>":     Save(kind: Modal(all: false, duplicates_strategy: Ask)),
+            "r":         Rate(),
         },
         queue: {
             "D":       DeleteAll,
@@ -130,16 +131,16 @@
         (
             name: "Queue",
             pane: Split(
-                direction: Horizontal,
+                direction: Vertical,
                 panes: [
-                    (size: "60%", pane: Split( 
-                        direction: Vertical,
+                    (size: "85%", pane: Split( 
+                        direction: Horizontal,
                         panes: [
                             (size: "100%", borders: "BOTTOM", pane: Pane(AlbumArt)),
-                            (size: "12%", pane: Pane(Cava)),
+                            (size: "50%", borders: "LEFT | BOTTOM", pane: Pane(Queue)),
                         ])
                     ),
-                        (size: "50%", borders: "LEFT", pane: Pane(Queue)),
+                    (size: "15%", pane: Pane(Cava)),
                 ],
             ),
         ),
@@ -174,12 +175,16 @@
         sensitivity: 100, // default 100
         lower_cutoff_freq: 50, // not passed to cava if not provided
         higher_cutoff_freq: 10000, // not passed to cava if not provided
+        //input: (
+        //    method: Fifo,
+        //    source: "/tmp/mpd.fifo",
+        //    sample_rate: 44100,
+        //    channels: 2,
+        //    sample_bits: 16,
+        //),
         input: (
-            method: Fifo,
-            source: "/tmp/mpd.fifo",
-            sample_rate: 44100,
-            channels: 2,
-            sample_bits: 16,
+            method: Pipewire,
+            source: "auto",
         ),
         smoothing: (
             noise_reduction: 77, // default 77
