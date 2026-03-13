@@ -105,11 +105,7 @@ vim.api.nvim_create_autocmd('LspAttach', {
 
 -- Packages
 -- -- Catppuccin
-vim.pack.add({ "https://github.com/catppuccin/nvim" }, {
-    -- flavour = "mocha",
-    -- transparent_background = true,
-    -- term_colors = true,
-})
+vim.pack.add({ "https://github.com/catppuccin/nvim" })
 
 require("catppuccin").setup({
     flavour = "mocha",
