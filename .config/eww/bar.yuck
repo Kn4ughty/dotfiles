@@ -97,7 +97,7 @@
                 :transition "slideright"
                 ; EWW_TIME
                 (label :class "date" :text " ${formattime(EWW_TIME, '%H:%M:%S')}")
-                (label :class "date" :text " ${formattime(EWW_TIME, '%a %b %m-%d ')}")
+                (label :class "date" :text " ${formattime(EWW_TIME, '%a %b %d-%m ')}")
             )
         )
 
