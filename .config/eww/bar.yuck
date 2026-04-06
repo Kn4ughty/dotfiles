@@ -139,7 +139,7 @@
         (button
             :class 'home_icon'
             :onclick ``
-            ''
+            '󱄅'
         )
     )
 )

@@ -9,3 +9,4 @@ IGNORE*
 .config/nvim/lazy-lock.json
 
 .qmlls.ini
+.ssh/

@@ -61,6 +61,10 @@ vim.keymap.set("n", "<leader>w", ":w<CR>")
 vim.keymap.set("n", "<leader>r", ":so<CR>")
 vim.keymap.set("n", "<leader>lf", vim.lsp.buf.format)
 
+vim.keymap.set("n", "<leader>ep", ":!git add .<CR>:!git commit -m 'quickcommit'<CR>:!git push<CR>")
+
+
+-- vim.keymap.set("i", "<C-d>", "<C-o>yy<C-o>p")
 
 vim.api.nvim_create_autocmd('LspAttach', {
     desc = 'LSP actions',
@@ -208,6 +212,11 @@ vim.lsp.config('rust_analyzer', {
         }
     }
 })
+vim.lsp.config('asm-lsp', {
+    command = {'asm-lsp'},
+    filetypes = {'asm', 'nasm'},
+})
+vim.lsp.enable("asm-lsp")
 
 -- Debugging stuff
 -- vim.pack.add({
