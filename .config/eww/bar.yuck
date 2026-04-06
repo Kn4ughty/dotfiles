@@ -48,7 +48,7 @@
             :halign "center"
             :hexpand false
             ; A potential idea is to make this the currently playing song
-            (label :limit-width 80 :text WINDOW_NAME)
+            ; (label :limit-width 80 :text WINDOW_NAME)
         )
         (box
             :halign "end"
