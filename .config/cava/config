@@ -36,8 +36,8 @@ bar_spacing = 1
 ; bar_spacing = 5
 
 # sdl_glsl have these default values, they are only used to calulate max number of bars.
-bar_width = 20
-bar_spacing = 5
+; bar_width = 20
+; bar_spacing = 5
 
 
 # Lower and higher cutoff frequencies for lowest and highest bars
