@@ -1,6 +1,11 @@
 -- Thank you https://github.com/boltlessengineer/NativeVim/
 -- TODO. Speed up install by putting all pack.adds into one function
 local vim = vim -- hide errors stupidly
+-- require("status_line")
+-- require('vim._core.ui2').enable()
+
+vim.o.exrc = true
+
 vim.o.relativenumber = true
 vim.o.number = true
 
@@ -13,9 +18,14 @@ vim.o.smartindent = true
 vim.o.expandtab = true
 vim.o.tabstop = 4
 vim.o.shiftwidth = 4
+vim.o.autoindent = true
 
-vim.o.completeopt = "menu,menuone,popup,fuzzy" -- modern completion menu
-vim.o.pumheight = 10                           -- max height of completion menu
+vim.o.completeopt = "menu,menuone,noselect,nearest" -- modern completion menu
+-- vim.o.autocomplete = true
+-- vim.o.pumheight = 11                           -- max height of completion menu
+vim.o.pumborder = 'rounded'
+vim.o.pummaxwidth = 40
+
 
 vim.o.winborder = "rounded"
 vim.o.splitright = true
@@ -61,7 +71,7 @@ vim.keymap.set("n", "<leader>w", ":w<CR>")
 vim.keymap.set("n", "<leader>r", ":so<CR>")
 vim.keymap.set("n", "<leader>lf", vim.lsp.buf.format)
 
-vim.keymap.set("n", "<leader>ep", ":!git add .<CR>:!git commit -m 'quickcommit'<CR>:!git push<CR>")
+vim.keymap.set("n", "<leader>qc", ":!git add .<CR>:!git commit -m 'quickcommit'<CR>:!git push<CR>")
 
 
 -- vim.keymap.set("i", "<C-d>", "<C-o>yy<C-o>p")
@@ -100,6 +110,11 @@ vim.api.nvim_create_autocmd('LspAttach', {
         })
     end,
 })
+
+-- vim.pack.add({ "nvim.undotree" })
+vim.cmd("packadd nvim.undotree")
+
+vim.keymap.set('n', '<leader>u', '<cmd>Undotree<CR>')
 
 -- Auto commands
 
@@ -213,8 +228,8 @@ vim.lsp.config('rust_analyzer', {
     }
 })
 vim.lsp.config('asm-lsp', {
-    command = {'asm-lsp'},
-    filetypes = {'asm', 'nasm'},
+    command = { 'asm-lsp' },
+    filetypes = { 'asm', 'nasm' },
 })
 vim.lsp.enable("asm-lsp")
 
@@ -255,42 +270,6 @@ vim.pack.add({
 })
 require("mason-lspconfig").setup()
 
--- Treesitter
-vim.pack.add({
-    { src = 'https://github.com/nvim-treesitter/nvim-treesitter' },
-})
-require('nvim-treesitter').setup {
-    -- A list of parser names, or "all" (the listed parsers MUST always be installed)
-    ensure_installed = { "c",
-        "lua",
-        "vim",
-        "vimdoc",
-        "query",
-        "markdown",
-        "yuck",
-        "markdown_inline" },
-
-    -- Install parsers synchronously (only applied to `ensure_installed`)
-    sync_install = false,
-
-    -- Automatically install missing parsers when entering buffer
-    -- Recommendation: set to false if you don't have `tree-sitter` CLI installed locally
-    auto_install = true,
-
-    -- List of parsers to ignore installing (or "all")
-    ignore_install = { "javascript" },
-
-    ---- If you need to change the installation directory of the parsers (see -> Advanced Setup)
-    -- parser_install_dir = "/some/path/to/store/parsers", -- Remember to run vim.opt.runtimepath:append("/some/path/to/store/parsers")!
-
-    highlight = {
-        enable = true,
-        -- Set this to `true` if you depend on 'syntax' being enabled (like for indentation).
-        -- Using this option may slow down your editor, and you may see some duplicate highlights.
-        -- Instead of true it can also be a list of languages
-        additional_vim_regex_highlighting = false,
-    },
-}
 
 vim.api.nvim_create_autocmd('FileType', {
     pattern = { 'yuck' },
