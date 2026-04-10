@@ -44,10 +44,11 @@
     progress_bar: (
         // symbols: ["[", "-", ">", " ", "]"],
         // symbols: ["", "█", "", "█", "" ],
-        symbols: ["", "", "⭘", " ", " "],
+        // symbols: ["", "", "⭘", " ", " "],
+        symbols: ["", "", ">", " ", " "],
         track_style: (fg: "#313244"),
         elapsed_style: (fg: "magenta"),
-        thumb_style: (fg: "magenta", bg: "#313244"),
+        thumb_style: (fg: "magenta"),
         use_track_when_empty: false,
     ),
     scrollbar: (
