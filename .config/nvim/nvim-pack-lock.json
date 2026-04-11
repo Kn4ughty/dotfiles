@@ -59,6 +59,10 @@
     "snacks.nvim": {
       "rev": "fe7cfe9800a182274d0f868a74b7263b8c0c020b",
       "src": "https://github.com/folke/snacks.nvim"
+    },
+    "yuck.vim": {
+      "rev": "9b5e0370f70cc30383e1dabd6c215475915fe5c3",
+      "src": "https://github.com/elkowar/yuck.vim"
     }
   }
 }
