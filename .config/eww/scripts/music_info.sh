@@ -29,15 +29,26 @@ get_status_glyph() {
 # Im not using this ATM but keeping it for future reference
 ## Get cover
 get_cover() {
-	ffmpeg -i "${MUSIC_DIR}/$(mpc current -f %file%)" "${COVER}" -y &> /dev/null
-	STATUS=$?
+    prev_file=""
+    mpc idleloop player | while read -r _; do
+        new_file="$(mpc current -f %file%)"
 
-	# Check if the file has a embbeded album art
-	if [ "$STATUS" -eq 0 ];then
-		echo "$COVER"
-	else
-		echo "images/music.png"
-	fi
+        if [[ $prev_file == $new_file ]]; then
+            # do nothing
+            continue
+        fi
+        prev_file="$new_file"
+
+        ffmpeg -i "${MUSIC_DIR}/$new_file" "${COVER}" -y &> /dev/null
+        STATUS=$?
+
+        # Check if the file has a embbeded album art
+        if [ "$STATUS" -eq 0 ];then
+            echo "$COVER"
+        else
+            echo "images/music.png"
+        fi
+    done
 }
 
 ## Execute accordingly
@@ -51,4 +62,6 @@ elif [[ "$1" == "--next" ]]; then
 	{ mpc -q next; get_cover; }
 elif [[ "$1" == "--prev" ]]; then
 	{ mpc -q prev; get_cover; }
+elif [[ "$1" == "--cover" ]]; then
+    get_cover
 fi

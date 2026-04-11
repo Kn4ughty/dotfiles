@@ -199,17 +199,38 @@
 (deflisten ALBUM :initial "Unknown"
     `playerctl --player=playerctld --follow metadata --format '{{album}}'`)
 
+; (deflisten TOTAL_TIME_F :initial "0:00"
+;     `playerctl --follow metadata --format '{{duration(position)}}'`)
+; (deflisten TOTAL_TIME_S :initial 0.0 
+;     `playerctl --follow metadata --format '{{mpris:length}}'`)
+; (defpoll ELAPSED_TIME_S :initial 0.0 :interval "1s"
+;     `playerctl metadata --format '{{position}}'`)
+
+(deflisten COVER :initial "/tmp/.music_cover.jpg"
+  `./scripts/music_info.sh --cover`)
+
 (deflisten MUSIC_VIS :initial "        "
     `./scripts/cava.py`)
 
 (defwidget music_small []
-  (tooltip "${ALBUM} by ${ARTIST}"
-
+  (tooltip 
+    (box
+      :orientation "vertical" :space-evenly false
+      "${ALBUM}"
+      (image :path COVER :image-width 200 :image-height 200)
+      ; (scale
+      ;     :width 300
+      ;     :min 0.0
+      ;     :max TOTAL_TIME_S
+      ;     :value ELAPSED_TIME_S
+      ;     :onchange `playerctl position $(awk "BEGIN {print({} / 1000000 )}")`
+      ; )
+      )
     (box
       :space-evenly false
       :spacing 10
-      (label :text "${MUSIC_VIS}" :class "cava" :vexpand true :width 110)
-      (label :text "${SONG} ")
+      (label :markup "${MUSIC_VIS}" :class "cava" :vexpand true :width 110)
+      (label :text "${SONG} - ${ARTIST} ")
     )
   )
 )

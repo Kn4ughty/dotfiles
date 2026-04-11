@@ -3,14 +3,16 @@ import os
 import struct
 import subprocess
 import tempfile
-import time
 import math
+from colour import Color
 
 BARS_NUMBER = 10
 # OUTPUT_BIT_FORMAT = "8bit"
 OUTPUT_BIT_FORMAT = "16bit"
 # RAW_TARGET = "/tmp/cava.fifo"
 RAW_TARGET = "/dev/stdout"
+
+ENABLE_COLOURS = True
 
 conpat = """
 [general]
@@ -30,6 +32,9 @@ bytetype, bytesize, bytenorm = (
 )
 
 chars = "▁▂▃▄▅▆▇█"
+# More colours than chars makes it look smoother
+color_count = 50
+colors = list(Color("#94e2d5").range_to(Color("#f38ba8"), color_count))
 
 
 def run():
@@ -59,10 +64,15 @@ def run():
             outstr = ""
             for f in sample:
                 index = min(math.floor(len(chars) * f), len(chars) - 1)
-                # outstr += str(index)
-                outstr += chars[index]
+                col_index = min(math.floor(color_count * f), color_count - 1)
+                inner_char = chars[index]
+                if not ENABLE_COLOURS:
+                    outstr += inner_char
+                    continue
+                # Wrap each char in correct colour with pango
+                outstr += f"<span foreground='{colors[col_index]}'>{inner_char}</span>"
+
             print(outstr, flush=True)
-            # time.sleep(0.02)
 
 
 if __name__ == "__main__":
