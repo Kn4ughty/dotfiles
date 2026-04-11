@@ -40,7 +40,16 @@ entry highlight {
 
 tooltip,
 .tooltip {
-  background: v.$bar_bg;
+
+  // background: v.$bar_bg;
+  &,
+  &>* {
+    // background-color: #FF0000;
+    background: v.$bar_bg_s;
+    border: none;
+    // background: v.$bar_bg;
+  }
+
   padding: 0px;
   margin: 0px;
   opacity: 1;

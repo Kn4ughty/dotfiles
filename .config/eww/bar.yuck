@@ -203,10 +203,13 @@
     `./scripts/cava.py`)
 
 (defwidget music_small []
-  (box
-    :space-evenly false
-    :spacing 10
-  (label :text "${MUSIC_VIS}" :class "cava" :vexpand true :width 110)
-  (label :text "${SONG} - ${ALBUM} by ${ARTIST}")
+  (tooltip "${ALBUM} by ${ARTIST}"
+
+    (box
+      :space-evenly false
+      :spacing 10
+      (label :text "${MUSIC_VIS}" :class "cava" :vexpand true :width 110)
+      (label :text "${SONG} ")
+    )
   )
 )
