@@ -49,6 +49,7 @@
             :hexpand false
             ; A potential idea is to make this the currently playing song
             ; (label :limit-width 80 :text WINDOW_NAME)
+            (music_small)
         )
         (box
             :halign "end"
@@ -191,3 +192,21 @@
 )
 
 
+(deflisten SONG :initial "Unknown"
+    `playerctl --player=playerctld --follow metadata --format '{{default(title, "Unknown")}}'`)
+(deflisten ARTIST :initial "Unknown"
+    `playerctl --player=playerctld --follow metadata --format '{{artist}}'`)
+(deflisten ALBUM :initial "Unknown"
+    `playerctl --player=playerctld --follow metadata --format '{{album}}'`)
+
+(deflisten MUSIC_VIS :initial "        "
+    `./scripts/cava.py`)
+
+(defwidget music_small []
+  (box
+    :space-evenly false
+    :spacing 10
+  (label :text "${MUSIC_VIS}" :class "cava" :vexpand true :width 110)
+  (label :text "${SONG} - ${ALBUM} by ${ARTIST}")
+  )
+)

@@ -328,3 +328,16 @@ trough highlight {
   margin: 0.3rem;
   padding: 0.5rem;
 }
+
+.cava {
+  // background-image: linear-gradient(to right, #ff7e5f, #feb47b);
+  // -gtk-icon-palette: default; /* Sometimes helps with rendering stability */
+  //
+  // background-clip: text; 
+  // -webkit-background-clip: text;
+  color: v.$accent;
+  margin-top: -20px;
+  margin-bottom: -20px;
+  font-size: 1.3rem;
+  font-family: v.$font_mon;
+}
