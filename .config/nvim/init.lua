@@ -9,6 +9,8 @@ vim.o.exrc = true
 vim.o.relativenumber = true
 vim.o.number = true
 
+vim.o.colorcolumn = "80"
+
 vim.o.cursorline = true
 -- vim.o.cursorcolumn = true
 
