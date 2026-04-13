@@ -230,7 +230,7 @@
       :space-evenly false
       :spacing 10
       (label :markup "${MUSIC_VIS}" :class "cava" :vexpand true :width 110)
-      (label :text "${SONG} - ${ARTIST} ")
+      (label :text "${SONG} - ${ARTIST}" :truncate true)
     )
   )
 )
