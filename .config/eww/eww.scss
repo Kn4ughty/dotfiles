@@ -344,9 +344,11 @@ trough highlight {
   //
   // background-clip: text; 
   // -webkit-background-clip: text;
-  color: v.$accent;
+  // color: v.$accent;
+  color: transparent;
   margin-top: -20px;
   margin-bottom: -20px;
   font-size: 1.3rem;
   font-family: v.$font_mon;
+  text-shadow: 2px 2px;
 }

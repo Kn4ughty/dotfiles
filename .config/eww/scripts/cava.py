@@ -4,6 +4,7 @@ import struct
 import subprocess
 import tempfile
 import math
+import json
 from colour import Color
 
 BARS_NUMBER = 10
@@ -35,6 +36,8 @@ chars = "▁▂▃▄▅▆▇█"
 # More colours than chars makes it look smoother
 color_count = 50
 colors = list(Color("#94e2d5").range_to(Color("#f38ba8"), color_count))
+# colors_dark = list(Color("#639990").range_to(Color("#b2657b"), color_count))
+colors_dark = list(Color("#6399b8").range_to(Color("#995791"), color_count))
 
 
 def run():
@@ -61,6 +64,7 @@ def run():
                 break
             # sample = [i for i in struct.unpack(fmt, data)]  # raw values without norming
             sample = [i / bytenorm for i in struct.unpack(fmt, data)]
+            out_obj = ["", ""]
             outstr = ""
             for f in sample:
                 index = min(math.floor(len(chars) * f), len(chars) - 1)
@@ -70,9 +74,14 @@ def run():
                     outstr += inner_char
                     continue
                 # Wrap each char in correct colour with pango
-                outstr += f"<span foreground='{colors[col_index]}'>{inner_char}</span>"
+                out_obj[0] += (
+                    f"<span foreground='{colors[col_index]}'>{inner_char}</span>"
+                )
+                # out_obj[1] += (
+                #     f"<span foreground='{colors_dark[col_index]}'>{inner_char}</span>"
+                # )
 
-            print(outstr, flush=True)
+            print(json.dumps(out_obj), flush=True)
 
 
 if __name__ == "__main__":

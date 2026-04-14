@@ -229,7 +229,12 @@
     (box
       :space-evenly false
       :spacing 10
-      (label :markup "${MUSIC_VIS}" :class "cava" :vexpand true :width 110)
+      (transform :translate-y "2" ;:rotate -0.5
+        (overlay
+          ; (transform :translate-y "-2.5" :translate-x "1" (label :markup "${MUSIC_VIS[1]}" :class "cava" :vexpand true :width 110))
+          (label :markup "${MUSIC_VIS[0]}" :class "cava" :vexpand true :width 110)
+        )
+      )
       (label :text "${SONG} - ${ARTIST}" :truncate true)
     )
   )
