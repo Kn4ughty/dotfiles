@@ -135,9 +135,10 @@
                 panes: [
                     (size: "85%", pane: Split( 
                         direction: Horizontal,
+                        borders: "BOTTOM",
                         panes: [
-                            (size: "100%", borders: "BOTTOM", pane: Pane(AlbumArt)),
-                            (size: "50%", borders: "LEFT | BOTTOM", pane: Pane(Queue)),
+                            (size: "50%", borders: "RIGHT", pane: Pane(AlbumArt)),
+                            (size: "50%", pane: Pane(Queue)),
                         ])
                     ),
                     (size: "15%", pane: Pane(Cava)),

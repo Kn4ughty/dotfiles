@@ -45,7 +45,8 @@
         // symbols: ["[", "-", ">", " ", "]"],
         // symbols: ["", "█", "", "█", "" ],
         // symbols: ["", "", "⭘", " ", " "],
-        symbols: ["", "", ">", " ", " "],
+        //symbols: ["", "", ">", " ", " "],
+        symbols: ["[", "━", "", "─", "]"],
         track_style: (fg: "#313244"),
         elapsed_style: (fg: "magenta"),
         thumb_style: (fg: "magenta"),
@@ -57,6 +58,13 @@
         ends_style: (),
         thumb_style: (fg: "magenta"),
     ),
+    border_symbol_sets: {
+        "rounded_con_bot": (
+            parent: Rounded,
+            horizontal_top: "┴",
+            vertical_left: "┴",
+        ),
+    },
     song_table_album_separator: Underline,
     song_table_format: [
         (
@@ -91,15 +99,22 @@
         panes: [
             (
                 pane: Pane(Tabs),
-                size: "3",
+                size: "1",
             ),
             (
                 pane: Pane(TabContent),
-                borders: "ALL",
+                borders: "ALL", border_symbols: Rounded,
                 size: "100%",
             ),
             (
-                borders: "ALL",
+                borders: "ALL", border_symbols: Rounded,
+                border_title: [
+                    (kind: Text(" ")),
+                    //(kind: Property(Song(Title)), style: (fg: "white")), 
+                    (kind: Property(Song(Title)), style: (fg: "gray")), 
+                    (kind: Text(" ")),
+                    ],
+                border_title_alignment: Center,
                 size: "5",
                 pane: Split(
                     direction: Vertical,
@@ -120,8 +135,12 @@
                     (kind: Text("]"), style: (fg: "blue", modifiers: "Bold"))
                 ],
                 center: [
-                    (kind: Property(Song(Title)), style: (modifiers: "Bold"),
-                        default: (kind: Text("No Song"), style: (modifiers: "Bold"))
+                    //(kind: Property(Song(Title)), style: (modifiers: "Bold"),
+                    //    default: (kind: Text("No Song"), style: (modifiers: "Bold"))
+                    //)
+                    (kind: Property(Song(Album)),
+                        default: (kind: Text("Unknown Album")),
+                        style: (fg: "white"),
                     )
                 ],
                 right: [
@@ -140,22 +159,27 @@
                 ],
                 center: [
                     (kind: Property(Song(Artist)), style: (fg: "blue", modifiers: "Bold"),
-                        default: (kind: Text("Unknown"), style: (fg: "yellow", modifiers: "Bold"))
+                        default: (kind: Text("Unknown"), style: (fg: "yellow", modifiers: "Bold")),
+                        scroll_speed: 1,
                     ),
-                    (kind: Text(" - ")),
-                    (kind: Property(Song(Album)),
-                        default: (kind: Text("Unknown Album"))
-                    )
+                    //(kind: Text(" - ")),
+                    //(kind: Property(Song(Album)),
+                    //    default: (kind: Text("Unknown Album"))
+                    //)
                 ],
                 right: [
-                    (
-                        kind: Property(Widget(States(
-                            active_style: (fg: "white", modifiers: "Bold"),
-                            separator_style: (fg: "white")))
-                        ),
-                        style: (fg: "dark_gray")
-                    ),
-                ]
+                    (kind: Property(Status(RepeatV2(on_label: "󰕇", off_label: "󰕇",
+                                                     on_style: (fg: "white", modifiers: "Bold"),
+                                                     off_style: (fg: "dark_gray"))))),
+                    (kind: Text(" / ")),
+                    (kind: Property(Status(ConsumeV2(on_label: "󰄝", off_label: "󰄝", oneshot_label: "O",
+                                                     on_style: (fg: "white", modifiers: "Bold"),
+                                                     off_style: (fg: "dark_gray"))))),
+                    (kind: Text(" / ")),
+                    (kind: Property(Status(RandomV2(on_label: "", off_label: "",
+                                                     on_style: (fg: "white", modifiers: "Bold"),
+                                                     off_style: (fg: "dark_gray"))))),
+                    ]
             ),
         ],
     ),
