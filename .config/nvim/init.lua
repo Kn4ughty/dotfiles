@@ -4,6 +4,7 @@ local vim = vim -- hide errors stupidly
 -- require("status_line")
 -- require('vim._core.ui2').enable()
 
+
 vim.o.exrc = true
 
 vim.o.relativenumber = true
@@ -43,7 +44,7 @@ vim.opt.listchars = { -- NOTE: using `vim.opt` instead of `vim.o` to pass rich o
 vim.o.undofile = true
 vim.o.undolevels = 10000 -- 10x more undo levels
 
-vim.o.ignorecase = true
+-- vim.o.ignorecase = true
 
 vim.o.termguicolors = true
 
@@ -69,6 +70,7 @@ vim.g.mapleader = vim.keycode("<space>")
 vim.g.maplocalleader = vim.keycode("<cr>")
 
 vim.keymap.set("n", "<leader>w", ":w<CR>")
+
 
 vim.keymap.set("n", "<leader>r", ":so<CR>")
 vim.keymap.set("n", "<leader>lf", vim.lsp.buf.format)
@@ -260,7 +262,7 @@ vim.lsp.enable("asm-lsp")
 -- vim.keymap.set("n", "<leader>db", ":DapToggleBreakpoint<CR>", { desc = 'breakpoint' })
 
 
--- -- Mason
+-- Mason
 vim.pack.add({
     { src = 'https://github.com/mason-org/mason.nvim' },
 })
