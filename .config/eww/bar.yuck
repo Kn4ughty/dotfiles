@@ -18,6 +18,40 @@
     (bar :monitor mon :laptop 'yes')
 )
 
+(defwindow bar-dp1 []
+    :monitor "DP-1"
+    :geometry (geometry :x "0%"
+                           :y "0%"
+                           :width "100%"
+                           :height "40"
+                           :anchor "top center")
+    :stacking "fg"
+    :reserve (struts :distance "40px" :side "top")
+    :exclusive true
+    :windowtype "dock"
+    :wm-ignore false
+    :focusable false
+    :namespace "bar"
+    (bar :monitor "DP-1" :laptop 'no')
+)
+
+(defwindow bar-dp2 []
+    :monitor "DP-2"
+    :geometry (geometry :x "0%"
+                           :y "0%"
+                           :width "100%"
+                           :height "40"
+                           :anchor "top center")
+    :stacking "fg"
+    :reserve (struts :distance "40px" :side "top")
+    :exclusive true
+    :windowtype "dock"
+    :wm-ignore false
+    :focusable false
+    :namespace "bar"
+    (bar :monitor "DP-2" :laptop 'no')
+)
+
 
 (deflisten WINDOW_NAME :initial ``
     `./scripts/window.sh`)
