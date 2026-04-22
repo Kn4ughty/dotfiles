@@ -1,15 +1,15 @@
 if status is-interactive
     # Commands to run in interactive sessions can go here
     alias lsa="ls -la"
-    alias py="python3"
-    alias n="nvim"
+    # alias py="python3"
+    # alias n="nvim"
     # alias l="lvim"
-    alias lg="lazygit" 
+    # alias lg="lazygit" 
     alias zed="flatpak run dev.zed.Zed"
     alias "icat"="kitten icat"
     alias neovim="echo \"Wrong\""
 
-    alias :q="echo \"okay if you are sure\" && sleep 1 && exit"
+    alias :q="echo \"okay if you are sure\" && sleep 2 && exit"
     alias abcdefghijklmnopqrstuvwxyz="calcurse"
 
     alias doitnow="sudo fish -c \$history[1]"
