@@ -20,7 +20,8 @@
     select_current_song_on_change: false,
     ignore_leading_the: false,
     browser_song_sort: [Disc, Track, Artist, Title],
-    directories_sort: SortFormat(group_by_type: true, reverse: false),
+    //directories_sort: SortFormat(group_by_type: true, reverse: false),
+    directories_sort: ModifiedTime(reverse: true),
     album_art: (
         method: Auto,
         max_size_px: (width: 1200, height: 1200),
@@ -137,8 +138,9 @@
                         direction: Horizontal,
                         borders: "BOTTOM",
                         panes: [
-                            (size: "50%", borders: "RIGHT", pane: Pane(AlbumArt)),
-                            (size: "50%", pane: Pane(Queue)),
+                            (size: "2.2r", borders: "RIGHT", pane: Pane(AlbumArt)),
+                            //(size: "50%", pane: Pane(Queue)),
+                            (size: "100%", pane: Pane(Queue)),
                         ])
                     ),
                     (size: "15%", pane: Pane(Cava)),
