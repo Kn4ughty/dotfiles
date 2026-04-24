@@ -84,6 +84,8 @@
     )
 )
 
+(defpoll ZFS_DISK :interval "10m" `zfs list`)
+
 (defwidget sys_info []
     (box 
         :orientation "vertical"
@@ -102,6 +104,17 @@ M"
             :value "${round(jq(EWW_RAM, '.used_mem_perc'), 1)}"
             :duration "60s"
         )
+        (info-box :classname "disk"
+          ZFS_DISK
+        )
+        
+        ; (box :orientation "horizontal"
+        ;   ; (for disk in EWW_DISK
+        ;     (info-box
+        ;     "${jq(EWW_DISK, ".[1]")}"
+        ;       )
+        ;   ; )
+        ;)
     )
 )
 
