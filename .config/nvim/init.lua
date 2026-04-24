@@ -1,6 +1,9 @@
 -- Thank you https://github.com/boltlessengineer/NativeVim/
 -- TODO. Speed up install by putting all pack.adds into one function
 local vim = vim -- hide errors stupidly
+
+vim.opt.runtimepath:prepend("/home/d/.local/share/nvim/site")
+
 -- require("status_line")
 -- require('vim._core.ui2').enable()
 
@@ -166,7 +169,7 @@ vim.pack.add({ "https://github.com/folke/snacks.nvim" }, {
     },
     explorer = { enabled = true },
     picker = {
-        hidden = true,
+        hidden = false,
         enabled = true,
         optional = true,
         sources = {
@@ -181,7 +184,7 @@ vim.pack.add({ "https://github.com/folke/snacks.nvim" }, {
     image = { enabled = true },
     -- input = { enabled = true },
     -- dashboard = { enabled = true },
-    -- notifier = { enabled = true },
+    notifier = { enabled = true },
     -- scope = { enabled = true },
     -- scroll = { enabled = true },
     -- statuscolumn = { enabled = true },
@@ -209,13 +212,46 @@ vim.keymap.set("n", "<leader>fr", ":lua Snacks.picker.recent()<CR>", { desc = 'R
 vim.keymap.set("n", "<leader>fl", ":lua Snacks.picker.lines()<CR>", { desc = 'Lines' })
 vim.keymap.set("n", "<leader>fb", ":lua Snacks.picker.buffers()<CR>", { desc = 'Buffers' })
 vim.keymap.set("n", "<leader>fh", ":lua Snacks.picker.help()<CR>", { desc = 'Help' })
-vim.keymap.set("n", "<leader>fp", ":lua Snacks.picker.projects()<CR>", { desc = 'Projects' })
+vim.keymap.set("n", "<leader>fp", 
+function ()
+    Snacks.picker.projects({
+    })
+end, { desc = 'Projects' })
 
 vim.keymap.set("n", "<leader>fd", ":lua Snacks.diagnostics_buffer()<CR>", { desc = 'Diagnostics buffer' })
 vim.keymap.set("n", "<leader>fs", Snacks.picker.lsp_symbols, { desc = 'Diagnostics buffer' })
 vim.keymap.set("n", "<leader>fS", Snacks.picker.lsp_workspace_symbols, { desc = 'Diagnostics buffer' })
 
 
+-- cmp
+vim.pack.add({
+    'https://github.com/hrsh7th/cmp-nvim-lsp',
+    'https://github.com/hrsh7th/cmp-buffer',
+    'https://github.com/hrsh7th/cmp-path',
+    'https://github.com/hrsh7th/cmp-cmdline',
+    'https://github.com/hrsh7th/nvim-cmp',
+    -- 'https://github.com/f-person/git-blame.nvim',
+})
+
+local cmp = require("cmp")
+
+cmp.setup({
+    mapping = cmp.mapping.preset.insert({
+        ['<C-b>'] = cmp.mapping.scroll_docs(-4),
+        ['<C-f>'] = cmp.mapping.scroll_docs(4),
+        ['<C-Space>'] = cmp.mapping.complete(),
+        ['<C-e>'] = cmp.mapping.abort(),
+        ['<Tab>'] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
+    }),
+    sources = cmp.config.sources({
+            { name = 'nvim_lsp' },
+        },
+        {
+            { name = 'buffer' },
+        })
+})
+
+local capabilities = require('cmp_nvim_lsp').default_capabilities()
 
 -- -- Lspconfig
 vim.pack.add({
@@ -223,6 +259,7 @@ vim.pack.add({
 })
 
 vim.lsp.config('rust_analyzer', {
+    capabilities = capabilities,
     settings = {
         ["rust-analyzer"] = {
             check = {
@@ -231,6 +268,7 @@ vim.lsp.config('rust_analyzer', {
         }
     }
 })
+vim.lsp.enable('rust_analyzer')
 vim.lsp.config('asm-lsp', {
     command = { 'asm-lsp' },
     filetypes = { 'asm', 'nasm' },
@@ -261,6 +299,17 @@ vim.lsp.enable("asm-lsp")
 -- vim.keymap.set("n", "<leader>do", ":DapStepOver<CR>", { desc = 'StepOver' })
 -- vim.keymap.set("n", "<leader>db", ":DapToggleBreakpoint<CR>", { desc = 'breakpoint' })
 
+vim.diagnostic.config({
+    virtual_text = true,           -- This shows the error at the end of the line
+    signs = true,                  -- This shows errors in the gutter (signcolumn)
+    update_in_insert = false,      -- Set to true if you want errors to update while typing
+    underline = true,
+    severity_sort = true,
+    float = {
+        border = 'rounded',
+        source = 'always',
+    },
+})
 
 -- Mason
 vim.pack.add({
@@ -288,6 +337,7 @@ require('nvim-treesitter').setup {
         "query",
         "markdown",
         "yuck",
+        "ron",
         "markdown_inline" },
 
     -- Install parsers synchronously (only applied to `ensure_installed`)
@@ -326,33 +376,6 @@ vim.pack.add({
 local dropbar_api = require('dropbar.api')
 vim.keymap.set('n', '<Leader>;', dropbar_api.pick, { desc = 'Pick symbols in winbar' })
 
--- cmp
-vim.pack.add({
-    'https://github.com/hrsh7th/cmp-nvim-lsp',
-    'https://github.com/hrsh7th/cmp-buffer',
-    'https://github.com/hrsh7th/cmp-path',
-    'https://github.com/hrsh7th/cmp-cmdline',
-    'https://github.com/hrsh7th/nvim-cmp',
-    -- 'https://github.com/f-person/git-blame.nvim',
-})
-
-local cmp = require("cmp")
-
-cmp.setup({
-    mapping = cmp.mapping.preset.insert({
-        ['<C-b>'] = cmp.mapping.scroll_docs(-4),
-        ['<C-f>'] = cmp.mapping.scroll_docs(4),
-        ['<C-Space>'] = cmp.mapping.complete(),
-        ['<C-e>'] = cmp.mapping.abort(),
-        ['<Tab>'] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
-    }),
-    sources = cmp.config.sources({
-            { name = 'nvim_lsp' },
-        },
-        {
-            { name = 'buffer' },
-        })
-})
 
 -- vim.pack.add({
 --     "https://github.com/monkoose/neocodeium"
@@ -381,6 +404,8 @@ if vim.g.neovide then
     vim.g.neovide_cursor_animation_length = 0.05
     vim.g.neovide_cursor_trail_size = 0.5
     vim.g.neovide_cursor_animate_command_line = false
+
+    vim.g.neovide_scroll_animation_length = 0.1
 
     vim.g.neovide_cursor_vfx_mode = ""
     vim.g.neovide_cursor_vfx_particle_density = 1.0
