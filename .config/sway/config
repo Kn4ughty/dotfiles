@@ -23,7 +23,7 @@ set $out-sec DP-2
 
 output * adaptive_sync on
 
-output eDP-1 resolution 2560x1600@165Hz scale 1.3
+output eDP-1 resolution 2560x1600@60Hz scale 1.3
 
 output $out-prim resolution 1920x1080 position 0 0 scale 1 adaptive_sync off transform 0
 
@@ -157,7 +157,8 @@ exec --no-startup-id /usr/lib/xdg-desktop-portal -r
 seat seat0 xcursor_theme Bibata-Modern-Classic 28
 exec gsettings set org.gnome.desktop.interface gtk-theme 'Adwaita-Dark'
 
-exec /usr/lib/hyprpolkitagent/hyprpolkitagent
+# exec /usr/lib/hyprpolkitagent/hyprpolkitagent
+exec systemctl --user start hyprpolkitagent 
 
 
 ### Idle configuration
