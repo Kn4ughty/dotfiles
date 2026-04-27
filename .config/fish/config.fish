@@ -53,6 +53,6 @@ if status is-interactive
         ls -lah $(which $argv[1])
     end
 
-    ssh-add ~/.ssh/id_main
+    ssh-add ~/.ssh/id_*.key
 
 end
