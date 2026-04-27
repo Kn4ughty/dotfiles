@@ -88,14 +88,16 @@
     (box 
         :orientation "vertical"
         (graph_gen 
-            :label "C
+            :label 
+"C
 P
 U"
             :name "cpu"
             :value "${round(jq(EWW_CPU, '.avg'), 1)}"
         )
         (graph_gen
-            :label "M
+            :label 
+"M
 E
 M"
             :name "mem"
