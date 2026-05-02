@@ -1,3 +1,17 @@
+--[[
+
+nvim bind list
+
+# Base
+"v_an" and "v_in"  -- Treesitter in and out
+rebound to 
+
+":set spell" -> ":set nospell"
+
+--]]
+
+--
+--
 -- Thank you https://github.com/boltlessengineer/NativeVim/
 -- TODO. Speed up install by putting all pack.adds into one function
 local vim = vim -- hide errors stupidly
@@ -71,8 +85,6 @@ vim.opt.foldnestmax = 4
 -- Regular binds
 vim.g.mapleader = vim.keycode("<space>")
 vim.g.maplocalleader = vim.keycode("<cr>")
-
-vim.keymap.set("n", "<leader>w", ":w<CR>")
 
 
 vim.keymap.set("n", "<leader>r", ":so<CR>")
@@ -221,6 +233,91 @@ end, { desc = 'Projects' })
 vim.keymap.set("n", "<leader>fd", ":lua Snacks.diagnostics_buffer()<CR>", { desc = 'Diagnostics buffer' })
 vim.keymap.set("n", "<leader>fs", Snacks.picker.lsp_symbols, { desc = 'Diagnostics buffer' })
 vim.keymap.set("n", "<leader>fS", Snacks.picker.lsp_workspace_symbols, { desc = 'Diagnostics buffer' })
+
+
+vim.pack.add({
+    "https://github.com/nvim-mini/mini.surround",
+    "https://github.com/nvim-mini/mini.clue",
+    "https://github.com/nvim-mini/mini.ai",
+})
+require('mini.surround').setup()
+require('mini.ai').setup()
+local miniclue = require('mini.clue')
+miniclue.setup({
+    triggers = {
+    -- Leader triggers
+    { mode = { 'n', 'x' }, keys = '<Leader>' },
+
+    -- `[` and `]` keys
+    { mode = 'n', keys = '[' },
+    { mode = 'n', keys = ']' },
+
+    -- Built-in completion
+    { mode = 'i', keys = '<C-x>' },
+
+    -- `g` key
+    { mode = { 'n', 'x' }, keys = 'g' },
+
+    -- Marks
+    { mode = { 'n', 'x' }, keys = "'" },
+    { mode = { 'n', 'x' }, keys = '`' },
+
+    -- Registers
+    { mode = { 'n', 'x' }, keys = '"' },
+    { mode = { 'i', 'c' }, keys = '<C-r>' },
+
+    -- Window commands
+    { mode = 'n', keys = '<C-w>' },
+
+    -- `z` key
+    { mode = { 'n', 'x' }, keys = 'z' },
+  },
+
+  clues = {
+    -- Enhance this by adding descriptions for <Leader> mapping groups
+    miniclue.gen_clues.square_brackets(),
+    miniclue.gen_clues.builtin_completion(),
+    miniclue.gen_clues.g(),
+    miniclue.gen_clues.marks(),
+    miniclue.gen_clues.registers(),
+    miniclue.gen_clues.windows(),
+    miniclue.gen_clues.z(),
+  },
+  window = {
+    delay = 1000,
+  },
+})
+
+--[[ Surround binds
+
+https://github.com/nvim-mini/mini.nvim/blob/main/readmes/mini-surround.md
+"Vsa)"  -- Surround current line with out padding spaces
+        -- Wraps the output tightly
+"Vsa("  -- Surround current line with padding spaces
+"sa_b" add brackets
+
+"srb]" -- replace (...) with [...]
+"sd["  -- delete square brackets
+
+--]]
+
+vim.pack.add({
+    "https://github.com/folke/flash.nvim",
+})
+
+require('flash').setup()
+
+vim.keymap.set({ "n", "x", "o" }, "zk", function() require("flash").jump() end, { desc = "Flash" })
+-- vim.keymap.set({ "n", "x", "o" },"Zk", function() require("flash").treesitter() end, { desc = "Flash Treesitter" })
+-- vim.keymap.set("o", "r", function() require("flash").remote() end, { desc = "Remote Flash" })
+-- vim.keymap.set({"o", "x"}, "R", function() require("flash").treesitter_search() end, { desc = "Treesitter Search" })
+-- vim.keymap.set("c", "<c-s>", function() require("flash").toggle() end, { desc = "Toggle Flash Search" })
+
+
+vim.pack.add({
+    "https://github.com/j-hui/fidget.nvim",
+})
+require('fidget').setup()
 
 
 -- cmp
@@ -385,6 +482,13 @@ vim.keymap.set('n', '<Leader>;', dropbar_api.pick, { desc = 'Pick symbols in win
 -- vim.keymap.set("i", "<A-y>", neocodeium.accept)
 --
 
+
+vim.pack.add({
+    { src = "https://github.com/kawre/leetcode.nvim" },
+    { src = "https://github.com/nvim-lua/plenary.nvim" },
+    { src = "https://github.com/MunifTanjim/nui.nvim" },
+})
+require("leetcode").setup({picker = { provider = Snacks.picker}})
 
 -- Do neovide things
 if vim.g.neovide then
