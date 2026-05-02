@@ -1,0 +1,12 @@
+font-family = "JetBrainsMono Nerd Font Mono"
+
+theme = Catppuccin Mocha
+background-opacity = 0.9
+font-synthetic-style = false
+font-style-bold = false
+
+gtk-titlebar = false
+
+window-theme = ghostty
+
+gtk-custom-css = "./style.css"
