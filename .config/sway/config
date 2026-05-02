@@ -38,7 +38,8 @@ workspace 1 output $out-prim
 # workspace 2 output HDMI-A-1
 workspace 2 output $out-sec
 
-### Wallpaper
+### wallpaper
+# output * bg $HOME/.pic/art002e009298~orig.jpg fill
 output * bg $HOME/.pic/space1.jpg fill
 # output * bg $HOME/.pic/ayuru_camp___rin___nadeshiko_by_muddymelly_dcmp6rk.jpg fill
 # output * bg $HOME/.pic/cloud_real.jpg fill
