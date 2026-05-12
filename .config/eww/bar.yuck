@@ -208,11 +208,11 @@
             :width 320
             :height 180
             :space-evenly true
-             ;  (literal
-             ;      :content {wsp.name}
-             ;      :vexpand true
-             ;      :hexpand true
-             ;  )
+              (literal
+                  :content {wsp.rep}
+                  :vexpand true
+                  :hexpand true
+              )
             )
         (button 
             :class "workspace ${wsp.class} ${wsp.focused == 'true' ? 'focused' : ''}"
