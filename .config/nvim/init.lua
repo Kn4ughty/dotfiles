@@ -4,7 +4,7 @@ nvim bind list
 
 # Base
 "v_an" and "v_in"  -- Treesitter in and out
-rebound to 
+"ga" -> Get ascii
 
 ":set spell" -> ":set nospell"
 
