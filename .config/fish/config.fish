@@ -54,4 +54,6 @@ if status is-interactive
 
     ssh-add ~/.ssh/id_*.key
 
+    direnv hook fish | source
+
 end
