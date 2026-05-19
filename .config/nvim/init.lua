@@ -17,6 +17,15 @@ nvim bind list
 local vim = vim -- hide errors stupidly
 
 vim.opt.runtimepath:prepend("/home/d/.local/share/nvim/site")
+vim.opt.runtimepath:append("~/.local/share/nvim/site")
+-- Use vim.fn.expand to turn "~" into "/home/d"
+local site_path = vim.fn.expand("~/.local/share/nvim/site")
+
+if not vim.loop.fs_stat(site_path) then
+    vim.fn.mkdir(site_path, "p")
+end
+
+vim.opt.runtimepath:append(site_path)
 
 -- require("status_line")
 -- require('vim._core.ui2').enable()
@@ -90,7 +99,7 @@ vim.g.maplocalleader = vim.keycode("<cr>")
 vim.keymap.set("n", "<leader>r", ":so<CR>")
 vim.keymap.set("n", "<leader>lf", vim.lsp.buf.format)
 
-vim.keymap.set("n", "<leader>qc", ":!git add .<CR>:!git commit -m 'quickcommit'<CR>:!git push<CR>")
+vim.keymap.set("n", "<leader>c", ":!git add .<CR>:!git commit -m 'quickcommit'<CR>:!git push<CR>")
 
 
 -- vim.keymap.set("i", "<C-d>", "<C-o>yy<C-o>p")

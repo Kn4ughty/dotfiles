@@ -174,7 +174,7 @@
                                                      on_style: (fg: "white", modifiers: "Bold"),
                                                      off_style: (fg: "dark_gray"))))),
                     (kind: Text(" / ")),
-                    (kind: Property(Status(ConsumeV2(on_label: "󰄝", off_label: "󰄝", oneshot_label: "O",
+                    (kind: Property(Status(ConsumeV2(on_label: "C", off_label: "C", oneshot_label: "O",
                                                      on_style: (fg: "white", modifiers: "Bold"),
                                                      off_style: (fg: "dark_gray"))))),
                     (kind: Text(" / ")),
