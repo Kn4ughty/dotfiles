@@ -484,6 +484,8 @@ bindsym XF86KbdBrightnessDown exec $HOME/.scripts/1but-kb-light.py
 
 bindsym XF86KbdBrightnessUp exec wtype -P end
 
+bindsym $mod+C exec tadaa -m
+
 # Clipboard stuff
 # exec wl-paste --watch cliphist store
 
