@@ -99,7 +99,7 @@ vim.g.maplocalleader = vim.keycode("<cr>")
 vim.keymap.set("n", "<leader>r", ":so<CR>")
 vim.keymap.set("n", "<leader>lf", vim.lsp.buf.format)
 
-vim.keymap.set("n", "<leader>c", ":!git add .<CR>:!git commit -m 'quickcommit'<CR>:!git push<CR>")
+vim.keymap.set("n", "<leader>qc", ":!git add .<CR>:!git commit -m 'quickcommit'<CR>:!git push<CR>")
 
 
 -- vim.keymap.set("i", "<C-d>", "<C-o>yy<C-o>p")
