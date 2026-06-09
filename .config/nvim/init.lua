@@ -139,6 +139,8 @@ vim.api.nvim_create_autocmd('LspAttach', {
     end,
 })
 
+vim.keymap.set("v", "<leader>lu", ":s/, \\(.\\{-1,}\\):/, _\\1:/g<CR>", { desc = "Fix rust unused vars (_prefix)" })
+
 -- vim.pack.add({ "nvim.undotree" })
 vim.cmd("packadd nvim.undotree")
 
@@ -165,7 +167,8 @@ vim.cmd.colorscheme "catppuccin"
 -- -- Snacks
 
 
-vim.pack.add({ "https://github.com/folke/snacks.nvim" }, {
+vim.pack.add({ "https://github.com/folke/snacks.nvim" } )
+require("snacks").setup({
     lazygit = {
         enabled = true,
     },
@@ -210,7 +213,6 @@ vim.pack.add({ "https://github.com/folke/snacks.nvim" }, {
     -- scroll = { enabled = true },
     -- statuscolumn = { enabled = true },
 })
-require("snacks").setup()
 Snacks.indent.enable()
 Snacks.words.enable()
 
