@@ -296,6 +296,9 @@ bindsym $mod+Shift+t exec cd ~/code/stopwatch/ && ./.venv/bin/python main.py
 #kill window
 bindsym $mod+q kill
 
+# pick colour
+bindsym $mod+p exec hyprpicker | wl-copy
+
 
 floating_modifier $mod normal
 
