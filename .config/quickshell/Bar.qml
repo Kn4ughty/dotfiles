@@ -10,18 +10,27 @@ Scope {
             required property var modelData
             screen: modelData
 
+            implicitHeight: 30
+
+            color: "transparent"
+
             anchors {
                 top: true
                 left: true
                 right: true
             }
-            implicitHeight: 30
 
-            ClockWidget {
-                anchors.centerIn: parent
+            Rectangle  {
+                anchors.fill: parent
+
+                color: "white"
+                radius: height / 2
+
+
+                ClockWidget {
+                    anchors.centerIn: parent
+                }
             }
-
         }
     }
-
 }
