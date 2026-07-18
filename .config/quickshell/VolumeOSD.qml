@@ -109,12 +109,37 @@ Scope {
                     }
 
                     width: parent.width * (Pipewire.defaultAudioSink?.audio.volume ?? 0)
-
                     Behavior on width {
                         SpringAnimation {
                             spring: 5
                             damping: 0.3
                         }
+                    }
+
+                    transform: Scale {
+                        id: squash
+                        origin.x: 0
+                        origin.y: fill.height / 2
+                        yScale: 1
+
+                        Behavior on yScale {
+                            SpringAnimation {
+                                spring: 6
+                                damping: 0.3
+                                mass: 0.4
+                            }
+                        }
+                    }
+
+                    onWidthChanged: {
+                        squash.yScale = 0.85
+                        squashReset.restart()
+                    }
+
+                    Timer {
+                        id: squashReset
+                        interval: 16
+                        onTriggered: squash.yScale = 1
                     }
 
                 }
@@ -127,7 +152,7 @@ Scope {
                         leftMargin: 12
                     }
 
-                    iconSize: 20
+                    iconSize: 18
                     iconName: "audio-volume-high-symbolic"
                     iconColor: "#11111b"
                 }
@@ -136,6 +161,7 @@ Scope {
                     color: "#c6a0f6"
                     font {
                         family: "Lexend Deca"
+                        // family: "Aller"
                         pointSize: 20
                         preferShaping: false
                     }
