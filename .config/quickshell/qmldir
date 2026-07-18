@@ -1,0 +1,6 @@
+module config
+singleton Colours 1.0 Colours.qml
+VolumeOSD 1.0 VolumeOSD.qml
+ClockWidget 1.0 ClockWidget.qml
+Bar 1.0 Bar.qml
+Time 1.0 Time.qml

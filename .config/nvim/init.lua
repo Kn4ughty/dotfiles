@@ -382,6 +382,7 @@ vim.lsp.config('asm-lsp', {
     filetypes = { 'asm', 'nasm' },
 })
 vim.lsp.enable("asm-lsp")
+vim.lsp.enable("qmlls")
 
 -- Debugging stuff
 -- vim.pack.add({

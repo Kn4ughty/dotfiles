@@ -1,7 +1,7 @@
+pragma ComponentBehavior: Bound
+
 import QtQuick
-import QtQuick.Layouts
 import Quickshell
-import Quickshell.Widgets
 
 import ".."
 
@@ -19,25 +19,25 @@ Scope {
     }
 
     onDriverChanged: {
-        if (!internal.readyToShow) return
-
+        if (!internal.readyToShow)
+            return;
         internal.shouldShowOsd = true;
         unloadTimer.stop();
 
         internal.osdLoaded = true;
-        hideTimer.restart()
+        hideTimer.restart();
     }
 
     Component.onCompleted: {
-        Qt.callLater(() => internal.readyToShow = true)
+        Qt.callLater(() => internal.readyToShow = true);
     }
 
     Timer {
         id: hideTimer
         interval: 1000
         onTriggered: {
-            internal.shouldShowOsd = false
-            unloadTimer.restart()
+            internal.shouldShowOsd = false;
+            unloadTimer.restart();
         }
     }
 
@@ -46,7 +46,6 @@ Scope {
         interval: 300
         onTriggered: internal.osdLoaded = false
     }
-
 
     LazyLoader {
         active: internal.osdLoaded
@@ -71,11 +70,9 @@ Scope {
                 width: parent.width - 4
                 height: parent.height - 4
                 radius: height / 2
-                // color: "#1e2030"
                 color: Colours.crust
 
                 border {
-                    // color: "#363a4f"
                     color: Colours.surface0
                     width: 1
                 }
@@ -86,7 +83,7 @@ Scope {
 
                 opacity: (internal.shouldShowOsd && revealed) ? 1 : 0
 
-                y: (internal.shouldShowOsd && revealed ) ? 0 : -height
+                y: (internal.shouldShowOsd && revealed) ? 0 : -height
 
                 Behavior on opacity {
                     NumberAnimation {
@@ -115,13 +112,15 @@ Scope {
                         margins: 6
                     }
 
-                    width: parent.width * root.driver 
+                    width: parent.width * root.driver
                     Behavior on width {
                         SpringAnimation {
                             spring: 5
                             damping: 0.3
                         }
                     }
+
+                    property real _lastWidth: width
 
                     transform: Scale {
                         id: squash
@@ -130,21 +129,18 @@ Scope {
                         yScale: 1
 
                         Behavior on yScale {
-                            NumberAnimation {
-                                easing.bezierCurve: [0.2, 0, 0, 1]  // standard
+                            SpringAnimation {
+                                spring: 2
+                                damping: 0.9
                             }
-                            // SpringAnimation {
-                            //     spring: 6
-                            //     damping: 0.3
-                            //     mass: 0.4
-                            // }
                         }
                     }
 
                     onWidthChanged: {
-                        squash.yScale = 0.9
+                        squash.yScale = width < _lastWidth ? 1.1 : 0.9;
+                        _lastWidth = width;
                         // squash.yScale = 1
-                        squashReset.restart()
+                        squashReset.restart();
                     }
 
                     Timer {
@@ -152,7 +148,6 @@ Scope {
                         interval: 16
                         onTriggered: squash.yScale = 1
                     }
-
                 }
 
                 ColorableIcon {
@@ -176,14 +171,13 @@ Scope {
                         pointSize: 20
                         preferShaping: false
                     }
-                    anchors  {
+                    anchors {
                         right: parent.right
                         verticalCenter: parent.verticalCenter
                         rightMargin: 12
                     }
                     text: Math.round((root.driver) * 100)
                 }
-
             }
         }
     }

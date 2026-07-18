@@ -5,7 +5,7 @@ import QtQuick
 Singleton {
     id: root
 
-    property string variant: "mocha" // "latte" | "frappe" | "macchiato" | "mocha"
+    property string variant: "macchiato" // "latte" | "frappe" | "macchiato" | "mocha"
 
     readonly property QtObject latte: QtObject {
         readonly property color rosewater: "#dc8a78"
