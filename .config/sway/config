@@ -23,7 +23,7 @@ set $right l
 
 output * adaptive_sync on
 
-output eDP-1 resolution 2560x1600@60Hz scale 1.3
+output eDP-1 resolution 2560x1600@165Hz scale 1.3
 
 set $DELL DP-2
 set $240 DP-1
@@ -505,7 +505,8 @@ bindsym XF86KbdBrightnessDown exec $HOME/.scripts/1but-kb-light.py
 
 bindsym XF86KbdBrightnessUp exec wtype -P end
 
-bindsym $mod+C exec tadaa -m
+bindsym $mod+C exec tadaa
+bindsym $mod+Control+C exec tadaa -l
 
 # Clipboard stuff
 # exec wl-paste --watch cliphist store

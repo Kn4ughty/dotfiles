@@ -130,10 +130,16 @@ vim.api.nvim_create_autocmd('LspAttach', {
         vim.keymap.set('n', 'gn', '<cmd>lua vim.diagnostic.goto_next()<cr>', opts)
         vim.keymap.set('n', 'gp', '<cmd>lua vim.diagnostic.goto_prev()<cr>', opts)
 
+        vim.keymap.set('n', 'ft', '<cmd>lua <cr>', opts)
+
+        vim.g.autoformat = true
+
         vim.api.nvim_create_autocmd("BufWritePre", {
             buffer = event.buf,
             callback = function()
-                vim.lsp.buf.format { async = false, id = event.data.client_id }
+                if vim.g.autoformat == true then
+                    vim.lsp.buf.format { async = false, id = event.data.client_id }
+                end
             end,
         })
     end,
