@@ -182,6 +182,7 @@ exec swayidle -w \
 # Notification Daemon
 exec dunst
 exec kitten desktop-ui run-server
+exec quickshell
 
 # Screen oranger
 exec wlsunset -s 20:00
