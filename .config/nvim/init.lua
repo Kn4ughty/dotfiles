@@ -101,6 +101,11 @@ vim.keymap.set("n", "<leader>lf", vim.lsp.buf.format)
 
 vim.keymap.set("n", "<leader>qc", ":!git add .<CR>:!git commit -m 'quickcommit'<CR>:!git push<CR>")
 
+-- Reverse selection
+vim.keymap.set('x', '<leader>rs',
+  [[c<C-r>=join(reverse(split(@",'\zs')),'')<CR><Esc>]],
+  { noremap = true, silent = true })
+
 
 -- vim.keymap.set("i", "<C-d>", "<C-o>yy<C-o>p")
 
