@@ -70,7 +70,7 @@ vim.opt.listchars = { -- NOTE: using `vim.opt` instead of `vim.o` to pass rich o
 vim.o.undofile = true
 vim.o.undolevels = 10000 -- 10x more undo levels
 
--- vim.o.ignorecase = true
+vim.o.ignorecase = true
 
 vim.o.termguicolors = true
 
