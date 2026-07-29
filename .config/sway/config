@@ -23,7 +23,7 @@ set $right l
 
 output * adaptive_sync on
 
-output eDP-1 resolution 2560x1600@165Hz scale 1.3
+output eDP-1 resolution 2560x1600@60Hz scale 1.3
 
 set $DELL DP-2
 set $240 DP-1
@@ -65,7 +65,7 @@ set $term kitty
 # Your preferred application launcher
 # Note: pass the final command to swaymsg so that the resulting window can be opened
 # on the original workspace that the command was run on.
-set $menu lumin 
+set $menu LD_LIBRARY_PATH=$NIX_LD_LIBRARY_PATH lumin
 
 set $file thunar
 
@@ -299,7 +299,9 @@ bindsym $mod+Shift+s exec steam
 bindsym $mod+Shift+f exec /home/d/.local/share/Steam/steamapps/common/Factorio/bin/x64/factorio
 
 # Obsidian (notes)
-bindsym $mod+Shift+o exec flatpak run md.obsidian.Obsidian
+bindsym $mod+Shift+o exec obsidian
+
+bindsym $mod+Shift+a exec anki
 
 # Stopwatch
 bindsym $mod+Shift+t exec cd ~/code/stopwatch/ && ./.venv/bin/python main.py
