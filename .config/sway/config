@@ -65,7 +65,6 @@ set $term kitty
 # Your preferred application launcher
 # Note: pass the final command to swaymsg so that the resulting window can be opened
 # on the original workspace that the command was run on.
-set $menu LD_LIBRARY_PATH=$NIX_LD_LIBRARY_PATH lumin
 
 set $file thunar
 
@@ -169,6 +168,8 @@ exec gsettings set org.gnome.desktop.interface gtk-theme 'Adwaita-Dark'
 # exec /usr/lib/hyprpolkitagent/hyprpolkitagent
 exec systemctl --user start hyprpolkitagent 
 
+exec mpd-discord-rpc
+
 
 ### Idle configuration
 #
@@ -215,7 +216,7 @@ input * {
     # Also work out how to make vim work with new binds. (hjkl)
     # xkb_variant colemak
 
-    pointer_accel 0.6
+    pointer_accel 0.0
 
     middle_emulation true
 }
@@ -266,7 +267,8 @@ bindsym Mod1+backspace exec wtype -P delete -p delete
 
 ## Start your launcher
 # bindsym $mod+space exec cd ~/code/Lumin && make run
-bindsym $mod+space exec lumin
+bindsym $mod+space exec bash -c "LD_LIBRARY_PATH=$NIX_LD_LIBRARY_PATH lumin"
+
 bindsym $mod+Ctrl+space exec rofi -show drun
 
 bindsym $mod+Ctrl+t exec /home/d/temp/iced_testing/target/release/iced_bug
