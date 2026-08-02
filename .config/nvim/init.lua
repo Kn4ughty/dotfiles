@@ -389,11 +389,17 @@ vim.lsp.config('rust_analyzer', {
 })
 vim.lsp.enable('rust_analyzer')
 vim.lsp.config('asm-lsp', {
-    command = { 'asm-lsp' },
+    cmd = { 'asm-lsp' },
     filetypes = { 'asm', 'nasm' },
 })
 vim.lsp.enable("asm-lsp")
 vim.lsp.enable("qmlls")
+vim.lsp.config('nil', {
+    cmd = { 'nil' },
+    filetypes = { 'nix' },
+    root_markers = { 'flake.nix', 'shell.nix' },
+})
+vim.lsp.enable("nil")
 
 -- Debugging stuff
 -- vim.pack.add({
