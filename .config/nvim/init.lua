@@ -5,6 +5,22 @@ nvim bind list
 # Base
 "v_an" and "v_in"  -- Treesitter in and out
 "ga" -> Get ascii
+"g^g" Get current position in file
+"gU{motion}" make text in motion uppercase
+"S" delete and insert whole line. (same as "cc" or "0C")
+":@c" execute register as Ex command
+
+# Insert Mode
+"^A" Repeat last inserted text
+"^T /^D " Increase and decrease tabbing
+"^U" Insert unicode codepoint (universal)
+"^R" insert contents of register
+"^R=" Enter the expression register
+
+# Visual mode
+"o" swap cursor with start of selection
+
+
 
 ":set spell" -> ":set nospell"
 
@@ -54,6 +70,8 @@ vim.o.completeopt = "menu,menuone,noselect,nearest" -- modern completion menu
 -- vim.o.pumheight = 11                           -- max height of completion menu
 vim.o.pumborder = 'rounded'
 vim.o.pummaxwidth = 40
+
+vim.o.spell = true
 
 
 vim.o.winborder = "rounded"
@@ -114,11 +132,15 @@ vim.api.nvim_create_autocmd('LspAttach', {
     callback = function(event)
         local opts = { buffer = event.buf }
 
-        -- Alternate, use <C-w>d
         vim.keymap.set('n', 'gK', function()
             local new_config = not vim.diagnostic.config().virtual_lines
             vim.diagnostic.config({ virtual_lines = new_config })
         end, { desc = 'Toggle diagnostic virtual_lines' })
+
+        vim.keymap.set('n', '<leader>ld', function() 
+            local old = vim.diagnostic.is_enabled()
+            vim.diagnostic.enable(not old)
+        end, {desc = "toggle diagnostics"} )
 
         vim.keymap.set('n', 'K', '<cmd>lua vim.lsp.buf.hover()<cr>', opts)
         vim.keymap.set('n', 'gd', '<cmd>lua vim.lsp.buf.definition()<cr>', opts)
@@ -135,7 +157,6 @@ vim.api.nvim_create_autocmd('LspAttach', {
         vim.keymap.set('n', 'gn', '<cmd>lua vim.diagnostic.goto_next()<cr>', opts)
         vim.keymap.set('n', 'gp', '<cmd>lua vim.diagnostic.goto_prev()<cr>', opts)
 
-        vim.keymap.set('n', 'ft', '<cmd>lua <cr>', opts)
 
         vim.g.autoformat = true
 
@@ -448,6 +469,20 @@ vim.pack.add({
     { src = 'https://github.com/mason-org/mason-lspconfig.nvim' },
 })
 require("mason-lspconfig").setup()
+
+-- vim.pack.add({
+--   {
+--     src = 'https://github.com/JavaHello/spring-boot.nvim',
+--     version = '218c0c26c14d99feca778e4d13f5ec3e8b1b60f0',
+--   },
+--   'https://github.com/MunifTanjim/nui.nvim',
+--   'https://github.com/mfussenegger/nvim-dap',
+-- 
+--   'https://github.com/nvim-java/nvim-java',
+-- })
+-- 
+-- require('java').setup()
+-- vim.lsp.enable('jdtls')
 
 -- Treesitter
 vim.pack.add({
