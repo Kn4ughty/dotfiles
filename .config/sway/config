@@ -218,6 +218,10 @@ input * {
 
     pointer_accel 0.0
 
+    # this is is so fire. 
+    repeat_delay 200
+    repeat_rate 35
+
     middle_emulation true
 }
 # Macbook
