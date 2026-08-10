@@ -96,6 +96,7 @@ workspace 10 gaps inner 15
 workspace 10 gaps outer 10
 
 # swayfx things
+animation_duration_ms 200
 blur enable
 blur_passes 2
 blur_radius 5
