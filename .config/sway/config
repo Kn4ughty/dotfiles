@@ -49,7 +49,7 @@ exec ~/.config/sway/aoc.sh
 ### wallpaper
 # output * bg $HOME/.pic/art002e009298~orig.jpg fill
 # output * bg $HOME/.pic/space1.jpg fill
-output * bg $HOME/.pic/palce_cinema.png fill
+output * bg $HOME/.pic/palace_16x9.png fill
 # output * bg $HOME/.pic/s_stuki.png fill
 # output * bg $HOME/.pic/ayuru_camp___rin___nadeshiko_by_muddymelly_dcmp6rk.jpg fill
 # output * bg $HOME/.pic/cloud_real.jpg fill
