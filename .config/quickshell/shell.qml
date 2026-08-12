@@ -1,8 +1,10 @@
 //@ pragma IconTheme Adwaita
 
-import Quickshell // for PanelWindow
+import "Bar" as Bar
+
+import Quickshell // for Scope
 
 Scope {
-    // Bar {}
+    Bar.Bar {}
     VolumeOSD {}
 }
