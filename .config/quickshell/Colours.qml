@@ -153,4 +153,24 @@ Singleton {
     readonly property color crust: palette.crust
 
     readonly property color accent: palette.mauve
+
+    readonly property var bgAlpha: ({
+            base: 0.85,
+            mantle: 0.90,
+            crust: 0.95,
+            surface0: 0.80,
+            surface1: 0.80,
+            surface2: 0.80
+        })
+
+    function withAlpha(c, pct) {
+        return Qt.rgba(c.r, c.g, c.b, pct);
+    }
+
+    readonly property color baseT: withAlpha(base, bgAlpha.base)
+    readonly property color mantleT: withAlpha(mantle, bgAlpha.mantle)
+    readonly property color crustT: withAlpha(crust, bgAlpha.crust)
+    readonly property color surface0T: withAlpha(surface0, bgAlpha.surface0)
+    readonly property color surface1T: withAlpha(surface1, bgAlpha.surface1)
+    readonly property color surface2T: withAlpha(surface2, bgAlpha.surface2)
 }

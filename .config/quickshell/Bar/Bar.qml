@@ -1,7 +1,6 @@
 pragma ComponentBehavior: Bound
 
 import Quickshell // for PanelWindow
-import Quickshell.Io
 import QtQuick // for Text
 
 import ".." as Root
@@ -18,7 +17,9 @@ Scope {
         model: Quickshell.screens
 
         delegate: Component {
+
             PanelWindow {
+                id: panel
                 required property var modelData
                 screen: modelData
 
@@ -33,32 +34,33 @@ Scope {
                 }
 
                 Rectangle {
-                    anchors.fill: parent
 
-                    color: "transparent"
+                    color: Root.Colours.mantleT
+                    radius: height / 2
 
-                    Rectangle {
+                    anchors {
+                        fill: parent
 
-                        color: Root.Colours.base
-                        radius: height / 2
+                        leftMargin: config.margin
+                        rightMargin: config.margin
+                        topMargin: config.margin
+                    }
 
+                    BarLeft {
                         anchors {
-                            fill: parent
-
-                            leftMargin: config.margin
-                            rightMargin: config.margin
-                            topMargin: config.margin
+                            left: parent.left
+                            verticalCenter: parent.verticalCenter
                         }
+                        modelData: panel.modelData
+                    }
 
-                        // Rectangle {
-                        //     anchors.horizontalCenter: parent.horizontalCenter
+                    BarMiddle {}
 
-                        Text {
-                            text: "TEST"
-                            color: "magenta"
+                    BarRight {
+                        anchors {
+                            right: parent.right
+                            verticalCenter: parent.verticalCenter
                         }
-                        BarRight {}
-                        // }
                     }
                 }
             }

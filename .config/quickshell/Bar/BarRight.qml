@@ -1,19 +1,28 @@
 pragma ComponentBehavior: Bound
 
 import QtQuick
-import Quickshell
+
+import ".." as Root
 
 // Right side of the bar
-Scope {
+Item {
+    implicitWidth: row.implicitWidth + Root.Config.bar_item_padding
 
-    Rectangle {
-        Text {
-            text: "RIGHT TEXT"
-            color: "red"
-        }
+    implicitHeight: row.implicitHeight
 
-        ClockWidget {
-            // anchors.centerIn: parent
+    Row {
+        id: row
+
+        spacing: Root.Config.bar_item_padding
+
+        Item {
+            implicitWidth: tt.implicitWidth
+            implicitHeight: tt.implicitHeight
+
+            TextTemplate {
+                id: tt
+                content: Time.time
+            }
         }
     }
 }
