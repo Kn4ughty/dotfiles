@@ -59,7 +59,13 @@ Scope {
                         modelData: panel.modelData
                     }
 
-                    BarMiddle {}
+                    BarMiddle {
+                        anchors {
+                            // left: parent.left
+                            verticalCenter: parent.verticalCenter
+                            horizontalCenter: parent.horizontalCenter
+                        }
+                    }
 
                     BarRight {
                         anchors {

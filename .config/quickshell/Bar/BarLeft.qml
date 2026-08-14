@@ -51,6 +51,7 @@ Item {
                     border {
                         color: workspace.modelData.focused ? Root.Colours.surface2 : "transparent"
                     }
+
                     TextTemplate {
                         anchors.centerIn: parent
                         anchors {

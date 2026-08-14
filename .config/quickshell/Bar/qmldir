@@ -6,3 +6,4 @@ BarMiddle 1.0 BarMiddle.qml
 singleton Time 1.0 Time.qml
 TextTemplate 1.0 TextTemplate.qml
 singleton Workspaces 1.0 Workspaces.qml
+singleton Battery 1.0 Battery.qml

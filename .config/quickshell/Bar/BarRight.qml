@@ -15,14 +15,19 @@ Item {
 
         spacing: Root.Config.bar_item_padding
 
-        Item {
-            implicitWidth: tt.implicitWidth
-            implicitHeight: tt.implicitHeight
+        TextTemplate {
+            id: battery
+            content: Battery.battery_info.percent
+        }
 
-            TextTemplate {
-                id: tt
-                content: Time.time
-            }
+        // todo. make seperator template
+        TextTemplate {
+            content: "\\\\"
+        }
+
+        TextTemplate {
+            id: tt
+            content: Time.time
         }
     }
 }

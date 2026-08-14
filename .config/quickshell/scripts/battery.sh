@@ -110,44 +110,52 @@ get_icon () {
     fi
 }
 
+# Assymes data exists in variable called "$buffer"
+handle_change () {
+    percentage=$(rg 'percentage: +([0-9]+)' -or '$1' <<< $buffer)
+    if [[ -z $percentage ]]; then
+        # invalid data
+        continue
+    fi
+    state=$(rg 'state: +(.+)' -or '$1' <<< $buffer)
+
+    if [[ -z $state ]]; then
+        ##state='unknown'
+
+        # invalid data
+        continue
+    fi
+    
+    
+    if [[ $state == "charging" ]]; then
+        time_display=$(rg 'time to full: +(.+)' -or '$1' <<< $buffer)
+        is_charging="yes"
+    else
+        is_charging="no"
+        time_display=$(rg 'time to empty: +(.+)' -or '$1' <<< $buffer)
+    fi
+    
+    # Get icon
+    icon=$(get_icon $percentage $is_charging)
+
+
+
+    echo '{ "percent": "'$icon $percentage'%", "time": "'$time_display '", "icon": "'$icon'"}'
+
+    buffer=""
+}
+
 # get_icon "12" 'yes'
+
+buffer=$(upower -b)
+
+handle_change
 
 
 upower --monitor-detail -i $(upower -e | grep 'bat') |
 while read -r line; do
     if [[ $line =~ ^native-path: ]] && [[ -n $buffer ]]; then
-
-        percentage=$(rg 'percentage: +([0-9]+)' -or '$1' <<< $buffer)
-        if [[ -z $percentage ]]; then
-            # invalid data
-            continue
-        fi
-        state=$(rg 'state: +(.+)' -or '$1' <<< $buffer)
-
-        if [[ -z $state ]]; then
-            ##state='unknown'
-
-            # invalid data
-            continue
-        fi
-        
-        
-        if [[ $state == "charging" ]]; then
-            time_display=$(rg 'time to full: +(.+)' -or '$1' <<< $buffer)
-            is_charging="yes"
-        else
-            is_charging="no"
-            time_display=$(rg 'time to empty: +(.+)' -or '$1' <<< $buffer)
-        fi
-        
-        # Get icon
-        icon=$(get_icon $percentage $is_charging)
-
-
-
-        echo '{ "percent": "'$icon $percentage'%", "time": "'$time_display '", "icon": "'$icon'"}'
-
-        buffer=""
+        handle_change
     fi
 
     buffer+="$line"$'\n'
