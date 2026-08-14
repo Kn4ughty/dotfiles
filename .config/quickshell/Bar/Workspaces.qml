@@ -12,6 +12,19 @@ Singleton {
         get_workspaces.running = true;
     }
 
+    function set_workspace(space) {
+        proc_set_workspace.new_workspace = space;
+        proc_set_workspace.running = true;
+    }
+
+    Process {
+        id: proc_set_workspace
+        property var new_workspace: 1
+
+        command: ["swaymsg", "workspace", new_workspace]
+        running: false
+    }
+
     Process {
         id: get_workspaces
         command: ["swaymsg", "-t", "get_workspaces", "--raw"]

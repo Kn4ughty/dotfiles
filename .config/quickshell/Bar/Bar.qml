@@ -35,15 +35,20 @@ Scope {
 
                 Rectangle {
 
-                    color: Root.Colours.mantleT
-                    radius: height / 2
-
                     anchors {
                         fill: parent
 
                         leftMargin: config.margin
                         rightMargin: config.margin
                         topMargin: config.margin
+                    }
+
+                    color: Root.Colours.baseT
+                    radius: height / 2
+
+                    border {
+                        width: 1.2
+                        color: Root.Colours.surface2
                     }
 
                     BarLeft {

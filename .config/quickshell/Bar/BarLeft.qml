@@ -1,6 +1,7 @@
 pragma ComponentBehavior: Bound
 
 import QtQuick
+import QtQuick.Controls
 
 import ".." as Root
 
@@ -22,34 +23,42 @@ Item {
         Repeater {
             model: Workspaces.workspaces.filter(w => w.output === root.modelData.name)
 
-            Rectangle {
+            Button {
                 id: workspace
-
                 required property var modelData
 
-                width: 20
-                height: 20
-                radius: 10
+                // anchors.fill: parent
+                implicitWidth: 20
+                implicitHeight: 20
 
-                color: {
-                    if (workspace.modelData.focused) {
-                        return Root.Colours.surface0T;
-                    } else {
-                        return "transparent";
-                    }
+                onClicked: {
+                    Workspaces.set_workspace(workspace.modelData.num);
                 }
 
-                border {
-                    color: workspace.modelData.focused ? Root.Colours.surface2 : "transparent"
-                }
+                background: Rectangle {
+                    anchors.fill: parent
 
-                TextTemplate {
-                    anchors.centerIn: parent
-                    anchors {
-                        leftMargin: 5
-                        rightMargin: 5
+                    radius: 10
+
+                    color: {
+                        if (workspace.modelData.focused) {
+                            return Root.Colours.surface0T;
+                        } else {
+                            return "transparent";
+                        }
                     }
-                    content: workspace.modelData.num
+
+                    border {
+                        color: workspace.modelData.focused ? Root.Colours.surface2 : "transparent"
+                    }
+                    TextTemplate {
+                        anchors.centerIn: parent
+                        anchors {
+                            leftMargin: 5
+                            rightMargin: 5
+                        }
+                        content: workspace.modelData.num
+                    }
                 }
             }
         }
