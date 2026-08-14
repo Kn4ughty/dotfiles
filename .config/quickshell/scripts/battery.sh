@@ -1,12 +1,6 @@
 #!/usr/bin/env bash
 # this script isnt very good
 
-# quick=$(acpi -b)
-# percentage=$(rg '([0-9]+%)' -or '$1' <<< $quick)
-# time_display=$(rg ', (([0-9]+:)+[0-9]+)' -or '$1' <<< $quick)
-#
-# echo '{ "percent": "'$percentage'", "time": "'$time_display '"}'
-
 
 get_icon () {
     local percentage 
@@ -44,7 +38,6 @@ get_icon () {
         if (( $percentage >= 50 )); then
             echo 󰢝
             return 0
-        # ...
         fi
         if (( $percentage >= 40 )); then
             echo 󰂈
@@ -110,23 +103,20 @@ get_icon () {
     fi
 }
 
-# Assymes data exists in variable called "$buffer"
+# Assumes data exists in variable called "$buffer"
 handle_change () {
     percentage=$(rg 'percentage: +([0-9]+)' -or '$1' <<< $buffer)
     if [[ -z $percentage ]]; then
         # invalid data
-        continue
+        return
     fi
     state=$(rg 'state: +(.+)' -or '$1' <<< $buffer)
 
     if [[ -z $state ]]; then
-        ##state='unknown'
-
         # invalid data
-        continue
+        return
     fi
-    
-    
+
     if [[ $state == "charging" ]]; then
         time_display=$(rg 'time to full: +(.+)' -or '$1' <<< $buffer)
         is_charging="yes"
@@ -134,23 +124,18 @@ handle_change () {
         is_charging="no"
         time_display=$(rg 'time to empty: +(.+)' -or '$1' <<< $buffer)
     fi
-    
+
     # Get icon
     icon=$(get_icon $percentage $is_charging)
-
-
 
     echo '{ "percent": "'$icon $percentage'%", "time": "'$time_display '", "icon": "'$icon'"}'
 
     buffer=""
 }
 
-# get_icon "12" 'yes'
 
 buffer=$(upower -b)
-
 handle_change
-
 
 upower --monitor-detail -i $(upower -e | grep 'bat') |
 while read -r line; do
