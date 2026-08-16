@@ -52,6 +52,7 @@ if status is-interactive
         ls -lah $(which $argv[1])
     end
 
+    eval (ssh-agent -c)
     ssh-add ~/.ssh/id_*.key
 
     direnv hook fish | source
