@@ -7,9 +7,6 @@ transparency = 0
 
 [general]
 
-# Smoothing mode. Can be 'normal', 'scientific' or 'waves'. DEPRECATED as of 0.6.0
-; mode = normal
-
 # Accepts only non-negative values.
 framerate = 60
 
@@ -50,7 +47,7 @@ bar_spacing = 1
 
 # Seconds with no input before cava goes to sleep mode. Cava will not perform FFT or drawing and
 # only check for input once per second. Cava will wake up once input is detected. 0 = disable.
-; sleep_timer = 0
+sleep_timer = 5
 
 
 [input]
