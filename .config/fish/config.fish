@@ -28,10 +28,11 @@ if status is-interactive
     # export XDG_CURRENT_DESKTOP=sway
     export XDG_DATA_HOME=$HOME/.local/share/
     
-    export GTK_IM_MODULE=fcitx
-    export QT_IM_MODULE=fcitx
-    export XMODIFIERS=@im=fcitx
+    export XMODIFIERS=@im=ibus
+    export GTK_IM_MODULE="wayland;ibus"
+    export QT_IM_MODULE=ibus
     export MOZC_IBUS_CANDIDATE_WINDOW=ibus
+
     export HOSTNAME=$(hostname)
     export WINIT_X11_SCALE_FACTOR=1.0
 
