@@ -15,6 +15,8 @@ if status is-interactive
 
     alias -- "+x"="chmod +x"
 
+    alias ssh="kitten ssh"
+
     export EDITOR=nvim
 
 
