@@ -23,7 +23,7 @@ set $right l
 
 output * adaptive_sync on
 
-output eDP-1 resolution 2560x1600@60Hz scale 1.3
+output eDP-1 resolution 2560x1600@165Hz scale 1.3
 
 set $DELL DP-2
 set $240 DP-1
@@ -99,7 +99,8 @@ workspace 10 gaps outer 10
 
 # swayfx things
 animation_duration_ms 200
-blur enable
+# Disable blur until https://github.com/wlrfx/swayfx/issues/585 resolved
+blur disabled
 blur_passes 2
 blur_radius 5
 blur_noise 0
