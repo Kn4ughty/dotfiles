@@ -26,8 +26,6 @@ nvim bind list
 
 --]]
 
---
---
 -- Thank you https://github.com/boltlessengineer/NativeVim/
 -- TODO. Speed up install by putting all pack.adds into one function
 local vim = vim -- hide errors stupidly
