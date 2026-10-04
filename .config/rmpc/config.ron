@@ -6,6 +6,7 @@
     password: None,
     theme: Some("base"),
     cache_dir: None,
+    lyrics_dir: "~/Music",
     on_song_change: None,
     volume_step: 5,
     max_fps: 30,
@@ -130,7 +131,7 @@
     ),
     tabs: [
         (
-            name: "Queue",
+        name: "Queue",
             pane: Split(
                 direction: Vertical,
                 panes: [
@@ -139,8 +140,20 @@
                         borders: "BOTTOM",
                         panes: [
                             (size: "2.2r", borders: "RIGHT", pane: Pane(AlbumArt)),
-                            //(size: "50%", pane: Pane(Queue)),
-                            (size: "100%", pane: Pane(Queue)),
+                            (size: "100%", pane: Split(
+                                direction:Vertical,
+                                panes: [
+                                    (size: "80%", pane: Pane(Queue)),
+                                    (
+                                        name: "Lyrics",
+                                        size: "7",
+                                        borders: "TOP",
+                                        border_symbols: Inherited(parent: Rounded, top_left: "╭", top_right: "┤"),
+                                        border_title: [(kind: Text("─── Lyrics "))],
+                                        border_title_alignment: Left,
+                                        pane: Pane(Lyrics),
+                                    ),
+                                ]))
                         ])
                     ),
                     (size: "15%", pane: Pane(Cava)),
