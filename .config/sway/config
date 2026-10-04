@@ -176,7 +176,7 @@ exec systemctl --user start hyprpolkitagent
 
 exec mpd-discord-rpc
 
-exec ibus start --type wayland
+# exec ibus start --type wayland
 
 
 ### Idle configuration
