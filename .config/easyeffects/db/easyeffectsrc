@@ -1,0 +1,15 @@
+[StreamInputs]
+inputDevice=alsa_input.usb-046d_Brio_500_2532ZBV24E08-02.analog-stereo
+plugins=pitch#0,autotune#0,crusher#0
+visiblePage=pluginsPage
+visiblePlugin=crusher#0
+
+[StreamOutputs]
+outputDevice=alsa_output.usb-Burr-Brown_from_TI_USB_Audio_CODEC-00.analog-stereo-output
+plugins=equalizer#0,equalizer#1
+visiblePage=pluginsPage
+visiblePlugin=equalizer#1
+
+[Window]
+height=1167
+width=717
