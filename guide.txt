@@ -1,8 +1,0 @@
-To fix time and date: `timedatectl set-time "2024-05-31 09:02:00"`
-Solution was to turn on the chronnyd.service
-
-# WIFI
-If wifi doesnt work,
-try run
-sudo systemctl restart NetworkManager.service
-
