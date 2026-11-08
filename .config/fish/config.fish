@@ -12,6 +12,7 @@ if status is-interactive
     alias abcdefghijklmnopqrstuvwxyz="calcurse"
 
     alias doitnow="sudo fish -c \$history[1]"
+    alias wsudo="sudo /usr/bin/env WAYLAND_DISPLAY="$XDG_RUNTIME_DIR/$WAYLAND_DISPLAY"  XDG_RUNTIME_DIR=/user/run/0"
 
     alias -- "+x"="chmod +x"
 
