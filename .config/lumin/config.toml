@@ -10,7 +10,6 @@ transparent_background = false
 app_prefixes = { 
     AppSearch  = "" ,
     WebSearch  = "!",
-    FileSearch = "'",
     HelpScreen = "?",
     Calculator = "=" 
 }
@@ -20,6 +19,3 @@ input_prompt = "Type to search"
 
 # Show icons for search results
 show_icons = true
-
-[file_settings]
-search_directories = ["Documents", "Desktop", "Downloads"]
