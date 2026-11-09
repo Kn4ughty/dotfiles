@@ -41,6 +41,7 @@ end
 
 vim.opt.runtimepath:append(site_path)
 
+
 -- require("status_line")
 -- require('vim._core.ui2').enable()
 
@@ -95,7 +96,6 @@ vim.o.signcolumn = "yes:1"
 vim.g.netrw_banner = 1
 
 -- vim.opt.foldmethod = "indent"
--- vim.opt.foldexpr = "vim.treesitter.foldexpr()"
 vim.opt.foldmethod = "expr"
 vim.opt.foldexpr = "v:lua.vim.treesitter.foldexpr()"
 
@@ -122,6 +122,11 @@ vim.keymap.set('x', '<leader>rs',
   [[c<C-r>=join(reverse(split(@",'\zs')),'')<CR><Esc>]],
   { noremap = true, silent = true })
 
+
+vim.keymap.set("n", "<left>", "");
+vim.keymap.set("n", "<right>", "");
+vim.keymap.set("n", "<down>", "");
+vim.keymap.set("n", "<up>", "");
 
 -- vim.keymap.set("i", "<C-d>", "<C-o>yy<C-o>p")
 
@@ -368,7 +373,6 @@ vim.pack.add({
     'https://github.com/hrsh7th/cmp-path',
     'https://github.com/hrsh7th/cmp-cmdline',
     'https://github.com/hrsh7th/nvim-cmp',
-    -- 'https://github.com/f-person/git-blame.nvim',
 })
 
 local cmp = require("cmp")
