@@ -115,6 +115,19 @@
             (fsep)
             (workspaces :monitor monitor)
             (fsep)
+
+            (eventbox
+              :onclick `export NEW=$(awk 'BEGIN {new = (${cam_focus} + 50); new=(new > 0 ? new : 0); new=(new > 255 ? 255 : new); print (new)}');
+                          v4l2-ctl -d /dev/video1 -c focus_absolute=$NEW; eww update cam_focus=$NEW; echo $NEW > ~/file`
+              :onrightclick `export NEW=$(awk 'BEGIN {new = (${cam_focus} - 50); new=(new > 0 ? new : 0); new=(new > 255 ? 255 : new); print (new)}');
+                          v4l2-ctl -d /dev/video1 -c focus_absolute=$NEW; eww update cam_focus=$NEW; echo $NEW > ~/file`
+              (circular-progress
+                :value {(cam_focus / 255)* 100}
+                :thickness 10
+              )
+            )
+
+            (fsep)
             (label :class "mode" :visible { MODE != "" ? true : false }
                 :text MODE)
         )
@@ -209,6 +222,19 @@
     `wpctl get-volume @DEFAULT_SINK@ | sed -E "s/.+\\.(.+)/\\1%/"`
 )
 
+(defpoll cam_focus 
+  :interval "1s"
+  :initial 1
+  `v4l2-ctl -d /dev/video1 -C focus_absolute | grep -o -E '[0-9]+'`
+  ; `echo 100`
+)
+
+(defpoll cam_auto_focus
+  :interval "1s"
+  :initial `1.0`
+  `v4l2-ctl -d /dev/video1 -C focus_automatic_continuous | grep -o -E '[0-9]+'`
+)
+
 (defwidget home_icon []
     (box
         :class 'bar_widget'
@@ -243,17 +269,18 @@
 
 (defwidget workspaces [monitor]
     (box :class "bar_widget workspaces" :space-evenly false
-    (for wsp in {jq(WORKSPACES, 'map(select(.monitor == "${monitor}"))')} (tooltip
+    (for wsp in {jq(WORKSPACES, 'map(select(.monitor == "${monitor}"))')} 
+      (tooltip
         (box
             :class 'workspace_rep'
             :width 320
             :height 180
             :space-evenly true
-              (literal
-                  :content {wsp.rep}
-                  :vexpand true
-                  :hexpand true
-              )
+              ; (literal
+              ;     :content {wsp.rep}
+              ;     :vexpand true
+              ;     :hexpand true
+              ; )
             )
         (button 
             :class "workspace ${wsp.class} ${wsp.focused == 'true' ? 'focused' : ''}"
@@ -287,6 +314,7 @@
 (deflisten MUSIC_VIS :initial "        "
     `./scripts/cava.py`)
 
+
 (defwidget music_small []
   (tooltip 
     (box
@@ -314,3 +342,4 @@
     )
   )
 )
+
