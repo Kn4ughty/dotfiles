@@ -28,6 +28,14 @@
       "rev": "fcea7ff883235d9024dc41e638f164a450c14ca2",
       "src": "https://github.com/folke/flash.nvim"
     },
+    "gitsigns-nvim": {
+      "rev": "c34992438b9a89f204fb7d155c7a8ca07c7d138f",
+      "src": "https://github.com/fwrs/gitsigns-nvim"
+    },
+    "gitsigns.nvim": {
+      "rev": "c0862d382a35b7b45757d8d151a6a634c09bf3ce",
+      "src": "https://github.com/lewis6991/gitsigns.nvim"
+    },
     "leetcode.nvim": {
       "rev": "4e8b3683940a8377379ce9398e7f329e3560b42c",
       "src": "https://github.com/kawre/leetcode.nvim"
@@ -47,6 +55,10 @@
     "mini.clue": {
       "rev": "43bd6cf1c3ccdea46d403c32dbc4629fa6afa09d",
       "src": "https://github.com/nvim-mini/mini.clue"
+    },
+    "mini.nvim": {
+      "rev": "e199196f5ed6b085743da6a808e6c8510698cdce",
+      "src": "https://github.com/nvim-mini/mini.nvim"
     },
     "mini.surround": {
       "rev": "2715e04bea3ec9244f15b421dc5b18c0fe326210",
@@ -91,6 +103,10 @@
     "plenary.nvim": {
       "rev": "74b06c6c75e4eeb3108ec01852001636d85a932b",
       "src": "https://github.com/nvim-lua/plenary.nvim"
+    },
+    "render-markdown.nvim": {
+      "rev": "a67f826164c38c836fc6060f32b275c4c43317a7",
+      "src": "https://github.com/MeanderingProgrammer/render-markdown.nvim"
     },
     "rustaceanvim": {
       "rev": "4e9e40432b21df641f08c4ec058f2d6f89365526",

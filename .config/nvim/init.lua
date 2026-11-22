@@ -65,15 +65,16 @@ vim.o.shiftwidth = 4
 vim.o.autoindent = true
 
 vim.o.completeopt = "menu,menuone,noselect,nearest" -- modern completion menu
--- vim.o.autocomplete = true
--- vim.o.pumheight = 11                           -- max height of completion menu
-vim.o.pumborder = 'rounded'
-vim.o.pummaxwidth = 40
+-- -- vim.o.autocomplete = true
+-- -- vim.o.pumheight = 11                           -- max height of completion menu
+-- vim.o.pumborder = 'rounded'
+-- vim.o.pummaxwidth = 40
 
 vim.o.spell = true
 
 
 vim.o.winborder = "rounded"
+
 vim.o.splitright = true
 
 vim.o.list = true     -- use special characters to represent things like tabs or trailing spaces
@@ -176,16 +177,9 @@ vim.api.nvim_create_autocmd('LspAttach', {
 
 vim.keymap.set("v", "<leader>lu", ":s/, \\(.\\{-1,}\\):/, _\\1:/g<CR>", { desc = "Fix rust unused vars (_prefix)" })
 
--- vim.pack.add({ "nvim.undotree" })
 vim.cmd("packadd nvim.undotree")
 
 vim.keymap.set('n', '<leader>u', '<cmd>Undotree<CR>')
-
--- Auto commands
-
--- Format buffer on save
-
---
 
 -- Packages
 -- -- Catppuccin
@@ -200,7 +194,6 @@ require("catppuccin").setup({
 vim.cmd.colorscheme "catppuccin"
 
 -- -- Snacks
-
 
 vim.pack.add({ "https://github.com/folke/snacks.nvim" } )
 require("snacks").setup({
@@ -493,7 +486,8 @@ vim.pack.add({
 })
 require('nvim-treesitter').setup {
     -- A list of parser names, or "all" (the listed parsers MUST always be installed)
-    ensure_installed = { "c",
+    ensure_installed = {
+        "c",
         "lua",
         "vim",
         "vimdoc",
@@ -501,7 +495,8 @@ require('nvim-treesitter').setup {
         "markdown",
         "yuck",
         "ron",
-        "markdown_inline" },
+        "markdown_inline"
+    },
 
     -- Install parsers synchronously (only applied to `ensure_installed`)
     sync_install = false,
@@ -511,7 +506,7 @@ require('nvim-treesitter').setup {
     auto_install = true,
 
     -- List of parsers to ignore installing (or "all")
-    ignore_install = { "javascript" },
+    ignore_install = {},
 
     ---- If you need to change the installation directory of the parsers (see -> Advanced Setup)
     -- parser_install_dir = "/some/path/to/store/parsers", -- Remember to run vim.opt.runtimepath:append("/some/path/to/store/parsers")!
@@ -555,6 +550,9 @@ vim.pack.add({
     { src = "https://github.com/MunifTanjim/nui.nvim" },
 })
 require("leetcode").setup({picker = { provider = Snacks.picker}})
+
+vim.pack.add({"https://github.com/lewis6991/gitsigns.nvim"})
+require('gitsigns').setup()
 
 -- Do neovide things
 if vim.g.neovide then
