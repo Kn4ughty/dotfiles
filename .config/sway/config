@@ -168,7 +168,7 @@ exec systemctl --user start sway-session.target
 exec dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP=sway
 
 exec --no-startup-id /usr/lib/xdg-desktop-portal -r
-seat seat0 xcursor_theme Bibata-Modern-Classic 28
+seat seat0 xcursor_theme Bibata-Modern-Classic 24
 exec gsettings set org.gnome.desktop.interface gtk-theme 'Adwaita-Dark'
 
 # exec /usr/lib/hyprpolkitagent/hyprpolkitagent
@@ -214,8 +214,21 @@ input "1739:30382:DLL0704:01_06CB:76AE_Touchpad" {
     dwt enabled
     scroll_factor 0.2
 }
-# keyboard layout
-
+input "1386:827:Wacom_Intuos_S_2_Pen" {
+    events disabled
+    libinput { send_events disabled } 
+    libinput { events disabled } 
+    # send_inputs disabled
+}
+input "1386:827:Wacom_Intuos_S_2_Pen" {
+    events disabled
+    libinput { send_events disabled } 
+    libinput { events disabled } 
+    # send_inputs disabled
+}
+input "0:0:OpenTabletDriver_Virtual_Artist_Tablet" {
+    events disabled
+}
 input * {
     xkb_layout us
     accel_profile "flat"
@@ -310,7 +323,7 @@ bindsym $mod+Shift+e exec $file
 bindsym $mod+Shift+s exec steam
 
 # factorio
-bindsym $mod+Shift+f exec /home/d/.local/share/Steam/steamapps/common/Factorio/bin/x64/factorio
+# bindsym $mod+Shift+f exec /home/d/.local/share/Steam/steamapps/common/Factorio/bin/x64/factorio
 
 # Obsidian (notes)
 bindsym $mod+Shift+o exec obsidian
@@ -367,7 +380,12 @@ focus_follows_mouse yes
     # bindsym $mod+Shift+Down move down
     # bindsym $mod+Shift+Up move up
     # bindsym $mod+Shift+Right move right
-#
+
+    bindsym $mod+Shift+Ctrl+$left  move workspace to output left
+    bindsym $mod+Shift+Ctrl+$down  move workspace to output down
+    bindsym $mod+Shift+Ctrl+$up    move workspace to output up
+    bindsym $mod+Shift+Ctrl+$right move workspace to output right
+
 # Workspaces:
 #
     # Switch to workspace
@@ -395,6 +413,7 @@ focus_follows_mouse yes
 
 
 
+
 #
 # Layout stuff:
 #
@@ -410,14 +429,16 @@ focus_follows_mouse yes
     bindsym $mod+w layout tabbed
 
     # Make the current focus fullscreen
-    bindsym $mod+f fullscreen
+    bindsym $mod+f fullscreen toggle 
+    bindsym $mod+Control+f fullscreen toggle enable
+    bindsym $mod+Shift+f inhibit_fullscreen toggle
 
     # Toggle the current focus between tiling and floating mode
     bindsym $mod+backslash floating toggle
     bindsym $mod+apostrophe sticky toggle
 
     # Swap focus between the tiling area and the floating area
-    bindsym $mod+g focus mode_toggle
+    # bindsym $mod+Shift+g focus mode_toggle
 
     # Move focus to the parent container
     bindsym $mod+a focus parent
