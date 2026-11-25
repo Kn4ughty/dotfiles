@@ -1,0 +1,16 @@
+id = 677226551607033903
+hosts = ["localhost:6600"]
+
+[format]
+details = "$title"
+state = "$artist / $album"
+timestamp = "both"
+large_image = "notes"
+small_image = ""
+large_text = ""
+small_text = ""
+display_type = "state"
+button1_text = "Listen along! (best in mpv)"
+button1_link = "http://music.kn4ughty.com:9002/"
+# button2_text = "aklsjd"
+# button2_link = "https://google.com/"
